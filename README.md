@@ -289,7 +289,7 @@ For more information about Vivox, and how to use it you can read the [Vivox quic
 
 ### Bugs
 
-Report bugs in Megacity Multiplayer using GitHub [issues](https://github.cds.internal.unity3d.com/unity/Megacity-Metro/issues). If the bugs are related to the Entities packages, use the Entities GitHub issues.
+Report bugs in Megacity Multiplayer using GitHub [issues](https://github.com/Unity-Technologies/Megacity-Metro/issues). If the bugs are related to the Entities packages, use the Entities GitHub issues.
 
 ## Disclaimer
 
