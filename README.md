@@ -258,32 +258,32 @@ For more information about Vivox, and how to use it you can read the [Vivox quic
 ## Index of Resources in this Project
 
 ### Gameplay
-- [Vehicle Input System](Megacity-Metro/Assets/Scripts/Gameplay/Player/PlayerVehicleInputSystem.cs)
-- [PlayerVehicleJobs](Megacity-Metro/Assets/Scripts/Gameplay/Player/Jobs/PlayerVehicleJobs.cs)
-- [SetupPlayerInfoSystem](Megacity-Metro/Assets/Scripts/Gameplay/Player/SetupPlayerInfoSystem.cs)
-- [ShootingSystem](Megacity-Metro/Assets/Scripts/Gameplay/Shooting/ShootingSystem.cs)
-- [BoundSystem](Megacity-Metro/Assets/Scripts/Gameplay/Misc/BoundsSystem.cs)
-- [SpawnPoint](Megacity-Metro/Assets/Scripts/Gameplay/Misc/MonoBehaviours/SpawnPoint.cs)
-- [UpdatePlayerRankSystem](Megacity-Metro/Assets/Scripts/Gameplay/Player/UpdatePlayerRankSystem.cs)
+- [Vehicle Input System](Assets/Scripts/Gameplay/Player/PlayerVehicleInputSystem.cs)
+- [PlayerVehicleJobs](Assets/Scripts/Gameplay/Player/Jobs/PlayerVehicleJobs.cs)
+- [SetupPlayerInfoSystem](Assets/Scripts/Gameplay/Player/SetupPlayerInfoSystem.cs)
+- [ShootingSystem](Assets/Scripts/Gameplay/Shooting/ShootingSystem.cs)
+- [BoundSystem](Assets/Scripts/Gameplay/Misc/BoundsSystem.cs)
+- [SpawnPoint](Assets/Scripts/Gameplay/Misc/MonoBehaviours/SpawnPoint.cs)
+- [UpdatePlayerRankSystem](Assets/Scripts/Gameplay/Player/UpdatePlayerRankSystem.cs)
 
 ### Audio
-- [AudioMaster](Megacity-Metro/Assets/Scripts/Gameplay/Audio/MonoBehaviours/AudioMaster.cs)
+- [AudioMaster](Assets/Scripts/Gameplay/Audio/MonoBehaviours/AudioMaster.cs)
 
 ### Connectivity
-- [NetcodeBootstrap](Megacity-Metro/Assets/Scripts/Gameplay/Netcode/NetcodeBootstrap.cs)
+- [NetcodeBootstrap](Assets/Scripts/Gameplay/Netcode/NetcodeBootstrap.cs)
 
 ### Services (Vivox, Matchmaker, etc.)
-- [VivoxManager](Megacity-Metro/Assets/Scripts/Gameplay/Vivox/MonoBehaviours/VivoxManager.cs)
-- [ClientMatchmaker](Megacity-Metro/Assets/Scripts/UGS/Client/ClientMatchmaker.cs)
-- [GameServerManager](Megacity-Metro/Assets/Scripts/UGS/Server/GameServerManager.cs)
+- [VivoxManager](Assets/Scripts/Gameplay/Vivox/MonoBehaviours/VivoxManager.cs)
+- [ClientMatchmaker](Assets/Scripts/UGS/Client/ClientMatchmaker.cs)
+- [GameServerManager](Assets/Scripts/UGS/Server/GameServerManager.cs)
 
 ### UI
-- [HUD](Megacity-Metro/Assets/Scripts/Gameplay/UI/MonoBehaviours/HUD/HUD.cs)
-- [MainMenu](Megacity-Metro/Assets/Scripts/Gameplay/UI/MonoBehaviours/MainMenu/MainMenu.cs)
-- [UIGameSettings](Megacity-Metro/Assets/Scripts/Gameplay/UI/MonoBehaviours/Settings/UIGameSettings.cs)
+- [HUD](Assets/Scripts/Gameplay/UI/MonoBehaviours/HUD/HUD.cs)
+- [MainMenu](Assets/Scripts/Gameplay/UI/MonoBehaviours/MainMenu/MainMenu.cs)
+- [UIGameSettings](Assets/Scripts/Gameplay/UI/MonoBehaviours/Settings/UIGameSettings.cs)
 
 ### Tools and Utilities
-- [NetcodePanelStats](Megacity-Metro/Assets/Scripts/Utils/NetcodeExtensions/UI/NetcodePanelStats.cs)
+- [NetcodePanelStats](Assets/Scripts/Utils/NetcodeExtensions/UI/NetcodePanelStats.cs)
 
 ## Troubleshooting
 
