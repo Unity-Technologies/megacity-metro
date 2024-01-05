@@ -1,0 +1,209 @@
+target_editor:
+  version: 2019.3  # will become the next LTS release later on
+test_editors:
+  - version: 2019.3
+  # TODO Enable build for 2020 when IET is fixed
+  # - version: 2010.1
+  # - version: 2010.2  
+test_platforms:
+  - name: win
+    type: Unity::VM
+    image: package-ci/win10:stable
+    flavor: b1.large
+  - name: mac
+    type: Unity::VM::osx
+    image: package-ci/mac:stable
+    flavor: m1.mac
+upm_ci:
+  # See also build.bat/sh when changing this.
+  version: stable
+  # For dev-iet we need to use an older version in order for things to work for now.
+  # TODO test with newer version.
+  dev_version: 1.1.1
+microgame:
+  pkgName: com.unity.template.NAME
+  shortName: NAME
+
+---
+prepack:
+  name: Pre-Pack - Primed Artifacts
+  agent:
+    type: Unity::VM
+    # NOTE: using non-Linux instance is important, using Linux can cause e.g. video clips in the project not to be imported correctly.
+    image: package-ci/win10:stable
+    flavor: b1.large
+  commands:
+    - pip install unity-downloader-cli --extra-index-url https://artifactory.internal.unity3d.com/api/pypi/common-python/simple --upgrade
+    - unity-downloader-cli -u {{target_editor.version}} -c editor -w
+    - .\.Editor\Unity.exe -projectPath . -batchmode -quit
+  artifacts:
+    primed:
+      paths:
+        - "Library/Artifacts/**"
+        - "Library/ArtifactDB"
+        - "Library/SourceAssetDB"
+
+pack:
+  name: Pack
+  agent:
+    type: Unity::VM
+    image: package-ci/win10:stable
+    flavor: b1.large
+  commands:
+    # Add Readme for the project
+    - copy "Packages\{{microgame.pkgName}}\README.md" "Assets\{{microgame.shortName}}\{{microgame.shortName}}Microgame_README.txt"
+    # build/pack & delete folders for MG Add-On submodules
+    - build.bat force
+  dependencies:
+    - .yamato/upm-ci.yml#prepack
+  artifacts:
+    packages:
+      paths:
+        - "upm-ci~/packages/**/*"
+        - "upm-ci~/templates/**/*"
+
+pack_without_pa:
+  name: Pack Without Primed Artifacts
+  agent:
+    type: Unity::VM
+    image: package-ci/win10:stable
+    flavor: b1.large
+  commands:
+    # Add Readme for the project
+    - copy "Packages\{{microgame.pkgName}}\README.md" "Assets\{{microgame.shortName}}\{{microgame.shortName}}Microgame_README.txt"
+    # build/pack & delete folders for MG Add-On submodules
+    - build.bat force
+  artifacts:
+    packages:
+      paths:
+        - "upm-ci~/packages/**/*"
+        - "upm-ci~/templates/**/*"
+
+export_addons:
+  name: Export Add-Ons
+  agent:
+    type: Unity::VM
+    image: package-ci/win10:stable
+    flavor: b1.large
+  commands:
+    - pip install unity-downloader-cli
+    - unity-downloader-cli -u {{target_editor.version}} -c editor
+    - git submodule update --init --recursive
+    - git submodule update --remote
+    - export-addons.bat
+    # TODO debugging lines
+    - dir
+    - dir addons
+  artifacts:
+    addons:
+      paths:
+        - "addons/*"
+
+{% for editor in test_editors %}
+{% for platform in test_platforms %}
+test_{{ platform.name }}_{{ editor.version }}:
+  name : Test {{ editor.version }} on {{ platform.name }}
+  agent:
+    type: {{ platform.type }}
+    image: {{ platform.image }}
+    flavor: {{ platform.flavor}}
+  {% if platform.name == "win" %}
+  commands:
+    # TODO had problems running this as single multiline command, breaking into two commands seemed to fix the problem
+    - |
+      if "%GIT_BRANCH%"=="dev-iet" (
+        npm install upm-ci-utils@{{upm_ci.dev_version}} -g --registry https://artifactory.prd.cds.internal.unity3d.com/artifactory/api/npm/upm-npm
+      ) else (
+        npm install upm-ci-utils@{{upm_ci.version}} -g --registry https://artifactory.prd.cds.internal.unity3d.com/artifactory/api/npm/upm-npm
+      )
+    - |
+      if "%GIT_BRANCH%"=="dev-iet" (
+        git clone --single-branch --branch dev git@github.cds.internal.unity3d.com:unity/com.unity.connect.share.git ../com.unity.connect.share
+        git clone --single-branch --branch dev git@github.cds.internal.unity3d.com:unity/iet-package.git ../iet-package
+      )
+      upm-ci template test -u {{editor.version}}
+  {% else %}
+  commands:
+    - |
+      if [ "$GIT_BRANCH" == "dev-iet" ]
+      then
+        npm install upm-ci-utils@{{upm_ci.dev_version}} -g --registry https://artifactory.prd.cds.internal.unity3d.com/artifactory/api/npm/upm-npm
+        git clone --single-branch --branch dev git@github.cds.internal.unity3d.com:unity/com.unity.connect.share.git ../com.unity.connect.share
+        git clone --single-branch --branch dev git@github.cds.internal.unity3d.com:unity/iet-package.git ../iet-package
+      else
+        npm install upm-ci-utils@{{upm_ci.version}} -g --registry https://artifactory.prd.cds.internal.unity3d.com/artifactory/api/npm/upm-npm
+      fi
+      upm-ci template test -u {{editor.version}}
+  {% endif %}
+  artifacts:
+    logs:
+      paths:
+        - "upm-ci~/test-results/**/*"
+  dependencies:
+    - .yamato/upm-ci.yml#pack
+{% endfor %}
+{% endfor %}
+
+test_trigger:
+  name: Tests Trigger
+  agent:
+    type: Unity::VM
+    image: package-ci/win10:stable
+    flavor: b1.large
+  commands:
+    - dir
+  triggers:
+    branches:
+      only:
+        - "/.*/"
+      except:
+        - master
+    # IDEA: do a daily build in master against trunk
+##    recurring:
+##      - branch: dev
+##        frequency: daily
+  artifacts:
+    logs:
+      paths:
+        - "upm-ci~/test-results/**/*"
+    packages:
+      paths:
+        - "upm-ci~/packages/**/*"
+        - "upm-ci~/templates/**/*"
+  dependencies:
+    - .yamato/upm-ci.yml#pack
+    {% for editor in test_editors %}
+    {% for platform in test_platforms %}
+    - .yamato/upm-ci.yml#test_{{platform.name}}_{{editor.version}}
+    {% endfor %}
+    {% endfor %}
+
+publish:
+  name: Publish
+  agent:
+    type: Unity::VM
+    image: package-ci/win10:stable
+    flavor: b1.large
+    name: Runner
+  commands:
+    - npm install upm-ci-utils@{{upm_ci.version}} -g --registry https://artifactory.prd.cds.internal.unity3d.com/artifactory/api/npm/upm-npm
+    - upm-ci template publish
+  triggers:
+    tags:
+      only:
+        - /^(v|V)\d+\.\d+\.\d+(-preview(\.\d+)?)?$/
+  artifacts:
+    logs:
+      paths:
+        - "upm-ci~/test-results/**/*"
+    packages:
+      paths:
+        - "upm-ci~/packages/**/*"
+        - "upm-ci~/templates/*.tgz"
+  dependencies:
+    - .yamato/upm-ci.yml#pack
+    {% for editor in test_editors %}
+    {% for platform in test_platforms %}
+    - .yamato/upm-ci.yml#test_{{ platform.name }}_{{ editor.version }}
+    {% endfor %}
+    {% endfor %}
