@@ -1,0 +1,301 @@
+* {
+    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals.ttf?fileID=12800000&guid=3e9654e5beda26e43ac5f6732d909200&type=3#Alatsi-Regular-Capitals');
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals%20SDF.asset?fileID=11400000&guid=330b769f993d4f540a53504f2163e303&type=2#Alatsi-Regular-Capitals SDF');
+}
+
+.full-screen-container {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.menu-button {
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    color: rgb(249, 175, 149);
+    font-size: 36px;
+    -unity-text-align: middle-center;
+    height: 50px;
+    -unity-text-outline-color: rgb(184, 100, 70);
+    -unity-text-outline-width: 1px;
+    text-shadow: 0 0 10px rgb(220, 93, 50);
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=2033638185206719016&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#white-glow');
+    -unity-background-image-tint-color: rgba(220, 93, 50, 0.5);
+    -unity-background-scale-mode: stretch-to-fill;
+    margin: 0;
+    padding: 0;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    min-width: 120px;
+}
+
+.menu-button-active {
+    color: rgb(236, 210, 157);
+    -unity-text-outline-color: rgb(214, 151, 26);
+    -unity-text-outline-width: 1px;
+    -unity-background-image-tint-color: rgba(236, 210, 157, 0.5);
+}
+
+.icon-button {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: rgba(255, 255, 255, 0);
+    border-width: 0;
+    padding: 10px;
+}
+
+.label-status {
+    font-size: 30px;
+    color: rgb(255, 250, 242);
+    margin: 0;
+    padding: 0;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.unity-progress-bar__container {
+    max-height: 15px;
+    min-height: 15px;
+}
+
+.unity-progress-bar__background {
+    border-width: 0;
+    background-color: rgba(189, 73, 22, 0.94);
+}
+
+.unity-progress-bar__progress {
+    margin: 0;
+    background-color: rgb(255, 250, 242);
+}
+
+.hide-in-mobile {
+}
+
+.menu-panel {
+    position: relative;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=1497434681858883284&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#menu-glow-panel');
+    padding: 25px;
+}
+
+.menu-group-box {
+    align-items: center;
+    padding: 0;
+    margin: 10px 25px;
+}
+
+.toggle-button {
+    font-size: 20px;
+    -unity-text-align: middle-left;
+    color: rgb(249, 175, 149);
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(255, 161, 129, 0.5);
+    border-radius: 5px;
+    align-items: flex-end;
+}
+
+.custom-dropdown {
+    border-color: rgba(255, 161, 129, 0.5);
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    height: 75px;
+}
+
+.custom-dropdown .unity-label {
+    color: rgb(249, 175, 149);
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    -unity-text-align: middle-left;
+}
+
+.custom-dropdown .unity-base-popup-field__input {
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    padding: 0;
+}
+
+.custom-dropdown .unity-base-popup-field__text {
+    color: rgb(249, 175, 149);
+    font-size: 24px;
+    -unity-text-align: middle-right;
+    margin-right: 10px;
+}
+
+.custom-dropdown .unity-base-popup-field__arrow {
+    color: rgb(236, 210, 157);
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-2534016680398206655&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#dropdown-arrow');
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    margin: 5px;
+}
+
+.custom-text-field {
+    border-color: rgba(255, 161, 129, 0.5);
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    height: 75px;
+}
+
+.custom-text-field .unity-base-text-field__input {
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    padding: 0;
+    -unity-text-align: middle-right;
+}
+
+.custom-text-field .unity-text-element {
+    color: rgb(249, 175, 149);
+    font-size: 24px;
+}
+
+.custom-text-field .unity-label {
+    color: rgb(249, 175, 149);
+    font-size: 24px;
+}
+
+.custom-slider {
+    border-color: rgba(255, 161, 129, 0.5);
+    border-width: 2px;
+    border-radius: 5px;
+    margin: 5px;
+    height: 75px;
+    flex-direction: column;
+    padding: 0;
+    justify-content: center;
+}
+
+.custom-slider .unity-label {
+    color: rgb(249, 175, 149);
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    -unity-text-align: middle-left;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.custom-slider .unity-slider__input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.custom-slider .unity-slider-int__input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.custom-slider #unity-tracker {
+    border-width: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.custom-slider #unity-dragger {
+    height: 100%;
+    top: 0;
+    margin: 0;
+    width: 0;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.custom-slider #unity-text-field {
+    border-width: 0;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 100px;
+}
+
+.custom-slider #unity-text-input {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    -unity-text-align: upper-right;
+}
+
+.custom-slider #unity-text-input .unity-text-element {
+    color: rgb(249, 175, 149);
+    font-size: 24px;
+    -unity-text-align: middle-right;
+}
+
+.custom-slider .bar {
+    height: 100%;
+    width: 1000px;
+    background-color: rgba(255, 161, 129, 0.15);
+    align-self: flex-end;
+}
+
+.custom-toggle {
+    background-color: rgb(10, 8, 2);
+    border-color: rgba(255, 161, 129, 0.5);
+    border-radius: 5px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    padding: 10px;
+    margin: 5px;
+    height: 75px;
+}
+
+.custom-toggle__input {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.custom-toggle .unity-label {
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals%20SDF.asset?fileID=11400000&guid=330b769f993d4f540a53504f2163e303&type=2#Alatsi-Regular-Capitals SDF');
+    font-size: 24px;
+    margin: 5px;
+    padding: 0;
+    color: rgb(249, 175, 149);
+    flex-wrap: wrap;
+    -unity-text-align: middle-left;
+    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals.ttf?fileID=12800000&guid=3e9654e5beda26e43ac5f6732d909200&type=3#Alatsi-Regular-Capitals');
+}
+
+.custom-toggle .custom-toggle__input-option {
+    color: rgba(249, 175, 149, 0.15);
+}
+
+.custom-toggle .custom-toggle__input-option--checked {
+    color: rgb(249, 175, 149);
+}
+
+.custom-toggle .unity-base-field__label {
+}

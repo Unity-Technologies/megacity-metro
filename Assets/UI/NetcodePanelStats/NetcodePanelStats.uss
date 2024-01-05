@@ -1,0 +1,169 @@
+.label-info {
+    -unity-font: url('project://database/Assets/UI/NetcodePanelStats/FiraCode-Regular.ttf?fileID=12800000&guid=afe01fe54b350f74c86909ddaf7add7d&type=3#FiraCode-Regular');
+    -unity-font-definition: url('project://database/Assets/UI/NetcodePanelStats/FiraCode-Regular%20SDF.asset?fileID=11400000&guid=d92cbd036b66cdd4287d33c29491ddb4&type=2#FiraCode-Regular SDF');
+    -unity-font-style: normal;
+    width: 125px;
+    color: rgb(149, 128, 255);
+    font-size: 18px;
+    -unity-text-align: upper-left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.item {
+    flex-direction: row;
+    margin: 2px;
+    padding: 3px;
+    align-self: auto;
+    align-items: center;
+}
+
+.info-value-label {
+    -unity-font: url('project://database/Assets/UI/NetcodePanelStats/FiraCode-Regular.ttf?fileID=12800000&guid=afe01fe54b350f74c86909ddaf7add7d&type=3#FiraCode-Regular');
+    -unity-font-definition: url('project://database/Assets/UI/NetcodePanelStats/FiraCode-Regular%20SDF.asset?fileID=11400000&guid=d92cbd036b66cdd4287d33c29491ddb4&type=2#FiraCode-Regular SDF');
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    width: 100px;
+}
+
+.info-value-label.good {
+    color: rgb(118, 211, 111);
+}
+
+.info-value-label.average {
+    color: rgb(255, 255, 128);
+}
+
+.info-value-label.bad {
+    color: rgb(255, 128, 191);
+}
+
+.icon {
+    background-color: rgba(0, 0, 0, 0);
+    overflow: visible;
+    visibility: visible;
+    display: flex;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(207, 207, 207);
+    width: 32px;
+    height: 32px;
+}
+
+.back-button {
+    width: 100px;
+    height: 90px;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    color: rgb(83, 71, 94);
+    top: 0;
+    right: auto;
+    align-self: center;
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-background-image-tint-color: rgba(188, 180, 180, 0);
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+    transition-property: all;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.back-button:hover {
+    -unity-background-image-tint-color: rgba(120, 114, 125, 0);
+    background-color: rgba(34, 33, 44, 0.08);
+}
+
+.back-button:hover .back-icon {
+}
+
+.back-icon {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url('project://database/Assets/Art/Textures/NetcodePanelStats/arrow_drop_up.png?fileID=21300000&guid=b7d29987f422fd349bc27a81c02657d0&type=3#arrow_drop_up');
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-background-scale-mode: scale-to-fit;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+    transition-property: all;
+    height: 100px;
+    width: 120px;
+    rotate: 0;
+}
+
+.properties-container {
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    width: 90%;
+    display: flex;
+}
+
+.container {
+    position: absolute;
+    width: 350px;
+    align-items: center;
+    -unity-background-scale-mode: stretch-to-fill;
+    display: flex;
+    background-color: rgba(34, 33, 44, 0);
+    opacity: 0.9;
+    align-self: center;
+}
+
+.panel-body {
+    flex-grow: 1;
+    background-color: rgba(34, 33, 44, 0.9);
+    background-image: none;
+    width: 100%;
+    height: 100%;
+    -unity-background-image-tint-color: rgba(34, 33, 44, 0);
+    padding: 15px;
+    margin-top: -10px;
+}
+
+.label-monitor {
+    font-size: 16px;
+}
+
+.unity-scroller__low-button {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url('project://database/Assets/Art/Textures/NetcodePanelStats/arrow_drop_up.png?fileID=21300000&guid=b7d29987f422fd349bc27a81c02657d0&type=3#arrow_drop_up');
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-background-scale-mode: scale-to-fit;
+    border-width: 0;
+}
+
+.unity-scroller__high-button {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url('project://database/Assets/Art/Textures/NetcodePanelStats/arrow_drop_up.png?fileID=21300000&guid=b7d29987f422fd349bc27a81c02657d0&type=3#arrow_drop_up');
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-background-scale-mode: scale-to-fit;
+    rotate: 180deg;
+    border-width: 0;
+}
+
+.unity-slider {
+    align-items: center;
+}
+
+.unity-base-slider__drag-container {
+    align-items: center;
+}
+
+.unity-base-slider__tracker {
+    border-width: 0;
+    opacity: 0.4;
+}
+
+.unity-base-slider__input {
+    width: 5px;
+}
+
+.unity-base-slider__dragger {
+    width: 5px;
+    left: 0;
+}

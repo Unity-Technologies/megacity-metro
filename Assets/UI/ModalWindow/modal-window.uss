@@ -1,0 +1,74 @@
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=1497434681858883284&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#menu-glow-panel');
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+}
+
+.modal-message {
+    font-size: 24px;
+    color: rgb(249, 175, 149);
+    -unity-text-align: middle-right;
+    -unity-text-outline-color: rgb(184, 100, 70);
+    -unity-text-outline-width: 1px;
+    text-shadow: 0 0 10px rgb(220, 93, 50);
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=2033638185206719016&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#white-glow');
+    -unity-background-image-tint-color: rgba(220, 93, 50, 0.5);
+    -unity-background-scale-mode: stretch-to-fill;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+* {
+    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals.ttf?fileID=12800000&guid=3e9654e5beda26e43ac5f6732d909200&type=3#Alatsi-Regular-Capitals');
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals%20SDF.asset?fileID=11400000&guid=330b769f993d4f540a53504f2163e303&type=2#Alatsi-Regular-Capitals SDF');
+}
+
+.modal-group-box {
+    align-items: center;
+    margin: 0;
+    padding: 50px;
+}
+
+.modal-button {
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    color: rgb(249, 175, 149);
+    -unity-text-align: middle-right;
+    height: 50px;
+    -unity-text-outline-color: rgb(184, 100, 70);
+    -unity-text-outline-width: 1px;
+    text-shadow: 0 0 10px rgb(220, 93, 50);
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=2033638185206719016&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#white-glow');
+    -unity-background-image-tint-color: rgba(220, 93, 50, 0.5);
+    -unity-background-scale-mode: stretch-to-fill;
+    margin: 0;
+}
+
+.modal-button:hover {
+    color: rgb(236, 210, 157);
+    -unity-text-outline-color: rgb(214, 151, 26);
+    -unity-text-outline-width: 1px;
+    -unity-background-image-tint-color: rgba(236, 210, 157, 0.5);
+}

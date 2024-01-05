@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1269619517508817915
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_FogPlane
+  m_Shader: {fileID: -6465566751694194690, guid: a035af402c37a044c8c6cb9efb457a80,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _ALPHAMODULATE_ON
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DepthOnly
+  - SHADOWCASTER
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _FogTX:
+        m_Texture: {fileID: 2800000, guid: d9d4e89dabd23894b8cbef87f8824c43, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _knockoutmap:
+        m_Texture: {fileID: 2800000, guid: 6f2a0d60437ca0049941528934b6d544, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Blend: 3
+    - _CastShadows: 0
+    - _Cull: 2
+    - _DstBlend: 0
+    - _Fade_distance: 0
+    - _Overall_Brightness: 0
+    - _Plane1: 1
+    - _Plane2: 2
+    - _Plane3: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Sharpen: 1
+    - _SrcBlend: 2
+    - _Subtractive: 1
+    - _Surface: 1
+    - _ZTest: 2
+    - _ZWrite: 0
+    - _ZWriteControl: 0
+    - _borderPower: 1
+    - _mapscale: 4455
+    m_Colors:
+    - _Blocksize: {r: 460, g: 3, b: 0, a: 0}
+    - _BottomColor: {r: 0, g: 0.17089081, b: 1, a: 1}
+    - _MiddleColor: {r: 1, g: 0.9555256, b: 0.9481132, a: 1}
+    - _Movement: {r: 0, g: 0, b: 0, a: 0}
+    - _Tiling: {r: 0.02, g: 0.02, b: 0, a: 0}
+    - _TopColor: {r: 1, g: 1, b: 1, a: 1}
+    - _plane_balance: {r: 0.4, g: 0.4, b: 0.4, a: 0}
+  m_BuildTextureStacks: []

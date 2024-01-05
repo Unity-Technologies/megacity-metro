@@ -1,0 +1,61 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/tutorial.uss?fileID=7433441132597879392&amp;guid=9b51732b80f43a9479a2dbe0e6aba62b&amp;type=3#tutorial" />
+    <Style src="project://database/Assets/UI/HUD/MobileControls/virtual-joystick.uss?fileID=7433441132597879392&amp;guid=c55dc9f78704f1549897338e8eb945ab&amp;type=3#virtual-joystick" />
+    <ui:VisualElement name="tutorial-screen" style="position: absolute; width: 101%; height: 101%; -unity-background-image-tint-color: rgb(255, 255, 255); align-items: center; justify-content: center; display: flex; background-color: rgba(0, 0, 0, 0.85); opacity: 1;">
+        <ui:VisualElement name="tutorial-single-player" style="display: none; width: 70%; height: 70%; -unity-background-scale-mode: scale-to-fit; align-items: center;">
+            <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=1310519661144730696&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#tutorial-pc-single-player&apos;); -unity-background-scale-mode: scale-to-fit; width: 100%;" />
+            <ui:Label text="PRESS ANY KEY TO START" style="opacity: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="tutorial-multiplayer" style="display: none; width: 70%; height: 70%; -unity-background-scale-mode: scale-to-fit; align-items: center;">
+            <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-8083960565018821349&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#tutorial-pc-multiplayer&apos;); -unity-background-scale-mode: scale-to-fit; width: 100%;" />
+            <ui:Label text="PRESS ANY KEY TO START" style="opacity: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="tutorial-mobile" style="justify-content: center; flex-direction: column; width: 100%; height: 100%; align-items: center; display: flex;">
+            <ui:VisualElement style="-unity-background-scale-mode: stretch-to-fill; height: 75%; width: 75%; justify-content: center; flex-direction: row; border-left-color: rgb(255, 250, 242); border-right-color: rgb(255, 250, 242); border-top-color: rgb(255, 250, 242); border-bottom-color: rgb(255, 250, 242); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-1628955826021856001&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#mobile-tutorial-b&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.85); border-top-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; border-bottom-left-radius: 100px;">
+                <ui:VisualElement name="left-joystick" style="align-items: flex-start; flex-basis: 50%; justify-content: flex-end; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+                    <ui:VisualElement style="position: absolute; top: 75px; left: 75px;">
+                        <ui:VisualElement style="flex-direction: row; align-items: center;">
+                            <ui:VisualElement style="width: 60px; height: 60px; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-1650748148582011348&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#settings-icon&apos;); -unity-background-scale-mode: scale-to-fit;" />
+                            <ui:Label text="Menu" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 20px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-direction: row; align-items: center; margin-top: 20px;">
+                            <ui:VisualElement style="width: 60px; height: 60px; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-932254218140014675&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#microphone-icon&apos;); -unity-background-scale-mode: scale-to-fit;" />
+                            <ui:Label text="Talk" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 20px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="VirtualJoystick" style="position: absolute; left: 200px; bottom: 200px;">
+                        <Style src="project://database/Assets/UI/HUD/MobileControls/virtual-joystick.uss?fileID=7433441132597879392&amp;guid=c55dc9f78704f1549897338e8eb945ab&amp;type=3#virtual-joystick" />
+                        <ui:VisualElement name="joystick" class="joystick">
+                            <ui:VisualElement name="background" class="background" style="width: 200px; height: 200px; align-items: center;">
+                                <ui:VisualElement name="arrow-up" style="position: absolute; top: 0; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#down-arrow&apos;); width: 30px; height: 17px; -unity-background-scale-mode: scale-to-fit; rotate: 180deg;" />
+                                <ui:VisualElement name="handle" class="handle" style="background-color: rgba(255, 250, 242, 0.3); transition-delay: 0.2s; transition-duration: 0.25s;">
+                                    <ui:Label text="Aim" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="arrow-down" style="position: absolute; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#down-arrow&apos;); width: 30px; height: 17px; -unity-background-scale-mode: scale-to-fit; bottom: 0;" />
+                                <ui:VisualElement name="arrow-right" style="position: absolute; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#down-arrow&apos;); width: 30px; height: 17px; -unity-background-scale-mode: scale-to-fit; rotate: 270deg; right: -5px;" />
+                                <ui:VisualElement name="arrow-left" style="position: absolute; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#down-arrow&apos;); width: 30px; height: 17px; -unity-background-scale-mode: scale-to-fit; rotate: 90deg; left: -5px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; width: 10px; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-8958021646080445527&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#division-line&apos;); -unity-background-scale-mode: scale-to-fit;" />
+                <ui:VisualElement name="right-panel" style="align-items: center; flex-direction: column; flex-basis: 50%; justify-content: center;">
+                    <ui:Button name="shoot-button" class="action-button" style="opacity: 1; width: 150px; height: 150px; align-items: center; justify-content: center; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(255, 250, 242); border-right-color: rgb(255, 250, 242); border-top-color: rgb(255, 250, 242); border-bottom-color: rgb(255, 250, 242); border-top-left-radius: 150px; border-top-right-radius: 150px; border-bottom-right-radius: 150px; border-bottom-left-radius: 150px; background-color: rgba(255, 250, 242, 0.3); position: absolute; left: 250px;">
+                        <ui:Label text="FIRE" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular%20SDF.asset?fileID=11400000&amp;guid=56ce6b0e807317c4a97b02e6b6e6499a&amp;type=2#Alatsi-Regular SDF&apos;); -unity-font: url(&apos;project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular.ttf?fileID=12800000&amp;guid=ef35def7ce930334fab0869362d6fefb&amp;type=3#Alatsi-Regular&apos;); font-size: 50px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                    <ui:VisualElement name="speed-slider-zone" style="position: absolute; align-items: center; right: 120px; bottom: 50px; height: 300px; width: 100px; justify-content: space-around;">
+                        <ui:VisualElement name="up-arrow" picking-mode="Ignore" class="slider-arrow" style="rotate: 180deg; position: relative; left: auto;" />
+                        <ui:VisualElement name="speed-slider" style="border-left-color: rgb(255, 250, 242); border-right-color: rgb(255, 250, 242); border-top-color: rgb(255, 250, 242); border-bottom-color: rgb(255, 250, 242); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; background-color: rgba(255, 250, 242, 0.3); width: 250px; transition-property: translate; transition-duration: 0.5s; transition-delay: 0.2s;">
+                            <ui:Label text="Throttle" style="-unity-text-align: upper-center; white-space: nowrap;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="down-arrow" picking-mode="Ignore" class="slider-arrow" style="left: auto; position: relative;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="leaderboard-instructions" style="background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-1556934040875431652&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#dotted-square&apos;); width: 320px; height: 180px; -unity-background-scale-mode: scale-to-fit; position: absolute; top: 50px; right: 50px; align-items: center; justify-content: center;">
+                        <ui:Label text="Toggle&#10;Leaderboard" style="-unity-text-align: upper-center;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="TOUCH ANYWHERE TO START" style="opacity: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &411452251290789187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7766967020502411236}
+  - component: {fileID: 5675260517109724041}
+  m_Layer: 0
+  m_Name: replacement ship
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7766967020502411236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411452251290789187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5675260517109724041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411452251290789187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4b80f6b4cca34fbe9ecd224092d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Acceleration: 5
+  Deceleration: 10
+  SteeringSpeed: 5
+  LookVelocitySharpness: 10
+  InvertPitch: 0
+  MaxPitchAngle: 20
+  RollAccumulationSpeed: 0.03
+  ManualRollSpeed: 5
+  RollRestitutionSpeed: 2
+  YawSpeedForMaxRoll: 1.8
+  TargetFollowDamping: 2
+  TargetSqLerpThreshold: 2500
+  LaserRoot: {fileID: 411452251290789187}
+  VehiclesPhysicsCategory:
+    serializedVersion: 2
+    m_Bits: 0
+  LaserObstructionsPhysicsCategory:
+    serializedVersion: 2
+    m_Bits: 0
+  DamagePerSecond: 50
+  InitialEnergy: 100
+  ChargeSpeed: 2.5
+  DrainSpeed: 3
+  AutoAimDegrees: 20
+  AutoAimMinRadius: 3
+  LaserRange: 150
+  LaserMuzzleFX: {fileID: 0}
+  LaserBeamFX: {fileID: 0}
+  LaserImpactFX: {fileID: 0}
+  CarSoundFX: {fileID: 0}
+  ShieldFX: {fileID: 0}
+  DamagedFX: {fileID: 0}
+  DeathFX: {fileID: 0}
+  ImmunityDuration: 6

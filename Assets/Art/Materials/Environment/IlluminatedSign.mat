@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: IlluminatedSign
+  m_Shader: {fileID: -6465566751694194690, guid: a664737937a18ff4782fd722da9dc984,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleCubemap_17789d6ef2f74ec2b25ff7e50514a3f4_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 2db4da6f9a6432d44b18196f3ca1b91c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_f02b6d399e8940b9a0051e2c9e55558f_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 3214bb5eb1fc4354585ad9bdad9198e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_6580051e3834420795fcb626e5b9ac9a_Texture_1_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SignArray:
+        m_Texture: {fileID: 18700000, guid: a10f2db5fe7359b4ab15883bc9039274, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Signage:
+        m_Texture: {fileID: 2800000, guid: 469034ebbccaa1d4a939560a3a6ae2ea, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Backlight_Falloff: 3
+    - _Backlight_Strength: 0.5
+    - _Contrast: 1
+    - _FogBrightness: 2
+    - _FogFalloff: 0.5
+    - _Fog_Color: 0
+    - _Fog_distance: 2000
+    - _Ground_fog_height: 50
+    - _LCD_Cutoff_Distance: 128
+    - _LightingFresnel: 2
+    - _Overall_Brightness: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Reflectance: 0.5
+    - _Scanline: 0.2
+    - _Smooth: 0.9
+    - _Update: 0
+    m_Colors:
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.5647059, g: 0.3803922, b: 0.16862746, a: 1}
+    - _FogTint: {r: 1.2380755, g: 1.4828926, b: 1.3811626, a: 0}
+    - _GroundFogColor: {r: 0.44428626, g: 0.30473477, b: 0.6037736, a: 1}
+    - _LCD_Pixels: {r: 512, g: 412, b: 0, a: 0}
+    - _Saturation: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _UV_Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _UV_Scale: {r: 1, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &1211856799521520199
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

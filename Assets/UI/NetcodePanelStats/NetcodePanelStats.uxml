@@ -1,0 +1,48 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/UI/NetcodePanelStats/NetcodePanelStats.uss?fileID=7433441132597879392&amp;guid=850ddfe20ccd4424da1d4a1db8cf66cb&amp;type=3#NetcodePanelStats" />
+    <ui:VisualElement name="info-panel" picking-mode="Ignore" usage-hints="DynamicTransform" class="container" style="display: flex;">
+        <ui:VisualElement name="info-panel-body" class="panel-body">
+            <ui:VisualElement picking-mode="Ignore" class="properties-container">
+                <ui:GroupBox name="players-item" picking-mode="Ignore" class="item">
+                    <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Textures/NetcodePanelStats/clients.png?fileID=21300000&amp;guid=f0dc20506cc513b4f9501c48aa44aff1&amp;type=3#clients&apos;);" />
+                    <ui:Label text="PLAYERS:" name="player" class="label-info" />
+                    <ui:Label tabindex="-1" name="players-value" class="info-value-label" />
+                </ui:GroupBox>
+                <ui:GroupBox name="ping-item" picking-mode="Ignore" class="item">
+                    <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Textures/NetcodePanelStats/ping.png?fileID=21300000&amp;guid=314454768842bcb4b958bea22caa1f34&amp;type=3#ping&apos;);" />
+                    <ui:Label text="PING:" name="ping" class="label-info" />
+                    <ui:Label name="ping-value" class="info-value-label" />
+                </ui:GroupBox>
+                <ui:GroupBox name="fps-item" picking-mode="Ignore" class="item">
+                    <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Textures/NetcodePanelStats/fps.png?fileID=21300000&amp;guid=c914e833da7c49944b9b7096b33e2bc3&amp;type=3#fps&apos;);" />
+                    <ui:Label text="FPS:" name="fps" class="label-info" />
+                    <ui:Label name="fps-value" class="info-value-label" />
+                </ui:GroupBox>
+                <ui:GroupBox name="quality-item" picking-mode="Ignore" class="item">
+                    <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Textures/NetcodePanelStats/3d.png?fileID=21300000&amp;guid=c393ae185b05b5d4a9e4d275d6567dc3&amp;type=3#3d&apos;);" />
+                    <ui:Label text="QUALITY:" name="Quality" class="label-info" />
+                    <ui:Label name="quality-value" class="info-value-label" />
+                </ui:GroupBox>
+                <ui:GroupBox name="entities-item" picking-mode="Ignore" class="item">
+                    <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Textures/NetcodePanelStats/entities.png?fileID=21300000&amp;guid=745b140be88ba0548bc204d8178a0f08&amp;type=3#entities&apos;);" />
+                    <ui:Label text="ENTITIES:" name="entities" class="label-info" />
+                    <ui:Label name="entities-value" class="info-value-label" />
+                </ui:GroupBox>
+                <ui:GroupBox name="ghosts-item" picking-mode="Ignore" class="item">
+                    <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Textures/NetcodePanelStats/ghost.png?fileID=21300000&amp;guid=5943070045b3476488959cd0dd7f3580&amp;type=3#ghost&apos;);" />
+                    <ui:Label text="GHOSTS:" name="ghosts" class="label-info" />
+                    <ui:Label name="ghosts-value" class="info-value-label" />
+                </ui:GroupBox>
+                <ui:GroupBox name="systems-item" picking-mode="Ignore" class="item">
+                    <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Textures/NetcodePanelStats/systems.png?fileID=21300000&amp;guid=12d3b39138662d1408f0805007bad108&amp;type=3#systems&apos;);" />
+                    <ui:Label text="SYSTEMS:" name="systems" class="label-info" />
+                    <ui:Label name="systems-value" class="info-value-label" />
+                </ui:GroupBox>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label text="P" name="toggle-key-label" style="position: absolute; color: rgb(255, 255, 255); -unity-font-definition: url(&apos;project://database/Assets/UI/NetcodePanelStats/FiraCode-Regular%20SDF.asset?fileID=11400000&amp;guid=d92cbd036b66cdd4287d33c29491ddb4&amp;type=2#FiraCode-Regular SDF&apos;); -unity-font: url(&apos;project://database/Assets/UI/NetcodePanelStats/FiraCode-Regular.ttf?fileID=12800000&amp;guid=afe01fe54b350f74c86909ddaf7add7d&amp;type=3#FiraCode-Regular&apos;); font-size: 20px; top: 60px;" />
+        <ui:Button name="info-panel-back-button" class="back-button">
+            <ui:VisualElement name="back-icon" class="back-icon" style="width: 80px; height: 80px;" />
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

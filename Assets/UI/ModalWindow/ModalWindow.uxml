@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/ModalWindow/modal-window.uss?fileID=7433441132597879392&amp;guid=93ba3c64f713c8b41a60ed6b3a992e66&amp;type=3#modal-window" />
+    <ui:VisualElement name="modal-window-container" class="modal-container" style="display: none; background-color: rgba(0, 0, 0, 0.9);">
+        <ui:VisualElement name="modal-window-panel" class="modal-panel">
+            <ui:Label text="Modal message" name="modal-main-message" class="modal-message" style="white-space: normal; -unity-text-align: middle-center; max-width: 400px;" />
+            <ui:VisualElement name="modal-buttons" style="flex-grow: 1; flex-direction: row; margin-top: 15px; margin-right: 15px; margin-bottom: 0; margin-left: 15px;">
+                <ui:Button text="Cancel" name="modal-cancel-button" class="modal-button" />
+                <ui:Button text="Accept" name="modal-confirm-button" class="modal-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

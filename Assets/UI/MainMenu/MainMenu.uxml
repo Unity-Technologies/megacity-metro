@@ -1,0 +1,30 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/metro-styles.uss?fileID=7433441132597879392&amp;guid=e0086ca80d8fed54b83eca12d3cf5494&amp;type=3#metro-styles" />
+    <ui:VisualElement name="main-menu-container" class="full-screen-container" style="align-items: flex-start; justify-content: center; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; -unity-background-scale-mode: stretch-to-fill; background-image: url(&apos;project://database/Assets/Art/UI/menu/RT_CityBackground.renderTexture?fileID=8400000&amp;guid=4173f5336bda4c741a5991e6d749dd57&amp;type=2#RT_CityBackground&apos;);">
+        <ui:VisualElement name="menu-panel" class="menu-panel" style="position: absolute; left: 250px; padding-right: 50px; padding-left: 50px;">
+            <ui:VisualElement name="megacity-logo" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-4788172413541907881&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#megacity-logo&apos;); width: 250px; height: 150px; -unity-background-scale-mode: scale-to-fit; margin-top: 10px; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+            <ui:GroupBox name="base-menu-options" class="menu-group-box" style="display: flex;">
+                <ui:Button tabindex="0" text="SINGLE PLAYER" name="single-player-button" class="menu-button" />
+                <ui:Button tabindex="1" text="MULTIPLAYER" name="multiplayer-button" class="menu-button" />
+                <ui:Button tabindex="2" text="Options" name="settings-button" class="button menu-button" />
+                <ui:Button tabindex="3" text="QUIT" name="quit-button" class="button menu-button" />
+            </ui:GroupBox>
+            <ui:GroupBox name="multiplayer-menu-options" class="menu-group-box" style="position: relative; display: none; width: 450px;">
+                <ui:VisualElement name="multiplayer-form">
+                    <MegacityMetro.CustomUI.CustomToggle label="MODE" FirstOption="CONNECT" SecondOption="MATCHMAKE" name="multiplayer-mode" first-option="Connect" second-option="Matchmake" />
+                    <ui:DropdownField label="SERVER" index="0" choices="LOCAL, AMERICAS, EMEA" name="multiplayer-server-location" tabindex="1" class="custom-dropdown" />
+                    <ui:TextField picking-mode="Ignore" label="SERVER IP" value="127.0.0.1:7979" name="multiplayer-server-textfield" tabindex="2" class="custom-text-field" />
+                    <ui:TextField picking-mode="Ignore" label="NAME" value="Player" name="name-textfield" tabindex="3" max-length="20" class="custom-text-field" />
+                    <ui:Label tabindex="4" display-tooltip-when-elided="true" name="connection-label" style="-unity-text-align: upper-center; font-size: 25px; display: none; padding-top: 20px; padding-bottom: 20px; color: rgb(249, 175, 149); white-space: normal;" />
+                    <ui:VisualElement name="matchmaking-loading-bar" style="background-color: rgba(0, 0, 0, 0); width: 100px; height: 100px; align-items: center; align-self: center; justify-content: space-between; display: none; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                        <ui:VisualElement name="matchmaking-spinner" usage-hints="DynamicTransform" style="flex-grow: 1; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=7911508673555523827&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#loading-spinner&apos;);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-direction: row; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; justify-content: space-between; width: 100%;">
+                    <ui:Button tabindex="6" text="RETURN" display-tooltip-when-elided="true" name="multiplayer-return-button" class="menu-button" />
+                    <ui:Button tabindex="5" text="PLAY" display-tooltip-when-elided="true" name="multiplayer-play-button" class="menu-button" />
+                </ui:VisualElement>
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,58 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/metro-styles.uss?fileID=7433441132597879392&amp;guid=e0086ca80d8fed54b83eca12d3cf5494&amp;type=3#metro-styles" />
+    <ui:VisualElement name="settings-options-panel" class="full-screen-container" style="background-color: rgba(0, 0, 0, 0.7); display: none; position: absolute;">
+        <ui:VisualElement name="menu-panel" class="menu-panel">
+            <ui:VisualElement name="megacity-logo" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-4788172413541907881&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#megacity-logo&apos;); height: 150px; width: 200px; -unity-background-scale-mode: scale-to-fit;" />
+            <ui:GroupBox class="menu-group-box">
+                <ui:Button text="RESUME" name="back-to-game-btn" class="menu-button" />
+                <ui:Button text="Options" name="settings-btn" class="menu-button" />
+                <ui:Button text="TUTORIAL" name="tutorial-btn" class="menu-button" />
+                <ui:Button text="BACK TO MENU" name="back-to-menu-btn" class="menu-button" />
+                <ui:Button text="QUIT" name="quit-button" class="menu-button" />
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="game-settings" class="full-screen-container" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; position: absolute;">
+        <ui:VisualElement name="settings-menu-panel" class="menu-panel" style="width: 60%; align-items: stretch; justify-content: space-between; flex-direction: row; padding-top: 35px; padding-right: 35px; padding-bottom: 35px; padding-left: 35px;">
+            <ui:VisualElement name="menu" style="background-color: rgba(0, 0, 0, 0); align-self: flex-start; justify-content: space-between; border-right-color: rgb(255, 255, 255); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-left-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); height: 100%; flex-basis: 30%; align-items: center; margin-right: 20px;">
+                <ui:VisualElement name="options-title" style="background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=8569074702158737054&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#options-title&apos;); -unity-background-scale-mode: scale-to-fit; width: 250px; height: 120px;" />
+                <ui:VisualElement>
+                    <ui:Button text="GRAPHICS" name="graphics-button" class="menu-button" style="-unity-font-style: normal;" />
+                    <ui:Button text="AUDIO" name="audio-button" class="menu-button" style="-unity-font-style: normal; display: flex;" />
+                    <ui:Button text="CONTROLS" name="controls-button" class="menu-button" style="-unity-font-style: normal;" />
+                </ui:VisualElement>
+                <ui:GroupBox name="button-group" style="flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                    <ui:Button text="CANCEL" name="close-button" class="menu-button" style="-unity-font-style: normal; -unity-text-align: middle-center; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; min-width: 100px;" />
+                    <ui:Button text="APPLY" name="apply-button" class="menu-button" style="-unity-font-style: normal; -unity-text-align: middle-center; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; min-width: 100px;" />
+                </ui:GroupBox>
+            </ui:VisualElement>
+            <ui:VisualElement name="content" style="background-color: rgba(0, 0, 0, 0); display: flex; height: 520px; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; flex-basis: 50%;">
+                <ui:VisualElement name="graphics-settings" style="flex-direction: column; display: none; align-items: stretch; flex-wrap: nowrap; justify-content: flex-start;">
+                    <ui:DropdownField label="Quality Settings" choices="Low,Medium,High,Custom" name="quality-settings" class="dropdown popup-selection custom-dropdown" style="display: flex;" />
+                    <ui:DropdownField label="Screen Mode" choices="Fullscreen,Windowed" name="screen-mode" class="dropdown popup-selection hide-in-mobile custom-dropdown" style="display: flex;" />
+                    <ui:DropdownField label="Screen Resolution" name="screen-resolution" class="dropdown popup-selection hide-in-mobile custom-dropdown" />
+                    <ui:DropdownField label="Texture Details" choices="Low,Medium,High" name="texture-details" class="dropdown popup-selection custom-dropdown" />
+                    <MegacityMetro.CustomUI.CustomToggle first-option="ON" second-option="OFF" name="postprocessing" label="Postprocessing" />
+                    <MegacityMetro.CustomUI.CustomToggle first-option="ON" second-option="OFF" name="vertical-sync" label="Vsync" class="hide-in-mobile" />
+                </ui:VisualElement>
+                <ui:VisualElement name="audio-settings" style="flex-grow: 1; display: none; flex-direction: row; align-items: flex-start;">
+                    <ui:VisualElement style="flex-grow: 1; flex-basis: 50%; justify-content: center;">
+                        <MegacityMetro.CustomUI.CustomSliderInt label="Volume" value="100" high-value="100" show-input-field="true" name="volume" low-value="0" />
+                        <MegacityMetro.CustomUI.CustomSliderInt label="Sound FX" value="100" high-value="100" show-input-field="true" name="sound-fx" low-value="0" />
+                        <MegacityMetro.CustomUI.CustomSliderInt label="Music" value="100" high-value="100" show-input-field="true" name="music" low-value="0" />
+                        <MegacityMetro.CustomUI.CustomSliderInt label="Vivox Speaker" value="100" high-value="100" show-input-field="true" name="vivox-volume" low-value="0" />
+                        <MegacityMetro.CustomUI.CustomSliderInt label="Vivox Microphone" value="100" high-value="100" show-input-field="true" name="vivox-microphone-volume" low-value="0" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="controls-settings" style="flex-grow: 1; display: none; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1; flex-basis: 50%; justify-content: flex-start;">
+                        <MegacityMetro.CustomUI.CustomSliderInt high-value="200" low-value="50" value="100" label="Mouse sensitivity" show-input-field="true" name="mouse-sensitivity" class="hide-in-mobile" />
+                        <MegacityMetro.CustomUI.CustomSliderInt high-value="200" low-value="50" value="100" label="Aim sensitivity" show-input-field="true" name="aim-sensitivity" />
+                        <MegacityMetro.CustomUI.CustomToggle name="invert-look-horizontal" label="Invert mouse horizontal" first-option="on" second-option="off" class="hide-in-mobile" />
+                        <MegacityMetro.CustomUI.CustomToggle name="invert-look-vertical" label="Invert mouse vertical" first-option="on" second-option="off" class="hide-in-mobile" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

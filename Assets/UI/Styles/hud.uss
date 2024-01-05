@@ -1,0 +1,95 @@
+* {
+    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular.ttf?fileID=12800000&guid=ef35def7ce930334fab0869362d6fefb&type=3#Alatsi-Regular');
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular%20SDF.asset?fileID=11400000&guid=56ce6b0e807317c4a97b02e6b6e6499a&type=2#Alatsi-Regular SDF');
+}
+
+.main-message {
+    font-size: 35px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 250, 242);
+    margin: 20px;
+    padding: 0;
+}
+
+.bottom-message {
+    font-size: 20px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 250, 242);
+    position: absolute;
+    top: 50px;
+}
+
+.crosshair {
+    background-color: rgba(0, 0, 0, 0);
+    width: 200px;
+    height: 70px;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-7990971038811703658&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#crosshair');
+}
+
+.crosshair.highlight {
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-image-tint-color: rgb(223, 61, 6);
+}
+
+.label-notification {
+    color: rgb(231, 0, 109);
+    align-self: center;
+    top: -70px;
+    width: 400px;
+    white-space: normal;
+    -unity-text-align: upper-center;
+    font-size: 20px;
+}
+
+.crosshair-aim {
+    width: 60px;
+    height: 60px;
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=4928973146552358326&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#crosshair-target');
+    display: flex;
+    transition-property: scale;
+    transition-duration: 0.2s;
+    scale: 1.6 1.6;
+    -unity-background-scale-mode: scale-to-fit;
+    position: absolute;
+    left: 70px;
+    top: 5px;
+}
+
+.crosshair-aim-highlight {
+    transition-property: scale;
+    transition-duration: 0.25s;
+    scale: 1 1;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.top-message {
+    font-size: 36px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 250, 242);
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.hide-in-single-player {
+}
+
+.attacker-pointer-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    display: flex;
+}
+
+.attacker-pointer {
+    width: 256px;
+    height: 256px;
+    align-items: center;
+    justify-content: center;
+}
