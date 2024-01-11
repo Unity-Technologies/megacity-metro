@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3002134450470727019
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: bldgTopC1
+  m_Shader: {fileID: -6465566751694194690, guid: e367c1017c4472e4f97b331e8a97f535,
+    type: 3}
+  m_Parent: {fileID: 2100000, guid: 5960abb7d80847a4599f37cc9060ed17, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _NormAO:
+        m_Texture: {fileID: 2800000, guid: e05b692d5f99a7441a6a83597cb28fda, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_45a686d44134490bbeb56342249ece61_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 1824678e10e2a2b48b356240bcedccd1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_594ca192011f4c56a10ca20621fca00d_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 3214bb5eb1fc4354585ad9bdad9198e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_d360dac9b3b943c6a2925741addce0c9_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: b8b3d5011b9664b4faafbea0af0509df, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DLOD_a4d64c5096024d98933fc3a12ba5d9c2_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 59f162eae71239f4db5095ff27c01c90, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_1749967cbc8147c9b122e1110fad4122_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d697cae3d6005a7438fb6fb55eb44a51, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_4a3e00d9ba6343a2a2f7668ebccd1538_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 0c0201a809654c44c8b30b132e6a2ffa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_680ad74c57804c3bb8d6fa029bc13267_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: f56e31082445c4149ad9d715022394c8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_91d2f8349bf04632a3f20bd1eee85305_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 59f162eae71239f4db5095ff27c01c90, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a613e09c2d9f4489a9217b945479d51c_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 5a5c027a23f3c6843bcd3f503016557e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_e8bcffee29904e81bc3ce1fa62c718e0_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d697cae3d6005a7438fb6fb55eb44a51, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WindowMask:
+        m_Texture: {fileID: 2800000, guid: 36ce1d7eba56aae4fbd414925cedee96, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BlurRoom: 0
+    - _BuildingScaleUVW: 1
+    - _Inset_Y: 0
+    - _Inset_Y_Max: 0
+    - _InteriorRooms: 1
+    - _Max_Windows_Y: 1
+    - _Min_Windows_Y: 1
+    - _RandomXZScale: 0.502
+    - _debug: 0
+    - _debug2: 0
+    m_Colors: []
+  m_BuildTextureStacks: []

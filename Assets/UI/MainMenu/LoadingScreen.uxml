@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/loading-screen.uss?fileID=7433441132597879392&amp;guid=1681db2f13068cb46a6d23dea82aeae7&amp;type=3#loading-screen" />
+    <ui:VisualElement name="loading-screen" style="flex-grow: 1; display: none; width: 100%; height: 100%; transition-property: opacity; transition-duration: 1s; transition-timing-function: ease; transition-delay: 0s; align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/Art/UI/menu/RT_CityBackground.renderTexture?fileID=8400000&amp;guid=4173f5336bda4c741a5991e6d749dd57&amp;type=2#RT_CityBackground&apos;);">
+        <ui:VisualElement class="menu-panel" style="padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+            <ui:VisualElement style="background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-4788172413541907881&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#megacity-logo&apos;); width: 300px; -unity-background-scale-mode: scale-to-fit; height: 300px;" />
+            <ui:Label tabindex="-1" text="LOADING" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu-button loading-label" />
+            <ui:ProgressBar name="progressbar" high-value="1" picking-mode="Ignore" class="loading-screen-bar" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

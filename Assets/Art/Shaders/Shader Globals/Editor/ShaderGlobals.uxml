@@ -1,0 +1,22 @@
+<UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement class="sg-shader-globals">
+        <ui:MultiColumnListView
+                name="globals-list"
+                view-data-key="globals-list"
+                show-add-remove-footer="true"
+                class="sg-shader-globals__list"
+                virtualization-method="DynamicHeight"
+                reorder-mode="Animated"
+                reorderable="true"
+                show-border="true"
+                header-title="Shader Globals"
+                show-foldout-header="true"
+                show-bound-collection-size="false">
+            <ui:Columns>
+                <ui:Column name="name-column" title="Name" width="200" min-width="100"/>
+                <ui:Column name="type-column" title="Type" width="150" min-width="100"/>
+                <ui:Column name="value-column" title="Value" width="300" min-width="150"/>
+            </ui:Columns>
+        </ui:MultiColumnListView>
+    </ui:VisualElement>
+</UXML>

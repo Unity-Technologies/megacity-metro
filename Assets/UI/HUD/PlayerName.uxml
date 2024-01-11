@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/UI/Styles/player-name.uss?fileID=7433441132597879392&amp;guid=87fd2ffd898450548ae3a197535bfda9&amp;type=3#player-name" />
+    <ui:VisualElement picking-mode="Ignore" name="player-info-panel" usage-hints="DynamicTransform" style="position: absolute; width: 50px; height: 50px; align-items: center; justify-content: center;">
+        <ui:VisualElement name="player-icon" picking-mode="Ignore" usage-hints="DynamicTransform" class="player-distance-icon" style="transition-property: rotate; transition-duration: 0.5s; width: 40px; height: 40px;" />
+        <ui:VisualElement name="state-icon" usage-hints="DynamicTransform" class="player-state-icon" style="display: none; opacity: 0; width: 50px; height: 50px;" />
+        <ui:VisualElement name="player-info" usage-hints="DynamicTransform" picking-mode="Ignore" style="position: absolute; align-items: center; top: -15px;">
+            <ui:VisualElement usage-hints="DynamicTransform" name="name-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+                <ui:VisualElement name="badge" style="background-color: rgba(0, 0, 0, 0); width: 10px; height: 10px; -unity-background-image-tint-color: rgb(223, 61, 6); align-self: center; display: flex; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; -unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-1248098015950953679&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#badge&apos;);" />
+                <ui:Label text="PLAYER NAME" name="player-name" picking-mode="Ignore" usage-hints="DynamicTransform" class="player-name-label" style="position: relative; justify-content: space-between; align-self: center;" />
+            </ui:VisualElement>
+            <ui:ProgressBar picking-mode="Ignore" name="life-bar" value="50" usage-hints="DynamicTransform" style="font-size: 10px; align-self: center; overflow: visible; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 75px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

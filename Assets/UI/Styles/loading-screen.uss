@@ -1,0 +1,55 @@
+.loading-label {
+    background-color: rgba(188, 188, 188, 0);
+    color: rgb(249, 175, 149);
+    font-size: 30px;
+    -unity-text-align: middle-center;
+    -unity-text-outline-color: rgb(184, 100, 70);
+    -unity-text-outline-width: 1px;
+    text-shadow: 0 0 10px rgb(220, 93, 50);
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=2033638185206719016&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#white-glow');
+    -unity-background-image-tint-color: rgba(220, 93, 50, 0.5);
+    -unity-background-scale-mode: stretch-to-fill;
+    margin: 0;
+    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular.ttf?fileID=12800000&guid=ef35def7ce930334fab0869362d6fefb&type=3#Alatsi-Regular');
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular%20SDF.asset?fileID=11400000&guid=56ce6b0e807317c4a97b02e6b6e6499a&type=2#Alatsi-Regular SDF');
+}
+
+.menu-panel {
+    position: relative;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=1497434681858883284&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#menu-glow-panel');
+    padding: 25px;
+}
+
+.loading-screen-bar {
+    position: relative;
+    font-size: 12px;
+    width: 300px;
+    height: 40px;
+}
+
+.loading-screen-bar .unity-progress-bar__container {
+    max-height: 16px;
+    min-height: 16px;
+}
+
+.loading-screen-bar .unity-progress-bar__background {
+    border-width: 0;
+    background-color: rgb(40, 22, 14);
+    border-radius: 7px;
+}
+
+.loading-screen-bar .unity-progress-bar__progress {
+    margin: 0;
+    background-color: rgba(255, 250, 242, 0);
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-742434419702722213&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#loading-bar');
+    height: 40px;
+    position: absolute;
+    top: -12px;
+    min-width: 60px;
+    left: -12px;
+}

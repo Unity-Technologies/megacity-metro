@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/HUD/MobileControls/virtual-joystick.uss?fileID=7433441132597879392&amp;guid=c55dc9f78704f1549897338e8eb945ab&amp;type=3#virtual-joystick" />
+    <ui:VisualElement name="joystick" class="joystick" style="display: flex; position: absolute;">
+        <ui:VisualElement name="background" class="background" style="width: 200px; height: 200px; align-items: center;">
+            <ui:VisualElement name="arrow-up" style="position: absolute; top: 0; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#down-arrow&apos;); width: 30px; height: 17px; -unity-background-scale-mode: scale-to-fit; rotate: 180deg;" />
+            <ui:VisualElement name="handle" usage-hints="DynamicTransform" class="handle" style="background-color: rgba(255, 250, 242, 0.3);" />
+            <ui:VisualElement name="arrow-down" style="position: absolute; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#down-arrow&apos;); width: 30px; height: 17px; -unity-background-scale-mode: scale-to-fit; bottom: 0;" />
+            <ui:VisualElement name="arrow-right" style="position: absolute; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#down-arrow&apos;); width: 30px; height: 17px; -unity-background-scale-mode: scale-to-fit; rotate: 270deg; right: -5px;" />
+            <ui:VisualElement name="arrow-left" style="position: absolute; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#down-arrow&apos;); width: 30px; height: 17px; -unity-background-scale-mode: scale-to-fit; rotate: 90deg; left: -5px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,70 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="Leaderboard" src="project://database/Assets/UI/HUD/Leaderboard.uxml?fileID=9197481963319205126&amp;guid=3ad4a5eb5cf7ffb4fad267d8daff29f0&amp;type=3#Leaderboard" />
+    <ui:Template name="VivoxPanel" src="project://database/Assets/UI/Vivox/VivoxPanel.uxml?fileID=9197481963319205126&amp;guid=4257a694fa5251b4eb2d55eef40332db&amp;type=3#VivoxPanel" />
+    <Style src="project://database/Assets/UI/Styles/hud.uss?fileID=7433441132597879392&amp;guid=7f81da09252d05e408e91deddc00fc2e&amp;type=3#hud" />
+    <Style src="project://database/Assets/UI/Styles/metro-styles.uss?fileID=7433441132597879392&amp;guid=e0086ca80d8fed54b83eca12d3cf5494&amp;type=3#metro-styles" />
+    <ui:VisualElement name="hud-container" picking-mode="Ignore" style="background-color: rgba(0, 0, 0, 0); width: 100%; height: 100%; position: absolute; display: flex; align-items: center;">
+        <ui:VisualElement picking-mode="Ignore" name="damage-indicator" style="flex-grow: 1; width: 100%; height: 100%; position: absolute; background-color: rgb(180, 0, 78); opacity: 0.01;" />
+        <ui:VisualElement picking-mode="Ignore" name="attacker-pointer-container" class="attacker-pointer-container">
+            <ui:VisualElement name="attacker-pointer" picking-mode="Ignore" class="attacker-pointer" style="top: 128px;">
+                <ui:VisualElement picking-mode="Ignore" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=4244948947413723464&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#deco-embelishment&apos;); width: 100px; height: 100px; -unity-background-scale-mode: scale-to-fit; transform-origin: center; rotate: 90deg; justify-content: center; bottom: 320px;">
+                    <ui:VisualElement picking-mode="Ignore" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#down-arrow&apos;); width: 60px; height: 60px; -unity-background-scale-mode: scale-to-fit; transform-origin: center; rotate: 90deg; -unity-background-image-tint-color: rgb(223, 61, 6);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="player-name-info-container" picking-mode="Ignore" style="background-color: rgba(0, 0, 0, 0); position: absolute; left: 0; top: 0; right: 0; bottom: 0; align-self: center;" />
+        <ui:VisualElement name="crosshair-container" picking-mode="Ignore" class="hide-in-single-player" style="width: 100%; height: 100%; position: absolute;">
+            <ui:VisualElement name="aim-icon" usage-hints="DynamicTransform" class="crosshair-aim" />
+            <ui:VisualElement picking-mode="Ignore" name="crosshair" usage-hints="DynamicTransform" class="crosshair">
+                <ui:Label tabindex="-1" text="Target Reached" parse-escape-sequences="true" display-tooltip-when-elided="true" picking-mode="Ignore" name="target-reached-label" class="label-status" style="position: absolute; left: 150px; top: -5px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Instance template="Leaderboard" name="hud-leaderboard" class="hide-in-single-player" style="position: absolute; right: 0; margin-top: 50px; margin-right: 100px; margin-bottom: 50px; margin-left: 50px;" />
+        <ui:VisualElement name="hud-stats-panel" style="flex-grow: 1; position: absolute; left: -1px; top: -1px; margin-top: 50px; margin-right: 50px; margin-bottom: 50px; margin-left: 50px;">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center;">
+                <ui:Button name="settings-button" enable-rich-text="false" class="icon-button">
+                    <ui:VisualElement name="settings-icon" style="background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-1650748148582011348&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#settings-icon&apos;); width: 100%; height: 100%; -unity-background-scale-mode: scale-to-fit;" />
+                </ui:Button>
+                <ui:VisualElement class="hide-in-single-player" style="width: 220px; margin-left: 20px;">
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+                        <ui:Label tabindex="-1" text="HEALTH" parse-escape-sequences="true" display-tooltip-when-elided="true" name="healthbar-label" class="label-status" />
+                        <ui:Label tabindex="-1" text="100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="health-bar-value" class="label-status" style="font-size: 30px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="health-bar-parent">
+                        <ui:VisualElement name="shadow" style="width: 100%; height: 100%; position: absolute; top: 1px; left: 1px; background-color: rgba(0, 0, 0, 0.1);" />
+                        <ui:ProgressBar value="100" name="health-bar" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="hide-in-single-player" style="flex-grow: 1; flex-direction: row; align-items: center; margin-top: 5px;">
+                <ui:Instance template="VivoxPanel" name="VivoxPanel" style="display: flex;" />
+                <ui:Button name="vivox-button" enable-rich-text="false" class="icon-button" style="display: none;">
+                    <ui:VisualElement name="vivox-icon" style="background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3885254802711166367&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#microphone-muted-icon&apos;); width: 100%; height: 100%; -unity-background-scale-mode: scale-to-fit;" />
+                </ui:Button>
+                <ui:VisualElement style="width: 220px; margin-left: 20px;">
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+                        <ui:Label tabindex="-1" text="POWER" parse-escape-sequences="true" display-tooltip-when-elided="true" name="power-label" class="label-status" />
+                        <ui:Label tabindex="-1" text="100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="power-value" class="label-status" style="font-size: 30px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="laser-bar-parent">
+                        <ui:VisualElement name="shadow" style="width: 100%; height: 100%; position: absolute; top: 1px; left: 1px; background-color: rgba(0, 0, 0, 0.1);" />
+                        <ui:ProgressBar value="100" name="laser-bar" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="top-message-container" style="top: 150px; flex-direction: row; position: absolute; display: none;">
+            <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=4244948947413723464&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#deco-embelishment&apos;); width: 100px; -unity-background-scale-mode: scale-to-fit;" />
+            <ui:Label display-tooltip-when-elided="true" name="top-message-label" class="top-message" />
+            <ui:VisualElement style="flex-grow: 1; width: 100px; -unity-background-scale-mode: scale-to-fit; rotate: 180deg; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=4244948947413723464&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#deco-embelishment&apos;);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="message-screen" picking-mode="Ignore" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8); display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; align-items: center; justify-content: center; opacity: 0; transition-property: opacity;">
+            <ui:VisualElement style="align-items: center; justify-content: center;">
+                <ui:VisualElement name="top-message-frame" style="background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-8178628450100609337&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#deco-frame&apos;); width: 400px; height: 60px; -unity-background-scale-mode: scale-to-fit;" />
+                <ui:Label text="MAIN MESSAGE" name="message-label" class="main-message" style="-unity-font-style: normal;" />
+                <ui:VisualElement name="bottom-message-frame" style="background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-8178628450100609337&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#deco-frame&apos;); width: 400px; height: 60px; -unity-background-scale-mode: scale-to-fit; rotate: 180deg;" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="bottom-message-label" class="bottom-message" style="-unity-font-style: normal;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

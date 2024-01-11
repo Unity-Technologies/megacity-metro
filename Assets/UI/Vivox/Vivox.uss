@@ -1,0 +1,36 @@
+.vivox-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.vivox-label {
+    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular.ttf?fileID=12800000&guid=ef35def7ce930334fab0869362d6fefb&type=3#Alatsi-Regular');
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular%20SDF.asset?fileID=11400000&guid=56ce6b0e807317c4a97b02e6b6e6499a&type=2#Alatsi-Regular SDF');
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    font-size: 16px;
+    color: rgb(255, 250, 242);
+    padding: 0;
+    margin: 2px;
+    position: absolute;
+    bottom: -25px;
+}
+
+.vivox-button {
+    border-width: 0;
+    margin: 0;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+}
+
+.vivox-button:hover > .icon {
+    -unity-background-image-tint-color: rgb(195, 195, 195);
+}

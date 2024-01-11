@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/HUD/MobileControls/virtual-joystick.uss?fileID=7433441132597879392&amp;guid=c55dc9f78704f1549897338e8eb945ab&amp;type=3#virtual-joystick" />
+    <ui:VisualElement name="mobile-controls-container" picking-mode="Ignore" style="flex-direction: column; flex-grow: 1;">
+        <ui:VisualElement name="joystick-zone" style="position: absolute; left: 0; width: 50%; height: 70%; bottom: 0;" />
+        <ui:Button parse-escape-sequences="false" name="shoot-button" enable-rich-text="false" usage-hints="DynamicTransform" style="width: 150px; height: 150px; display: none; position: absolute; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0); align-items: center; justify-content: center; overflow: visible;">
+            <ui:VisualElement class="action-button" style="flex-grow: 1; align-items: center; justify-content: center; width: 100%; height: 100%; top: -50%; left: -50%; background-color: rgba(255, 250, 242, 0.3);">
+                <ui:Label text="FIRE" parse-escape-sequences="false" enable-rich-text="false" style="-unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular%20SDF.asset?fileID=11400000&amp;guid=56ce6b0e807317c4a97b02e6b6e6499a&amp;type=2#Alatsi-Regular SDF&apos;); -unity-font: url(&apos;project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular.ttf?fileID=12800000&amp;guid=ef35def7ce930334fab0869362d6fefb&amp;type=3#Alatsi-Regular&apos;); font-size: 50px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+            </ui:VisualElement>
+        </ui:Button>
+        <ui:VisualElement name="fire-zone" style="position: absolute; width: 50%; height: 70%; right: 0; bottom: 0;" />
+        <ui:VisualElement name="speed-slider-zone" style="position: absolute; right: 170px; bottom: 50px; align-items: center;">
+            <ui:Slider high-value="1" direction="Vertical" low-value="-1" name="speed-slider" class="speed-slider" />
+            <ui:VisualElement name="up-arrow" picking-mode="Ignore" class="slider-arrow" style="top: 30px; left: 68px; rotate: 180deg;" />
+            <ui:VisualElement name="down-arrow" picking-mode="Ignore" class="slider-arrow" style="bottom: 30px; left: 68px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

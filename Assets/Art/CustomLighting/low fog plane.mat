@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7120000873548090186
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: low fog plane
+  m_Shader: {fileID: -6465566751694194690, guid: a035af402c37a044c8c6cb9efb457a80,
+    type: 3}
+  m_Parent: {fileID: 2100000, guid: 58258505a83a36448a0ddfc169e9b2d9, type: 2}
+  m_ModifiedSerializedProperties: 16
+  m_ValidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DepthOnly
+  - SHADOWCASTER
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _FogTX:
+        m_Texture: {fileID: 2800000, guid: d9d4e89dabd23894b8cbef87f8824c43, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Blend: 2
+    - _DstBlend: 1
+    - _Fade_distance: 1600
+    - _Overall_Brightness: 0.555
+    - _Plane1: -1
+    - _Plane2: 1.2
+    - _Sharpen: 0.5
+    - _SrcBlend: 5
+    - _Subtractive: 0
+    - _borderPower: 2
+    m_Colors:
+    - _BottomColor: {r: 0.54736376, g: 0.18823528, b: 0.5764706, a: 1}
+    - _MiddleColor: {r: 0.9339623, g: 0.86155915, b: 0.7797704, a: 1}
+    - _Movement: {r: -0.05, g: 0.05, b: 0, a: 0}
+    - _Tiling: {r: 0.002, g: 0.002, b: 0, a: 0}
+    - _TopColor: {r: 0.6006271, g: 0.7921569, b: 0.57254905, a: 1}
+    - _plane_balance: {r: 1, g: 2, b: 1, a: 0}
+  m_BuildTextureStacks: []
