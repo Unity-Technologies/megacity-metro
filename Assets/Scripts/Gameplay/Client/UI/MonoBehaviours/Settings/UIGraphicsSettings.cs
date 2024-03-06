@@ -232,12 +232,16 @@ namespace Unity.MegacityMetro.UI
                     break;
                 case "medium":
                     QualitySettings.globalTextureMipmapLimit = 1;
+#if UNITY_IPHONE || UNITY_STANDALONE_OSX
+                    MaterialQuality.Low.SetGlobalShaderKeywords();
+#else
                     MaterialQuality.Medium.SetGlobalShaderKeywords();
+#endif     
                     break;
                 case "high":
                     QualitySettings.globalTextureMipmapLimit = 0;
-#if UNITY_IPHONE
-                    MaterialQuality.Medium.SetGlobalShaderKeywords();
+#if UNITY_IPHONE || UNITY_STANDALONE_OSX
+                    MaterialQuality.Low.SetGlobalShaderKeywords();
 #else
                     MaterialQuality.High.SetGlobalShaderKeywords();
 #endif

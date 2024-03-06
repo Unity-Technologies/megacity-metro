@@ -560,7 +560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4211587608987206552}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1466,6 +1466,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_LaserBeam
       objectReference: {fileID: 0}
+    - target: {fileID: 3977569193675125614, guid: 4236010ebb7cb0d4f8b57b571528f9eb,
+        type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: c6dc833ddc74db141b67d195298d5a14,
+        type: 3}
     - target: {fileID: 4156008493405529430, guid: 4236010ebb7cb0d4f8b57b571528f9eb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1562,6 +1568,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_Muzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 7736518137969145186, guid: cd4dae75950f06a49b0ab83ee435ff6e,
+        type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 62b83f7c5b0c5b84b8cc30ad4cf6fab6,
+        type: 3}
     - target: {fileID: 8055343895081557383, guid: cd4dae75950f06a49b0ab83ee435ff6e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1747,7 +1759,7 @@ PrefabInstance:
     - target: {fileID: 2482394350481338733, guid: 31599d4680d5ac44aa784d7cedcb902a,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2574761256048873397, guid: 31599d4680d5ac44aa784d7cedcb902a,
         type: 3}
@@ -1759,11 +1771,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3234465670696157119, guid: 31599d4680d5ac44aa784d7cedcb902a,
+        type: 3}
+      propertyPath: m_Name
+      value: VFX_BrokenShip_ElecArcs_BigSun
+      objectReference: {fileID: 0}
     - target: {fileID: 3610473397873597526, guid: 31599d4680d5ac44aa784d7cedcb902a,
         type: 3}
       propertyPath: m_Asset
       value: 
-      objectReference: {fileID: 8926484042661614526, guid: d8099ef8ac4b3d644913563bb671153b,
+      objectReference: {fileID: 8926484042661614526, guid: 333ca4d8f605b2e4d8aa40fef8921850,
         type: 3}
     - target: {fileID: 3610473397873597526, guid: 31599d4680d5ac44aa784d7cedcb902a,
         type: 3}
@@ -1773,6 +1790,11 @@ PrefabInstance:
     - target: {fileID: 4142699059684740987, guid: 31599d4680d5ac44aa784d7cedcb902a,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296644471043819383, guid: 31599d4680d5ac44aa784d7cedcb902a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7109097421862812623, guid: 31599d4680d5ac44aa784d7cedcb902a,
@@ -1849,6 +1871,11 @@ PrefabInstance:
     - target: {fileID: 8579246734229821906, guid: 31599d4680d5ac44aa784d7cedcb902a,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579246734229821906, guid: 31599d4680d5ac44aa784d7cedcb902a,
+        type: 3}
+      propertyPath: m_InitialEventNameOverriden
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1897,6 +1924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830812643927984840, guid: 16341ad3dd1087d4898815084dc855f7,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8101172348739340729, guid: 16341ad3dd1087d4898815084dc855f7,
         type: 3}
@@ -1948,6 +1980,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9197162594834039834, guid: 16341ad3dd1087d4898815084dc855f7,
+        type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 20456255b855ff9448a83d0d6672e800,
+        type: 3}
     - target: {fileID: 9197162594834039834, guid: 16341ad3dd1087d4898815084dc855f7,
         type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
