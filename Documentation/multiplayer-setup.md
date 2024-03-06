@@ -40,7 +40,7 @@ Now, when you play the game from the Editor, the Server and Client run together 
 
 To build your game and test it locally, you need to build the Client and Server separately.
 
-To make a Windows Client Build:
+To make a Windows or Mac Client Build:
 1. In the Editor, go to **Project Settings** > **Entities** to change the **NetCode Client Target** to `Client`.
 2. Go to **Project Settings** > **Player** and change **Scripting BackEnd** to `iL2CPP`.
 3. Like any other Unity game, make the build by going to **File** > **Build Settings**.
@@ -59,7 +59,14 @@ To make a Android Client Build:
 
 ![Build Settings - Client-Android](../Readme/build-settings-client-android.png)
 
-To make a Server Build:
+To make an iOS Build: 
+1. In the Editor, go to **Project Settings** > **Entities** to change the **NetCode Client Target** to `Client`.
+2. Like any other Unity game, make the build by going to **File** > **Build Settings**.
+3. Press the **Build & Run** button to generate the Xcode project.
+
+![Build Settings - Client-Android](../Readme/build-setting-iOS.jpg)
+
+4. To make a Server Build:
 1. Set the target platform to **Dedicated Server**.
 2. Like the Client build, go to **File** > **Build Settings** and press the **Build** button.
 

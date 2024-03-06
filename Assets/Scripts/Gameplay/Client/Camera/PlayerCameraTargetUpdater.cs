@@ -42,7 +42,6 @@ namespace Unity.MegacityMetro.CameraManagement
                 if (HUD.Instance != null && HUD.Instance.Crosshair.IsVisible)
                 {
                     HUD.Instance.Crosshair.SetTarget(laser.ValueRO.DetectedTarget != Entity.Null);
-                    HUD.Instance.Crosshair.TryNotifyTargetReached(laser.ValueRO.DetectedTarget != Entity.Null, laser.ValueRO.IsShooting);
                     HUD.Instance.Crosshair.UpdatePosition(laser.ValueRO.CalculateLaserEndPoint(ltw.ValueRO.Position, ltw.ValueRO.Rotation, ref localToWorldLookup));
                 }
             }

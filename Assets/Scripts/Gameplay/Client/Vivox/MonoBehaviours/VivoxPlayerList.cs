@@ -82,8 +82,8 @@ namespace Unity.MegacityMetro.Gameplay
         }
 
         public void OnMuteToggle()
-        {
-            VivoxManager.Instance.Devices.SetMicrophoneMute(!VivoxManager.Instance.Devices.Muted);
+        { 
+            VivoxManager.Instance?.Devices.SetMicrophoneMute(!VivoxManager.Instance.Devices.Muted);
         }
 
         private void OnParticipantOnPropertyChanged(object obj, PropertyChangedEventArgs args)

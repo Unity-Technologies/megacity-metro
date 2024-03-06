@@ -1,6 +1,7 @@
 using Unity.Services.Core;
 using Unity.Services.Vivox;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 namespace Unity.MegacityMetro.Gameplay
 {
@@ -21,6 +22,12 @@ namespace Unity.MegacityMetro.Gameplay
 
         private void Awake()
         {
+            if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64 && Application.platform == RuntimePlatform.OSXPlayer)
+            {
+                Destroy(this);
+                return;
+            }
+            
             if (Instance != this && Instance != null)
             {
                 Debug.LogWarning(VivoxEvents.k_MultipleVivoxComponentDetected);
@@ -34,7 +41,7 @@ namespace Unity.MegacityMetro.Gameplay
                 Destroy(this);
                 return;
             }
-            
+
             Instance = this;
             m_IsReady = false;
             Devices = GetComponent<VivoxDevicesVolume>();

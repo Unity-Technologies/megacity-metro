@@ -2,6 +2,7 @@
 - [Recommended Specs for Mac](#recommended-specs-for-mac)
 - [Recommended Specs for Windows 10](#recommended-specs-for-windows-10)
 - [Recommended Specs for Android](#recommended-specs-for-android)
+- [Recommended Specs for iOS](#recommended-specs-for-ios)
 ## Megacity-Metro Prerequisites
 
 Megacity-Metro is compatible with Unity **2022 LTS** and is currently tested on Windows, Mac and Android. 
@@ -28,3 +29,10 @@ You can download the editor using the following link:
 - RAM: 4GB 
 - GPU: Adreno 740
 - Storage: 2GB 
+
+### Recommended Specs for iOS
+- Devices: iPhone 14 or Higher
+- Operating Systems: iOS 17 or Higher
+- CPU: Apple A15 Bionic
+- GPU: Apple GPU (4-core graphics)
+- Storage: 2.7GB 
