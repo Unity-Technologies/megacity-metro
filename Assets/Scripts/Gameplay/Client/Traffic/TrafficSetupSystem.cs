@@ -33,8 +33,6 @@ namespace Unity.MegacityMetro.Traffic
 
         public void OnUpdate(ref SystemState state)
         {
-            Debug.Log("building roads and spawning cars");
-
             var trafficConfig = SystemAPI.GetSingleton<TrafficConfig>();
             var vehiclePrefabQuery = SystemAPI.QueryBuilder().WithAll<VehiclePrefabRef>().Build();
             var vehiclePrefabs = vehiclePrefabQuery.ToComponentDataArray<VehiclePrefabRef>(Allocator.Temp);
@@ -100,8 +98,6 @@ namespace Unity.MegacityMetro.Traffic
 
             ecb.Playback(state.EntityManager);
             state.Enabled = false;
-
-            Debug.Log($"total number of vehicles: {totalVehicles}");
         }
     }
 }
