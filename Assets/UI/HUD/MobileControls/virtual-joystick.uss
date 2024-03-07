@@ -1,0 +1,124 @@
+.joystick {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.background {
+    width: 256px;
+    height: 256px;
+    position: relative;
+    border-radius: 100px;
+    flex-shrink: 0;
+    justify-content: center;
+}
+
+.handle {
+    flex-grow: 0;
+    border-left-color: rgb(255, 250, 242);
+    border-right-color: rgb(255, 250, 242);
+    border-top-color: rgb(255, 250, 242);
+    border-bottom-color: rgb(255, 250, 242);
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    flex-direction: column;
+    transition-property: translate;
+    transition-duration: 0.1s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-radius: 150px;
+    background-color: rgba(255, 250, 242, 0.5);
+}
+
+.speed-slider {
+    height: 400px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.speed-slider-label {
+    color: rgb(255, 250, 242);
+    font-size: 24px;
+    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals.ttf?fileID=12800000&guid=3e9654e5beda26e43ac5f6732d909200&type=3#Alatsi-Regular-Capitals');
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals%20SDF.asset?fileID=11400000&guid=330b769f993d4f540a53504f2163e303&type=2#Alatsi-Regular-Capitals SDF');
+    -unity-text-align: middle-center;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.slider-arrow {
+    width: 30px;
+    height: 30px;
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-3010252474416732627&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#down-arrow');
+    -unity-background-scale-mode: scale-to-fit;
+    position: absolute;
+    left: 82px;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+}
+
+.unity-base-slider__dragger {
+    width: 150px;
+    height: 80px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(255, 250, 242, 0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    align-items: center;
+    justify-content: center;
+    border-left-color: rgb(255, 250, 242);
+    border-right-color: rgb(255, 250, 242);
+    border-top-color: rgb(255, 250, 242);
+    border-bottom-color: rgb(255, 250, 242);
+}
+
+.unity-base-slider__tracker {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    width: 150px;
+}
+
+.action-button {
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    background-color: rgba(255, 250, 242, 0.5);
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border-left-color: rgb(255, 250, 242);
+    border-right-color: rgb(255, 250, 242);
+    border-top-color: rgb(255, 250, 242);
+    border-bottom-color: rgb(255, 250, 242);
+    border-radius: 150px;
+}
+
+.action-button:active {
+    opacity: 1;
+}

@@ -1,0 +1,53 @@
+.player-name-label {
+    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals.ttf?fileID=12800000&guid=3e9654e5beda26e43ac5f6732d909200&type=3#Alatsi-Regular-Capitals');
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals%20SDF.asset?fileID=11400000&guid=330b769f993d4f540a53504f2163e303&type=2#Alatsi-Regular-Capitals SDF');
+    color: rgb(223, 61, 6);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+    margin: 0;
+    padding: 0;
+}
+
+.unity-progress-bar__container {
+    max-height: 6px;
+    min-height: 6px;
+}
+
+.unity-progress-bar__background {
+    border-width: 0;
+    background-color: rgba(223, 61, 6, 0.15);
+}
+
+.unity-progress-bar__progress {
+    margin: 0;
+    background-color: rgb(223, 61, 6);
+}
+
+.player-badge {
+    background-color: rgba(0, 0, 0, 0);
+    width: 12px;
+    height: 12px;
+    -unity-background-image-tint-color: rgb(223, 61, 6);
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-1248098015950953679&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#badge');
+    align-self: center;
+    display: flex;
+    margin: 2px;
+}
+
+.player-state-icon {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-1076838663204292380&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#death-icon');
+    height: 100px;
+    -unity-background-scale-mode: scale-to-fit;
+    width: 100px;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    opacity: 0;
+    transition-delay: 1s;
+}
+
+.player-distance-icon {
+    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-4257023898226224357&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#target-icon');
+    width: 30px;
+    height: 30px;
+    position: absolute;
+}

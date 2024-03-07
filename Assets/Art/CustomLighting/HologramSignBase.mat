@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2848544173827585084
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HologramSignBase
+  m_Shader: {fileID: -6465566751694194690, guid: f1afb0684b32f7a46b7c5813200fa5c0,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: 6b491b41f9a1cfe4eaad27099ed58c18, type: 3}
+        m_Scale: {x: 0.25, y: 0.25}
+        m_Offset: {x: 0.5, y: 0.25}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _CloseFade: 50
+    - _FadeDistance: 1000
+    - _FadePower: 0.5
+    - _Frequency1: 6
+    - _GlitchFrequency: 100
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    m_Colors:
+    - _GlitchScale: {r: 0.01, g: 0.02, b: 0, a: 0}
+    - _MultilplyColor: {r: 0.59460664, g: 0.9622642, b: 0.8640813, a: 0}
+    - _MultiplyColor: {r: 0.78851104, g: 1.3187332, b: 1.878251, a: 0}
+    - _PixelGrain: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Plax: {r: 64, g: 64, b: 0, a: 0}
+    - _ScanlineFrequency: {r: 1, g: 36, b: 0, a: 0}
+    - _ScanlineIntensityRange: {r: 0.9, g: 1.4, b: 0, a: 0}
+    - _Time16: {r: 3.3252964, g: 3.3252964, b: 19.325296, a: 19.325296}
+    - _Vector2: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

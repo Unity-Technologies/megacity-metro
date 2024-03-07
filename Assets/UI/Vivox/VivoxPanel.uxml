@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/UI/Vivox/Vivox.uss?fileID=7433441132597879392&amp;guid=5b68c48bea323e9439368e4a6742e8ed&amp;type=3#Vivox" />
+    <ui:VisualElement name="chat-voice-panel" class="vivox-container">
+        <ui:Button name="vivox-button" class="vivox-button" style="background-color: rgba(188, 188, 188, 0); align-items: center; justify-content: center; overflow: visible;">
+            <ui:VisualElement name="vivox-icon" class="icon" style="-unity-background-scale-mode: scale-to-fit; overflow: hidden; background-image: url(&apos;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-932254218140014675&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#microphone-icon&apos;);">
+                <ui:VisualElement name="speaker-signal" style="background-color: rgb(189, 73, 22); transform-origin: bottom; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; width: 20px; height: 20px; opacity: 0; bottom: 2px; right: 1px;" />
+            </ui:VisualElement>
+            <ui:Label name="vivox-name" class="vivox-label" style="font-size: 12px; bottom: -10px; display: none;" />
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

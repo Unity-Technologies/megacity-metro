@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ChromeDark
+  m_Shader: {fileID: -6465566751694194690, guid: f8704cf7bec9c42499e75716cbeda67e,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: _HeightOpacity
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DistanceCube:
+        m_Texture: {fileID: 8900000, guid: 8d4c56aafa387f44fb6b563e283a2a30, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistanceCubemap:
+        m_Texture: {fileID: 8900000, guid: 8d4c56aafa387f44fb6b563e283a2a30, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_594ca192011f4c56a10ca20621fca00d_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 3214bb5eb1fc4354585ad9bdad9198e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_4a3e00d9ba6343a2a2f7668ebccd1538_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 0c0201a809654c44c8b30b132e6a2ffa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AmbientOcclusion: 1
+    - _DistanceFalloff: 1
+    - _DistanceMax: 2400
+    - _DistanceMin: 600
+    - _DistanceOpacity: 2
+    - _GradientRadius: 2100
+    - _HeightFallOff: 2
+    - _HeightFalloff: 2
+    - _HeightMax: 400
+    - _HeightMin: -50
+    - _HeightOpacity: 0.5
+    - _Metallic: 0.455
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Reflectance: 0.5
+    - _Smoothness: 0.607
+    m_Colors:
+    - _BaseColor: {r: 0.42091766, g: 0.42091766, b: 0.5254902, a: 0}
+    - _Color: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
+    - _DistanceColor: {r: 0.44313726, g: 0.34901956, b: 0.13333327, a: 1}
+    - _EastColor: {r: 0.28235298, g: 0.29803917, b: 0.21960777, a: 1}
+    - _HeightColor: {r: 0.29019606, g: 0.32156855, b: 0.29803917, a: 1}
+    - _Normal: {r: 0, g: 0, b: 1, a: 0}
+    - _NorthColor: {r: 0.29803917, g: 0.27058816, b: 0.21960777, a: 1}
+    - _SouthColor: {r: 0.5372549, g: 0.5254902, b: 0.49019605, a: 1}
+    - _TopColor: {r: 0.7098039, g: 0.7333333, b: 0.6431373, a: 1}
+    - _WestColor: {r: 0.5254902, g: 0.5372549, b: 0.48627448, a: 1}
+  m_BuildTextureStacks: []
+--- !u!114 &6679202829904296813
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

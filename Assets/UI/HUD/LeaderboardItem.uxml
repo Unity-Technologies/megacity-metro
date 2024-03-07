@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="container" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between;">
+        <ui:VisualElement name="name-container" style="flex-direction: row;">
+            <ui:Label text="100" name="player-rank" class="item-label" style="width: 50px; -unity-text-align: upper-right; margin-right: 20px;" />
+            <ui:Label text="Player" name="player-name" class="item-label" style="text-overflow: ellipsis;" />
+        </ui:VisualElement>
+        <ui:Label text="0" name="player-score" class="item-label" />
+    </ui:VisualElement>
+</ui:UXML>

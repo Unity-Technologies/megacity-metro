@@ -1,0 +1,47 @@
+{
+    "name": "Unity.MegacityMetro.Gameplay.Client",
+    "rootNamespace": "",
+    "references": [
+        "Unity.MegacityMetro.Utils.Graphics",
+        "Unity.InputSystem",
+        "Unity.MegacityMetro.Components",
+        "Unity.MegacityMetro.Utils",
+        "Unity.Splines",
+        "Unity.MegacityMetro.Gameplay.Mix",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.Mathematics",
+        "Unity.Entities",
+        "Unity.Entities.Hybrid",
+        "Unity.Transforms",
+        "Unity.Burst",
+        "Unity.Entities.Graphics",
+        "Unity.Collections",
+        "Unity.Physics",
+        "Unity.Scenes",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.NetCode",
+        "Unity.NetCode.Physics",
+        "Unity.Netcode.Extensions",
+        "Unity.Services.Vivox",
+        "Unity.Services.Core",
+        "VivoxUnity",
+        "Unity.Networking.Transport",
+        "Unity.Services.UGS.Client",
+        "Unity.Services.UGS.Authentication"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.netcode",
+            "expression": "1.1",
+            "define": "UNITY_NETCODE_1_1_OR_ABOVE"
+        }
+    ],
+    "noEngineReferences": false
+}
