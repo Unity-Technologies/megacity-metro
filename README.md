@@ -3,7 +3,6 @@
 ## Contents and Quick Links
 - [Megacity-Metro Overview](#megacity-metro-overview)
 - [Megacity-Metro Prerequisites](Documentation/prerequisites.md)
-- [Get Started](Documentation/getting-started.md)
 - [Multiplayer Setup](Documentation/multiplayer-setup.md)
 - [Add Unity Gaming Services (UGS)](Documentation/ugs.md)
 - [Index of Resources in this Project](Documentation/script-index.md)
@@ -45,12 +44,40 @@ Some important points of this demo are:
 | P | Netcode Panel Stats |
 | ESC| in game menu |
 
+## Contents and Quick Links
 
-## Troubleshooting
+- [Important Note Before You Begin](#important-note-before-you-begin)
+- [Clone the Project](#clone-the-project)
+- [Quick Start](#quick-start) 
 
-### Bugs
+# Getting Started
 
-Report bugs in Megacity Multiplayer using GitHub [issues](https://github.com/Unity-Technologies/Megacity-Metro/issues). If the bugs are related to the Entities packages, use the Entities GitHub issues.
+## Important Note Before You Begin
+
+The Megacity-Metro sample is large, so the **first time** cloning and playing the sample may take more time than expected. Subsequent plays should load much quicker because of caching.
+
+First time clone and load time estimates:
+- Cloning the Megacity-Metro repo: Up to 20 min
+- Opening the project with library build: Up to 20 min
+- Building the project for each platform for the first time: Up to 50 min. 
+Navigate to `Project Settings > Other Settings > Configuration > C++ Compiler Configuration`and set `Debug` if you need to compile faster than optimal.
+
+To get the Megacity-Metro sample, you can clone the project using Git. 
+**Please note that direct download of the project is not currently supported for this repository**.
+
+## Clone the Project
+
+Before you can clone the project, you must install Git Large File Support (LFS). Megacity-Metro uses Git LFS to handle all large assets required locally. 
+Refer to [Git LFS installation options](https://github.com/git-lfs/git-lfs/wiki/Installation) for instructions on Windows and Mac. 
+
+## Quick Start
+
+After you clone the project, follow these steps to start playing:
+1. Install a compatible Unity Editor version; we highly recommend using the version specified in `ProjectSettings/ProjectVersion.txt`. During installation, make sure to include Windows/Mac Build Support (IL2CPP), Windows/Mac Dedicated Server Build Support, Android/iOS Build Support (if you plan to build for mobile devices), and Linux Dedicated Server Build Support.
+2. To add the project to the **Unity Hub**, click the **Add** button and select the root folder of the cloned project.
+3. Open the **Menu** scene located in `Assets/Scenes/Menu`. 
+4. Click the **Play** button to start.
+5. Start the Single Player mode. Multiplayer requires more setup which will be explained next.  
 
 ## Disclaimer
 
