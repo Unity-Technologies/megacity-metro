@@ -73,7 +73,7 @@ Refer to [Git LFS installation options](https://github.com/git-lfs/git-lfs/wiki/
 ## Quick Start
 
 After you clone the project, follow these steps to start playing:
-1. Install a compatible Unity Editor version. During install make sure to include, Windows/Mac Build Support (IL2CPP), Windows/Mac Dedicated Server Build Support, Android/iOS Build Support (in case you want to build for phones) and Linux Dedicated Server Build Support.
+1. Install a compatible Unity Editor version; we highly recommend using the version specified in `ProjectSettings/ProjectVersion.txt`. During installation, make sure to include Windows/Mac Build Support (IL2CPP), Windows/Mac Dedicated Server Build Support, Android/iOS Build Support (if you plan to build for mobile devices), and Linux Dedicated Server Build Support.
 2. To add the project to the **Unity Hub**, click the **Add** button and select the root folder of the cloned project.
 3. Open the **Menu** scene located in `Assets/Scenes/Menu`. 
 4. Click the **Play** button to start.
