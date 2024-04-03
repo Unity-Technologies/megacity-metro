@@ -23,10 +23,10 @@ namespace Unity.MegacityMetro
         /// <summary>Expects the following format: '-port [ushort_port]`.</summary>
         private const string MultiplayPortArg = "-port";
 
-        private const string HardcodedMultiplayServerIp = "0.0.0.0";
+        private const string HardcodedMultiplayServerIp = "192.168.200.";
 
         public static bool AutomaticallyAddThinClients => TargetThinClientWorldCount > 0;
-        public static bool AutomaticallyMatchmake => Application.isBatchMode;
+        public static bool AutomaticallyMatchmake => false;
         public static NetworkEndpoint MultiplayEndpoint { get; private set; }
         public static int TargetThinClientWorldCount { get; private set; }
         public static int MaxCarCount { get; private set; }

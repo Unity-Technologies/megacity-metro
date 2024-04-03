@@ -2,6 +2,9 @@
 using Unity.Mathematics;
 using Unity.MegacityMetro.CameraManagement;
 using UnityEngine.UIElements;
+using CipSoft.LoadTest;
+
+
 #if UNITY_ANDROID || UNITY_IPHONE || ENABLED_VIRTUAL_JOYSTICK
 using UnityEngine;
 using Unity.MegacityMetro.UI;
@@ -104,6 +107,15 @@ namespace Unity.MegacityMetro.Gameplay
 #endif
             };
 #endif
+
+            if (LoadTestClient.IsLoadTest || LoadTestClient.debug)
+            {
+                input.LookVelocity = new float2(UnityEngine.Random.Range(-1f, 1f), -1) * ConstLookVelocityMultiplier;
+                input.Shoot = UnityEngine.Random.Range(0, 4) >= 1;
+                input.Roll = UnityEngine.Random.Range(-1f, 1f);
+
+                input.Acceleration = 1;
+            }
 
             var job = new PlayerVehicleInputJob { CollectedInput = input};
             job.Schedule();

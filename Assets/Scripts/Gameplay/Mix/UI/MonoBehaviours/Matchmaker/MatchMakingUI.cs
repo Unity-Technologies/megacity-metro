@@ -66,7 +66,6 @@ namespace Unity.MegacityMetro.UI
             var portString = ipSplit[1];
             if (!ushort.TryParse(portString, out var portShort))
                 return;
-            MatchMakingConnector.Instance.SetIPAndPort(ip, portShort);
         }
 
         public void UpdateConnectionStatus(string status)

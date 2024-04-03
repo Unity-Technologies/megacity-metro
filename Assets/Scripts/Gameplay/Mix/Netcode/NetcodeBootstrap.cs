@@ -17,7 +17,7 @@ namespace Unity.MegacityMetro
     {
         const string k_ServicesDataResourceLocation = "GameServiceData";
         const string k_MultiplayerDataResourceLocation = "MultiplayerServerSettings";
-        public static NetworkEndpoint MegacityMetroServerIp => NetworkEndpoint.Parse("127.0.0.1", 7979);
+        public static NetworkEndpoint MegacityMetroServerIp => NetworkEndpoint.Parse("192.168.200.229", 5010);
 
         /// <summary>
         /// Limitation imposed to ensure UTP send/receiveQueueSize's are set appropriately.
@@ -28,6 +28,7 @@ namespace Unity.MegacityMetro
         // The initialize method is what entities calls to create the default worlds
         public override bool Initialize(string defaultWorldName)
         {
+            Debug.Log("NetCodeBootstrap Initialize");
             // Handle max player count globally.
             NetworkStreamReceiveSystem.DriverConstructor = new MegacityMetroDriverConstructor();
 
