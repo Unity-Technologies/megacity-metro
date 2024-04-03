@@ -143,6 +143,14 @@ namespace Unity.MegacityMetro.UI
 #pragma warning restore CS4014
                     break;
                 case MultiplayerMode.Connect:
+                    try
+                    {
+                        MatchMakingConnector.Instance.SetProfileServiceName(m_NameTextField.text);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogError("Error setting profile service name: " + e.Message);
+                    }
                     MatchMakingConnector.Instance.ConnectToServer();
                     break;
                 default:
