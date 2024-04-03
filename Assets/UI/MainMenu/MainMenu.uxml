@@ -13,7 +13,7 @@
                 <ui:VisualElement name="multiplayer-form">
                     <MegacityMetro.CustomUI.CustomToggle label="MODE" FirstOption="CONNECT" SecondOption="MATCHMAKE" name="multiplayer-mode" first-option="Connect" second-option="Matchmake" />
                     <ui:DropdownField label="SERVER" index="0" choices="LOCAL, AMERICAS, EMEA" name="multiplayer-server-location" tabindex="1" class="custom-dropdown" />
-                    <ui:TextField picking-mode="Ignore" label="SERVER IP" value="127.0.0.1:7979" name="multiplayer-server-textfield" tabindex="2" class="custom-text-field" />
+                    <ui:TextField picking-mode="Ignore" label="SERVER IP" value="192.168.200.229:7979" name="multiplayer-server-textfield" tabindex="2" class="custom-text-field" />
                     <ui:TextField picking-mode="Ignore" label="NAME" value="Player" name="name-textfield" tabindex="3" max-length="20" class="custom-text-field" />
                     <ui:Label tabindex="4" display-tooltip-when-elided="true" name="connection-label" style="-unity-text-align: upper-center; font-size: 25px; display: none; padding-top: 20px; padding-bottom: 20px; color: rgb(249, 175, 149); white-space: normal;" />
                     <ui:VisualElement name="matchmaking-loading-bar" style="background-color: rgba(0, 0, 0, 0); width: 100px; height: 100px; align-items: center; align-self: center; justify-content: space-between; display: none; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">

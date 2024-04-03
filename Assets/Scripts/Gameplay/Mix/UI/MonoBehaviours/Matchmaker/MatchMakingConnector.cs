@@ -18,7 +18,7 @@ namespace Unity.MegacityMetro.UGS
         public bool IsTryingToConnect { get; private set; }
         public bool IsMatchmakerInitialized => m_Matchmaker != null;
         [SerializeField] private PlayerInfoItemSettings m_Settings;
-        [field: SerializeField] public string IP { get; private set; } = "127.0.0.1";
+        [field: SerializeField] public string IP { get; private set; } = NetCodeBootstrap.MegacityMetroServerIp.Address;
         [field: SerializeField] public ushort Port { get; private set; } = NetCodeBootstrap.MegacityMetroServerIp.Port;
 
         private ClientMatchmaker m_Matchmaker;
@@ -99,9 +99,6 @@ namespace Unity.MegacityMetro.UGS
                 var matchmakingResult = await m_Matchmaker.Matchmake(m_ProfileService.LocalPlayer);
                 if (matchmakingResult.result == MatchmakerPollingResult.Success)
                 {
-                    IP = matchmakingResult.ip;
-                    Port = (ushort) matchmakingResult.port;
-
                     MatchMakingUI.Instance.UpdateConnectionStatus("[Matchmaker] Match found! Queued to join..."); 
                     Debug.Log($"[Matchmaker] Matchmaking Success! Connecting to {IP} : {Port}");
                     await Task.Delay(5000); // Hack: Give the server some time to process before connecting. This should be fixed!
