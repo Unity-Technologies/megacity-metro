@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UIElements;
-using VivoxUnity;
+using Unity.Services.Vivox;
 using Random = Unity.Mathematics.Random;
 
 namespace Unity.MegacityMetro.Gameplay
@@ -16,7 +17,7 @@ namespace Unity.MegacityMetro.Gameplay
         [SerializeField] public Sprite m_MicrophoneOff;
         [SerializeField] public Vector2 m_MinMaxScaleIndicatorSpeaker;
 
-        private IParticipant lastParticipant;
+        private VivoxParticipant lastParticipant;
 
         private Button m_MicrophoneButton;
         private VisualElement m_MicrophoneIcon;
@@ -24,11 +25,13 @@ namespace Unity.MegacityMetro.Gameplay
         private Label m_SpeakerName;
         private VisualElement m_SpeakerSignal;
         private bool IsMicrophoneMuted = false;
+        private Dictionary<string, VivoxParticipant> m_Participants;
 
         private void OnEnable()
         {
             var root = GetComponent<UIDocument>().rootVisualElement;
             var container = root.Q<VisualElement>("chat-voice-panel");
+            m_Participants = new Dictionary<string, VivoxParticipant>();
             m_SpeakerName = container.Q<Label>("vivox-name");
             m_MicrophoneButton = container.Q<Button>("vivox-button");
             m_SpeakerSignal = m_MicrophoneButton.Q<VisualElement>("speaker-signal");
@@ -53,12 +56,12 @@ namespace Unity.MegacityMetro.Gameplay
             }
         }
 
-        private void Start()
+        public void Init()
         {
             if (VivoxManager.Instance != null && VivoxManager.Instance.Channel != null)
             {
-                VivoxManager.Instance.Channel.OnParticipantAddedEvent += OnParticipantAdded;
-                VivoxManager.Instance.Channel.OnParticipantRemovedEvent += OnParticipantRemoved;
+                VivoxManager.Instance.Service.ParticipantAddedToChannel += OnParticipantAdded;
+                VivoxManager.Instance.Service.ParticipantRemovedFromChannel += OnParticipantRemoved;
             }
         }
 
@@ -66,19 +69,23 @@ namespace Unity.MegacityMetro.Gameplay
         {
             if (VivoxManager.Instance != null && VivoxManager.Instance.Channel != null)
             {
-                VivoxManager.Instance.Channel.OnParticipantAddedEvent -= OnParticipantAdded;
-                VivoxManager.Instance.Channel.OnParticipantRemovedEvent -= OnParticipantRemoved;
+                VivoxManager.Instance.Service.ParticipantAddedToChannel -= OnParticipantAdded;
+                VivoxManager.Instance.Service.ParticipantRemovedFromChannel -= OnParticipantRemoved;
             }
         }
 
-        private void OnParticipantAdded(string username, ChannelId channel, IParticipant participant)
+        private void OnParticipantAdded(VivoxParticipant participant)
         {
-            participant.PropertyChanged += OnParticipantOnPropertyChanged;
+            if(!m_Participants.ContainsKey(participant.PlayerId))
+                m_Participants.Add(participant.PlayerId, participant);
+            participant.ParticipantSpeechDetected += ParticipantOnParticipantSpeechDetected;
         }
 
-        private void OnParticipantRemoved(string username, ChannelId channel, IParticipant participant)
+        private void OnParticipantRemoved(VivoxParticipant participant)
         {
-            participant.PropertyChanged -= OnParticipantOnPropertyChanged;
+            if (m_Participants.ContainsKey(participant.PlayerId))
+                m_Participants.Remove(participant.PlayerId);
+            participant.ParticipantSpeechDetected -= ParticipantOnParticipantSpeechDetected;
         }
 
         public void OnMuteToggle()
@@ -86,23 +93,28 @@ namespace Unity.MegacityMetro.Gameplay
             VivoxManager.Instance?.Devices.SetMicrophoneMute(!VivoxManager.Instance.Devices.Muted);
         }
 
-        private void OnParticipantOnPropertyChanged(object obj, PropertyChangedEventArgs args)
+        private void ParticipantOnParticipantSpeechDetected()
         {
-            if (args.PropertyName == "SpeechDetected")
+            foreach(KeyValuePair<string, VivoxParticipant> item in m_Participants)
             {
-                var participant = obj as IParticipant;
+                if (item.Value.SpeechDetected)
+                {
+                    var participant = item.Value;
 
-                if (participant != null && lastParticipant == null && participant.SpeechDetected)
-                {
-                    lastParticipant = participant;
-                    m_SpeakerName.text = participant.Account.DisplayName;
-                    AnimateIcon();
-                }
-                else if (participant != null && lastParticipant == participant && !participant.SpeechDetected)
-                {
-                    lastParticipant = null;
-                    m_SpeakerSignal.style.scale = new StyleScale(new Vector2(1, 0.5f));
-                    m_SpeakerSignal.style.opacity = 0;
+                    if (participant != null && lastParticipant == null && participant.SpeechDetected)
+                    {
+                        lastParticipant = participant;
+                        m_SpeakerName.text = participant.DisplayName;
+                        AnimateIcon();
+                    }
+                    else if (participant != null && lastParticipant == participant && !participant.SpeechDetected)
+                    {
+                        lastParticipant = null;
+                        m_SpeakerSignal.style.scale = new StyleScale(new Vector2(1, 0.5f));
+                        m_SpeakerSignal.style.opacity = 0;
+                    }
+                    
+                    break;
                 }
             }
         }

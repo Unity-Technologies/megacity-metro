@@ -23,7 +23,10 @@ namespace Unity.MegacityMetro.UI
         private Button m_QuitButton;
 
         private bool m_InSettingOptions;
-        private GameInput m_OpenOptionsAction;
+        private GameInput m_GameInput;
+
+        private VisualElement m_Root;
+        private FocusController m_FocusController;
 
         private void Awake()
         {
@@ -40,49 +43,58 @@ namespace Unity.MegacityMetro.UI
 
         private void OnEnable()
         {
-            var root = GetComponent<UIDocument>().rootVisualElement;
-            m_SettingsOptions = root.Q<VisualElement>("settings-options-panel");
-            m_TutorialButton = root.Q<Button>("tutorial-btn");
-            m_SettingButton = root.Q<Button>("settings-btn");
-            m_ResumeButton = root.Q<Button>("back-to-game-btn");
-            m_BackToMenuButton = root.Q<Button>("back-to-menu-btn");
-            m_QuitButton = root.Q<Button>("quit-button");
+            m_Root = GetComponent<UIDocument>().rootVisualElement;
 
-            m_TutorialButton.RegisterCallback<ClickEvent>(_ =>
+            m_FocusController = m_Root.focusController;
+
+            m_SettingsOptions = m_Root.Q<VisualElement>("settings-options-panel");
+
+            m_TutorialButton = m_Root.Q<Button>("tutorial-btn");
+            m_SettingButton = m_Root.Q<Button>("settings-btn");
+            m_ResumeButton = m_Root.Q<Button>("back-to-game-btn");
+            m_BackToMenuButton = m_Root.Q<Button>("back-to-menu-btn");
+            m_QuitButton = m_Root.Q<Button>("quit-button");
+
+            m_TutorialButton.clicked += () =>
             {
                 TutorialScreen.Instance.ShowTutorial();
                 ShowSettingsOptions(false);
-            });
+            };
 
-            m_ResumeButton.RegisterCallback<ClickEvent>(_ => { ShowSettingsOptions(false); });
+            m_ResumeButton.clicked += () => { ShowSettingsOptions(false); };
 
-            m_BackToMenuButton.RegisterCallback<ClickEvent>(_ =>
+            m_BackToMenuButton.clicked += () =>
             {
                 HybridCameraManager.Instance.Reset();
                 DisconnectPlayerAndShowMenu();
-            });
+            };
 
-            m_SettingButton.RegisterCallback<ClickEvent>(_ =>
+            m_SettingButton.clicked += () =>
             {
-                if (!m_UIGameSettings.IsVisible)
-                {
-                    m_UIGameSettings.Show();
-                }
-                else
-                {
-                    m_UIGameSettings.Hide();
-                }
-            });
+                m_SettingsOptions.style.display = DisplayStyle.None;
+                m_UIGameSettings.Show(() => { m_SettingsOptions.style.display = DisplayStyle.Flex; });
+            };
 
-            m_OpenOptionsAction = new GameInput();
-            m_OpenOptionsAction.Enable();
-            m_OpenOptionsAction.UI.Enable();
+            m_GameInput = new GameInput();
+            m_GameInput.UI.Enable();
 
             m_QuitButton.clicked += () =>
             {
+                m_SettingsOptions.style.display = DisplayStyle.None;
                 ModalWindow.Instance.Show("Are you sure you want to quit?", "Confirm", "Cancel",
-                    () => { QuitSystem.WantsToQuit = true; });
+                    OnQuit, OnCancelQuit);
             };
+        }
+
+        private void OnCancelQuit()
+        {
+            m_SettingsOptions.style.display = DisplayStyle.Flex;
+        }
+
+        private void OnQuit()
+        {
+            m_SettingsOptions.style.display = DisplayStyle.Flex;
+            QuitSystem.WantsToQuit = true;
         }
 
         private void DisconnectPlayerAndShowMenu()
@@ -107,14 +119,25 @@ namespace Unity.MegacityMetro.UI
             m_TutorialButton.SetEnabled(true);
 
             if (display)
+            {
                 CursorUtils.ShowCursor();
+                UIEvents.OnPauseOptionsShown?.Invoke(true);
+            }
             else
+            {
                 CursorUtils.HideCursor();
+                UIEvents.OnPauseOptionsShown?.Invoke(false);
+            }
         }
 
         private void Update()
         {
-            if ((m_OpenOptionsAction.UI.OpenOptions.triggered || m_OpenOptionsAction.UI.Back.triggered) &&
+            if (m_FocusController.focusedElement == null && m_InSettingOptions && !m_UIGameSettings.IsVisible)
+            {
+                m_ResumeButton.Focus();
+            }
+
+            if ((m_GameInput.UI.OpenOptions.triggered || m_GameInput.UI.Back.triggered) &&
                 !m_UIGameSettings.IsVisible)
             {
                 ShowSettingsOptions(!m_InSettingOptions);

@@ -8,7 +8,7 @@ namespace Unity.MegacityMetro.UI
     {
         protected abstract GameMode GameMode { get; }
         protected abstract VisualElement m_MenuOptions { get; }
-        protected abstract Button m_AutomaticFocusButton { get; }
+        protected abstract VisualElement m_AutomaticFocusElement { get; }
         // Reference to main menu
         private MainMenu m_MainMenu;
         
@@ -32,7 +32,7 @@ namespace Unity.MegacityMetro.UI
             if (m_MenuOptions.style.display == DisplayStyle.None)
             {
                 m_MenuOptions.style.display = DisplayStyle.Flex;
-                m_AutomaticFocusButton.Focus();
+                m_AutomaticFocusElement.RegisterCallback<GeometryChangedEvent>(_ => m_AutomaticFocusElement.Focus());
             }
             else
             {

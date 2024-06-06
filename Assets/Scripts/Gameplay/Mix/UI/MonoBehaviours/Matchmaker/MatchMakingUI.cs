@@ -9,13 +9,16 @@ namespace Unity.MegacityMetro.UI
     public class MatchMakingUI : MonoBehaviour
     {
         [SerializeField] private MultiplayerServerSettings m_ServerSettings;
-
+        public float ConnectionTimeout => m_ServerSettings.ConnectionTimeout;
+            
         // UI Elements
         private TextField m_MultiplayerTextField;
         private DropdownField m_MultiplayerServerDropdownMenu;
         private Label m_ConnectionStatusLabel;
         private VisualElement m_MatchmakingLoadingBar;
         private VisualElement m_MatchmakingSpinner;
+
+        public string IPValue => m_MultiplayerTextField.value;
 
         public static MatchMakingUI Instance { get; private set; }
 
@@ -42,31 +45,33 @@ namespace Unity.MegacityMetro.UI
             m_MultiplayerServerDropdownMenu = root.Q<DropdownField>("multiplayer-server-location");
             m_MultiplayerServerDropdownMenu.choices = m_ServerSettings.GetUIChoices();
             m_MultiplayerServerDropdownMenu.RegisterValueChangedCallback(OnServerDropDownChanged);
-
-            m_MultiplayerTextField.RegisterValueChangedCallback(newStringEvent =>
-            {
-                UpdatePortAndIP(newStringEvent.newValue);
-            });
         }
 
 
         private void OnServerDropDownChanged(ChangeEvent<string> value)
         {
             m_MultiplayerTextField.value = m_ServerSettings.GetIPByName(value.newValue);
-            UpdatePortAndIP(m_MultiplayerTextField.value);
         }
 
-        private void UpdatePortAndIP(string newStringEvent)
+        public bool TryUpdateIPAndPort(string currentIP, out string ip, out ushort port)
         {
-            var ipSplit = newStringEvent.Split(":");
-            if (ipSplit.Length < 2)
-                return;
+            ip = "";
+            port = 0;
+            if (ServerConnectionUtils.TryParseDomain(currentIP, out var domainIP))
+            {
+                currentIP = $"{domainIP}:{MatchMakingConnector.Instance.Port}";
+            }
 
-            var ip = ipSplit[0];
+            var ipSplit = currentIP.Split(":");
+            if (ipSplit.Length < 2)
+                return false;
+
+            ip = ipSplit[0];
             var portString = ipSplit[1];
-            if (!ushort.TryParse(portString, out var portShort))
-                return;
-            MatchMakingConnector.Instance.SetIPAndPort(ip, portShort);
+            if (!ushort.TryParse(portString, out port))
+                return false;
+
+            return true;
         }
 
         public void UpdateConnectionStatus(string status)
@@ -89,7 +94,6 @@ namespace Unity.MegacityMetro.UI
             m_MultiplayerTextField.style.display = isMatchMaking ? DisplayStyle.None : DisplayStyle.Flex;
             m_MultiplayerServerDropdownMenu.style.display = isMatchMaking ? DisplayStyle.None : DisplayStyle.Flex;
             m_MultiplayerServerDropdownMenu.value = m_MultiplayerServerDropdownMenu.choices[0] ?? "LOCAL";
-            UpdatePortAndIP(m_ServerSettings.GetIPByName(m_MultiplayerServerDropdownMenu.value));
         }
 
         private void AnimateLoadingBar()

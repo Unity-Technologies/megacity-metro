@@ -8,6 +8,7 @@ namespace Unity.MegacityMetro.Gameplay
     /// </summary>
     public struct ControlSettings : IComponentData
     {
+        public float TrackpadSensitivity;
         public float MouseSensitivity;
         public float AimAssistanceSensitivity;
         public float2 AccelerationRange;

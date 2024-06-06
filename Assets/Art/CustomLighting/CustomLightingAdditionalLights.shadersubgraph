@@ -65,7 +65,14 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "3c004662a9674798a4350c80b8e1b923"
+        },
+        {
+            "m_Id": "2a4a9f914c5f4af59bb1813e67717c28"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -291,6 +298,7 @@
     "m_OutputNode": {
         "m_Id": "f60afd3e2b9848c6a7c34ee429cc7a64"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -473,6 +481,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "2a4a9f914c5f4af59bb1813e67717c28",
+    "m_Title": "",
+    "m_Content": "If nothing is connected to the NormalWS port, we default to useing the Normal Vector in World space.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -864.5,
+        "y": -11.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "2b53e0ba123249889a9a7f8c8a0b6d1f",
     "m_Id": 1,
@@ -507,6 +535,26 @@
         "z": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "3c004662a9674798a4350c80b8e1b923",
+    "m_Title": "Additional Lights",
+    "m_Content": "Because Shader Graph doesn't have a way to do loops, we have to calculate the contributions of the additional lights in code. The Custom Function in this subgraph does that calculation.\n\nTake a look at the shader code in Art/CustomLighting/CustomLighting.hlsl to see what it's doing. Notice that even though our main light is doing more complex PBR math, our other lights are doing more simple lighting to save on performance.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -342.5,
+        "y": -387.5,
+        "width": 232.4012451171875,
+        "height": 221.04750061035157
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {

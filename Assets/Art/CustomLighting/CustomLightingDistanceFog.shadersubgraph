@@ -80,7 +80,23 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "9a39f26ad5504933b949643202121867"
+        },
+        {
+            "m_Id": "8b80b566773a4f109b1d5be1b22b0523"
+        },
+        {
+            "m_Id": "46d3c98bee784fbfbfffce16ac9060c3"
+        },
+        {
+            "m_Id": "b3e0b711e6a54212bafc3d675f83da66"
+        },
+        {
+            "m_Id": "b4bbad6cdba6414c9d992151b09ddc4c"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -334,6 +350,7 @@
     "m_OutputNode": {
         "m_Id": "e672b858ca1e42c4b15b7520fd729016"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -629,6 +646,26 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "46d3c98bee784fbfbfffce16ac9060c3",
+    "m_Title": "",
+    "m_Content": "Here, we're converting the range of the fog from the Min and Max distance to a range of zero to one so we can use it as a Lerp mask.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -214.5,
+        "y": -120.5,
+        "width": 160.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -948,6 +985,26 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "8b80b566773a4f109b1d5be1b22b0523",
+    "m_Title": "",
+    "m_Content": "Using the Falloff input, we can control the curve of the fog.  A value of 1 will give us linear fog.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 26.0,
+        "y": 134.0,
+        "width": 132.5,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
     "m_SGVersion": 3,
     "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
     "m_ObjectId": "8e5832a45ffe40cda1c89bdee83a649b",
@@ -1099,6 +1156,26 @@
     },
     "m_Property": {
         "m_Id": "d68584e4595e453baa451a9d4d171252"
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "9a39f26ad5504933b949643202121867",
+    "m_Title": "Distance Fog",
+    "m_Content": "Given an input color and a fog color, this subgraph adds fog to the color based on distance from the camera.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -57.0,
+        "y": -391.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -1273,6 +1350,46 @@
     },
     "m_Property": {
         "m_Id": "8e5832a45ffe40cda1c89bdee83a649b"
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "b3e0b711e6a54212bafc3d675f83da66",
+    "m_Title": "",
+    "m_Content": "This measures how far away the current pixel is from the camera.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -498.5,
+        "y": -92.5,
+        "width": 153.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "b4bbad6cdba6414c9d992151b09ddc4c",
+    "m_Title": "",
+    "m_Content": "Adjusting the opacity parameter to something less than one allows us to make fog that doesn't go all the way to 100% opaque.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 549.0,
+        "y": 102.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 

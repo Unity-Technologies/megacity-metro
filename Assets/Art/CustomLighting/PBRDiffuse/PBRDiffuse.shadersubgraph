@@ -50,7 +50,17 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "d4e2a6693a3944b5bbbfe23898765c89"
+        },
+        {
+            "m_Id": "5d19f07b27644b4bb3dae4b7c08e6314"
+        },
+        {
+            "m_Id": "91a58e9cd67f41ad87fd61efb9340f19"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -234,6 +244,7 @@
     "m_OutputNode": {
         "m_Id": "e221ed40731b42e0b26b49a56ef3aa20"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -454,6 +465,26 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "5d19f07b27644b4bb3dae4b7c08e6314",
+    "m_Title": "",
+    "m_Content": "If the light vector node isn't connected, we use the main light direction.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -983.0,
+        "y": 442.0,
+        "width": 141.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector3ShaderProperty",
     "m_ObjectId": "68a7999ae9ea4bfba3702fd95b0d1a14",
@@ -636,6 +667,26 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "91a58e9cd67f41ad87fd61efb9340f19",
+    "m_Title": "",
+    "m_Content": "Dot product between the surface normal and the light vector gives you 1 if the surface is facing the light, 0 if it's perpendicular, and -1 if it's facing away.  This is used for diffuse lighting.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -523.5,
+        "y": 87.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -1021,6 +1072,26 @@
             "m_Id": "a12354c78b694cc6b2bdddd67d09ccdc"
         }
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "d4e2a6693a3944b5bbbfe23898765c89",
+    "m_Title": "",
+    "m_Content": "If nothing is connected to the NormalWS port, we default to useing the Normal Vector in World space.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1037.0,
+        "y": 68.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {

@@ -16,15 +16,8 @@ namespace Unity.MegacityMetro
         {
             state.RequireForUpdate<PlayerSpawner>();
 
-            // Niki.Walker: Client-side optimizations:
-            var ghostSendSystemData = new GhostSendSystemData
-            {
-                MinSendImportance = 2
-            };
-
-            // Don't frequently resend the same bot vehicles.
-            //ghostSendSystemData.FirstSendImportanceMultiplier = 100; // Significantly bias towards sending new ghosts.
-            // Disabled as it ruins the start of the game.
+            // Client-side optimizations:
+            var ghostSendSystemData = new GhostSendSystemData {MinSendImportance = 2};
             state.EntityManager.CreateSingleton(ghostSendSystemData);
             
             RateSettings.ApplyFrameRate();
@@ -32,14 +25,16 @@ namespace Unity.MegacityMetro
 
         public void OnUpdate(ref SystemState state)
         {
-            if (!m_HasRegisteredSmoothingAction && SystemAPI.TryGetSingletonRW<GhostPredictionSmoothing>(out var ghostPredictionSmoothing))
+            if (!m_HasRegisteredSmoothingAction &&
+                SystemAPI.TryGetSingletonRW<GhostPredictionSmoothing>(out var ghostPredictionSmoothing))
             {
                 m_HasRegisteredSmoothingAction = true;
-                ghostPredictionSmoothing.ValueRW.RegisterSmoothingAction<LocalTransform>(state.EntityManager, MegacityMetroSmoothingAction.Action);
+                ghostPredictionSmoothing.ValueRW.RegisterSmoothingAction<LocalTransform>(state.EntityManager,
+                    MegacityMetroSmoothingAction.Action);
             }
 
             var cmdBuffer = new EntityCommandBuffer(Allocator.Temp);
-            foreach (var (netId, entity) in SystemAPI.Query<RefRO<NetworkId>>().WithNone<NetworkStreamInGame>()
+            foreach (var (_, entity) in SystemAPI.Query<RefRO<NetworkId>>().WithNone<NetworkStreamInGame>()
                          .WithEntityAccess())
             {
                 cmdBuffer.AddComponent<NetworkStreamInGame>(entity);

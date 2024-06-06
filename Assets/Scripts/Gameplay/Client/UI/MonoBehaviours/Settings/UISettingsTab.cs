@@ -18,7 +18,7 @@ namespace Unity.MegacityMetro.UI
         public abstract string TabName { get; }
         private Dictionary<SliderInt, int> m_CurrentSliderData = new();
         private Dictionary<CustomToggle, bool> m_CurrentToggleData = new();
-        private Dictionary<DropdownField, string> m_CurrentDropdownFieldData = new();
+        private Dictionary<CustomSelector, string> m_CurrentSelectorFieldData = new();
 
         public void Show()
         {
@@ -38,7 +38,7 @@ namespace Unity.MegacityMetro.UI
         {
             SaveCurrentState();
         }
-
+        
         protected virtual void SaveCurrentState()
         {
         }
@@ -77,17 +77,17 @@ namespace Unity.MegacityMetro.UI
                 toggle.value = value;
             }
         }
-
-        protected void UpdateCurrentDropdownFieldState(DropdownField dropdownField)
+        
+        protected void UpdateCurrentSelectorFieldState(CustomSelector selectorField)
         {
-            m_CurrentDropdownFieldData[dropdownField] = dropdownField.value;
+            m_CurrentSelectorFieldData[selectorField] = selectorField.value;
         }
 
-        protected void ResetCurrentDropdownFieldState(DropdownField dropdownField)
+        protected void ResetCurrentSelectorFieldState(CustomSelector selectorField)
         {
-            if (m_CurrentDropdownFieldData.TryGetValue(dropdownField, out var value))
+            if (m_CurrentSelectorFieldData.TryGetValue(selectorField, out var value))
             {
-                dropdownField.value = value;
+                selectorField.value = value;
             }
         }
     }

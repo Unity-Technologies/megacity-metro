@@ -1,6 +1,6 @@
 * {
-    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals.ttf?fileID=12800000&guid=3e9654e5beda26e43ac5f6732d909200&type=3#Alatsi-Regular-Capitals');
-    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals%20SDF.asset?fileID=11400000&guid=330b769f993d4f540a53504f2163e303&type=2#Alatsi-Regular-Capitals SDF');
+    -unity-font: url("project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals.ttf?fileID=12800000&guid=3e9654e5beda26e43ac5f6732d909200&type=3#Alatsi-Regular-Capitals");
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals%20SDF.asset?fileID=11400000&guid=330b769f993d4f540a53504f2163e303&type=2#Alatsi-Regular-Capitals SDF");
 }
 
 .full-screen-container {
@@ -23,7 +23,7 @@
     -unity-text-outline-color: rgb(184, 100, 70);
     -unity-text-outline-width: 1px;
     text-shadow: 0 0 10px rgb(220, 93, 50);
-    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=2033638185206719016&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#white-glow');
+    background-image: url("project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=2033638185206719016&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#white-glow");
     -unity-background-image-tint-color: rgba(220, 93, 50, 0.5);
     -unity-background-scale-mode: stretch-to-fill;
     margin: 0;
@@ -38,6 +38,18 @@
     -unity-text-outline-color: rgb(214, 151, 26);
     -unity-text-outline-width: 1px;
     -unity-background-image-tint-color: rgba(236, 210, 157, 0.5);
+}
+
+.menu-button:focus {
+    color: rgb(236, 210, 157);
+    -unity-text-outline-color: rgb(214, 151, 26);
+    -unity-text-outline-width: 1px;
+    -unity-background-image-tint-color: rgba(236, 210, 157, 0.5);
+}
+
+.tab-button {
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .menu-button-active {
@@ -91,7 +103,7 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=1497434681858883284&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#menu-glow-panel');
+    background-image: url("project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=1497434681858883284&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#menu-glow-panel");
     padding: 25px;
 }
 
@@ -121,6 +133,11 @@
     height: 75px;
 }
 
+.custom-dropdown:focus {
+    border-color: rgb(249, 175, 149);
+    background-color: rgba(249, 175, 149, 0.04);
+}
+
 .custom-dropdown .unity-label {
     color: rgb(249, 175, 149);
     font-size: 24px;
@@ -147,7 +164,7 @@
 
 .custom-dropdown .unity-base-popup-field__arrow {
     color: rgb(236, 210, 157);
-    background-image: url('project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-2534016680398206655&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#dropdown-arrow');
+    background-image: url("project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-2534016680398206655&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#dropdown-arrow");
     -unity-background-scale-mode: scale-to-fit;
     -unity-background-image-tint-color: rgb(255, 255, 255);
     margin: 5px;
@@ -160,6 +177,11 @@
     padding: 10px;
     margin: 5px;
     height: 75px;
+}
+
+.custom-text-field:focus {
+    border-color: rgb(249, 175, 149);
+    background-color: rgba(249, 175, 149, 0.04);
 }
 
 .custom-text-field .unity-base-text-field__input {
@@ -191,6 +213,11 @@
     flex-direction: column;
     padding: 0;
     justify-content: center;
+}
+
+.custom-slider:focus {
+    border-color: rgb(249, 175, 149);
+    background-color: rgba(249, 175, 149, 0.04);
 }
 
 .custom-slider .unity-label {
@@ -256,7 +283,7 @@
 
 .custom-slider #unity-text-input .unity-text-element {
     color: rgb(249, 175, 149);
-    font-size: 24px;
+    font-size: 20px;
     -unity-text-align: middle-right;
 }
 
@@ -280,24 +307,30 @@
     height: 75px;
 }
 
+.custom-toggle:focus {
+    border-color: rgb(249, 175, 149);
+    background-color: rgba(249, 175, 149, 0.04);
+}
+
 .custom-toggle__input {
     flex-direction: row;
     justify-content: flex-end;
 }
 
 .custom-toggle .unity-label {
-    -unity-font-definition: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals%20SDF.asset?fileID=11400000&guid=330b769f993d4f540a53504f2163e303&type=2#Alatsi-Regular-Capitals SDF');
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals%20SDF.asset?fileID=11400000&guid=330b769f993d4f540a53504f2163e303&type=2#Alatsi-Regular-Capitals SDF");
     font-size: 24px;
     margin: 5px;
     padding: 0;
     color: rgb(249, 175, 149);
     flex-wrap: wrap;
     -unity-text-align: middle-left;
-    -unity-font: url('project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals.ttf?fileID=12800000&guid=3e9654e5beda26e43ac5f6732d909200&type=3#Alatsi-Regular-Capitals');
+    -unity-font: url("project://database/Assets/UI/Fonts/Alatsi/Alatsi-Regular-Capitals.ttf?fileID=12800000&guid=3e9654e5beda26e43ac5f6732d909200&type=3#Alatsi-Regular-Capitals");
 }
 
 .custom-toggle .custom-toggle__input-option {
     color: rgba(249, 175, 149, 0.15);
+    font-size: 20px;
 }
 
 .custom-toggle .custom-toggle__input-option--checked {
@@ -305,4 +338,76 @@
 }
 
 .custom-toggle .unity-base-field__label {
+}
+
+.custom-selector {
+    border-color: rgba(255, 161, 129, 0.5);
+    border-width: 2px;
+    border-radius: 5px;
+    margin: 5px;
+    height: 75px;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-between;
+}
+
+.custom-selector:focus {
+    border-color: rgb(249, 175, 149);
+    background-color: rgba(249, 175, 149, 0.04);
+}
+
+.custom-selector .unity-label {
+    color: rgb(249, 175, 149);
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    -unity-text-align: middle-left;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.custom-selector__container {
+    flex-direction: row;
+    align-items: center;
+    width: 55%;
+}
+
+.custom-selector .unity-base-field__input {
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-selector__text {
+    color: rgb(249, 175, 149);
+    font-size: 20px;
+    -unity-text-align: middle-right;
+}
+
+.custom-selector__arrow-button {
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-selector__left-arrow {
+    background-image: url("project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-2534016680398206655&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#dropdown-arrow");
+    width: 10px;
+    height: 10px;
+    -unity-background-scale-mode: scale-to-fit;
+    rotate: 90deg;
+}
+
+.custom-selector__right-arrow {
+    background-image: url("project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=-2534016680398206655&guid=bb39bc9e67f968a4dbee2305280d3d1d&type=3#dropdown-arrow");
+    width: 10px;
+    height: 10px;
+    -unity-background-scale-mode: scale-to-fit;
+    rotate: -90deg;
+}
+
+.custom-selector__arrow-disabled {
+    opacity: 0.1;
 }

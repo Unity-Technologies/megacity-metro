@@ -2,6 +2,7 @@
 using Unity.Mathematics;
 using Unity.MegacityMetro.CameraManagement;
 using UnityEngine.UIElements;
+using System.Runtime.InteropServices;
 #if UNITY_ANDROID || UNITY_IPHONE || ENABLED_VIRTUAL_JOYSTICK
 using UnityEngine;
 using Unity.MegacityMetro.UI;
@@ -21,16 +22,20 @@ namespace Unity.MegacityMetro.Gameplay
     {
         private GameInput m_GameInput;
 
+        private bool IsTrackpadTouched => PluginLoader.TouchesCount() > 0;
+
         protected override void OnCreate()
         {
             base.OnCreate();
             RequireForUpdate<ControlSettings>();
+            PluginLoader.LoadPlugin();
         }
 
         protected override void OnStopRunning()
         {
             base.OnStopRunning();
             m_GameInput?.Disable();
+            PluginLoader.UnloadPlugin();
         }
 
         protected override void OnUpdate()
@@ -78,7 +83,9 @@ namespace Unity.MegacityMetro.Gameplay
                         x = -gameplayInputActions.LookDelta.ReadValue<Vector2>().y * invertVertical,
                         y = gameplayInputActions.LookDelta.ReadValue<Vector2>().x * invertHorizontal,
                     };
-                    lookInput *= controlSettings.MouseSensitivity;
+
+                    float sensitivity = IsTrackpadTouched ? controlSettings.TrackpadSensitivity : 1.0f;
+                    lookInput *= controlSettings.MouseSensitivity * sensitivity;
                     lookInput /= deltaTime; // convert delta displacement this frame to a velocity
                 }
             }

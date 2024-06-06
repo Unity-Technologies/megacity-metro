@@ -40,8 +40,6 @@ namespace Unity.MegacityMetro.Gameplay
 
                 state.EntityManager.AddComponent<PlayerVehicleInput>(inputEntity);
                 state.EntityManager.AddComponent<InputBufferData<PlayerVehicleInput>>(inputEntity);
-
-                return; // Return as the EntityManager has now had a structural change, invalidating `commandTargetRw`.
             }
         }
     }

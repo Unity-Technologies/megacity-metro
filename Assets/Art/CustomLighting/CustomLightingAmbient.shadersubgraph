@@ -255,6 +255,24 @@
     "m_StickyNoteDatas": [
         {
             "m_Id": "95e0f11b7f304335a8f9eb003b0c2c7c"
+        },
+        {
+            "m_Id": "a233cb289acd4c608c9e669a635bf85f"
+        },
+        {
+            "m_Id": "b7cc9c8af9f04d259421f5b0ab48e710"
+        },
+        {
+            "m_Id": "a0f4d689f9954e70b1c8dced1f963da4"
+        },
+        {
+            "m_Id": "bf48d599adcf4ec5a57b6d47367b14a5"
+        },
+        {
+            "m_Id": "316f8420065048a6942ffbb4d2c81c16"
+        },
+        {
+            "m_Id": "31de9abe169041bbbf245611b74fb848"
         }
     ],
     "m_Edges": [
@@ -1308,6 +1326,7 @@
     "m_OutputNode": {
         "m_Id": "6ac502bfbe214ceb8785530bd00ace8f"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -1670,10 +1689,10 @@
         "m_Expanded": false,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -458.5000915527344,
-            "y": 1057.5,
-            "width": 125.50003051757813,
-            "height": 118.0001220703125
+            "x": -452.9999694824219,
+            "y": 976.0,
+            "width": 125.49993896484375,
+            "height": 118.0
         }
     },
     "m_Slots": [
@@ -2070,10 +2089,10 @@
         "m_Expanded": false,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -709.0,
-            "y": 1058.5001220703125,
-            "width": 118.9998779296875,
-            "height": 76.9998779296875
+            "x": -703.4999389648438,
+            "y": 977.0,
+            "width": 119.0,
+            "height": 77.0
         }
     },
     "m_Slots": [
@@ -2235,9 +2254,9 @@
         "m_Expanded": false,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -590.0001220703125,
-            "y": 1058.5001220703125,
-            "width": 125.50009155273438,
+            "x": -584.4999389648438,
+            "y": 977.0,
+            "width": 125.49993896484375,
             "height": 94.0
         }
     },
@@ -2931,10 +2950,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -333.0000305175781,
-            "y": 1057.5001220703125,
-            "width": 127.50004577636719,
-            "height": 93.9998779296875
+            "x": -327.5000305175781,
+            "y": 976.0,
+            "width": 127.50003051757813,
+            "height": 94.0
         }
     },
     "m_Slots": [
@@ -2979,6 +2998,46 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "316f8420065048a6942ffbb4d2c81c16",
+    "m_Title": "",
+    "m_Content": "We sample the reflection probe to get the specular ambient. For rough objects, we sample a lower mip value.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -612.0,
+        "y": 1503.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": "56b0fc0ff4cc4dea89c4c33f6fdab97d"
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "31de9abe169041bbbf245611b74fb848",
+    "m_Title": "",
+    "m_Content": "For metals, the reflectance value is the base color.  For non-metals, we compute the reflectance with a Fresnel term. The Reflectance value is only used for non-metal surfaces.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -656.0,
+        "y": 1153.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": "56b0fc0ff4cc4dea89c4c33f6fdab97d"
     }
 }
 
@@ -5085,10 +5144,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -864.5000610351563,
-            "y": 1058.5001220703125,
+            "x": -859.0,
+            "y": 977.0,
             "width": 159.5,
-            "height": 117.9998779296875
+            "height": 118.0
         }
     },
     "m_Slots": [
@@ -5218,10 +5277,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -563.5000610351563,
-            "y": 1453.0,
-            "width": 126.00006103515625,
-            "height": 142.0001220703125
+            "x": -764.5000610351563,
+            "y": 1442.0,
+            "width": 126.0,
+            "height": 142.0
         }
     },
     "m_Slots": [
@@ -5636,10 +5695,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -198.50003051757813,
-            "y": 1058.5001220703125,
-            "width": 127.50006103515625,
-            "height": 93.9998779296875
+            "x": -193.00003051757813,
+            "y": 977.0,
+            "width": 127.50003814697266,
+            "height": 94.0
         }
     },
     "m_Slots": [
@@ -5924,14 +5983,14 @@
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "95e0f11b7f304335a8f9eb003b0c2c7c",
     "m_Title": "",
-    "m_Content": "A mask to darken the lower hemisphere of the reflection ",
+    "m_Content": "A mask to darken the lower hemisphere of the reflection. As you can see, we ended up not using this. ",
     "m_TextSize": 0,
     "m_Theme": 0,
     "m_Position": {
         "serializedVersion": "2",
-        "x": -264.0000305175781,
-        "y": 985.0001220703125,
-        "width": 200.00003051757813,
+        "x": -258.5,
+        "y": 903.5,
+        "width": 200.0,
         "height": 100.0
     },
     "m_Group": {
@@ -6167,6 +6226,46 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "a0f4d689f9954e70b1c8dced1f963da4",
+    "m_Title": "",
+    "m_Content": "If the surface is metallic, we use 0 for the diffuse color and instead use the specular value for ambient.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 20.0,
+        "y": 345.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "a233cb289acd4c608c9e669a635bf85f",
+    "m_Title": "Position-based Ambient Color",
+    "m_Content": "This is a method for varying the ambient color of the buildings depending on their location in the world. This method was developed in early prototypes for getting variation in hue and brightness of the buildings to create variety.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -889.0,
+        "y": -575.0,
+        "width": 311.0,
+        "height": 107.5
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -6602,6 +6701,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "b7cc9c8af9f04d259421f5b0ab48e710",
+    "m_Title": "",
+    "m_Content": "Blend between the ambient color values based on the direction the object is facing using the TriplanarDirectionMasks.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -531.0,
+        "y": 582.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SubGraphNode",
     "m_ObjectId": "b87895be14ca4a5d9f5c2aa30ee747ef",
     "m_Group": {
@@ -6851,6 +6970,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "bf48d599adcf4ec5a57b6d47367b14a5",
+    "m_Title": "",
+    "m_Content": "If nothing is connected to the NormalWS port, we default to useing the Normal Vector in World space.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1247.0,
+        "y": 590.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "c0eec179621540628c16d06238322170",
     "m_Id": 2,
@@ -6970,7 +7109,7 @@
             "m_Id": "5604fbda7cb6456caf7fb1a2ef6625a6"
         },
         {
-            "m_Id": "d408f2ccccbe41bdb5e6bd50c9cd098e"
+            "m_Id": "9befe06ce5af4f37ab0b723fc0a7164f"
         },
         {
             "m_Id": "2629e784b7eb46d5831ef1ac56e36e34"
@@ -6982,10 +7121,10 @@
             "m_Id": "af2f77864c4c4f9bbc66ec3a57a1a864"
         },
         {
-            "m_Id": "9befe06ce5af4f37ab0b723fc0a7164f"
+            "m_Id": "8ae7ec57bf8246e9b62dc14e00b1fc4a"
         },
         {
-            "m_Id": "8ae7ec57bf8246e9b62dc14e00b1fc4a"
+            "m_Id": "d408f2ccccbe41bdb5e6bd50c9cd098e"
         }
     ]
 }

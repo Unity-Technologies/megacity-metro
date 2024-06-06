@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Unity.Mathematics;
+﻿using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,7 +15,6 @@ namespace Unity.MegacityMetro.UI
 
         private VisualElement m_LoadingScreen;
         private ProgressBar m_ProgressBar;
-        private bool m_InTransition;
 
         private void Awake()
         {
@@ -54,17 +52,7 @@ namespace Unity.MegacityMetro.UI
 
         public void Hide()
         {
-            if (m_InTransition)
-                return;
-            StartCoroutine(DelayedHide());
-        }
-
-        private IEnumerator DelayedHide()
-        {
-            m_InTransition = true;
-            yield return new WaitForSeconds(1.5f);
             m_LoadingScreen.style.display = DisplayStyle.None;
-            m_InTransition = false;
             IsVisible = false;
         }
     }

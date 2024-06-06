@@ -25,10 +25,10 @@ namespace Unity.MegacityMetro.UI
         private CustomToggle m_PostProcessingValue;
         private CustomToggle m_VerticalSyncValue;
 
-        private DropdownField m_QualityValue;
-        private DropdownField m_ScreenModeValue;
-        private DropdownField m_ScreenResolution;
-        private DropdownField m_TextureDetailsValue;
+        private CustomSelector m_QualityValue;
+        private CustomSelector m_ScreenModeValue;
+        private CustomSelector m_ScreenResolution;
+        private CustomSelector m_TextureDetailsValue;
 
         public override string TabName => "graphics-settings";
         private bool m_CanSetAsCustom = true;
@@ -45,22 +45,19 @@ namespace Unity.MegacityMetro.UI
             var root = GetComponent<UIDocument>().rootVisualElement;
             m_PostProcessingValue = root.Q<CustomToggle>("postprocessing");
             m_VerticalSyncValue = root.Q<CustomToggle>("vertical-sync");
-            m_QualityValue = root.Q<DropdownField>("quality-settings");
-            m_ScreenResolution = root.Q<DropdownField>("screen-resolution");
-            m_ScreenModeValue = root.Q<DropdownField>("screen-mode");
-            m_TextureDetailsValue = root.Q<DropdownField>("texture-details");
+            m_QualityValue = root.Q<CustomSelector>("quality-settings");
+            m_ScreenResolution = root.Q<CustomSelector>("screen-resolution");
+            m_ScreenModeValue = root.Q<CustomSelector>("screen-mode");
+            m_TextureDetailsValue = root.Q<CustomSelector>("texture-details");
 
             m_ScreenModeValue.choices = ResolutionScreen.GetResolutionModes();
             m_ScreenResolution.choices = ResolutionScreen.GetResolutionOptions();
-            m_ScreenResolution.RegisterValueChangedCallback(OnScreenResolutionChanged);
             m_PostProcessingValue.RegisterValueChangedCallback(OnPostprocessingChanged);
             m_VerticalSyncValue.RegisterValueChangedCallback(OnVsyncChanged);
-
             m_QualityValue.RegisterValueChangedCallback(OnGraphicsQualityChanged);
-            m_ScreenModeValue.RegisterValueChangedCallback(OnScreenModeChanged);
             m_TextureDetailsValue.RegisterValueChangedCallback(OnTextureDetailsChanged);
-
-            switch (QualitySettings.GetQualityLevel())
+            
+             switch (QualitySettings.GetQualityLevel())
             {
                 case 0:
                     m_QualityValue.value = m_QualityValue.choices[0];
@@ -77,8 +74,10 @@ namespace Unity.MegacityMetro.UI
             }
 
             CheckSavedData();
+            
+            m_QualityValue.RegisterCallback<GeometryChangedEvent>(_ => m_QualityValue.Focus());
         }
-
+        
         private void CheckSavedData()
         {
             var graphicsSettingsData = PersistentDataManager.Instance.GetGraphicsSettings();
@@ -88,7 +87,9 @@ namespace Unity.MegacityMetro.UI
             m_ScreenResolution.value = m_ScreenResolution.choices[graphicsSettingsData.ScreenResolutionIndex];
             m_TextureDetailsValue.value = m_TextureDetailsValue.choices[graphicsSettingsData.TextureDetailIndex];
             m_PostProcessingValue.value = graphicsSettingsData.PostProcessingEnabled;
+#if !(UNITY_ANDROID || UNITY_IPHONE)
             m_VerticalSyncValue.value = graphicsSettingsData.VSyncEnabled;
+#endif
 
             // Force set initial values
             QualitySettings.vSyncCount = m_VerticalSyncValue.value ? 1 : 0;
@@ -98,22 +99,20 @@ namespace Unity.MegacityMetro.UI
             ResolutionScreen.SetResolution(m_ScreenResolution.value.ToLower());
         }
 
-        private void OnScreenResolutionChanged(ChangeEvent<string> value)
-        {
-#if !(UNITY_ANDROID || UNITY_IPHONE)
-            ResolutionScreen.SetResolution(value.newValue.ToLower());
-#endif
-        }
-
         protected override void SaveCurrentState()
         {
             base.SaveCurrentState();
 
             UpdateCurrentToggleState(m_PostProcessingValue);
             UpdateCurrentToggleState(m_VerticalSyncValue);
-            UpdateCurrentDropdownFieldState(m_QualityValue);
-            UpdateCurrentDropdownFieldState(m_ScreenModeValue);
-            UpdateCurrentDropdownFieldState(m_TextureDetailsValue);
+            UpdateCurrentSelectorFieldState(m_QualityValue);
+            UpdateCurrentSelectorFieldState(m_ScreenModeValue);
+            UpdateCurrentSelectorFieldState(m_TextureDetailsValue);
+            
+#if !(UNITY_ANDROID || UNITY_IPHONE)
+            ResolutionScreen.SetResolution(m_ScreenResolution.value.ToLower());
+            ResolutionScreen.SetScreenMode(m_ScreenModeValue.value.ToLower());
+#endif
 
             SaveData();
         }
@@ -139,16 +138,18 @@ namespace Unity.MegacityMetro.UI
 
             ResetCurrentToggleState(m_PostProcessingValue);
             ResetCurrentToggleState(m_VerticalSyncValue);
-            ResetCurrentDropdownFieldState(m_QualityValue);
-            ResetCurrentDropdownFieldState(m_ScreenModeValue);
-            ResetCurrentDropdownFieldState(m_TextureDetailsValue);
+            ResetCurrentSelectorFieldState(m_QualityValue);
+            ResetCurrentSelectorFieldState(m_ScreenModeValue);
+            ResetCurrentSelectorFieldState(m_TextureDetailsValue);
         }
 
         private void OnHighButtonOnClicked()
         {
             m_CanSetAsCustom = false;
             QualitySettings.SetQualityLevel(2);
+#if !(UNITY_ANDROID || UNITY_IPHONE)
             m_VerticalSyncValue.value = true;
+#endif
             m_PostProcessingValue.value = true;
             m_TextureDetailsValue.value = "High";
         }
@@ -157,7 +158,9 @@ namespace Unity.MegacityMetro.UI
         {
             m_CanSetAsCustom = false;
             QualitySettings.SetQualityLevel(1);
+#if !(UNITY_ANDROID || UNITY_IPHONE)
             m_VerticalSyncValue.value = false;
+#endif
             m_PostProcessingValue.value = true;
             m_TextureDetailsValue.value = "Medium";
         }
@@ -166,7 +169,9 @@ namespace Unity.MegacityMetro.UI
         {
             m_CanSetAsCustom = false;
             QualitySettings.SetQualityLevel(0);
+#if !(UNITY_ANDROID || UNITY_IPHONE)
             m_VerticalSyncValue.value = false;
+#endif
             m_PostProcessingValue.value = false;
             m_TextureDetailsValue.value = "Low";
         }

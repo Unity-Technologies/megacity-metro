@@ -64,10 +64,10 @@ namespace Unity.MegacityMetro
                     Debug.Log($"Detected auto-connection preference in 'Multiplayer PlayMode Tool' targeting '{editorSpecifiedEndpoint}' (Port: '{AutoConnectPort}')!");
                 }
             }
-#endif
+#else
             if (TryCreateThinClientsIfRequested())
                 return true;
-            
+#endif            
             ServerConnectionUtils.CreateDefaultWorld();
             return true;
 #endif

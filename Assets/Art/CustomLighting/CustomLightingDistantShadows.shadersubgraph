@@ -146,6 +146,18 @@
         },
         {
             "m_Id": "805a97ea69904099822abe56b045e977"
+        },
+        {
+            "m_Id": "0af5801586dc4067895fd984a9d2a1db"
+        },
+        {
+            "m_Id": "9bd45174518f4ba786eb8b23574e03bd"
+        },
+        {
+            "m_Id": "09623016f8dc4b58a83f4b98b8bb83ba"
+        },
+        {
+            "m_Id": "c087826619b54da38abcae9ad5455dc3"
         }
     ],
     "m_Edges": [
@@ -871,6 +883,46 @@
     "m_Value": -910.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "09623016f8dc4b58a83f4b98b8bb83ba",
+    "m_Title": "Distant Shadows",
+    "m_Content": "Using this distant shadows solution means that we can use our higher quality shadows close to the player and then fall back to these cheaper shadows at a distance. It's cheaper and allows the player to see shadows for the entire view distance.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1529.511474609375,
+        "y": -293.6662292480469,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "0af5801586dc4067895fd984a9d2a1db",
+    "m_Title": "",
+    "m_Content": "Sample the custom baked distant light depth map.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1020.5,
+        "y": 816.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -1767,7 +1819,7 @@
         "tex2d"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -3148,6 +3200,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "9bd45174518f4ba786eb8b23574e03bd",
+    "m_Title": "",
+    "m_Content": "This section is creating the texture projection for the custom light depth map.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -2074.0,
+        "y": 923.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "9ca8abe2b0884b0c9dbaca26e7cf1acf",
     "m_Id": 1,
@@ -3595,7 +3667,7 @@
         "else"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -3743,6 +3815,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "c087826619b54da38abcae9ad5455dc3",
+    "m_Title": "",
+    "m_Content": "Creates a mask that turns off the distant shadows when the player is close enough to see the higher quality shadows.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -655.5,
+        "y": 1393.0,
+        "width": 200.0,
+        "height": 62.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "c1be09c8020d4a6b8f4ac5b35d4f4d80",
     "m_Group": {
@@ -3880,7 +3972,7 @@
     },
     "m_Name": "Split",
     "m_DrawState": {
-        "m_Expanded": true,
+        "m_Expanded": false,
         "m_Position": {
             "serializedVersion": "2",
             "x": -1703.9998779296875,

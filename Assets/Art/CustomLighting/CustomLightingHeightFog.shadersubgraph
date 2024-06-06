@@ -80,7 +80,23 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "b1d5206601164d27b8112e921c1a6f06"
+        },
+        {
+            "m_Id": "857568ea556e43958db53b190eb1f1c3"
+        },
+        {
+            "m_Id": "4cbb48e385814fed82fba5662c64a83a"
+        },
+        {
+            "m_Id": "d3a3cb246be54383ad3d963de00e421f"
+        },
+        {
+            "m_Id": "f82df879389448f9a83b4fa83c4f220d"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -334,6 +350,7 @@
     "m_OutputNode": {
         "m_Id": "e672b858ca1e42c4b15b7520fd729016"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -766,6 +783,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "4cbb48e385814fed82fba5662c64a83a",
+    "m_Title": "",
+    "m_Content": "Using the Falloff input, we can control the curve of the fog.  A value of 1 will give us linear fog.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 26.5,
+        "y": 134.5,
+        "width": 132.5,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "5397f551ee8543a0a0666e7422c59812",
     "m_Id": 1,
@@ -1110,6 +1147,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "857568ea556e43958db53b190eb1f1c3",
+    "m_Title": "",
+    "m_Content": "Here, we're converting the range of the fog from the Min and Max distance to a range of zero to one so we can use it as a Lerp mask.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -214.0,
+        "y": -120.0,
+        "width": 160.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "8fc83f1275e547b4a7edf08ba5fd0493",
     "m_Id": 2,
@@ -1350,6 +1407,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "b1d5206601164d27b8112e921c1a6f06",
+    "m_Title": "Height Fog",
+    "m_Content": "This subgraph is very similar to the Distance Fog, except we're using world height for our distance instead of distance from the camera.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -68.5,
+        "y": -364.5,
+        "width": 200.0,
+        "height": 105.5
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SplitNode",
     "m_ObjectId": "bc5f1226011c4d88b3c293cfc8df41b7",
     "m_Group": {
@@ -1463,6 +1540,26 @@
             "m_Id": "10129054e6864092a86f51508c3ed133"
         }
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "d3a3cb246be54383ad3d963de00e421f",
+    "m_Title": "",
+    "m_Content": "This is our world height in meters.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -485.0,
+        "y": -91.5,
+        "width": 153.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -1899,6 +1996,26 @@
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "f82df879389448f9a83b4fa83c4f220d",
+    "m_Title": "",
+    "m_Content": "Adjusting the opacity parameter to something less than one allows us to make fog that doesn't go all the way to 100% opaque.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 566.5,
+        "y": 115.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 

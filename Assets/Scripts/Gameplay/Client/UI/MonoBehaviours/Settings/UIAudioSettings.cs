@@ -27,7 +27,7 @@ namespace Unity.MegacityMetro.UI
         private float m_CachedMediaVolume = float.MaxValue;
 
         private const float k_MinVolume = 0.01f;
-
+        
         public override string TabName => "audio-settings";
 
         private void Start()
@@ -44,13 +44,11 @@ namespace Unity.MegacityMetro.UI
             m_MusicSlider.value = (int) (audioSettingsData.MusicVolume * 100f);
             m_VivoxVolumeSlider.value = (int) (audioSettingsData.VivoxSpeakerVolume * 100f);
             m_VivoxMicrophoneSlider.value = (int) (audioSettingsData.VivoxMicrophoneVolume * 100f);
-
+            
             // Initialize the AudioMixer with the saved data
             SetMasterVolume(Mathf.Log10((m_VolumeSlider.value + k_MinVolume) / 100f) * 20f + m_MaxVolume);
-            AudioMaster.Instance.soundFX.audioMixer.SetFloat("sound-fx",
-                Mathf.Log10((m_SoundFXSlider.value + k_MinVolume) / 100f) * 20 + m_MaxSoundFX);
-            AudioMaster.Instance.music.audioMixer.SetFloat("music",
-                Mathf.Log10((m_MusicSlider.value + k_MinVolume) / 100f) * 20 + m_MaxMusic);
+            AudioMaster.Instance.soundFX.audioMixer.SetFloat("sound-fx", Mathf.Log10((m_SoundFXSlider.value + k_MinVolume) / 100f) * 20 + m_MaxSoundFX);
+            AudioMaster.Instance.music.audioMixer.SetFloat("music", Mathf.Log10((m_MusicSlider.value + k_MinVolume) / 100f) * 20 + m_MaxMusic);
             SetSpeakerVolume(m_VivoxVolumeSlider.value);
             SetMicrophoneVolume(m_VivoxMicrophoneSlider.value);
         }
@@ -83,15 +81,15 @@ namespace Unity.MegacityMetro.UI
             if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64 &&
                 Application.platform == RuntimePlatform.OSXPlayer)
             {
-                m_VivoxVolumeSlider.style.display =
-                    VivoxManager.Instance == null ? DisplayStyle.None : DisplayStyle.Flex;
-                m_VivoxMicrophoneSlider.style.display =
-                    VivoxManager.Instance == null ? DisplayStyle.None : DisplayStyle.Flex;
+                m_VivoxVolumeSlider.style.display = VivoxManager.Instance == null? DisplayStyle.None: DisplayStyle.Flex;
+                m_VivoxMicrophoneSlider.style.display = VivoxManager.Instance == null? DisplayStyle.None: DisplayStyle.Flex;
             }
-
+            
             CheckSavedData();
+            
+            m_VolumeSlider.RegisterCallback<GeometryChangedEvent>(_ => m_VolumeSlider.Focus());
         }
-
+        
         protected override void SaveCurrentState()
         {
             base.SaveCurrentState();
@@ -126,16 +124,16 @@ namespace Unity.MegacityMetro.UI
                 m_MusicSlider.UnregisterValueChangedCallback(OnMusicUpdated);
             }
         }
-
+        
         private void OnDeviceVolumeReceived(float mediaValue)
         {
             if (m_CachedMediaVolume != mediaValue)
                 m_CachedMediaVolume = mediaValue;
-
+            
             // Global Volume
             var logVolume = Mathf.Log(mediaValue + k_MinVolume) * 20f + m_MaxVolume;
-            SetMasterVolume(logVolume);
-
+            SetMasterVolume(logVolume); 
+            
             // Vivox Volume
             SetSpeakerVolume(mediaValue * 100f);
         }
@@ -169,7 +167,7 @@ namespace Unity.MegacityMetro.UI
 
         private void SetMicrophoneVolume(float volume)
         {
-            if (VivoxManager.Instance != null)
+            if(VivoxManager.Instance != null)
                 VivoxManager.Instance.Devices.SetMicrophoneVolume((int) (volume + k_MinVolume));
         }
 
@@ -180,8 +178,8 @@ namespace Unity.MegacityMetro.UI
 
         private void SetSpeakerVolume(float volume)
         {
-            if (VivoxManager.Instance != null)
-                VivoxManager.Instance.Devices.SetSpeakerVolume((int) (volume + k_MinVolume));
+            if(VivoxManager.Instance != null)
+                VivoxManager.Instance.Devices.SetSpeakerVolume((int)(volume + k_MinVolume));
         }
 
         public override void Reset()

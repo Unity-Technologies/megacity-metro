@@ -15,25 +15,26 @@ namespace Unity.MegacityMetro.UI
         {
             Matchmaker = 0,
             Connect = 1
-        }
+        }   
         
         [field: SerializeField]
         public MultiplayerMode SelectedMultiplayerMode { get; private set; } = MultiplayerMode.Matchmaker;
-
         [SerializeField] 
         private PlayerInfoItemSettings m_PlayerSettings;
-        
+
         // UI Elements
         private VisualElement m_MultiplayerMenuOptions;
+        private VisualElement m_MultiplayerForm;
         private Button m_MultiplayerPlayButton;
         private TextField m_NameTextField;
         private CustomToggle m_MultiplayerModeGroup;
         private Button m_MultiplayerReturnButton;
         protected override GameMode GameMode => GameMode.Multiplayer;
         protected override VisualElement m_MenuOptions => m_MultiplayerMenuOptions;
-        protected override Button m_AutomaticFocusButton => m_MultiplayerPlayButton;
-
+        protected override VisualElement m_AutomaticFocusElement => m_MultiplayerModeGroup;
         public static MultiplayerMenu Instance { get; private set; }
+        private GameInput m_GameInput;
+        private CustomFocusRing m_FocusRing;
 
         private void Awake()
         {
@@ -46,7 +47,23 @@ namespace Unity.MegacityMetro.UI
                 Destroy(gameObject);
             }
         }
-        
+
+        private void OnNavigate(Vector2 direction)
+        {
+            if(m_FocusRing == null || m_MultiplayerMenuOptions.style.display == DisplayStyle.None)
+                return;
+            
+            switch (direction.y)
+            {
+                case > 0:
+                    m_FocusRing.Previous();
+                    break;
+                case < 0:
+                    m_FocusRing.Next();
+                    break;
+            }
+        }
+
         public override void InitUI()
         {
             base.InitUI();
@@ -61,6 +78,12 @@ namespace Unity.MegacityMetro.UI
             m_NameTextField = m_MultiplayerMenuOptions.Q<TextField>("name-textfield");
             m_MultiplayerPlayButton = m_MultiplayerMenuOptions.Q<Button>("multiplayer-play-button");
             m_MultiplayerReturnButton = m_MultiplayerMenuOptions.Q<Button>("multiplayer-return-button");
+
+            TextField serverIpTextField = m_MultiplayerMenuOptions.Q<TextField>("multiplayer-server-textfield"); 
+            DropdownField serverDropDown = m_MultiplayerMenuOptions.Q<DropdownField>("multiplayer-server-location");
+            
+            // Create custom ring for focus navigation
+            m_FocusRing = new CustomFocusRing(root, new VisualElement[] {m_MultiplayerModeGroup, serverDropDown, serverIpTextField, m_NameTextField, m_MultiplayerPlayButton, m_MultiplayerReturnButton});
             
 #if (UNITY_ANDROID || UNITY_IPHONE) && !DEVELOPMENT_BUILD && !UNITY_EDITOR
             m_MultiplayerModeGroup.style.display = DisplayStyle.None;
@@ -70,8 +93,6 @@ namespace Unity.MegacityMetro.UI
             {
                 SetConnectionMode((MultiplayerMode)Convert.ToInt32(evt.newValue));
             });
-
-            m_NameTextField.value = m_PlayerSettings.PlayerName;
             
             m_NameTextField.RegisterValueChangedCallback(evt =>
             {
@@ -90,10 +111,23 @@ namespace Unity.MegacityMetro.UI
             };
 
             m_MultiplayerReturnButton.clicked += BackToTheMenu;
-            m_MultiplayerPlayButton.RegisterCallback<MouseOverEvent>(_ => { m_MultiplayerPlayButton.Focus(); });
-            m_MultiplayerReturnButton.RegisterCallback<MouseOverEvent>(_ => { m_MultiplayerReturnButton.Focus(); });
             
-            SetConnectionMode(SelectedMultiplayerMode);
+            serverDropDown.RegisterCallback<GeometryChangedEvent>(_ =>
+            {
+                SetConnectionMode(SelectedMultiplayerMode);
+            });
+            
+            m_NameTextField.value = m_PlayerSettings.PlayerName;
+           
+            // Subscribe to UI events
+            UIEvents.OnNavigate += OnNavigate;
+
+            // Prevent navigation inside the multiplayer form to avoid issue with the TextField
+            m_MultiplayerMenuOptions.RegisterCallback<NavigationMoveEvent>(evt =>
+            {
+                evt.StopPropagation();
+                evt.PreventDefault();
+            }, TrickleDown.TrickleDown);
         }
 
         /// <summary>
@@ -143,7 +177,7 @@ namespace Unity.MegacityMetro.UI
 #pragma warning restore CS4014
                     break;
                 case MultiplayerMode.Connect:
-                    MatchMakingConnector.Instance.ConnectToServer();
+                    MatchMakingConnector.Instance.ConnectToServer(MatchMakingUI.Instance.IPValue);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -152,16 +186,23 @@ namespace Unity.MegacityMetro.UI
 
         internal async Task Matchmake()
         {
-            if (MatchMakingConnector.Instance.IsInitialized)
+            while (true)
             {
-                MatchMakingConnector.Instance.SetProfileServiceName(m_NameTextField.text);
-                SetUIMatchmaking(true);
-                await MatchMakingConnector.Instance.Matchmake();
-                SetUIMatchmaking(false);
-            }
-            else
-            {
-                ModalWindow.Instance.Show("To use Unity's dashboard services, you need to link your Unity project to a project ID.", "OK");
+                if (MatchMakingConnector.Instance.IsInitialized)
+                {
+                    MatchMakingConnector.Instance.SetProfileServiceName(m_NameTextField.text);
+                    SetUIMatchmaking(true);
+                    await MatchMakingConnector.Instance.Matchmake();
+                    SetUIMatchmaking(false);
+                }
+                else
+                {
+                    MatchMakingUI.Instance.UpdateConnectionStatus("Reconnecting...");
+                    await MatchMakingConnector.Instance.Reconnect();
+                    continue;
+                }
+
+                break;
             }
         }
 
