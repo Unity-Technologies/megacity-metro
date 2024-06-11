@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 namespace Unity.MegacityMetro.UI
 {
-    public class UIVersion : MonoBehaviour
+    public class GameVersion : MonoBehaviour
     {
         private void Awake()
         {
