@@ -1,9 +1,19 @@
 using System;
 using System.IO;
 using UnityEngine;
-#if !UNITY_EDITOR_WIN && UNITY_STANDALONE_WIN
 using System.Runtime.InteropServices;
+using Unity.Entities;
+using Unity.Mathematics;
+using Unity.MegacityMetro.CameraManagement;
+using UnityEngine.UIElements;
+using System.Runtime.InteropServices;
+#if UNITY_ANDROID || UNITY_IPHONE || ENABLED_VIRTUAL_JOYSTICK
+using UnityEngine;
+using Unity.MegacityMetro.UI;
+#else
+using UnityEngine;
 #endif
+using Unity.NetCode;
 
 namespace Unity.MegacityMetro.Gameplay
 {
