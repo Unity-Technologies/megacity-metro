@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Entities;
@@ -14,7 +15,8 @@ namespace Unity.MegacityMetro.Gameplay
     public class PlayerInfoController : MonoBehaviour
     {
         public static PlayerInfoController Instance;
-        
+        [SerializeField]
+        private GameObject m_VivoxManagerPrefab; 
         [SerializeField]
         private PlayerInfoItemSettings m_Settings;
         [SerializeField]
@@ -39,6 +41,14 @@ namespace Unity.MegacityMetro.Gameplay
             else
             {
                 Destroy(this);
+            }
+        }
+
+        private void Start()
+        {
+            if (!IsSinglePlayer)
+            {
+                Instantiate(m_VivoxManagerPrefab);
             }
         }
 

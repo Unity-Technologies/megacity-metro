@@ -80,7 +80,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "7af595149ffb499a811f49e1921e3646"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -488,6 +492,7 @@
     "m_OutputNode": {
         "m_Id": "b3d506d43cb14a13b5941947a14435a4"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -1618,6 +1623,26 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "7af595149ffb499a811f49e1921e3646",
+    "m_Title": "Smith GGX Geometry Term",
+    "m_Content": "This is the Smith GGX version of the geometry term. It's using the roughness of the surface to determine the amount if self-shadowing in the micro surface.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1086.5,
+        "y": -276.5,
+        "width": 280.5,
+        "height": 106.5
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 

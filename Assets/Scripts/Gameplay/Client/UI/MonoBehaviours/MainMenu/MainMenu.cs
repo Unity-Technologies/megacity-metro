@@ -32,8 +32,10 @@ namespace Unity.MegacityMetro.UI
         [SerializeField] private PlayerInfoItemSettings m_PlayerSettings;
 
         private UIGameSettings m_GameSettings;
+        private FocusController m_FocusController;
 
         // Base Menu Options
+        private VisualElement m_MenuPanel;
         private VisualElement m_BaseMenuOptions;
         private Button m_SinglePlayerButton;
         private Button m_MultiplayerButton;
@@ -42,7 +44,6 @@ namespace Unity.MegacityMetro.UI
         private VisualElement m_MainMenuContainer;
         private Task _AutomaticMatchmakingTask; // TODO: This should really be moved into MatchMakingConnector.
         private GameInput.UIActions m_UIActions;
-        [SerializeField] private StyleSheet m_MobileStyleSheet;
 
         public static MainMenu Instance { get; private set; }
 
@@ -77,21 +78,39 @@ namespace Unity.MegacityMetro.UI
                 SceneController.IsReturningToMainMenu = false;
                 ServerConnectionUtils.CreateDefaultWorld();
             }
+            
 #if UNITY_SERVER && !UNITY_EDITOR
             Debug.Log("Beginning server mode");
             gameObject.SetActive(false);
 #else
+            
             InitUI();
             m_UIActions = new GameInput().UI;
-            m_UIActions.Back.performed += _ => OnBackAction();
-
             m_UIActions.Enable();
+            m_UIActions.Back.performed += _ => OnBackAction();
+            
+            ModalWindow.Instance.OnHideModal += () =>
+            {
+                CurrentState = MenuState.MainMenu;
+                m_MenuPanel.style.display = DisplayStyle.Flex;
+            };
+            
+            CurrentState = MenuState.MainMenu;
 #endif
         }
 
         private void Update()
         {
             PollForAutomaticMatchmakeFlow();
+
+            // This is a workaround to solve a problem of the Focus, because if at some point you click on an element
+            // that does not have focus, the focus is lost and does not return using the navigation, which makes that
+            // in consoles you can not continue navigating the interface.
+            if(m_FocusController == null)
+                return;
+            
+            if (m_FocusController.focusedElement == null && m_SinglePlayerButton != null)
+                m_SinglePlayerButton.Focus();
         }
 
         /// <summary>
@@ -115,13 +134,10 @@ namespace Unity.MegacityMetro.UI
         {
             m_PlayerSettings.GameMode = GameMode.None;
             var root = GetComponent<UIDocument>().rootVisualElement;
-
-#if UNITY_ANDROID || UNITY_IPHONE
-            root.styleSheets.Clear();
-            root.styleSheets.Add(m_MobileStyleSheet);
-#endif
+            m_FocusController = root.focusController;
 
             m_MainMenuContainer = root.Q<VisualElement>("main-menu-container");
+            m_MenuPanel = m_MainMenuContainer.Q<VisualElement>("menu-panel");
 
             // Base Menu Options
             m_BaseMenuOptions = m_MainMenuContainer.Q<VisualElement>("base-menu-options");
@@ -134,12 +150,7 @@ namespace Unity.MegacityMetro.UI
             m_QuitButton.clicked += QuitDemo;
             m_SinglePlayerButton.clicked += OnSinglePlayerButtonClicked;
             m_MultiplayerButton.clicked += OnMultiplayerButtonClicked;
-
-            m_SinglePlayerButton.RegisterCallback<MouseOverEvent>(_ => { m_SinglePlayerButton.Focus(); });
-            m_MultiplayerButton.RegisterCallback<MouseOverEvent>(_ => { m_MultiplayerButton.Focus(); });
-            m_GameSettingsButton.RegisterCallback<MouseOverEvent>(_ => { m_GameSettingsButton.Focus(); });
-            m_QuitButton.RegisterCallback<MouseOverEvent>(_ => { m_QuitButton.Focus(); });
-            m_SinglePlayerButton.Focus();
+            m_SinglePlayerButton.RegisterCallback<GeometryChangedEvent>(_ => m_SinglePlayerButton.Focus());
 
             MatchMakingConnector.Instance.ClientIsInGame = false;
             CursorUtils.ShowCursor();
@@ -162,6 +173,9 @@ namespace Unity.MegacityMetro.UI
 
         private void OnBackAction()
         {
+            if(m_MainMenuContainer.style.display == DisplayStyle.None)
+                return;
+            
             switch (CurrentState)
             {
                 case MenuState.MainMenu:
@@ -172,11 +186,6 @@ namespace Unity.MegacityMetro.UI
                     CurrentState = MenuState.MainMenu;
                     break;
             }
-        }
-
-        private void OnDisable()
-        {
-            m_UIActions.Disable();
         }
 
         public void ToggleBaseMenuOptions()
@@ -204,13 +213,6 @@ namespace Unity.MegacityMetro.UI
             SceneController.LoadMenu();
         }
 
-        public void Show()
-        {
-            m_MainMenuContainer.style.display = DisplayStyle.Flex;
-            CurrentState = MenuState.MainMenu;
-            CursorUtils.ShowCursor();
-        }
-
         private void Hide()
         {
             LoadingScreen.Instance.Show();
@@ -220,9 +222,21 @@ namespace Unity.MegacityMetro.UI
 
         private void QuitDemo()
         {
+            // Hide the main menu and show the modal window
+            m_MenuPanel.style.display = DisplayStyle.None;
             ModalWindow.Instance.Show("Are you sure you want to quit?", "Quit", "Cancel",
-                () => QuitSystem.WantsToQuit = true);
+                OnQuitConfirmed, OnQuitCanceled);
             CurrentState = MenuState.ModalWindow;
+        }
+
+        private void OnQuitCanceled()
+        {
+            m_MenuPanel.style.display = DisplayStyle.Flex;
+        }
+
+        private void OnQuitConfirmed()
+        {
+            QuitSystem.WantsToQuit = true;
         }
 
         private void ShowGameSettings()
@@ -232,8 +246,16 @@ namespace Unity.MegacityMetro.UI
                 m_GameSettings = FindObjectOfType<UIGameSettings>();
             }
 
-            m_GameSettings.Show();
+            m_MenuPanel.style.display = DisplayStyle.None;
+            m_GameSettings.Show(BackFromSettings);
             CurrentState = MenuState.GameSettings;
+        }
+
+        private void BackFromSettings()
+        {
+            m_MenuPanel.style.display = DisplayStyle.Flex;
+            m_SinglePlayerButton.Focus();
+            CurrentState = MenuState.MainMenu;
         }
     }
 }

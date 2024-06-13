@@ -33,7 +33,10 @@ namespace Unity.MegacityMetro.Gameplay
 
         public void OnUpdate(ref SystemState state)
         {
-            if (PlayerInfoController.Instance == null || VivoxManager.Instance == null)
+            if (PlayerInfoController.Instance == null || 
+                PlayerInfoController.Instance.IsSinglePlayer || 
+                VivoxManager.Instance == null || 
+                VivoxManager.Instance.Service == null)
                 return;
 
             var cmdBuffer = new EntityCommandBuffer(Allocator.Temp);

@@ -83,6 +83,24 @@
     "m_StickyNoteDatas": [
         {
             "m_Id": "b2fcf71a4da84c6d8a3901a722ca14db"
+        },
+        {
+            "m_Id": "18de4cbca19e4171bc3d3054f8706f5a"
+        },
+        {
+            "m_Id": "39cecdc2b70b404dad52f2991f1902c8"
+        },
+        {
+            "m_Id": "b651754d3a644292b1ffa16feed63e3c"
+        },
+        {
+            "m_Id": "5e9a6133f36845e295aaab3ce7cb15f4"
+        },
+        {
+            "m_Id": "ef6be335d9254332b84d134ba15d7d52"
+        },
+        {
+            "m_Id": "9a6a3d57c8974ea38afbc1b5e974bf9e"
         }
     ],
     "m_Edges": [
@@ -450,6 +468,7 @@
     "m_OutputNode": {
         "m_Id": "cde704f0dfe44959bfcd959dc3bcbf63"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -547,6 +566,26 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": true
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "18de4cbca19e4171bc3d3054f8706f5a",
+    "m_Title": "Triplanar Direction Masks",
+    "m_Content": "This subgraph sets up TopBottom, LeftRight, and FrontBack masks that can be used for blending between the 3 projections of a triplanar effect.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -368.0,
+        "y": -431.5,
+        "width": 200.0,
+        "height": 130.86956787109376
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -827,6 +866,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "39cecdc2b70b404dad52f2991f1902c8",
+    "m_Title": "",
+    "m_Content": "The Branch On Input Connection node sets up the default input value for the Normal input port.  If nothing is connected, we use the Normal Vector in World space.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1308.0,
+        "y": 51.0,
+        "width": 200.0,
+        "height": 107.5
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "3c41f7d0d46e4995a59ce584057463d9",
     "m_Id": 3,
@@ -1044,6 +1103,26 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "5e9a6133f36845e295aaab3ce7cb15f4",
+    "m_Title": "",
+    "m_Content": "This Round node makes this version of the masks binary.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -278.0,
+        "y": 43.0,
+        "width": 127.5,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -1521,6 +1600,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "9a6a3d57c8974ea38afbc1b5e974bf9e",
+    "m_Title": "",
+    "m_Content": "The Edge Sharpness input is only used if the Smooth Edges boolean is true. The lower the value, the smoother and softer the blend is between the projections.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -964.0,
+        "y": -124.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "9adc85a1f36549a98715e861715db8b1",
     "m_Id": 2,
@@ -1735,6 +1834,26 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "b651754d3a644292b1ffa16feed63e3c",
+    "m_Title": "",
+    "m_Content": "Here we make two variations of the triplanar masks, one with soft/blended edges, and one with hard/binary edges.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -594.0,
+        "y": 305.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -2161,6 +2280,26 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "ef6be335d9254332b84d134ba15d7d52",
+    "m_Title": "",
+    "m_Content": "We use either the blended masks or the binary masks depending on the value of the Smooth Edges boolean.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -72.0,
+        "y": -180.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {

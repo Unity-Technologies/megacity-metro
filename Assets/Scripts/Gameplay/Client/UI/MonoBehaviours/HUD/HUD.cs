@@ -98,6 +98,13 @@ namespace Unity.MegacityMetro.UI
             }
 
             NetcodePanelStats.Instance.Disable();
+            
+            UIEvents.OnPauseOptionsShown += OnPauseOptionsShown;
+        }
+
+        private void OnPauseOptionsShown(bool value)
+        {
+            m_SettingsButton.focusable = !value;
         }
 
         public void UpdateLife(float life, float attackerPointerDegrees)

@@ -81,7 +81,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "4dc70ad346e84336a48bd74cec940686"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -223,6 +227,7 @@
     "m_OutputNode": {
         "m_Id": ""
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "431d812e5beb403a969ba5c844fa2508"
@@ -557,6 +562,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "4dc70ad346e84336a48bd74cec940686",
+    "m_Title": "",
+    "m_Content": "A very basic shader that does custom lighting and exposes a few material parameters.\n\nThe \"Floating\" subgraph makes the signs bob up and down.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -465.5,
+        "y": 27.5,
+        "width": 200.0,
+        "height": 112.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "4e0f2998360f460e88015157aebbcf1f",
     "m_Group": {
@@ -675,6 +700,20 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "644e43f1b07147dcad695839d6db90d4",
+    "m_Id": 814618256,
+    "m_DisplayName": "EnableAdditionalLights",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_EnableAdditionalLights",
+    "m_StageCapability": 2,
+    "m_Value": true,
+    "m_DefaultValue": false
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PositionMaterialSlot",
     "m_ObjectId": "65dd059216294ec5aaeb2f19ddfa23f3",
     "m_Id": 0,
@@ -752,10 +791,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -216.0,
-            "y": -38.0,
-            "width": 92.0,
-            "height": 95.0
+            "x": -129.0,
+            "y": -1.5,
+            "width": 91.5,
+            "height": 119.0
         }
     },
     "m_Slots": [
@@ -821,10 +860,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -504.0,
-            "y": 290.2500305175781,
-            "width": 138.0,
-            "height": 33.0
+            "x": -613.0,
+            "y": 330.5,
+            "width": 140.0,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -857,10 +896,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -562.0,
-            "y": 238.99998474121095,
-            "width": 116.0,
-            "height": 34.00004577636719
+            "x": -588.5,
+            "y": 296.5,
+            "width": 115.5,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -946,10 +985,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -494.9999694824219,
-            "y": 189.00003051757813,
-            "width": 128.99996948242188,
-            "height": 33.00001525878906
+            "x": -610.0,
+            "y": 228.5,
+            "width": 130.5,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -1209,6 +1248,9 @@
     },
     "m_Slots": [
         {
+            "m_Id": "644e43f1b07147dcad695839d6db90d4"
+        },
+        {
             "m_Id": "4f5aa2a928fb48a68ca58e03cb8db731"
         },
         {
@@ -1284,7 +1326,8 @@
         "d444cfce-48db-44c2-a86b-71babd1f3f53",
         "220ff6e2-cc8e-4ee1-a06d-d611fb201889",
         "3fbaa58c-1fa8-4566-b3ea-898314b3fce9",
-        "00e3c58d-f619-4f86-9c60-35bcf67e1688"
+        "00e3c58d-f619-4f86-9c60-35bcf67e1688",
+        "a047bf0f-4632-4c68-acfc-3d7201139cae"
     ],
     "m_PropertyIds": [
         -1045450119,
@@ -1328,7 +1371,8 @@
         2043212544,
         -199198921,
         279569283,
-        2068196862
+        2068196862,
+        814618256
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -1380,10 +1424,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -504.0,
-            "y": 324.0000305175781,
-            "width": 135.0,
-            "height": 33.000030517578128
+            "x": -610.0,
+            "y": 364.5,
+            "width": 137.0,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -1416,10 +1460,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -478.5,
-            "y": 222.0000457763672,
-            "width": 112.5,
-            "height": 32.99998474121094
+            "x": -588.5,
+            "y": 262.5,
+            "width": 114.5,
+            "height": 34.0
         }
     },
     "m_Slots": [

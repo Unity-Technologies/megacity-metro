@@ -1,3 +1,6 @@
+using System;
+using System.Net;
+using System.Text.RegularExpressions;
 using Unity.NetCode;
 using Unity.Networking.Transport;
 using UnityEngine;
@@ -9,6 +12,70 @@ namespace Unity.MegacityMetro
     {
         private static bool IsTryingToConnect;
 
+        public static bool TryParseNetworkEntrypoint(string address, ushort port, out NetworkEndpoint endpoint)
+        {
+
+            return NetworkEndpoint.TryParse(address, port, out endpoint, NetworkFamily.Ipv4) ||
+                   NetworkEndpoint.TryParse(address, port, out endpoint, NetworkFamily.Ipv6);
+        }
+
+        public static bool TryParseDomain(string domainName, out string IP)
+        {
+            IP = string.Empty;
+            if (IsValidUrl(domainName))
+            {
+                domainName = domainName.Replace("https://", "").Replace("http://", "");
+                try
+                {
+                    IPAddress[] addresses = Dns.GetHostAddresses(domainName);
+
+                    if (addresses.Length > 0)
+                    {
+                        foreach (IPAddress address in addresses)
+                        {
+                            if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                            {
+                                IP = address.ToString();
+                                return true;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"The domain is no valid {domainName}:\n{ex.Message}");
+                }
+            }
+
+            return false;
+        }
+
+        private static bool IsValidUrl(string url)
+        {
+            var ip = url;
+            if (url.Contains(":"))
+            {
+                var ipElements = ip.Split(":");
+                ip = ipElements[0];
+            }
+
+            // add an early out if the IP is valid
+            if (IPAddress.TryParse(ip, out var ipAddress))
+            {
+                Debug.Log($"IP Address {ipAddress} is valid but it's not an URL");
+                return false; 
+            }
+            
+            var urlPattern = @"^(https?|ftp):\/\/[^\s\/$.?#].[^\s]*$";
+            if (!Regex.IsMatch(url, urlPattern, RegexOptions.IgnoreCase))
+            {
+                Debug.LogError($"it is not a valid url {url}");
+                return false;
+            }
+
+            return true;
+        }
+        
         public static void RequestConnection(string ip, ushort port)
         {
             if (IsTryingToConnect)
@@ -17,7 +84,7 @@ namespace Unity.MegacityMetro
                 return;
             }
 
-            if(!NetworkEndpoint.TryParse(ip, port, out var targetEndpoint) && !NetworkEndpoint.TryParse(ip, port, out targetEndpoint, NetworkFamily.Ipv6))
+            if(!TryParseNetworkEntrypoint(ip, port, out var targetEndpoint))
             {
                 Debug.LogError($"Failed to parse IP '{ip}' as valid address! Cannot connect to '{ip}:{port}'!");
                 return; 

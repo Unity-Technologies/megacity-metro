@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,23 +25,21 @@ namespace Unity.MegacityMetro.UI
 
         private VisualElement m_GameSettings;
         private VisualElement m_GameSettingsPanel;
-        private VisualElement m_TriggerSettings;
         private List<VisualElement> m_ViewSettingsList = new();
         private List<Button> m_TabButtons = new();
 
         private const string SelectedStyle = "menu-button-active";
-        [SerializeField] private StyleSheet m_MobileStyleSheet;
+
+        private FocusController m_FocusController;
+        private Action m_OnHideSettings;
 
         public bool IsVisible => m_GameSettings.style.display == DisplayStyle.Flex;
 
         private void OnEnable()
         {
             var root = GetComponent<UIDocument>().rootVisualElement;
-            
-#if UNITY_ANDROID || UNITY_IPHONE
-            root.styleSheets.Clear();
-            root.styleSheets.Add(m_MobileStyleSheet);
-#endif
+
+            m_FocusController = root.focusController;
             
             m_GameSettings = root.Q<VisualElement>("game-settings");
             m_GameSettingsPanel = root.Q<VisualElement>("settings-menu-panel");
@@ -114,8 +113,10 @@ namespace Unity.MegacityMetro.UI
             BackAction.Disable();
         }
 
-        public void Show()
+        public void Show(Action onHideSettings)
         {
+            m_OnHideSettings = onHideSettings;
+
             AnimateIn();
             ShowSettings();
         }
@@ -125,16 +126,16 @@ namespace Unity.MegacityMetro.UI
             m_GameSettings.style.opacity = 0;
             m_GameSettings.style.display = DisplayStyle.Flex;
             m_GameSettingsPanel.experimental.animation
-                .Start(new StyleValues {top = -100}, new StyleValues {top = 0}, 500).Ease(Easing.OutCubic);
-            m_GameSettings.experimental.animation.Start(new StyleValues {opacity = 1}, 250)
+                .Start(new StyleValues { top = -100 }, new StyleValues { top = 0 }, 500).Ease(Easing.OutCubic);
+            m_GameSettings.experimental.animation.Start(new StyleValues { opacity = 1 }, 250)
                 .OnCompleted(() => BackAction.Enable());
         }
 
         private void AnimateOut()
         {
             m_GameSettingsPanel.experimental.animation
-                .Start(new StyleValues {top = 0}, new StyleValues {top = -100}, 500).Ease(Easing.OutCubic);
-            m_GameSettings.experimental.animation.Start(new StyleValues {opacity = 0}, 250)
+                .Start(new StyleValues { top = 0 }, new StyleValues { top = -100 }, 500).Ease(Easing.OutCubic);
+            m_GameSettings.experimental.animation.Start(new StyleValues { opacity = 0 }, 250)
                 .OnCompleted(() =>
                 {
                     m_GameSettings.style.display = DisplayStyle.None;
@@ -144,17 +145,10 @@ namespace Unity.MegacityMetro.UI
 
         public void Hide()
         {
-            if (m_TriggerSettings != null)
-            {
-                m_TriggerSettings.style.display = DisplayStyle.Flex;
-                m_TriggerSettings = null;
-            }
-
             AnimateOut();
             m_CurrentView = 0;
-            
-            if(MainMenu.Instance != null)
-                MainMenu.Instance.CurrentState = MenuState.MainMenu;
+
+            m_OnHideSettings?.Invoke();
         }
 
         private void ShowSettings()
@@ -162,9 +156,7 @@ namespace Unity.MegacityMetro.UI
             m_ViewSettingsList.ForEach(element => element.style.display = DisplayStyle.None);
             m_ViewSettingsList[m_CurrentView].style.display = DisplayStyle.Flex;
             foreach (var tab in m_TabViews)
-            {
                 tab.Hide();
-            }
 
             m_TabViews[m_CurrentView].Show();
             m_TabButtons.ForEach(b => b.RemoveFromClassList(SelectedStyle));
@@ -179,6 +171,18 @@ namespace Unity.MegacityMetro.UI
         private void Apply()
         {
             m_TabViews[m_CurrentView].Apply();
+        }
+
+        private void Update()
+        {
+            if (IsVisible && m_FocusController.focusedElement == null)
+                FocusFirstElement();
+        }
+
+        private void FocusFirstElement()
+        {
+            VisualElement firstElement = m_ViewSettingsList[m_CurrentView].Q<VisualElement>(className: "focus-first");
+            firstElement?.Focus();
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Unity.MegacityMetro.Gameplay
     [CreateAssetMenu(fileName = "MultiplayerServerSettings", menuName = "Gameplay/Settings/MultiplayerServerSettings", order = 1)]
     public class MultiplayerServerSettings : ScriptableObject
     {
+        public float ConnectionTimeout = 20;
         [SerializeField]
         private ServerInfo[] ServerList;
 #if UNITY_EDITOR

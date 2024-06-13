@@ -32,7 +32,7 @@ namespace Unity.MegacityMetro.Gameplay
                 if (!isConnected)
                 {
                     ref var netStream = ref SystemAPI.GetSingletonRW<NetworkStreamDriver>().ValueRW;
-                    if (NetworkEndpoint.TryParse(MatchMakingConnector.Instance.IP, MatchMakingConnector.Instance.Port, out var networkEndpoint) && networkEndpoint.IsValid)
+                    if (ServerConnectionUtils.TryParseNetworkEntrypoint(MatchMakingConnector.Instance.IP, MatchMakingConnector.Instance.Port, out var networkEndpoint) && networkEndpoint.IsValid)
                     {
                         Debug.Log($"Connecting Manually ClientWorld '{state.World.Name}' to '{networkEndpoint}'...");
                         netStream.Connect(state.EntityManager, networkEndpoint);

@@ -28,7 +28,6 @@ namespace Unity.Services.Samples
                 profileName = rgx.Replace(profileName, "");
                 var profileHash = GenerateRandomUniqueHash(profileName);
                 var authProfile = new InitializationOptions().SetProfile(profileHash);
-                Debug.Log($"[Auth] Signed into Unity Services hash: {profileHash}");
                 // If you are using multiple unity services, make sure to initialize it only once before using your services.
                 await UnityServices.InitializeAsync(authProfile);
             }
@@ -50,7 +49,6 @@ namespace Unity.Services.Samples
             var playerID = AuthenticationService.Instance.PlayerId;
 
             LocalPlayer = new PlayerProfile(playerName, playerID);
-            Debug.Log($"[Auth] Signed into Unity Services as {LocalPlayer}");
         }
         
         public static string GenerateRandomUniqueHash(string input)

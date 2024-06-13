@@ -26,7 +26,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "87bdbcbc72a1428bb6ff42ccefa79000"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -84,6 +88,7 @@
     "m_OutputNode": {
         "m_Id": "3c817d25673944e5b60ad5ae406137a4"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -99,10 +104,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -264.66668701171877,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
+            "x": -158.5,
+            "y": 40.5,
+            "width": 119.0,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -155,6 +160,26 @@
         "m_SerializableColors": []
     },
     "IsFirstSlotValid": true
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "87bdbcbc72a1428bb6ff42ccefa79000",
+    "m_Title": "",
+    "m_Content": "Generates 3 random, deterministic output values when given three input values.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -23.5,
+        "y": -86.0,
+        "width": 200.0,
+        "height": 101.5
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -220,10 +245,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -114.66668701171875,
-            "y": -139.99996948242188,
-            "width": 229.33331298828126,
-            "height": 279.99993896484377
+            "x": -39.5,
+            "y": 0.0,
+            "width": 227.5,
+            "height": 94.0
         }
     },
     "m_Slots": [
@@ -239,7 +264,7 @@
         "HLSL"
     ],
     "m_Precision": 1,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {

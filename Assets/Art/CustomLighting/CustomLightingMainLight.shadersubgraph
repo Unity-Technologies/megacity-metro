@@ -77,7 +77,20 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "290e1ddea9a14ab49cd74e5877e9ae37"
+        },
+        {
+            "m_Id": "06c0241b7f6949c698ed83537820120e"
+        },
+        {
+            "m_Id": "bf997b00cc0c4644beb167dd0cf16bb4"
+        },
+        {
+            "m_Id": "8281bf4ba2b346689427adac02d4ca65"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -479,6 +492,26 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "06c0241b7f6949c698ed83537820120e",
+    "m_Title": "",
+    "m_Content": "A cheaper way of calculating shadows in the distance - so we can only use expensive shadows up close.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -955.5,
+        "y": 345.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
     "m_ObjectId": "08feca84aa054dd59258dc9a827409b2",
@@ -846,6 +879,26 @@
         "e31": 0.0,
         "e32": 0.0,
         "e33": 1.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "290e1ddea9a14ab49cd74e5877e9ae37",
+    "m_Title": "",
+    "m_Content": "If we're on the Android platform, we set the distant shadow bias higher.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1427.0,
+        "y": 345.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -1255,6 +1308,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "8281bf4ba2b346689427adac02d4ca65",
+    "m_Title": "",
+    "m_Content": "Calculate the direct diffuse and specular lighting for the surface.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -835.5,
+        "y": -309.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "8a7d3a85241e4814b8e36a7d37b2692f",
     "m_Id": -758561847,
@@ -1520,10 +1593,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -828.7500610351563,
-            "y": -140.24998474121095,
-            "width": 180.7501220703125,
-            "height": 213.0
+            "x": -828.5,
+            "y": -142.0,
+            "width": 185.0,
+            "height": 215.00003051757813
         }
     },
     "m_Slots": [
@@ -1658,6 +1731,26 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "bf997b00cc0c4644beb167dd0cf16bb4",
+    "m_Title": "",
+    "m_Content": "If nothing is connected to the NormalWS port, we default to useing the Normal Vector in World space.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1369.0,
+        "y": -411.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {

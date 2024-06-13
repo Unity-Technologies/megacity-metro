@@ -48,6 +48,9 @@ namespace Unity.MegacityMetro.UGS
                                  "select your project and then link a project ID. " +
                                  "You also need to make sure your organization has access to the required products. " +
                                  "Visit https://dashboard.unity3d.com to sign up.");
+                
+                ModalWindow.Instance.Show("To use Unity's dashboard services, you need to link your Unity project to a project ID.", "OK");
+                
                 IsInitialized = false;
             }
             else
@@ -76,12 +79,17 @@ namespace Unity.MegacityMetro.UGS
             #endregion
         }
 
+        public async Task Reconnect()
+        {
+            await Init();
+        }
+
         public async Task Matchmake()
         {
+            Debug.Log($"[Auth] Signed into Unity Services as {m_ProfileService.LocalPlayer}");
             Debug.Log("Beginning Matchmaking.");
-            SetIPAndPort(null, 0);
+            HasMatchmakingSuccess = false;
             MatchMakingUI.Instance.UpdateConnectionStatus("[Matchmaker] Searching...");
-
             if (string.IsNullOrEmpty(Application.cloudProjectId))
             {
                 Debug.LogWarning($"To use Unity's dashboard services, " +
@@ -90,7 +98,6 @@ namespace Unity.MegacityMetro.UGS
                                  "select your project and then link a project ID. " +
                                  "You also need to make sure your organization has access to the required products. " +
                                  "Visit https://dashboard.unity3d.com to sign up.");
-
                 return;
             }
 
@@ -107,7 +114,7 @@ namespace Unity.MegacityMetro.UGS
                     await Task.Delay(5000); // Hack: Give the server some time to process before connecting. This should be fixed!
                     HasMatchmakingSuccess = true;
                     MatchMakingUI.Instance.UpdateConnectionStatus($"[Netcode] Connecting to {IP} : {Port}...");
-                    ConnectToServer();
+                    ConnectToServer($"{IP}:{Port}");
                 }
                 else
                 {
@@ -155,8 +162,18 @@ namespace Unity.MegacityMetro.UGS
             Debug.LogWarning($"Failed to connect");
         }
 
-        public void ConnectToServer()
+        /// <summary>
+        /// Current IP format {IP}:{Port}
+        /// </summary>
+        /// <param name="currentIP"></param>
+        public void ConnectToServer(string currentIP)
         {
+            if (MatchMakingUI.Instance.TryUpdateIPAndPort(currentIP, out var ip, out var port))
+            {
+                IP = ip;
+                Port = port;
+            }
+
             ServerConnectionUtils.RequestConnection(IP, Port);
             if (ClientIsInGame)
                 return;

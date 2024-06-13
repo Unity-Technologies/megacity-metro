@@ -56,7 +56,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "8c2a9fa176e14b4cb8ab1a0a192857e9"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -240,6 +244,7 @@
     "m_OutputNode": {
         "m_Id": "d682889694d04ab6b4f87e68eb93dffc"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -865,6 +870,26 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "8c2a9fa176e14b4cb8ab1a0a192857e9",
+    "m_Title": "Schlick Fresnel",
+    "m_Content": "This is the Schlick approximation of the Fresnel term.  It calculates the percentage of incident light that gets reflected from the surface.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -336.0,
+        "y": 39.0,
+        "width": 200.0,
+        "height": 104.5
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 

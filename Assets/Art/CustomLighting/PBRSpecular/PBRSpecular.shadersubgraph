@@ -141,7 +141,29 @@
             "m_Id": "decd64e7a0244b719f3bf0e9f41410ad"
         }
     ],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "6df37ffcc0d44e2f8a4302a6aa37b60c"
+        },
+        {
+            "m_Id": "5f019adfaec940ffaa259045544d9c2f"
+        },
+        {
+            "m_Id": "c6e6f532cbfa403e8b0c25e00e7bf432"
+        },
+        {
+            "m_Id": "94b1e311172e4742989a8faaff6dde65"
+        },
+        {
+            "m_Id": "12ab81f68926428a9dff34659c00a770"
+        },
+        {
+            "m_Id": "5b5ef1df1621497a9220a15db52e0f31"
+        },
+        {
+            "m_Id": "32ae10d32eff498abea53c3613d305d9"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -731,6 +753,7 @@
     "m_OutputNode": {
         "m_Id": "da20244093254473b1d0c11219489b28"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -1027,6 +1050,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "12ab81f68926428a9dff34659c00a770",
+    "m_Title": "Distribution Term",
+    "m_Content": "Calculates how much of the surface is oriented to reflect light in the outgoing direction.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1193.5,
+        "y": 590.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": "55cff31287fa49ea8981f574a9c5c0c2"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "12ec5e25571b47b5a5a321cbd7c99038",
     "m_Id": 1,
@@ -1314,6 +1357,26 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "32ae10d32eff498abea53c3613d305d9",
+    "m_Title": "Fresnel Term",
+    "m_Content": "Calculates the percentage of light that gets reflected.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1185.0,
+        "y": -68.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": "decd64e7a0244b719f3bf0e9f41410ad"
     }
 }
 
@@ -1965,6 +2028,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "5b5ef1df1621497a9220a15db52e0f31",
+    "m_Title": "Geometry Term",
+    "m_Content": "Calculates how much of the micro surface is not shadowed or masked by other parts of the surface.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1180.5,
+        "y": 281.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": "f42ee0888b0d40488cc966103cb21576"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "5ca72274ca104949971e3eaa5d418aa3",
     "m_Id": 0,
@@ -2023,6 +2106,26 @@
         "z": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "5f019adfaec940ffaa259045544d9c2f",
+    "m_Title": "Physically-Based Specular",
+    "m_Content": "Computes direct specular highlights using physically-based math.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1659.5,
+        "y": -608.5,
+        "width": 180.4931640625,
+        "height": 96.8212890625
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -2176,6 +2279,26 @@
     "m_Value": 1.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "6df37ffcc0d44e2f8a4302a6aa37b60c",
+    "m_Title": "",
+    "m_Content": "Convert the smoothness to roughness squared.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1635.5,
+        "y": 924.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -2511,6 +2634,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "94b1e311172e4742989a8faaff6dde65",
+    "m_Title": "",
+    "m_Content": "If the light vector node isn't connected, we use the main light direction.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -2293.0,
+        "y": -121.0,
+        "width": 141.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "9932a8fa65874289a13a7270e59b6f9e",
     "m_Id": 0,
@@ -2640,10 +2783,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1812.5001220703125,
-            "y": -619.0000610351563,
+            "x": -1755.0001220703125,
+            "y": 771.9999389648438,
             "width": 126.0,
-            "height": 118.00006103515625
+            "height": 118.0
         }
     },
     "m_Slots": [
@@ -3163,6 +3306,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "c6e6f532cbfa403e8b0c25e00e7bf432",
+    "m_Title": "",
+    "m_Content": "If nothing is connected to the NormalWS port, we default to useing the Normal Vector in World space.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -2270.5,
+        "y": 307.5,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.OneMinusNode",
     "m_ObjectId": "c85654865cda438eade95b6c241afbcf",
     "m_Group": {
@@ -3173,8 +3336,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1677.500244140625,
-            "y": -619.0,
+            "x": -1620.0001220703125,
+            "y": 771.9999389648438,
             "width": 127.5,
             "height": 94.0
         }
@@ -3213,10 +3376,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1518.000244140625,
-            "y": -619.0,
-            "width": 126.0,
-            "height": 118.00003051757813
+            "x": -1460.5,
+            "y": 771.9999389648438,
+            "width": 125.9998779296875,
+            "height": 118.0
         }
     },
     "m_Slots": [
@@ -3864,10 +4027,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2030.0001220703125,
-            "y": -578.0000610351563,
+            "x": -1972.5001220703125,
+            "y": 813.0,
             "width": 140.0,
-            "height": 34.00006103515625
+            "height": 34.0
         }
     },
     "m_Slots": [
