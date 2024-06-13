@@ -1,19 +1,9 @@
 using System;
 using System.IO;
 using UnityEngine;
+#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN
 using System.Runtime.InteropServices;
-using Unity.Entities;
-using Unity.Mathematics;
-using Unity.MegacityMetro.CameraManagement;
-using UnityEngine.UIElements;
-using System.Runtime.InteropServices;
-#if UNITY_ANDROID || UNITY_IPHONE || ENABLED_VIRTUAL_JOYSTICK
-using UnityEngine;
-using Unity.MegacityMetro.UI;
-#else
-using UnityEngine;
 #endif
-using Unity.NetCode;
 
 namespace Unity.MegacityMetro.Gameplay
 {
@@ -102,10 +92,12 @@ namespace Unity.MegacityMetro.Gameplay
                 catch (DllNotFoundException e)
                 {
                     IsPluginLoaded = false;
+                    Debug.Log($"{e}");
                 }
                 catch (Exception e)
                 {
                     IsPluginLoaded = false;
+                    Debug.Log($"{e}");
                 }
             }
             else
