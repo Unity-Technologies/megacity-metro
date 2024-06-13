@@ -102,18 +102,15 @@ namespace Unity.MegacityMetro.Gameplay
                 catch (DllNotFoundException e)
                 {
                     IsPluginLoaded = false;
-                    Debug.Log($"Couldn't load Plugin: {e.Message}");
                 }
                 catch (Exception e)
                 {
                     IsPluginLoaded = false;
-                    Debug.LogError($"Execution Error Plugin: {e.Message}");
                 }
             }
             else
             {
                 IsPluginLoaded = false;
-                Debug.LogWarning($"Cannot be found '{pluginName}'.");
             }
         }
     }
