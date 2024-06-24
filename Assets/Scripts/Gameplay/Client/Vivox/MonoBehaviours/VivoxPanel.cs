@@ -33,16 +33,11 @@ namespace Unity.MegacityMetro.Gameplay
             m_HasStartedVivox = true;
             VivoxManager.Instance.Service.LoggedIn += ShowPanel;
             VivoxManager.Instance.Service.LoggedIn += OnUserLoggedIn;
-            VivoxManager.Instance.Service.LoggedOut += OnUserLoggedOut;
             VivoxManager.Instance.Service.LoggedOut += HidePanel;
 
             if (VivoxManager.Instance.Session.IsLogged)
             {
                 OnUserLoggedIn();
-            }
-            else
-            {
-                OnUserLoggedOut();
             }
         }
 
@@ -52,7 +47,6 @@ namespace Unity.MegacityMetro.Gameplay
                 return;
             
             VivoxManager.Instance.Service.LoggedIn -= OnUserLoggedIn;
-            VivoxManager.Instance.Service.LoggedOut -= OnUserLoggedOut;
             VivoxManager.Instance.Service.LoggedOut -= HidePanel;
             VivoxManager.Instance.Service.LoggedIn -= ShowPanel;
         }
@@ -73,11 +67,6 @@ namespace Unity.MegacityMetro.Gameplay
         {
             m_PlayerList.Init();
             VivoxChannel.JoinChannel();
-        }
-
-        private void OnUserLoggedOut()
-        {
-            VivoxChannel.DisconnectAllChannels();
         }
     }
 }

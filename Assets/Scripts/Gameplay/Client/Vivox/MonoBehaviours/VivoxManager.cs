@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Vivox;
@@ -120,6 +121,11 @@ namespace Unity.MegacityMetro.Gameplay
             {
                 Debug.Log($"[VIVOX] State {UnityServices.State} VivoxService Instance Is null: {VivoxService.Instance == null}");
             }
+        }
+
+        private void OnDestroy()
+        {
+            Logout();
         }
 
         public void Logout()
