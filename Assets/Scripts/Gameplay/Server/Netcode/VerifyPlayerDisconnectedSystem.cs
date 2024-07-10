@@ -17,6 +17,8 @@ namespace Unity.MegacityMetro.Gameplay
         private EntityQuery m_ConnectedPlayers;
         public void OnCreate(ref SystemState state)
         {
+            var myEntity = state.EntityManager.CreateEntity();
+            state.EntityManager.AddBuffer<PlayerConnectedElement>(myEntity);
             m_ConnectedPlayers = state.GetEntityQuery(ComponentType.ReadOnly<NetworkStreamConnection>());
         }
 

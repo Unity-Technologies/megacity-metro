@@ -35,6 +35,5 @@ namespace Unity.NetCode.Extensions
         public FixedString64Bytes Name;
         public FixedString64Bytes UASId;
         public Entity Value;
-        public int NetworkID;
     }
 }

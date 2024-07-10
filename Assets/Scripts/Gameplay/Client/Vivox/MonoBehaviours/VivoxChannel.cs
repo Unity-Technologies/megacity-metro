@@ -10,10 +10,10 @@ namespace Unity.MegacityMetro.Gameplay
     public class VivoxChannel : MonoBehaviour
     {
         public string Name => "MultipleUserChannel";
-        private bool m_IsJoined = false;
 
         private Task JoinLobbyChannel()
         {
+            VivoxService.Instance.LoggedOut += OnUserLoggedOut;
             VivoxService.Instance.ConnectionRecovered += OnConnectionRecovered;
             VivoxService.Instance.ConnectionRecovering += OnConnectionRecovering;
             VivoxService.Instance.ConnectionFailedToRecover += OnConnectionFailedToRecover;
@@ -22,20 +22,16 @@ namespace Unity.MegacityMetro.Gameplay
         
         void OnDestroy()
         {
-            if (VivoxService.Instance != null)
-            {
-                if (m_IsJoined)
-                {
-                    VivoxService.Instance.LeaveChannelAsync(Name);
-                    m_IsJoined = false;
-                }
-
-                VivoxService.Instance.ConnectionRecovered -= OnConnectionRecovered;
-                VivoxService.Instance.ConnectionRecovering -= OnConnectionRecovering;
-                VivoxService.Instance.ConnectionFailedToRecover -= OnConnectionFailedToRecover;   
-            }
+            VivoxService.Instance.ConnectionRecovered -= OnConnectionRecovered;
+            VivoxService.Instance.ConnectionRecovering -= OnConnectionRecovering;
+            VivoxService.Instance.ConnectionFailedToRecover -= OnConnectionFailedToRecover;
         }
-        
+
+        private void OnUserLoggedOut()
+        {
+            
+        }
+
         private void OnConnectionRecovering()
         {
             //sets UI with .text = "Connection Recovering";
@@ -54,7 +50,11 @@ namespace Unity.MegacityMetro.Gameplay
         public async void JoinChannel()
         {
             await JoinLobbyChannel();
-            m_IsJoined = true;
+        }
+
+        public void DisconnectAllChannels()
+        {
+            
         }
     }
 }
