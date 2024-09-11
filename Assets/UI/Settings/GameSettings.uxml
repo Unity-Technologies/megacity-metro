@@ -12,7 +12,7 @@
             </ui:GroupBox>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="game-settings" class="full-screen-container" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; position: absolute;">
+    <ui:VisualElement name="game-settings" class="full-screen-container" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; position: absolute; background-color: rgba(0, 0, 0, 0.7);">
         <ui:VisualElement name="settings-menu-panel" class="menu-panel" style="width: 40%; justify-content: space-between; flex-direction: column; padding-top: 35px; padding-right: 35px; padding-bottom: 35px; padding-left: 35px; align-items: stretch;">
             <ui:VisualElement name="menu" style="background-color: rgba(0, 0, 0, 0); align-self: flex-start; justify-content: space-between; border-right-color: rgb(255, 255, 255); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-left-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); align-items: center; flex-direction: column; width: 100%;">
                 <ui:VisualElement name="options-title" style="background-image: url(&quot;project://database/Assets/Art/UI/MegacityMetro_Atlas.psd?fileID=8569074702158737054&amp;guid=bb39bc9e67f968a4dbee2305280d3d1d&amp;type=3#options-title&quot;); -unity-background-scale-mode: scale-to-fit; width: 250px; height: 120px; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px;" />
@@ -23,13 +23,15 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="content" style="background-color: rgba(0, 0, 0, 0); display: flex; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                <ui:VisualElement name="graphics-settings" style="flex-direction: column; display: none; align-items: stretch; flex-wrap: nowrap; justify-content: flex-start;">
+                <ui:VisualElement name="graphics-settings" style="flex-direction: column; display: flex; align-items: stretch; flex-wrap: nowrap; justify-content: flex-start;">
                     <MegacityMetro.CustomUI.CustomSelector choices="Low,Medium,High,Custom" index="0" label="Quality Settings" name="quality-settings" tabindex="3" class="focus-first" />
                     <MegacityMetro.CustomUI.CustomSelector choices="Fullscreen,Windowed" index="0" label="Screen Mode" name="screen-mode" tabindex="4" class="hide-in-mobile" />
                     <MegacityMetro.CustomUI.CustomSelector choices="Default" label="Screen Resolution" name="screen-resolution" tabindex="5" index="0" class="hide-in-mobile" />
                     <MegacityMetro.CustomUI.CustomSelector choices="Low,Medium,High" label="Texture Details" name="texture-details" tabindex="6" index="0" />
                     <MegacityMetro.CustomUI.CustomToggle first-option="ON" second-option="OFF" name="postprocessing" label="Postprocessing" tabindex="7" />
                     <MegacityMetro.CustomUI.CustomToggle first-option="ON" second-option="OFF" name="vertical-sync" label="Vsync" tabindex="8" class="hide-in-mobile" />
+                    <MegacityMetro.CustomUI.CustomToggle first-option="ON" second-option="OFF" name="stp-toggle" label="STP (Spatial-Temporal Post-Processing)" tabindex="9" tooltip="Spatial-Temporal Post-Processing" />
+                    <MegacityMetro.CustomUI.CustomSlider label="Render Scale" value="1" high-value="2" show-input-field="true" name="render-scale-slider" low-value="0.2" tabindex="10" />
                 </ui:VisualElement>
                 <ui:VisualElement name="audio-settings" style="flex-grow: 1; display: none; align-items: stretch;">
                     <MegacityMetro.CustomUI.CustomSliderInt label="Volume" value="100" high-value="100" show-input-field="true" name="volume" low-value="0" tabindex="9" class="focus-first" />

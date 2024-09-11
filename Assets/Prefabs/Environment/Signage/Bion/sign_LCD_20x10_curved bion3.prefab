@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2847519394831247045, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 0a5b8be6998f8fd4f904adee78d4dccc, type: 2}
     - target: {fileID: 4021511131409178026, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
@@ -83,8 +83,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign_LCD_20x10_curved bion3
       objectReference: {fileID: 0}
+    - target: {fileID: 7230977007390540503, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+        type: 3}
+      propertyPath: m_LODs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230977007390540503, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+        type: 3}
+      propertyPath: m_LODs.Array.data[1].renderers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230977007390540503, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+        type: 3}
+      propertyPath: m_LODs.Array.data[2].renderers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230977007390540503, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+        type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.015139945
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230977007390540503, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+        type: 3}
+      propertyPath: m_LODs.Array.data[1].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 2795121961288058463}
+    - target: {fileID: 7230977007390540503, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+        type: 3}
+      propertyPath: m_LODs.Array.data[2].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 2795121961288058463}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 281ef090f1cf5c942b5e50f7e2a24ddf, type: 3}
+--- !u!23 &2795121961288058463 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2847519394831247045, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+    type: 3}
+  m_PrefabInstance: {fileID: 94064666447470746}
+  m_PrefabAsset: {fileID: 0}

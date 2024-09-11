@@ -31,6 +31,7 @@ namespace Unity.Services.Samples.GameServerHosting
             }
             catch (Exception ex)
             {
+                Debug.LogWarning($"[GSH] {MultiplayService.Instance}");
                 Debug.LogWarning($"[GSH] Error creating Allocation service.\n{ex}");
             }
         }

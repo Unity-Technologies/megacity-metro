@@ -3,12 +3,12 @@
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: bldgTopB1_LOD
-  m_Shader: {fileID: -6465566751694194690, guid: 6e35da801527813458492230c3e6f798,
+  m_Shader: {fileID: -6465566751694194690, guid: d32e458b7bfea5e46b6e4717efde1cbc,
     type: 3}
   m_Parent: {fileID: 2100000, guid: 9e3fdf692e5889244a0257dd9538b656, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -19,13 +19,18 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _NormAO:
         m_Texture: {fileID: 2800000, guid: 4f226fc814e5778499be345fc7e85bec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_281dfdcc384546ff918a14c5eaba5b67_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 3214bb5eb1fc4354585ad9bdad9198e1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleCubemap_45a686d44134490bbeb56342249ece61_Cube_1_Cubemap:
@@ -53,7 +58,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4a3e00d9ba6343a2a2f7668ebccd1538_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 0c0201a809654c44c8b30b132e6a2ffa, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4ec755a2fbac4331bf60a68fc347fd11_Texture_1_Texture2D:
@@ -81,13 +86,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindowMask:
-        m_Texture: {fileID: 2800000, guid: 36ce1d7eba56aae4fbd414925cedee96, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4f226fc814e5778499be345fc7e85bec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _LargePanelScale: 0.322
+    - _WallSmoothness: 0.999
+    - _random_Colors: 0.065
     m_Colors: []
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &7144208223336908738
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -100,4 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9

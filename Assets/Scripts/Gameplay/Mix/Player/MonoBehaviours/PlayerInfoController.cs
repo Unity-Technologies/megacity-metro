@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -15,27 +14,24 @@ namespace Unity.MegacityMetro.Gameplay
     public class PlayerInfoController : MonoBehaviour
     {
         public static PlayerInfoController Instance;
-        [SerializeField]
-        private GameObject m_VivoxManagerPrefab; 
-        [SerializeField]
-        private PlayerInfoItemSettings m_Settings;
-        [SerializeField]
-        private VisualTreeAsset m_PlayerInfoItem;
+        [SerializeField] private GameObject m_VivoxManagerPrefab;
+        [SerializeField] private PlayerInfoItemSettings m_Settings;
+        [SerializeField] private VisualTreeAsset m_PlayerInfoItem;
         private VisualElement m_PlayerInfoContainer;
         private readonly Dictionary<Entity, PlayerInfoRef> NameTags = new();
         private Transform m_CameraTransform;
         private Camera m_Camera;
 
-        public string PlayerName => m_Settings.PlayerName;
+        public FixedString64Bytes PlayerName => m_Settings.PlayerName;
         public bool IsSinglePlayer => m_Settings.GameMode == GameMode.SinglePlayer;
-        
+
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
                 m_Camera = Camera.main;
-                if (m_Camera != null) 
+                if (m_Camera != null)
                     m_CameraTransform = m_Camera.transform;
             }
             else
@@ -46,10 +42,12 @@ namespace Unity.MegacityMetro.Gameplay
 
         private void Start()
         {
+#if !UNITY_SERVER
             if (!IsSinglePlayer)
             {
                 Instantiate(m_VivoxManagerPrefab);
             }
+#endif
         }
 
         private void OnEnable()
@@ -58,12 +56,12 @@ namespace Unity.MegacityMetro.Gameplay
             m_PlayerInfoContainer = root.Q<VisualElement>("player-name-info-container");
         }
 
-        public void CreateNameTag(string playerName, Entity player, float health)
+        public void CreateNameTag(FixedString64Bytes playerName, Entity player, float health)
         {
             if (NameTags.TryGetValue(player, out var nameTag))
             {
                 var label = nameTag.Label;
-                label.text = playerName;
+                label.text = playerName.Value;
             }
             else
             {
@@ -88,57 +86,55 @@ namespace Unity.MegacityMetro.Gameplay
             }
         }
 
-        public void UpdateNamePosition(Entity player, string playerName, float health, LocalToWorld localToWorld)
+        public void UpdateNamePosition(Entity player, FixedString64Bytes playerName, float health,
+            LocalToWorld localToWorld)
         {
-            if (!NameTags.ContainsKey(player)) 
+            if (!NameTags.TryGetValue(player, out var nameTag))
                 return;
-            
-            NameTags[player].SetLife(health);
+
+            nameTag.SetLife(health);
             var cameraPosition = m_CameraTransform.position;
             var cameraForward = m_CameraTransform.forward;
             var distance = math.distance(localToWorld.Position, cameraPosition);
 
             var screenPosition = m_Camera.WorldToScreenPoint(localToWorld.Position);
-            if (screenPosition.z < 0 || !NameTags[player].IsVisible(cameraPosition, cameraForward,localToWorld.Position))
+            if (screenPosition.z < 0 ||
+                !NameTags[player].IsVisible(cameraPosition, cameraForward, localToWorld.Position))
             {
                 NameTags[player].Hide();
             }
             else
             {
                 // Convert the screen position to panel position
-                screenPosition = RuntimePanelUtils.ScreenToPanel(m_PlayerInfoContainer.panel, new Vector2(screenPosition.x, Screen.height - screenPosition.y));
+                screenPosition = RuntimePanelUtils.ScreenToPanel(m_PlayerInfoContainer.panel,
+                    new Vector2(screenPosition.x, Screen.height - screenPosition.y));
                 NameTags[player].UpdatePosition(screenPosition);
                 NameTags[player].UpdateScale(distance);
-                    
+
                 if (distance < m_Settings.MinDistanceToShowPlayerInfo)
                 {
                     NameTags[player].UpdateLabel(playerName);
-                    if(!NameTags[player].InTransition && !NameTags[player].PlayerInfoVisible)
-                        NameTags[player].ShowPlayerInfo();
+                    NameTags[player].ShowPlayerInfo();
                 }
                 else
                 {
                     NameTags[player].UpdateIcon(distance);
-                    if(!NameTags[player].InTransition && !NameTags[player].IconVisible)
-                        NameTags[player].ShowIcon();
+                    NameTags[player].ShowIcon();
                 }
             }
         }
 
         public void RefreshNameTags(EntityManager manager)
         {
-            var list = new List<Entity>();
-            foreach (var nameTag in NameTags.Keys)
+            var enumerator = NameTags.GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                if (!manager.Exists(nameTag))
+                var current = enumerator.Current;
+                if (!manager.Exists(current.Key))
                 {
-                    list.Add(nameTag);
+                    DestroyNameTag(current.Key);
+                    enumerator = NameTags.GetEnumerator();
                 }
-            }
-
-            foreach (var entity in list)
-            {
-                DestroyNameTag(entity);
             }
         }
 

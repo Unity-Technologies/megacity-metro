@@ -1,4 +1,5 @@
-﻿using Unity.Services.Vivox;
+﻿using System.Threading.Tasks;
+using Unity.Services.Vivox;
 using UnityEngine;
 
 namespace Unity.MegacityMetro.Gameplay
@@ -10,7 +11,6 @@ namespace Unity.MegacityMetro.Gameplay
     {
         public bool IsConnecting { get; private set; }
         public bool IsLogged => VivoxService.Instance.IsLoggedIn;
-        
 
         public void Login(string displayName)
         {
@@ -43,10 +43,13 @@ namespace Unity.MegacityMetro.Gameplay
             IsConnecting = false;
         }
 
-        public async void ClosingClientConnection()
+        public async Task ClosingClientConnection()
         {
-            if(VivoxService.Instance.IsLoggedIn)
+            if (VivoxService.Instance.IsLoggedIn && VivoxService.Instance.ActiveChannels.Count > 0)
+            {
+                await VivoxService.Instance.LeaveAllChannelsAsync();
                 await VivoxService.Instance.LogoutAsync();
+            }
         }
     }
 }

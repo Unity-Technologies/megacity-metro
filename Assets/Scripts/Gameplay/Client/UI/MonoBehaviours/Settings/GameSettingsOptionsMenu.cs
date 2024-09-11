@@ -102,9 +102,10 @@ namespace Unity.MegacityMetro.UI
             ShowSettingsOptions(false);
 
             QuitSystem.DisconnectAllPlayers();
+#if !UNITY_SERVER
             if (VivoxManager.Instance != null)
                 VivoxManager.Instance.Logout();
-
+#endif
             if (PlayerInfoController.Instance.IsSinglePlayer)
                 SceneController.LoadMenu();
         }

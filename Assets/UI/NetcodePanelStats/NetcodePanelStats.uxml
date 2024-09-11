@@ -41,7 +41,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:Label text="P" name="toggle-key-label" style="position: absolute; color: rgb(255, 255, 255); -unity-font-definition: url(&apos;project://database/Assets/UI/NetcodePanelStats/FiraCode-Regular%20SDF.asset?fileID=11400000&amp;guid=d92cbd036b66cdd4287d33c29491ddb4&amp;type=2#FiraCode-Regular SDF&apos;); -unity-font: url(&apos;project://database/Assets/UI/NetcodePanelStats/FiraCode-Regular.ttf?fileID=12800000&amp;guid=afe01fe54b350f74c86909ddaf7add7d&amp;type=3#FiraCode-Regular&apos;); font-size: 20px; top: 60px;" />
-        <ui:Button name="info-panel-back-button" class="back-button">
+        <ui:Button name="info-panel-back-button" class="back-button" focusable="false">
             <ui:VisualElement name="back-icon" class="back-icon" style="width: 80px; height: 80px;" />
         </ui:Button>
     </ui:VisualElement>

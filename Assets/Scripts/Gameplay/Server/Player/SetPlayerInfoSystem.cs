@@ -113,9 +113,10 @@ namespace Unity.MegacityMetro.Gameplay
                         var uasID = info.UASId;
 
                         commandBuffer.SetComponent(entity, new PlayerName { Name = name });
+                        commandBuffer.SetComponent(entity, new PlayerPlatform { Value = info.Platform });
                         commandBuffer.AddComponent(entity, new PlayerUASID { UASId = uasID });
 
-                        playersConnected.Add(new PlayerConnectedElement { Name = name, UASId = uasID, Value = entity });
+                        playersConnected.Add(new PlayerConnectedElement { Name = name, UASId = uasID, NetworkID = networkId.Value, Value = entity });
                         UnityEngine.Debug.Log($"Client: {name} ({uasID}) has joined the game!  (Thin = {!info.IsClient})\nConnected Players: {m_ConnectedPlayers.CalculateEntityCount()}");
 
                         GameHostingServerEvents.UserJoinedServer?.Invoke(uasID.ToString());

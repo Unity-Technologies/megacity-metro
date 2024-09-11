@@ -3,6 +3,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.NetCode;
 using Unity.Services.Samples;
+using UnityEngine;
 using static Unity.Entities.SystemAPI;
 
 namespace Unity.MegacityMetro.Gameplay
@@ -26,12 +27,13 @@ namespace Unity.MegacityMetro.Gameplay
 
             var commandBuffer = new EntityCommandBuffer(Allocator.Temp);
 
-            foreach (var (streaming, entity) in Query<RefRO<NetworkStreamInGame>>().WithNone<NameAssigned>().WithEntityAccess())
+            foreach (var (_, entity) in Query<RefRO<NetworkStreamInGame>>().WithNone<NameAssigned>().WithEntityAccess())
             {
                 var requestEntity = commandBuffer.CreateEntity();
                 var requestData = new SetPlayerInfoRequest
                 {
                     Name = PlayerInfoController.Instance.PlayerName,
+                    Platform = (int) Application.platform,
                     //This returns [True] if the requester is not a Thin Client
                     IsClient = !state.World.IsThinClient(),
 

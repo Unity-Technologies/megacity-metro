@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Vivox;
@@ -41,6 +42,7 @@ namespace Unity.MegacityMetro.Gameplay
         public VivoxSession Session { get; private set; }
         public VivoxChannel Channel { get; private set; }
         private bool m_ServiceInitialized;
+        private bool m_IsReady;
 
         public IVivoxService Service
         {
@@ -51,12 +53,14 @@ namespace Unity.MegacityMetro.Gameplay
                 return VivoxService.Instance;
             }
         }
-        
-        
-        private bool m_IsReady;
 
         private void Awake()
         {
+#if UNITY_SERVER
+            Debug.Log("[VIVOX] Disabling Vivox on the server ---------");
+            Destroy(gameObject);
+            return;
+#else
             if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64 && Application.platform == RuntimePlatform.OSXPlayer)
             {
                 Destroy(gameObject);
@@ -82,6 +86,7 @@ namespace Unity.MegacityMetro.Gameplay
             Devices = GetComponent<VivoxDevicesVolume>();
             Session = GetComponent<VivoxSession>();
             Channel = GetComponent<VivoxChannel>();
+#endif
         }
 
         private async void Start()
@@ -122,6 +127,11 @@ namespace Unity.MegacityMetro.Gameplay
             }
         }
 
+        private void OnDestroy()
+        {
+            Logout();
+        }
+
         public void Logout()
         {
             // Needed to add this to prevent some unsuccessful init, we can revisit to do better
@@ -129,15 +139,9 @@ namespace Unity.MegacityMetro.Gameplay
             {
                 Devices.SetMicrophoneMute(true);
                 Session.ClosingClientConnection();
+                Debug.Log($"[VIVOX] Logout from Vivox");
             }
         }
-        
-#if !UNITY_EDITOR        
-        private void OnApplicationQuit()
-        {
-            Logout();
-        }
-#endif
         
         bool CheckManualCredentials()
         {

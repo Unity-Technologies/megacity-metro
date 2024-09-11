@@ -41,11 +41,10 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511087085306029028}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2000
+  m_Intensity: 1000
   m_Range: 150
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -93,8 +92,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!114 &1761298575375523256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,8 +201,51 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2517622948951082010}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 381195e210d961142ac86ed2ce54d82f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2486106648917220753}
   m_SourcePrefab: {fileID: 100100000, guid: 381195e210d961142ac86ed2ce54d82f, type: 3}
+--- !u!23 &7662669395799241075 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 381195e210d961142ac86ed2ce54d82f,
+    type: 3}
+  m_PrefabInstance: {fileID: 9049649845345480183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8167200166830493862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 381195e210d961142ac86ed2ce54d82f,
+    type: 3}
+  m_PrefabInstance: {fileID: 9049649845345480183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!205 &2486106648917220753
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167200166830493862}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 13.75, z: 0}
+  m_Size: 50.001602
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.015711226
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7662669395799241075}
+  - screenRelativeHeight: 0.015139945
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7662669395799241075}
+  - screenRelativeHeight: 0.015139945
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7662669395799241075}
+  m_Enabled: 1
 --- !u!4 &8799024230747408924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 381195e210d961142ac86ed2ce54d82f,

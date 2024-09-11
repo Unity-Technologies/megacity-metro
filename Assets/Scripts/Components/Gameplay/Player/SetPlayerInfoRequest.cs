@@ -8,5 +8,6 @@ namespace Unity.MegacityMetro.Gameplay
         public FixedString64Bytes Name;
         public FixedString64Bytes UASId;
         public bool IsClient;
+        public int Platform;
     }
 }

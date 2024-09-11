@@ -13,8 +13,8 @@ namespace Unity.MegacityMetro.UI
 
         public override string TabName => "controls-settings";
 
-        private SliderInt m_AimSensitivitySlider;
-        private SliderInt m_MouseSensitivitySlider;
+        private CustomSliderInt m_AimSensitivitySlider;
+        private CustomSliderInt m_MouseSensitivitySlider;
         private CustomToggle m_InverseLookHorizontalToggle;
         private CustomToggle m_InverseLookVerticalToggle;
 
@@ -48,8 +48,8 @@ namespace Unity.MegacityMetro.UI
             base.Initialize();
 
             var root = GetComponent<UIDocument>().rootVisualElement;
-            m_MouseSensitivitySlider = root.Q<SliderInt>("mouse-sensitivity");
-            m_AimSensitivitySlider = root.Q<SliderInt>("aim-sensitivity");
+            m_MouseSensitivitySlider = root.Q<CustomSliderInt>("mouse-sensitivity");
+            m_AimSensitivitySlider = root.Q<CustomSliderInt>("aim-sensitivity");
             m_InverseLookHorizontalToggle = root.Q<CustomToggle>("invert-look-horizontal");
             m_InverseLookVerticalToggle = root.Q<CustomToggle>("invert-look-vertical");
 
@@ -86,7 +86,7 @@ namespace Unity.MegacityMetro.UI
         protected override void SaveCurrentState()
         {
             base.SaveCurrentState();
-            UpdateSliderCurrentState(m_MouseSensitivitySlider);
+            UpdateSliderIntCurrentState(m_MouseSensitivitySlider);
             UpdateCurrentToggleState(m_InverseLookHorizontalToggle);
             UpdateCurrentToggleState(m_InverseLookVerticalToggle);
 
@@ -132,7 +132,7 @@ namespace Unity.MegacityMetro.UI
         public override void Reset()
         {
             base.Reset();
-            ResetSliderCurrentState(m_MouseSensitivitySlider);
+            ResetSliderIntCurrentState(m_MouseSensitivitySlider);
             ResetCurrentToggleState(m_InverseLookHorizontalToggle);
             ResetCurrentToggleState(m_InverseLookVerticalToggle);
         }
