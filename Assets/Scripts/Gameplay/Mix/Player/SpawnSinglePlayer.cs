@@ -1,9 +1,7 @@
 ﻿using Unity.Collections;
 using Unity.Entities;
-using Unity.MegacityMetro.CameraManagement;
 using Unity.NetCode;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace Unity.MegacityMetro.Gameplay
 {

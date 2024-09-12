@@ -64,6 +64,95 @@ Transform:
   - {fileID: 3233606142361116434}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &334978979658059663
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1702362231285499516}
+    m_Modifications:
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.49999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.49999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.49999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 120.09996
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 248.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138797986000297310, guid: 0b84993f3128e7848b1e482ce34c1f35,
+        type: 3}
+      propertyPath: m_Name
+      value: Skybridge_Open
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b84993f3128e7848b1e482ce34c1f35, type: 3}
+--- !u!4 &9033089208010859 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 325950293068613604, guid: 0b84993f3128e7848b1e482ce34c1f35,
+    type: 3}
+  m_PrefabInstance: {fileID: 334978979658059663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5229891048836386600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,7 +218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6860195393933871444, guid: 66234fd4f4b4a584284257d2fff50228,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9033089208010859}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66234fd4f4b4a584284257d2fff50228, type: 3}
 --- !u!4 &1702362231285499516 stripped

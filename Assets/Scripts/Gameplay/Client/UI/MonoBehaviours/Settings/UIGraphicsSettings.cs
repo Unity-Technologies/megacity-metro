@@ -1,7 +1,9 @@
 using MegacityMetro.CustomUI;
+using Unity.MegacityMetro.CameraManagement;
 using Unity.MegacityMetro.Utils;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 namespace Unity.MegacityMetro.UI
@@ -30,6 +32,9 @@ namespace Unity.MegacityMetro.UI
         private CustomSelector m_ScreenResolution;
         private CustomSelector m_TextureDetailsValue;
 
+        private CustomToggle m_STPValue;
+        private CustomSlider m_RenderScaleValue;
+
         public override string TabName => "graphics-settings";
         private bool m_CanSetAsCustom = true;
 
@@ -49,6 +54,8 @@ namespace Unity.MegacityMetro.UI
             m_ScreenResolution = root.Q<CustomSelector>("screen-resolution");
             m_ScreenModeValue = root.Q<CustomSelector>("screen-mode");
             m_TextureDetailsValue = root.Q<CustomSelector>("texture-details");
+            m_STPValue = root.Q<CustomToggle>("stp-toggle");
+            m_RenderScaleValue = root.Q<CustomSlider>("render-scale-slider");
 
             m_ScreenModeValue.choices = ResolutionScreen.GetResolutionModes();
             m_ScreenResolution.choices = ResolutionScreen.GetResolutionOptions();
@@ -56,8 +63,10 @@ namespace Unity.MegacityMetro.UI
             m_VerticalSyncValue.RegisterValueChangedCallback(OnVsyncChanged);
             m_QualityValue.RegisterValueChangedCallback(OnGraphicsQualityChanged);
             m_TextureDetailsValue.RegisterValueChangedCallback(OnTextureDetailsChanged);
-            
-             switch (QualitySettings.GetQualityLevel())
+            m_STPValue.RegisterValueChangedCallback(OnSTPChanged);
+            m_RenderScaleValue.RegisterValueChangedCallback(OnRenderScaleChanged);
+
+            switch (QualitySettings.GetQualityLevel())
             {
                 case 0:
                     m_QualityValue.value = m_QualityValue.choices[0];
@@ -74,10 +83,14 @@ namespace Unity.MegacityMetro.UI
             }
 
             CheckSavedData();
-            
+
             m_QualityValue.RegisterCallback<GeometryChangedEvent>(_ => m_QualityValue.Focus());
+            
+            // Set default values for STP and Render Scale
+            SetSTP(false);
+            SetRenderScale(1);
         }
-        
+
         private void CheckSavedData()
         {
             var graphicsSettingsData = PersistentDataManager.Instance.GetGraphicsSettings();
@@ -87,16 +100,17 @@ namespace Unity.MegacityMetro.UI
             m_ScreenResolution.value = m_ScreenResolution.choices[graphicsSettingsData.ScreenResolutionIndex];
             m_TextureDetailsValue.value = m_TextureDetailsValue.choices[graphicsSettingsData.TextureDetailIndex];
             m_PostProcessingValue.value = graphicsSettingsData.PostProcessingEnabled;
-#if !(UNITY_ANDROID || UNITY_IPHONE)
+
+#if !(UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH)
             m_VerticalSyncValue.value = graphicsSettingsData.VSyncEnabled;
+            ResolutionScreen.SetScreenMode(m_ScreenModeValue.value.ToLower());
+            ResolutionScreen.SetResolution(m_ScreenResolution.value.ToLower());
 #endif
 
             // Force set initial values
             QualitySettings.vSyncCount = m_VerticalSyncValue.value ? 1 : 0;
             m_PostProcessing.enabled = m_PostProcessingValue.value;
             SetTextureDetail(m_TextureDetailsValue.value.ToLower());
-            ResolutionScreen.SetScreenMode(m_ScreenModeValue.value.ToLower());
-            ResolutionScreen.SetResolution(m_ScreenResolution.value.ToLower());
         }
 
         protected override void SaveCurrentState()
@@ -108,8 +122,8 @@ namespace Unity.MegacityMetro.UI
             UpdateCurrentSelectorFieldState(m_QualityValue);
             UpdateCurrentSelectorFieldState(m_ScreenModeValue);
             UpdateCurrentSelectorFieldState(m_TextureDetailsValue);
-            
-#if !(UNITY_ANDROID || UNITY_IPHONE)
+
+#if !(UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH)
             ResolutionScreen.SetResolution(m_ScreenResolution.value.ToLower());
             ResolutionScreen.SetScreenMode(m_ScreenModeValue.value.ToLower());
 #endif
@@ -141,13 +155,15 @@ namespace Unity.MegacityMetro.UI
             ResetCurrentSelectorFieldState(m_QualityValue);
             ResetCurrentSelectorFieldState(m_ScreenModeValue);
             ResetCurrentSelectorFieldState(m_TextureDetailsValue);
+            ResetCurrentToggleState(m_STPValue);
+            ResetSliderCurrentState(m_RenderScaleValue);
         }
 
         private void OnHighButtonOnClicked()
         {
             m_CanSetAsCustom = false;
             QualitySettings.SetQualityLevel(2);
-#if !(UNITY_ANDROID || UNITY_IPHONE)
+#if !(UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH)
             m_VerticalSyncValue.value = true;
 #endif
             m_PostProcessingValue.value = true;
@@ -158,7 +174,7 @@ namespace Unity.MegacityMetro.UI
         {
             m_CanSetAsCustom = false;
             QualitySettings.SetQualityLevel(1);
-#if !(UNITY_ANDROID || UNITY_IPHONE)
+#if !(UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH)
             m_VerticalSyncValue.value = false;
 #endif
             m_PostProcessingValue.value = true;
@@ -169,7 +185,7 @@ namespace Unity.MegacityMetro.UI
         {
             m_CanSetAsCustom = false;
             QualitySettings.SetQualityLevel(0);
-#if !(UNITY_ANDROID || UNITY_IPHONE)
+#if !(UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH)
             m_VerticalSyncValue.value = false;
 #endif
             m_PostProcessingValue.value = false;
@@ -184,6 +200,56 @@ namespace Unity.MegacityMetro.UI
                 m_VerticalSyncValue.UnregisterValueChangedCallback(OnVsyncChanged);
                 m_ScreenModeValue.UnregisterValueChangedCallback(OnScreenModeChanged);
                 m_TextureDetailsValue.UnregisterValueChangedCallback(OnTextureDetailsChanged);
+                m_QualityValue.UnregisterValueChangedCallback(OnGraphicsQualityChanged);
+                m_STPValue.UnregisterValueChangedCallback(OnSTPChanged);
+                m_RenderScaleValue.UnregisterValueChangedCallback(OnRenderScaleChanged);
+            }
+        }
+
+        private void OnRenderScaleChanged(ChangeEvent<float> evt)
+        {
+            SetRenderScale(evt.newValue);
+        }
+
+        private void OnSTPChanged(ChangeEvent<bool> evt)
+        {
+            SetSTP(evt.newValue);
+        }
+
+        private void SetRenderScale(float value)
+        {
+            var renderPipeline = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
+            if (renderPipeline != null)
+            {
+                renderPipeline.renderScale = value;
+            }
+        }
+
+        private void SetSTP(bool value)
+        {
+            var renderPipeline = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
+            if (renderPipeline == null)
+                return;
+
+            if (value)
+            {
+                renderPipeline.upscalingFilter = UpscalingFilterSelection.STP;
+                renderPipeline.msaaSampleCount = 0;
+
+                HybridCameraManager.Instance.SetAllowDynamicResolution(false);
+            }
+            else
+            {
+                renderPipeline.upscalingFilter = UpscalingFilterSelection.Auto;
+                renderPipeline.msaaSampleCount = m_QualityValue.value switch
+                {
+                    "High" => 4,
+                    "Medium" => 2,
+                    "Low" => 0,
+                    _ => renderPipeline.msaaSampleCount
+                };
+
+                HybridCameraManager.Instance.SetAllowDynamicResolution(true);
             }
         }
 
@@ -241,7 +307,7 @@ namespace Unity.MegacityMetro.UI
                     MaterialQuality.Low.SetGlobalShaderKeywords();
 #else
                     MaterialQuality.Medium.SetGlobalShaderKeywords();
-#endif     
+#endif
                     break;
                 case "high":
                     QualitySettings.globalTextureMipmapLimit = 0;

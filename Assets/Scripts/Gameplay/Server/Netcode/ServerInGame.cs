@@ -6,7 +6,9 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.MegacityMetro.Gameplay;
 using Unity.NetCode;
+using Unity.NetCode.Extensions;
 using Unity.Transforms;
+using UnityEngine;
 #if UNITY_SERVER && !UNITY_EDITOR
 using Unity.Networking.Transport;
 #endif
@@ -86,6 +88,10 @@ namespace Unity.MegacityMetro
 
         public void OnCreate(ref SystemState state)
         {
+            var myEntity = state.EntityManager.CreateEntity();
+            state.EntityManager.AddBuffer<PlayerConnectedElement>(myEntity);
+            state.RequireForUpdate<PlayerConnectedElement>();
+            
             state.RequireForUpdate<PlayerSpawner>();
             state.RequireForUpdate<SpawnPointElement>();
             m_UsedPositions = new NativeList<float3>(Allocator.Persistent);
@@ -111,7 +117,6 @@ namespace Unity.MegacityMetro
                 GhostImportanceDataType = ComponentType.ReadOnly<GhostDistanceData>(),
                 GhostImportancePerChunkDataType = ComponentType.ReadOnly<GhostDistancePartitionShared>(),
             });
-           
             
             var clientServerTickRate = new ClientServerTickRate();
             clientServerTickRate.ResolveDefaults();
@@ -133,6 +138,23 @@ namespace Unity.MegacityMetro
             foreach (var (netId, entity) in SystemAPI.Query<RefRO<NetworkId>>().WithNone<NetworkStreamInGame>()
                          .WithEntityAccess())
             {
+                var playerBuffer = SystemAPI.GetSingletonBuffer<PlayerConnectedElement>(true);
+                var networkIdIsBusy = false;
+                foreach (var playerElement in playerBuffer)
+                {
+                    if (playerElement.NetworkID == netId.ValueRO.Value)
+                    {
+                        networkIdIsBusy = true;
+                        break;
+                    }
+                }
+
+                if (networkIdIsBusy)
+                {
+                    Debug.LogWarning($"The NetworkID {netId.ValueRO.Value} is busy, the player couldn't be created");
+                    continue;    
+                }
+                
                 var spawnPointsArray = spawnBuffer.ToNativeArray(Allocator.TempJob);
                 var findNewPosition = new GetPositionJob
                 {

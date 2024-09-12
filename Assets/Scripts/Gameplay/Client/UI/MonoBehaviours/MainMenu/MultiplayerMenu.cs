@@ -83,10 +83,22 @@ namespace Unity.MegacityMetro.UI
             DropdownField serverDropDown = m_MultiplayerMenuOptions.Q<DropdownField>("multiplayer-server-location");
             
             // Create custom ring for focus navigation
-            m_FocusRing = new CustomFocusRing(root, new VisualElement[] {m_MultiplayerModeGroup, serverDropDown, serverIpTextField, m_NameTextField, m_MultiplayerPlayButton, m_MultiplayerReturnButton});
+#if UNITY_SWITCH
+            m_FocusRing = new CustomFocusRing(root, new VisualElement[] {m_MultiplayerModeGroup, serverDropDown, serverIpTextField, m_MultiplayerPlayButton, m_MultiplayerReturnButton});
+#else
+            m_FocusRing = new CustomFocusRing(root,
+                new VisualElement[]
+                {
+                    m_MultiplayerModeGroup, serverDropDown, serverIpTextField, m_NameTextField, m_MultiplayerPlayButton,
+                    m_MultiplayerReturnButton
+                });
+#endif
             
-#if (UNITY_ANDROID || UNITY_IPHONE) && !DEVELOPMENT_BUILD && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH) && !DEVELOPMENT_BUILD && !UNITY_EDITOR
             m_MultiplayerModeGroup.style.display = DisplayStyle.None;
+#endif
+#if UNITY_SWITCH
+            m_NameTextField.isReadOnly = true;
 #endif
             m_MultiplayerMenuOptions.style.display = DisplayStyle.None;
             m_MultiplayerModeGroup.RegisterValueChangedCallback(evt =>

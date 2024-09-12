@@ -13,11 +13,27 @@
             "m_Id": "eeae432726c6447ebaa91d49ab0419cd"
         }
     ],
-    "m_Keywords": [],
+    "m_Keywords": [
+        {
+            "m_Id": "d90fdd8cddd74bb7b5064d76000cee2c"
+        },
+        {
+            "m_Id": "5d6c3bb9fd2e470f9f2b1797df5b7b0d"
+        },
+        {
+            "m_Id": "66c9ad121bf347dc8594c76579f2d40a"
+        },
+        {
+            "m_Id": "9a79b771397f4ffa8a1b293c8a5556e6"
+        }
+    ],
     "m_Dropdowns": [],
     "m_CategoryData": [
         {
             "m_Id": "e77e0ca521c8496089cc70b6859c1cb1"
+        },
+        {
+            "m_Id": "858a9f82d2e14cb5ac58f7373d91e19c"
         }
     ],
     "m_Nodes": [
@@ -181,6 +197,7 @@
     "m_OutputNode": {
         "m_Id": ""
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "3d9548124c874d23ad062089f605be72"
@@ -508,6 +525,9 @@
     "m_AlphaClip": false,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
+    "m_DisableTint": false,
+    "m_AdditionalMotionVectorMode": 0,
+    "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": false,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
@@ -550,6 +570,31 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.ShaderKeyword",
+    "m_ObjectId": "5d6c3bb9fd2e470f9f2b1797df5b7b0d",
+    "m_Guid": {
+        "m_GuidSerialized": "53623874-7d1d-4119-8b42-a25ee758cf6f"
+    },
+    "m_Name": "Additional Shadows",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Additional Shadows",
+    "m_DefaultReferenceName": "_ADDITIONAL_SHADOWS",
+    "m_OverrideReferenceName": "_ADDITIONAL_LIGHT_SHADOWS",
+    "m_GeneratePropertyBlock": false,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_KeywordType": 0,
+    "m_KeywordDefinition": 1,
+    "m_KeywordScope": 1,
+    "m_KeywordStages": 2,
+    "m_Entries": [],
+    "m_Value": 1,
+    "m_IsEditable": true
 }
 
 {
@@ -673,6 +718,31 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.ShaderKeyword",
+    "m_ObjectId": "66c9ad121bf347dc8594c76579f2d40a",
+    "m_Guid": {
+        "m_GuidSerialized": "a9cfd3dc-2567-4e58-8749-63dd942d4c2f"
+    },
+    "m_Name": "Soft Shadows",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Soft Shadows",
+    "m_DefaultReferenceName": "_SOFT_SHADOWS",
+    "m_OverrideReferenceName": "_SHADOWS_SOFT",
+    "m_GeneratePropertyBlock": false,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_KeywordType": 0,
+    "m_KeywordDefinition": 1,
+    "m_KeywordScope": 1,
+    "m_KeywordStages": 2,
+    "m_Entries": [],
+    "m_Value": 1,
+    "m_IsEditable": true
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "66e4e7cae04e49ae98224db4eb3ebe43",
@@ -742,6 +812,27 @@
         "z": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "858a9f82d2e14cb5ac58f7373d91e19c",
+    "m_Name": "RequiredKeywords",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "d90fdd8cddd74bb7b5064d76000cee2c"
+        },
+        {
+            "m_Id": "5d6c3bb9fd2e470f9f2b1797df5b7b0d"
+        },
+        {
+            "m_Id": "66c9ad121bf347dc8594c76579f2d40a"
+        },
+        {
+            "m_Id": "9a79b771397f4ffa8a1b293c8a5556e6"
+        }
+    ]
 }
 
 {
@@ -835,6 +926,31 @@
     "useTilingAndOffset": false,
     "m_Modifiable": true,
     "m_DefaultType": 0
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.ShaderKeyword",
+    "m_ObjectId": "9a79b771397f4ffa8a1b293c8a5556e6",
+    "m_Guid": {
+        "m_GuidSerialized": "5192447c-f57b-49cd-b544-bb913336698c"
+    },
+    "m_Name": "Forward Plus",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Forward Plus",
+    "m_DefaultReferenceName": "_FORWARD_PLUS",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": false,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_KeywordType": 0,
+    "m_KeywordDefinition": 1,
+    "m_KeywordScope": 1,
+    "m_KeywordStages": 2,
+    "m_Entries": [],
+    "m_Value": 1,
+    "m_IsEditable": true
 }
 
 {
@@ -1184,6 +1300,31 @@
     "m_Property": {
         "m_Id": "924dabb97baa4cfe89c242d62c02274c"
     }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.ShaderKeyword",
+    "m_ObjectId": "d90fdd8cddd74bb7b5064d76000cee2c",
+    "m_Guid": {
+        "m_GuidSerialized": "8e6c1eaf-3c01-40ff-a0a9-6aa747a9396d"
+    },
+    "m_Name": "Shadows Cascade",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Shadows Cascade",
+    "m_DefaultReferenceName": "_SHADOWS_CASCADE",
+    "m_OverrideReferenceName": "_MAIN_LIGHT_SHADOWS_CASCADE",
+    "m_GeneratePropertyBlock": false,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_KeywordType": 0,
+    "m_KeywordDefinition": 1,
+    "m_KeywordScope": 1,
+    "m_KeywordStages": 2,
+    "m_Entries": [],
+    "m_Value": 1,
+    "m_IsEditable": true
 }
 
 {

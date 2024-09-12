@@ -21,7 +21,7 @@ namespace Unity.MegacityMetro.UI
         public void UpdateBar(float energy)
         {
             m_LaserBar.value = energy;
-            m_PowerValue.text = $"{(int)energy}";
+            m_PowerValue.text = energy.ToString("0"); 
         }
     }
 }

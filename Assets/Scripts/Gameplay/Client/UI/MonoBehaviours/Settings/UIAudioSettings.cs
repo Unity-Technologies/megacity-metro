@@ -93,10 +93,10 @@ namespace Unity.MegacityMetro.UI
         protected override void SaveCurrentState()
         {
             base.SaveCurrentState();
-            UpdateSliderCurrentState(m_VolumeSlider);
-            UpdateSliderCurrentState(m_SoundFXSlider);
-            UpdateSliderCurrentState(m_VivoxVolumeSlider);
-            UpdateSliderCurrentState(m_VivoxMicrophoneSlider);
+            UpdateSliderIntCurrentState(m_VolumeSlider);
+            UpdateSliderIntCurrentState(m_SoundFXSlider);
+            UpdateSliderIntCurrentState(m_VivoxVolumeSlider);
+            UpdateSliderIntCurrentState(m_VivoxMicrophoneSlider);
 
             SaveData();
         }
@@ -185,8 +185,8 @@ namespace Unity.MegacityMetro.UI
         public override void Reset()
         {
             base.Reset();
-            ResetSliderCurrentState(m_VolumeSlider);
-            ResetSliderCurrentState(m_SoundFXSlider);
+            ResetSliderIntCurrentState(m_VolumeSlider);
+            ResetSliderIntCurrentState(m_SoundFXSlider);
         }
     }
 }

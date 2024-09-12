@@ -67,6 +67,8 @@ namespace Unity.NetCode
             m_BackIcon = root.Q<VisualElement>("back-icon");
             m_BackButton.clicked += ToggleNetcodePanel;
             m_InfoPanel.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
+            
+            Disable();
         }
 
         private void OnGeometryChanged(GeometryChangedEvent evt)

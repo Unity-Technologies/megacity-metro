@@ -50,6 +50,9 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: ad1b0fa6faf2b274ea5c0eee8fb9a398,
     type: 3}
   m_SortingOrder: 4
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
 --- !u!114 &3654134284662252747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +99,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7488867903367463436}
-  - {fileID: 4639415283470240341}
   - {fileID: 2275024362526192287}
   - {fileID: 2978446723538405721}
   - {fileID: 1357802830788844821}
@@ -131,55 +133,55 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 739e6c80-e611-4942-9afd-70cd50c3cac5
-    m_ActionName: Gameplay/Move[/Keyboard/s,/Keyboard/w]
+    m_ActionName: 'Gameplay/Move[/Keyboard/s,/Keyboard/w]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 74bd2719-ed9e-4695-ae33-e2d1020f63f4
-    m_ActionName: Gameplay/Look[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/a,/Keyboard/rightArrow,/Keyboard/d,/Mouse/delta]
+    m_ActionName: 'Gameplay/Look[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/a,/Keyboard/rightArrow,/Keyboard/d,/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 63c614f1-1c8c-4c8e-ab32-444d220c9f11
-    m_ActionName: Gameplay/Fire[/Keyboard/space,/Mouse/leftButton]
+    m_ActionName: 'Gameplay/Fire[/Keyboard/space,/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: ef83af20-b9e7-4ed2-bee5-4bf646865a3a
-    m_ActionName: Gameplay/Roll[/Keyboard/q,/Keyboard/e]
+    m_ActionName: 'Gameplay/Roll[/Keyboard/q,/Keyboard/e]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 11b28cab-7c39-492a-b0b4-34cd35856c6f
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+    m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 1b330b61-445d-47d8-9f24-afefdba5e280
-    m_ActionName: UI/Submit[/Keyboard/enter]
+    m_ActionName: 'UI/Submit[/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 9116135b-2143-4dfe-9f39-45936e5b0cfb
-    m_ActionName: UI/Cancel[/Keyboard/escape]
+    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 3d748e57-1588-4084-a94e-48b7b70ba946
-    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
+    m_ActionName: 'UI/Point[/Mouse/position,/Pen/position]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: c0c58573-13fb-4599-b2f5-fb9ddf4897f6
-    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
+    m_ActionName: 'UI/Click[/Mouse/leftButton,/Pen/tip]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: ad16ca5c-5b15-4dde-9f32-6ba165700268
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: d45b7a99-22b5-4f66-b91d-695f6f25650a
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: e357f26c-6b92-45a0-a7a0-d57b217dd5dd
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1717664728415275580}
-        m_TargetAssemblyTypeName: Unity.NetCode.NetcodePanelStats, Unity.Netcode.Extensions
+      - m_Target: {fileID: 903181299489036295}
+        m_TargetAssemblyTypeName: Unity.MegacityMetro.UI.HUD, Unity.MegacityMetro.Gameplay.Client
         m_MethodName: ToggleNetcodePanel
         m_Mode: 1
         m_Arguments:
@@ -191,7 +193,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 4b7d272f-d381-4892-9e43-ab3c6d65418b
-    m_ActionName: HUD/ToggleNetcodeStats[/Keyboard/p]
+    m_ActionName: 'HUD/ToggleNetcodeStats[/Keyboard/p]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 874705640564087294}
@@ -207,11 +209,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: d8ff26cc-8290-43ca-bc02-8220914bbee4
-    m_ActionName: HUD/ToggleVivox[/Keyboard/v]
+    m_ActionName: 'HUD/ToggleVivox[/Keyboard/v]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: a3f68dc5-31c4-466b-a6b9-f33b334aba20
-    m_ActionName: Gameplay/Cheat_1[/Keyboard/1]
+    m_ActionName: 'Gameplay/Cheat_1[/Keyboard/1]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 0add94c1-bdcf-457a-8311-698fb4151ae4
@@ -223,11 +225,11 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 0eb50b62-ba50-417a-bcf9-05eab5f59abd
-    m_ActionName: Gameplay/LookDelta[/Mouse/delta]
+    m_ActionName: 'Gameplay/LookDelta[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 6e65910e-13a4-4882-99c0-445d34bb017b
-    m_ActionName: UI/OpenOptions[/Keyboard/tab,/Keyboard/escape]
+    m_ActionName: 'UI/OpenOptions[/Keyboard/tab,/Keyboard/escape]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3539785277606714382}
@@ -243,11 +245,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 7e0132ca-8d98-4d43-a7ee-2a601ecfda77
-    m_ActionName: HUD/ToggleLeaderboard[/Keyboard/l]
+    m_ActionName: 'HUD/ToggleLeaderboard[/Keyboard/l]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: ca3e316c-0019-4a5c-9418-75b29845c467
-    m_ActionName: UI/Back[/Keyboard/escape,/Mouse/backButton]
+    m_ActionName: 'UI/Back[/Keyboard/escape,/Mouse/backButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: HUD
@@ -411,6 +413,9 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 6596108ef8b02ef4fa45b2e9812d4766,
     type: 3}
   m_SortingOrder: 3
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
 --- !u!114 &903181299489036295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Leaderboard: {fileID: 3539785277606714382}
+  m_NetcodePanelPrefab: {fileID: 6134449891103178794, guid: 63e89452d01265e409e6be952dfc8419,
+    type: 3}
 --- !u!114 &3270131658732468231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,68 +529,6 @@ MonoBehaviour:
   m_MaxList: 5
   m_LeaderboardItem: {fileID: 9197481963319205126, guid: e06e45f43998ebb4f93ef3ec486201e9,
     type: 3}
---- !u!1 &4391039175385451092
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4639415283470240341}
-  - component: {fileID: 8542978312823670272}
-  - component: {fileID: 1717664728415275580}
-  m_Layer: 0
-  m_Name: NetcodePanelStats
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4639415283470240341
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4391039175385451092}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7254134414196534391}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8542978312823670272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4391039175385451092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: f3e0fc4e8c5bc304497bce2b2fe1ddca, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 2be7cc03db37ea941b2b29ca45a07465,
-    type: 3}
-  m_SortingOrder: 5
---- !u!114 &1717664728415275580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4391039175385451092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bd9950bd6af5b04cb5ad09b4a817dbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8209050892310169910
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +579,9 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: e44bed1d686a28842a09a4e9f961ed44,
     type: 3}
   m_SortingOrder: 6
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
 --- !u!114 &516773313531360355
 MonoBehaviour:
   m_ObjectHideFlags: 0

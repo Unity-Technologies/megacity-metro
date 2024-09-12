@@ -19,6 +19,16 @@ namespace Unity.MegacityMetro.Gameplay
 {
     public static class PluginLoader
     {
+#if UNITY_SERVER
+        public static int TouchesCount()
+        {
+            return 0;
+        }
+
+        public static void UnloadPlugin(){}
+        public static void LoadPlugin() { }
+#else
+
         private static bool IsPluginLoaded = false;
 #if UNITY_EDITOR_OSX
         [DllImport("TrackpadAccessEditor.dylib")]
@@ -116,5 +126,6 @@ namespace Unity.MegacityMetro.Gameplay
                 Debug.LogWarning($"Cannot be found '{pluginName}'.");
             }
         }
+#endif
     }
 }

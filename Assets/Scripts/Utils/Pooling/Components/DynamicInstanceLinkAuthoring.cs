@@ -10,6 +10,7 @@ namespace MegacityMetro.Pooling
         public bool UpdatePosition;
         public bool UpdateRotation;
 
+        [BakingVersion("megacity-metro", 1)]
         private class DynamicInstanceLinkBaker : Baker<DynamicInstanceLinkAuthoring>
         {
             public override void Bake(DynamicInstanceLinkAuthoring authoring)

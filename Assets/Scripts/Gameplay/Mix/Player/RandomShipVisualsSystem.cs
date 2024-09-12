@@ -1,20 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.Burst;
 using Unity.Entities;
 using Unity.MegacityMetro.Gameplay;
 using Unity.NetCode.Extensions;
 using Unity.Transforms;
-using UnityEngine;
 using Random = Unity.Mathematics.Random;
 
 public partial struct RandomShipVisualsSystem : ISystem
 {
     public void OnUpdate(ref SystemState state)
     {
-        uint nowMiliseconds = (uint)DateTime.Now.Millisecond;
+        uint nowMilliseconds = (uint)DateTime.Now.Millisecond;
         ComponentLookup<PlayerName> playerNameLookupRO = SystemAPI.GetComponentLookup<PlayerName>(true);
         EntityCommandBuffer ecb = SystemAPI.GetSingletonRW<BeginSimulationEntityCommandBufferSystem.Singleton>().ValueRW.CreateCommandBuffer(state.WorldUnmanaged);
         foreach (var (legEntity, prefabs, entity) in SystemAPI.Query<RootEntity, DynamicBuffer<ShipRandomVisuals>>().WithEntityAccess())
@@ -27,7 +22,7 @@ public partial struct RandomShipVisualsSystem : ISystem
             }
             else
             {
-                random = Random.CreateFromIndex(nowMiliseconds);
+                random = Random.CreateFromIndex(nowMilliseconds);
             }
 
             Entity randomPrefab = prefabs[random.NextInt(0, prefabs.Length)].ShipVisual;
@@ -35,9 +30,7 @@ public partial struct RandomShipVisualsSystem : ISystem
 
             ecb.AddComponent(instance, new Parent { Value = entity });
             ecb.AddComponent(instance, new RootEntity { Entity = legEntity.Entity });
-            
             ecb.AppendToBuffer(legEntity.Entity, new LinkedEntityGroup { Value = instance});
-            
             ecb.RemoveComponent<ShipRandomVisuals>(entity);
         }
         

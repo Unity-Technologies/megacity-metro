@@ -99,7 +99,7 @@ namespace Unity.MegacityMetro.UI
                 }
             };
 
-#if UNITY_ANDROID || UNITY_IPHONE
+#if UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH
             var hideInMobileElements = root.Query(className: "hide-in-mobile").ToList();
             foreach (var mobileElement in hideInMobileElements)
             {

@@ -35,7 +35,8 @@ namespace Unity.Services.Samples
                 
                 await UnityServices.InitializeAsync();
             }
-                
+
+            Debug.Log($"[SERVICES] Initializing Unity Services {UnityServices.Instance.State}");
         }
 
         public async Task SignIn(string profileName = null)

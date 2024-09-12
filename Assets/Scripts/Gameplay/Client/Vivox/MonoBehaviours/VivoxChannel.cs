@@ -10,6 +10,8 @@ namespace Unity.MegacityMetro.Gameplay
     public class VivoxChannel : MonoBehaviour
     {
         public string Name => "MultipleUserChannel";
+        private bool m_Joined;
+        private bool m_Connecting;
 
         private Task JoinLobbyChannel()
         {
@@ -20,16 +22,29 @@ namespace Unity.MegacityMetro.Gameplay
             return VivoxService.Instance.JoinGroupChannelAsync(Name, ChatCapability.AudioOnly);
         }
         
-        void OnDestroy()
+        private void OnDestroy()
         {
-            VivoxService.Instance.ConnectionRecovered -= OnConnectionRecovered;
-            VivoxService.Instance.ConnectionRecovering -= OnConnectionRecovering;
-            VivoxService.Instance.ConnectionFailedToRecover -= OnConnectionFailedToRecover;
+            if (VivoxService.Instance != null)
+            {
+                if (m_Joined)
+                {
+                    VivoxService.Instance.LeaveChannelAsync(Name);
+                    m_Joined = false;
+                    m_Connecting = false;
+                }
+
+                VivoxService.Instance.ConnectionRecovered -= OnConnectionRecovered;
+                VivoxService.Instance.ConnectionRecovering -= OnConnectionRecovering;
+                VivoxService.Instance.ConnectionFailedToRecover -= OnConnectionFailedToRecover;   
+            }
         }
 
         private void OnUserLoggedOut()
         {
-            
+            VivoxService.Instance.LoggedOut -= OnUserLoggedOut;
+            VivoxService.Instance.ConnectionRecovered -= OnConnectionRecovered;
+            VivoxService.Instance.ConnectionRecovering -= OnConnectionRecovering;
+            VivoxService.Instance.ConnectionFailedToRecover -= OnConnectionFailedToRecover;
         }
 
         private void OnConnectionRecovering()
@@ -49,12 +64,14 @@ namespace Unity.MegacityMetro.Gameplay
 
         public async void JoinChannel()
         {
-            await JoinLobbyChannel();
-        }
-
-        public void DisconnectAllChannels()
-        {
+            if(m_Connecting)
+                return;
             
+            m_Connecting = true;
+            // double check all channels are inactive before joining to a channel
+            await VivoxService.Instance.LeaveAllChannelsAsync();
+            await JoinLobbyChannel();
+            m_Joined = true;
         }
     }
 }

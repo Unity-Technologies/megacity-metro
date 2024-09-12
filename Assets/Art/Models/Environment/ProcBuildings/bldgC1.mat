@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -24,15 +24,16 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 6e35da801527813458492230c3e6f798,
     type: 3}
   m_Parent: {fileID: 2100000, guid: 40a19dff46a957d4187066aa25b7ef96, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 1950
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -93,3 +94,4 @@ Material:
     - _Tint3: {r: 0.3372549, g: 0.8392157, b: 0.6694882, a: 0}
     - _Tint4: {r: 0.2627451, g: 0.85882354, b: 0.58265996, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
