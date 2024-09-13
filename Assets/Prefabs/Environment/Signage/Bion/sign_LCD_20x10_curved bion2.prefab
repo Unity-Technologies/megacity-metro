@@ -76,10 +76,53 @@ PrefabInstance:
     - target: {fileID: 4360777180248803088, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
         type: 3}
       propertyPath: m_Name
-      value: sign_LCD_20x10_curved Variant
+      value: sign_LCD_20x10_curved bion2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4360777180248803088, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4927228004369559393}
   m_SourcePrefab: {fileID: 100100000, guid: 281ef090f1cf5c942b5e50f7e2a24ddf, type: 3}
+--- !u!23 &2795121961288058463 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2847519394831247045, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+    type: 3}
+  m_PrefabInstance: {fileID: 94064666447470746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4452574511280711562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4360777180248803088, guid: 281ef090f1cf5c942b5e50f7e2a24ddf,
+    type: 3}
+  m_PrefabInstance: {fileID: 94064666447470746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!205 &4927228004369559393
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452574511280711562}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 13.75, z: 0}
+  m_Size: 50.001602
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.015711226
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2795121961288058463}
+  - screenRelativeHeight: 0.015139945
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2795121961288058463}
+  - screenRelativeHeight: 0.015139945
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2795121961288058463}
+  m_Enabled: 1

@@ -16,7 +16,8 @@ namespace Unity.MegacityMetro.UI
         public VisualElement GameSettingsView { get; set; }
 
         public abstract string TabName { get; }
-        private Dictionary<SliderInt, int> m_CurrentSliderData = new();
+        private Dictionary<CustomSliderInt, int> m_CurrentSliderIntData = new();
+        private Dictionary<CustomSlider, float> m_CurrentSliderData = new();
         private Dictionary<CustomToggle, bool> m_CurrentToggleData = new();
         private Dictionary<CustomSelector, string> m_CurrentSelectorFieldData = new();
 
@@ -52,12 +53,26 @@ namespace Unity.MegacityMetro.UI
         {
         }
 
-        protected void UpdateSliderCurrentState(SliderInt slider)
+        protected void UpdateSliderIntCurrentState(CustomSliderInt slider)
+        {
+            m_CurrentSliderIntData[slider] = slider.value;
+        }
+        
+        
+        protected void ResetSliderIntCurrentState(CustomSliderInt slider)
+        {
+            if (m_CurrentSliderIntData.TryGetValue(slider, out var value))
+            {
+                slider.value = value;
+            }
+        }
+        
+        protected void UpdateSliderCurrentState(CustomSlider slider)
         {
             m_CurrentSliderData[slider] = slider.value;
         }
-
-        protected void ResetSliderCurrentState(SliderInt slider)
+        
+        protected void ResetSliderCurrentState(CustomSlider slider)
         {
             if (m_CurrentSliderData.TryGetValue(slider, out var value))
             {

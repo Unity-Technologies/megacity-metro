@@ -243,7 +243,7 @@ namespace Unity.MegacityMetro.UI
         {
             if (m_GameSettings == null)
             {
-                m_GameSettings = FindObjectOfType<UIGameSettings>();
+                m_GameSettings = FindAnyObjectByType<UIGameSettings>();
             }
 
             m_MenuPanel.style.display = DisplayStyle.None;

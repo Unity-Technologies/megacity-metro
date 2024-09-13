@@ -3,7 +3,7 @@
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -19,7 +19,8 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -35,7 +36,9 @@ Material:
     - _MultiplyColor: {r: 2.9046152, g: 0.7000122, b: 1.6755009, a: 0}
     - _Plax: {r: 0.6, g: 27.16, b: 0, a: 0}
     - _ScanlineIntensityRange: {r: 1.19, g: 0.89, b: 0, a: 0}
+    - _UVScale: {r: 0.95, g: 0.95, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &4556409386651698334
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -48,4 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9

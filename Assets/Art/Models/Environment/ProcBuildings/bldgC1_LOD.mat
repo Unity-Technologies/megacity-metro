@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -24,15 +24,16 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: d32e458b7bfea5e46b6e4717efde1cbc,
     type: 3}
   m_Parent: {fileID: 2100000, guid: aec13267f74c9a44aa7a1c8e5d431330, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 1980
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -74,7 +75,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindowMask:
-        m_Texture: {fileID: 2800000, guid: 36ce1d7eba56aae4fbd414925cedee96, type: 3}
+        m_Texture: {fileID: 2800000, guid: 53d611e051334c941bf57bdb92e022fe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -82,6 +83,7 @@ Material:
     - _AORampPower: 0.5
     - _Border: 1
     - _Inset_X: 0.232
+    - _QueueOffset: -20
     - _RandomOn: 0.489
     - _WindowCount: 0.87
     - _WindowHeight: 0.298
@@ -96,3 +98,4 @@ Material:
     - _Tint3: {r: 0.3372549, g: 0.8392157, b: 0.6694882, a: 0}
     - _Tint4: {r: 0.2627451, g: 0.85882354, b: 0.58265996, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

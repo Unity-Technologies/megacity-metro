@@ -1,7 +1,8 @@
-#if !UNITY_STANDALONE
+#if !UNITY_STANDALONE && !UNITY_SWITCH
 using Unity.MegacityMetro.CameraManagement;
 using Unity.MegacityMetro.Gameplay;
 #endif
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -41,7 +42,7 @@ namespace Unity.MegacityMetro.UI
         {
             var uiDocument = GetComponent<UIDocument>();
             var root = uiDocument.rootVisualElement;
-#if !UNITY_STANDALONE
+#if !UNITY_STANDALONE && !UNITY_SWITCH
             m_SpeedSlider = root.Q<Slider>("speed-slider");
             m_ShootButton = root.Q<Button>("shoot-button");
             m_JoystickZone = root.Q<VisualElement>("joystick-zone");
@@ -66,7 +67,8 @@ namespace Unity.MegacityMetro.UI
             // Callbacks
             m_FireZone.RegisterCallback<PointerDownEvent>(OnFireZonePressed, TrickleDown.TrickleDown);
             m_FireZone.RegisterCallback<PointerUpEvent>(OnFireZoneReleased);
-            m_FireZone.RegisterCallback<PointerLeaveEvent>(OnFireZoneLeave);
+            // TODO: Activate this again when UI Toolkit team fixes the issue with PointerLeaveEvent
+            m_FireZone.RegisterCallback<PointerLeaveEvent>(OnFireZoneLeave); 
             m_JoystickZone.RegisterCallback<PointerDownEvent>(OnJoystickZonePressed);
             m_SliderDragContainer.RegisterCallback<PointerUpEvent>(OnSpeedSliderReleased);
             m_SpeedSlider.RegisterValueChangedCallback(OnSpeedSliderChanged);
@@ -75,7 +77,8 @@ namespace Unity.MegacityMetro.UI
 #endif
         }
 
-#if !UNITY_STANDALONE
+        
+#if !UNITY_STANDALONE && !UNITY_SWITCH
         private void OnSpeedSliderChanged(ChangeEvent<float> evt)
         {
             var newValue = evt.newValue;
@@ -108,13 +111,16 @@ namespace Unity.MegacityMetro.UI
             Shoot = false;
             m_ShootButton.style.display = DisplayStyle.None;
         }
-        
+
         private void OnFireZoneLeave(PointerLeaveEvent evt)
         {
+            if (evt.pointerId == PointerId.mousePointerId)
+                return;
+            
             Shoot = false;
             m_ShootButton.style.display = DisplayStyle.None;
         }
-
+        
         private void OnJoystickZonePressed(PointerDownEvent pointerDownEvent)
         {
             JoystickLeft.SetPosition(pointerDownEvent.position, pointerDownEvent);

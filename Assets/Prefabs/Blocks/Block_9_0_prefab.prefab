@@ -64,6 +64,95 @@ Transform:
   - {fileID: 3656087096366173641}
   m_Father: {fileID: 7078391156378080962}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1015928114826622707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3656087096366173641}
+    m_Modifications:
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7499999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.83957857
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 297.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 277.4521
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 240.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6532815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6532815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.27059805
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.27059805
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520578551326208212, guid: b45adf9442542d443859064b604785b3,
+        type: 3}
+      propertyPath: m_Name
+      value: Skybridge_Box
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b45adf9442542d443859064b604785b3, type: 3}
+--- !u!4 &7857914697202965661 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7139796352703670894, guid: b45adf9442542d443859064b604785b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1015928114826622707}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3108821837767876406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,7 +218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1844724508152959743, guid: f944833637b9515428f3ba12195a8554,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7857914697202965661}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f944833637b9515428f3ba12195a8554, type: 3}
 --- !u!4 &3656087096366173641 stripped

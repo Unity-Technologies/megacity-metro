@@ -71,6 +71,7 @@ namespace Unity.MegacityMetro.Authoring
 
                 AddComponent(entity, new VehicleHealth { Value = 100 });
                 AddComponent(entity, new PlayerScore { Value = 0 });
+                AddComponent(entity, new PlayerPlatform { Value = (int) RuntimePlatform.WindowsPlayer });
                 AddComponent(entity, new Immunity { Duration = authoring.ImmunityDuration });
                 // Add player inputs component
                 var input = new PlayerVehicleInput

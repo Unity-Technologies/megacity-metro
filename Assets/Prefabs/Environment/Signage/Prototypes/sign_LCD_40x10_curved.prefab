@@ -41,9 +41,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5606389263833983127}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 900
   m_Range: 80
@@ -93,8 +92,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!114 &6909016980114748887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,11 +201,54 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 75289945149300000}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7b67819d89ed39f40a9298cd9be13a1b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6091373742343313259}
   m_SourcePrefab: {fileID: 100100000, guid: 7b67819d89ed39f40a9298cd9be13a1b, type: 3}
+--- !u!23 &2849877396040729103 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7b67819d89ed39f40a9298cd9be13a1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3480536792469266059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4019428276961524064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7b67819d89ed39f40a9298cd9be13a1b,
     type: 3}
   m_PrefabInstance: {fileID: 3480536792469266059}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4362915002592781274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7b67819d89ed39f40a9298cd9be13a1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3480536792469266059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!205 &6091373742343313259
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362915002592781274}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 13.75, z: 0}
+  m_Size: 50.001602
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.015711226
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2849877396040729103}
+  - screenRelativeHeight: 0.015139945
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2849877396040729103}
+  - screenRelativeHeight: 0.015139945
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2849877396040729103}
+  m_Enabled: 1

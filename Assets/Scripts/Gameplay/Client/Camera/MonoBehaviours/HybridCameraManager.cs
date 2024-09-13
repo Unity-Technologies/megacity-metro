@@ -1,9 +1,7 @@
 using System;
 using Unity.Mathematics;
-using Unity.MegacityMetro.Gameplay;
 using UnityEngine;
 using Utils.Misc;
-using UnityEngine.Serialization;
 
 namespace Unity.MegacityMetro.CameraManagement
 {
@@ -22,10 +20,12 @@ namespace Unity.MegacityMetro.CameraManagement
         private float3 _playerPosition;
         private float3 _aimPosition;
         private float3 _prevTargetPosition;
-
-        public static HybridCameraManager Instance;
+        private Camera _camera;
+        
         [NonSerialized]
         public bool WasInitialized;
+
+        public static HybridCameraManager Instance;
 
         private void Awake()
         {
@@ -36,6 +36,7 @@ namespace Unity.MegacityMetro.CameraManagement
             else
             {
                 Instance = this;
+                _camera = CameraObject.GetComponent<Camera>();
             }
         }
 
@@ -92,6 +93,11 @@ namespace Unity.MegacityMetro.CameraManagement
             }
 
             _prevTargetPosition = targetPosition;
+        }
+
+        public void SetAllowDynamicResolution(bool value)
+        {
+            _camera.allowDynamicResolution = value;
         }
     }
 }

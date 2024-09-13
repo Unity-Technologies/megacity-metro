@@ -24,6 +24,7 @@ namespace Unity.MegacityMetro.UI
         private VisualElement m_LeaderboardInstructions;
         private VisualElement m_JoystickHandler;
         private VisualElement m_SpeedSlider;
+        private VisualElement m_SwitchTutorial;
         private bool m_InTutorialScreen;
 
         private void Awake()
@@ -45,6 +46,7 @@ namespace Unity.MegacityMetro.UI
             m_SinglePlayerTutorial = root.Q<VisualElement>("tutorial-single-player");
             m_MultiplayerTutorial = root.Q<VisualElement>("tutorial-multiplayer");
             m_MobileTutorial = root.Q<VisualElement>("tutorial-mobile");
+            m_SwitchTutorial = root.Q<VisualElement>("tutorial-switch");
             m_ShootButton = root.Q<VisualElement>("shoot-button");
             m_LeaderboardInstructions = root.Q<VisualElement>("leaderboard-instructions");
             m_JoystickHandler = root.Q<VisualElement>("handle");
@@ -62,6 +64,7 @@ namespace Unity.MegacityMetro.UI
             m_MobileTutorial.style.display = DisplayStyle.Flex;
             m_SinglePlayerTutorial.style.display = DisplayStyle.None;
             m_MultiplayerTutorial.style.display = DisplayStyle.None;
+            m_SwitchTutorial.style.display = DisplayStyle.None;
 
             if (PlayerInfoController.Instance.IsSinglePlayer)
             {
@@ -73,8 +76,14 @@ namespace Unity.MegacityMetro.UI
                 m_ShootButton.style.display = DisplayStyle.Flex;
                 m_LeaderboardInstructions.style.display = DisplayStyle.Flex;
             }
+#elif UNITY_SWITCH
+            m_SwitchTutorial.style.display = DisplayStyle.Flex;
+            m_MobileTutorial.style.display = DisplayStyle.None;
+            m_SinglePlayerTutorial.style.display = DisplayStyle.None;
+            m_MultiplayerTutorial.style.display = DisplayStyle.None;
 #else
             m_MobileTutorial.style.display = DisplayStyle.None;
+            m_SwitchTutorial.style.display = DisplayStyle.None;
             
             if (PlayerInfoController.Instance.IsSinglePlayer)
             {

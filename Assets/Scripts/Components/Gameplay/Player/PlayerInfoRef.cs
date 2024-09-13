@@ -1,13 +1,13 @@
-﻿using Unity.Mathematics;
+﻿using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.UIElements.Experimental;
 
 namespace Unity.MegacityMetro.Gameplay
 {
     public struct PlayerInfoRef
     {
-        public string Name;
+        public FixedString64Bytes Name;
         public Label Label;
         public float3 CurrentScale;
         public VisualElement Panel;
@@ -17,11 +17,8 @@ namespace Unity.MegacityMetro.Gameplay
         public VisualElement Icon;
         public ProgressBar LifeBar;
         public PlayerInfoItemSettings Settings;
-        public bool InTransition;
-        public bool IconVisible;
-        public bool PlayerInfoVisible;
 
-        public PlayerInfoRef(float health, string playerName, VisualElement item,
+        public PlayerInfoRef(float health, FixedString64Bytes playerName, VisualElement item,
             PlayerInfoItemSettings settings)
         {
             Label = item.Q<Label>("player-name");
@@ -35,10 +32,7 @@ namespace Unity.MegacityMetro.Gameplay
             LifeBar.value = health;
             Settings = settings;
             CurrentScale = Vector3.one;
-            Label.text = playerName;
-            InTransition = false;
-            IconVisible = false;
-            PlayerInfoVisible = false;
+            Label.text = playerName.Value;
             SetChildrenUsageHint(LifeBar, UsageHints.DynamicTransform);
             InitializeStyles();
         }
@@ -71,12 +65,12 @@ namespace Unity.MegacityMetro.Gameplay
             Badge.style.display = shouldHighlightTheName ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
-        public void UpdateLabel(string name)
+        public void UpdateLabel(FixedString64Bytes name)
         {
-            if (!Name.Equals(name) || !Label.text.Equals(Name))
+            if (!Name.Equals(name))
             {
                 Name = name;
-                Label.text = name;
+                Label.text = name.Value;
             }
         }
 
@@ -113,33 +107,18 @@ namespace Unity.MegacityMetro.Gameplay
 
         public void ShowPlayerInfo()
         {
-            InTransition = true;
             Panel.style.display = DisplayStyle.Flex;
-            PlayerInfo.style.opacity = 0;
-            PlayerInfo.experimental.animation.Start(new StyleValues {opacity = 1f}, 500).OnCompleted(OnFinishPlayerInfoAnimation);
-            Icon.experimental.animation.Start(new StyleValues {opacity = 0f}, 500);
+            PlayerInfo.style.opacity = 1f;
+            Icon.style.opacity = 0f;
         }
 
         public void ShowIcon()
         {
-            InTransition = true;
             Panel.style.display = DisplayStyle.Flex;
-            PlayerInfo.experimental.animation.Start(new StyleValues {opacity = 0f}, 500);
-            Icon.experimental.animation.Start(new StyleValues {opacity = 1f}, 500).OnCompleted(OnFinishIconAnimation);
+            PlayerInfo.style.opacity = 0f;
+            Icon.style.opacity = 1f;
         }
         
-        private void OnFinishPlayerInfoAnimation()
-        {
-            InTransition = false;
-            PlayerInfoVisible = true;
-        }
-        
-        private void OnFinishIconAnimation()
-        {
-            InTransition = false;
-            IconVisible = true;
-        }
-
         public bool IsVisible(float3 cameraPos, float3 cameraForward, float3 playerPos)
         {
             var cameraToPlayer = playerPos - cameraPos;

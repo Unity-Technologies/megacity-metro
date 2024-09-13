@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!114 &-5144458471721853372
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -64,7 +64,7 @@ MonoBehaviour:
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -164,7 +164,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Curvature_Map:
-        m_Texture: {fileID: 2800000, guid: df918b72aca8131498e23fa3992a0bd5, type: 3}
+        m_Texture: {fileID: 2800000, guid: ea3627eaf36a72643bdab4fd74d3accf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMap:
@@ -192,7 +192,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
-        m_Texture: {fileID: 2800000, guid: fe7ce20ccb57bd0418bf51bf1983cebe, type: 3}
+        m_Texture: {fileID: 2800000, guid: b94a1057e4934d148a8300ea28ee96ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -236,7 +236,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: a5739f36f2f2fcf469ac800cc718b59c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97bb88f10d0b28945bc52ec72da7efd6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap0:
@@ -295,12 +295,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleCubemap_281dfdcc384546ff918a14c5eaba5b67_Cube_1_Cubemap:
+        m_Texture: {fileID: 8900000, guid: 3214bb5eb1fc4354585ad9bdad9198e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleCubemap_594ca192011f4c56a10ca20621fca00d_Cube_1_Cubemap:
         m_Texture: {fileID: 8900000, guid: 3214bb5eb1fc4354585ad9bdad9198e1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4a3e00d9ba6343a2a2f7668ebccd1538_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 0c0201a809654c44c8b30b132e6a2ffa, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -336,7 +340,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D_ColorMask:
-        m_Texture: {fileID: 2800000, guid: ec8bf76d6bb14224494cc4a54489fdf7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9451bc1521541444aa0c8d31bc75c3be, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D_Curvature:
@@ -344,7 +348,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D_NormalMap:
-        m_Texture: {fileID: 2800000, guid: 5011525d99fd1c341a05076f9745d4ff, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4c6e6a562bdc49648b1121bfc2010835, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ThicknessMap:
@@ -785,6 +789,7 @@ Material:
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
     - _VehicleColor: {r: 0.31764707, g: 0.31764707, b: 0.31764707, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &2279060785771480945
 MonoBehaviour:
   m_ObjectHideFlags: 11

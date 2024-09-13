@@ -12,27 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: bldgTopA1_LOD
-  m_Shader: {fileID: -6465566751694194690, guid: e367c1017c4472e4f97b331e8a97f535,
+  m_Shader: {fileID: -6465566751694194690, guid: 276831df0b3ac1b49979eea49249e389,
     type: 3}
   m_Parent: {fileID: 2100000, guid: d5a0c139f53580a46812337831aacde9, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 1980
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -42,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormAO:
-        m_Texture: {fileID: 2800000, guid: 513b30b56df988444b158ac47a612b45, type: 3}
+        m_Texture: {fileID: 2800000, guid: 76ddd4c1665468044a5fbc5364044de1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleCubemap_45a686d44134490bbeb56342249ece61_Cube_1_Cubemap:
@@ -66,7 +67,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4a3e00d9ba6343a2a2f7668ebccd1538_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 0c0201a809654c44c8b30b132e6a2ffa, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4ec755a2fbac4331bf60a68fc347fd11_Texture_1_Texture2D:
@@ -78,12 +79,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindowMask:
-        m_Texture: {fileID: 2800000, guid: 24a5c16034117fe4b92672de560e2023, type: 3}
+        m_Texture: {fileID: 2800000, guid: 76ddd4c1665468044a5fbc5364044de1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _QueueOffset: -20
     - _Reflectance: 1
     m_Colors:
     - _Tint1: {r: 0.990566, g: 0.4349499, b: 0.13705935, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

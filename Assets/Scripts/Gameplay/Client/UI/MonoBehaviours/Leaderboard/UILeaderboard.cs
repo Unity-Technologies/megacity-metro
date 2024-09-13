@@ -12,8 +12,8 @@ namespace Unity.MegacityMetro.UI
     {
         struct ScoreData
         {
-            public float Value;
-            public string Name;
+            public int Value;
+            public FixedString64Bytes Name;
             public bool IsOwnerPlayer;
             public bool HasData;
         }
@@ -157,7 +157,12 @@ namespace Unity.MegacityMetro.UI
             var nameLabel = item.Q<Label>("player-name");
             var rankLabel = item.Q<Label>("player-rank");
             var scoreLabel = item.Q<Label>("player-score");
-            rankLabel.text = $"{pos+1}";
+            var platform = item.Q<VisualElement>("platform-icon");
+            var iconClass = GetPlatformIcon(player.Platform);
+            ResetIconPlatform(platform);
+            platform.AddToClassList(iconClass);
+
+            rankLabel.text = $"{pos + 1}";
             nameLabel.text = $"{data[index].Name}";
             scoreLabel.text = data[index].Value.ToString("N0");
 
@@ -167,7 +172,7 @@ namespace Unity.MegacityMetro.UI
 
             if (shouldShow || isTopRanked || player.IsOwnerPlayer)
                 item.style.display = DisplayStyle.Flex;
-            else if(item.style.display == DisplayStyle.Flex && m_VisibleMode == VisibleMode.Collapse)
+            else if (item.style.display == DisplayStyle.Flex && m_VisibleMode == VisibleMode.Collapse)
                 item.style.display = DisplayStyle.None;
 
             if (data[index].IsOwnerPlayer)
@@ -179,6 +184,30 @@ namespace Unity.MegacityMetro.UI
             {
                 item.RemoveFromClassList("local-player");
             }
+        }
+
+        private void ResetIconPlatform(VisualElement platform)
+        {
+            platform.RemoveFromClassList("android");
+            platform.RemoveFromClassList("apple");
+            platform.RemoveFromClassList("switch");
+            platform.RemoveFromClassList("windows");
+        }
+
+        private string GetPlatformIcon(int platform)
+        {
+            switch ((RuntimePlatform)platform) 
+            {
+                case RuntimePlatform.Android:
+                    return "android";
+                case RuntimePlatform.OSXPlayer:
+                case RuntimePlatform.IPhonePlayer:
+                    return "apple";
+                case RuntimePlatform.Switch:
+                    return "switch";
+            }
+
+            return "windows";
         }
     }
 }

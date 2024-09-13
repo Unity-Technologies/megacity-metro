@@ -139,6 +139,9 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 205763e2e3ba34843b54c1ccd665e8c6,
     type: 3}
   m_SortingOrder: 6
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
 --- !u!114 &597533941493760101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,8 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   m_PlayerSettings: {fileID: 11400000, guid: d81959cbd2ea82642836644dd17880f2, type: 2}
-  m_MobileStyleSheet: {fileID: 7433441132597879392, guid: c44ece115baf01441ae6a62666084567,
-    type: 3}
 --- !u!114 &8796989631325581816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0017c7599b8436b853c0e8b563c0ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedMultiplayerMode: 0
+  <SelectedMultiplayerMode>k__BackingField: 0
   m_PlayerSettings: {fileID: 11400000, guid: d81959cbd2ea82642836644dd17880f2, type: 2}
 --- !u!114 &4040016977860787577
 MonoBehaviour:
@@ -191,6 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1584423544589736437}
+  - component: {fileID: 6996262499978232733}
   m_Layer: 0
   m_Name: MenuUI
   m_TagString: Untagged
@@ -215,3 +217,37 @@ Transform:
   - {fileID: 1666654162311506001}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &6996262499978232733
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9214768821200995030}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: deb6862e12e8cbc4482081504ac1af84, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 4173f5336bda4c741a5991e6d749dd57, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 0
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: 
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []

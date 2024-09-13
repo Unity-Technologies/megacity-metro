@@ -1,5 +1,4 @@
 using Unity.Entities;
-using Unity.Physics;
 
 namespace Unity.MegacityMetro.Gameplay
 {

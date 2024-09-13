@@ -18,6 +18,9 @@ namespace Unity.MegacityMetro.UI
     public class HUD : MonoBehaviour
     {
         [SerializeField] private UILeaderboard m_Leaderboard;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        [SerializeField] private NetcodePanelStats m_NetcodePanelPrefab;
+#endif
 
         private ProgressBar m_HealthBar;
         private Crosshair m_Crosshair;
@@ -72,7 +75,7 @@ namespace Unity.MegacityMetro.UI
             m_MessageScreen = root.Q<VisualElement>("message-screen");
             m_MessageLabel = m_MessageScreen.Q<Label>("message-label");
             m_BottomMessageLabel = m_MessageScreen.Q<Label>("bottom-message-label");
-            m_SettingsButton = root.Q<Button>("settings-button");
+            m_SettingsButton = root.Q<Button>("hud-settings-button");
             m_AttackerPointerContainer = root.Q<VisualElement>("attacker-pointer-container");
             m_AttackerPointer = root.Q<VisualElement>("attacker-pointer");
 
@@ -90,6 +93,7 @@ namespace Unity.MegacityMetro.UI
                 {
                     singlePlayerElement.style.display = DisplayStyle.None;
                 }
+
                 m_Crosshair.Hide();
             }
             else
@@ -97,14 +101,12 @@ namespace Unity.MegacityMetro.UI
                 m_Crosshair.Show();
             }
 
-            NetcodePanelStats.Instance.Disable();
-            
-            UIEvents.OnPauseOptionsShown += OnPauseOptionsShown;
-        }
-
-        private void OnPauseOptionsShown(bool value)
-        {
-            m_SettingsButton.focusable = !value;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (m_NetcodePanelPrefab != null)
+            {
+                Instantiate(m_NetcodePanelPrefab);
+            }
+#endif
         }
 
         public void UpdateLife(float life, float attackerPointerDegrees)
@@ -122,7 +124,7 @@ namespace Unity.MegacityMetro.UI
                 }
 
                 m_HealthBar.value = life;
-                m_HealthBarLabel.text = $"{(int) life}";    
+                m_HealthBarLabel.text = $"{(int)life}";
             }
 
             m_AttackerPointerContainer.style.display = displayStyle;
@@ -133,12 +135,12 @@ namespace Unity.MegacityMetro.UI
             if (m_DamageIndicator.style.opacity.value > 0 && newLife == m_HealthBar.value)
             {
                 m_DamageIndicator.experimental.animation.Start(
-                    new StyleValues {opacity = m_DamageIndicator.style.opacity.value},
-                    new StyleValues {opacity = 0}, 1000).OnCompleted(() =>
+                    new StyleValues { opacity = m_DamageIndicator.style.opacity.value },
+                    new StyleValues { opacity = 0 }, 1000).OnCompleted(() =>
                 {
                     m_AttackerPointerContainer.experimental.animation.Start(
-                        new StyleValues {opacity = m_AttackerPointerContainer.style.opacity.value},
-                        new StyleValues {opacity = 0}, 1000);
+                        new StyleValues { opacity = m_AttackerPointerContainer.style.opacity.value },
+                        new StyleValues { opacity = 0 }, 1000);
                 });
             }
         }
@@ -165,12 +167,12 @@ namespace Unity.MegacityMetro.UI
             {
                 m_MessageScreen.style.display = DisplayStyle.Flex;
                 m_MessageScreen.experimental.animation
-                    .Start(new StyleValues {opacity = 0f}, new StyleValues {opacity = 1f}, 1000);
+                    .Start(new StyleValues { opacity = 0f }, new StyleValues { opacity = 1f }, 1000);
             }
             else
             {
                 m_MessageScreen.experimental.animation
-                    .Start(new StyleValues {opacity = 1f}, new StyleValues {opacity = 0f}, 1000).OnCompleted(() =>
+                    .Start(new StyleValues { opacity = 1f }, new StyleValues { opacity = 0f }, 1000).OnCompleted(() =>
                     {
                         m_MessageScreen.style.display = DisplayStyle.None;
                     });
@@ -200,5 +202,12 @@ namespace Unity.MegacityMetro.UI
                     m_Crosshair.Show();
             }
         }
+        
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        public void ToggleNetcodePanel()
+        {
+            NetcodePanelStats.Instance.ToggleNetcodePanel();
+        }
+#endif
     }
 }
