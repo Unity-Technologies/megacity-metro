@@ -66,7 +66,7 @@ To make an iOS Build:
 
 ![Build Settings - Client-Android](../Readme/build-setting-iOS.jpg)
 
-4. To make a Server Build:
+To make a Server Build:
 1. Set the target platform to **Dedicated Server**.
 2. Like the Client build, go to **File** > **Build Settings** and press the **Build** button.
 
