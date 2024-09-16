@@ -5,7 +5,7 @@
 - [Recommended Specs for iOS](#recommended-specs-for-ios)
 ## Megacity-Metro Prerequisites
 
-Megacity-Metro is compatible with Unity **2022 LTS** and is currently tested on Windows, Mac and Android. 
+Megacity-Metro is compatible with Unity **Unity 6** and is currently tested on Windows, Mac and Android. 
 You can download the editor using the following link:
 - Unity Website: [Download Unity 6](https://unity.com/releases/editor/whats-new/6000.0.15#installs)
 
