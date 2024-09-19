@@ -498,8 +498,6 @@ PlayerSettings:
     m_GraphicsJobs: 1
   - m_BuildTarget: LinuxStandaloneSupport
     m_GraphicsJobs: 1
-  - m_BuildTarget: PS4Player
-    m_GraphicsJobs: 1
   - m_BuildTarget: iOSSupport
     m_GraphicsJobs: 0
   - m_BuildTarget: WindowsStandaloneSupport
@@ -513,8 +511,6 @@ PlayerSettings:
   - m_BuildTarget: WebGLSupport
     m_GraphicsJobs: 0
   m_BuildTargetGraphicsJobMode:
-  - m_BuildTarget: PS4Player
-    m_GraphicsJobMode: 0
   - m_BuildTarget: XboxOnePlayer
     m_GraphicsJobMode: 0
   m_BuildTargetGraphicsAPIs:
@@ -721,93 +717,10 @@ PlayerSettings:
   switchMicroSleepForYieldTime: 25
   switchRamDiskSpaceSize: 12
   switchUpgradedPlayerSettingsToNMETA: 0
-  ps4NPAgeRating: 12
-  ps4NPTitleSecret: 
-  ps4NPTrophyPackPath: 
-  ps4ParentalLevel: 11
-  ps4ContentID: ED1633-NPXX51362_00-0000000000000000
-  ps4Category: 0
-  ps4MasterVersion: 01.00
-  ps4AppVersion: 01.00
-  ps4AppType: 0
-  ps4ParamSfxPath: 
-  ps4VideoOutPixelFormat: 0
-  ps4VideoOutInitialWidth: 1920
-  ps4VideoOutBaseModeInitialWidth: 1920
-  ps4VideoOutReprojectionRate: 60
-  ps4PronunciationXMLPath: 
-  ps4PronunciationSIGPath: 
-  ps4BackgroundImagePath: 
-  ps4StartupImagePath: 
-  ps4StartupImagesFolder: 
-  ps4IconImagesFolder: 
-  ps4SaveDataImagePath: 
-  ps4SdkOverride: 
-  ps4BGMPath: 
-  ps4ShareFilePath: 
-  ps4ShareOverlayImagePath: 
-  ps4PrivacyGuardImagePath: 
-  ps4ExtraSceSysFile: 
-  ps4NPtitleDatPath: 
-  ps4RemotePlayKeyAssignment: -1
-  ps4RemotePlayKeyMappingDir: 
-  ps4PlayTogetherPlayerCount: 0
-  ps4EnterButtonAssignment: 1
-  ps4ApplicationParam1: 0
-  ps4ApplicationParam2: 0
-  ps4ApplicationParam3: 0
-  ps4ApplicationParam4: 0
-  ps4DownloadDataSize: 0
-  ps4GarlicHeapSize: 3072
-  ps4ProGarlicHeapSize: 3072
-  playerPrefsMaxSize: 32768
-  ps4Passcode: frAQBc8Wsa1xVPfvJcrgRYwTiizs2trQ
-  ps4pnSessions: 1
-  ps4pnPresence: 1
-  ps4pnFriends: 1
-  ps4pnGameCustomData: 1
   playerPrefsSupport: 0
   enableApplicationExit: 0
   resetTempFolder: 1
   restrictedAudioUsageRights: 0
-  ps4UseResolutionFallback: 0
-  ps4ReprojectionSupport: 0
-  ps4UseAudio3dBackend: 0
-  ps4UseLowGarlicFragmentationMode: 1
-  ps4SocialScreenEnabled: 0
-  ps4ScriptOptimizationLevel: 2
-  ps4Audio3dVirtualSpeakerCount: 14
-  ps4attribCpuUsage: 0
-  ps4PatchPkgPath: 
-  ps4PatchLatestPkgPath: 
-  ps4PatchChangeinfoPath: 
-  ps4PatchDayOne: 0
-  ps4attribUserManagement: 0
-  ps4attribMoveSupport: 0
-  ps4attrib3DSupport: 0
-  ps4attribShareSupport: 0
-  ps4attribExclusiveVR: 0
-  ps4disableAutoHideSplash: 0
-  ps4videoRecordingFeaturesUsed: 0
-  ps4contentSearchFeaturesUsed: 0
-  ps4CompatibilityPS5: 0
-  ps4AllowPS5Detection: 0
-  ps4GPU800MHz: 1
-  ps4attribEyeToEyeDistanceSettingVR: 0
-  ps4IncludedModules:
-  - libc.prx
-  - libSceAudioLatencyEstimation.prx
-  - libSceFace.prx
-  - libSceFaceTracker.prx
-  - libSceFios2.prx
-  - libSceHand.prx
-  - libSceHandTracker.prx
-  - libSceHeadTracker.prx
-  - libSceJobManager.prx
-  - libSceNpToolkit2.prx
-  - libSceS3DConversion.prx
-  - libSceSmart.prx
-  ps4attribVROutputEnabled: 0
   monoEnv: 
   splashScreenBackgroundSourceLandscape: {fileID: 0}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
@@ -846,11 +759,9 @@ PlayerSettings:
     Android: ENABLE_MESH_RENDERER_SUBMESH_DATA_SHARING
     Lumin: UNITY_POST_PROCESSING_STACK_V2;USE_BATCH_RENDERER_GROUP
     Nintendo Switch: ENABLE_MESH_RENDERER_SUBMESH_DATA_SHARING
-    PS4: UNITY_POST_PROCESSING_STACK_V2;USE_BATCH_RENDERER_GROUP
     Standalone: ENABLE_MESH_RENDERER_SUBMESH_DATA_SHARING
     WebGL: UNITY_POST_PROCESSING_STACK_V2;USE_BATCH_RENDERER_GROUP
     Windows Store Apps: UNITY_POST_PROCESSING_STACK_V2;USE_BATCH_RENDERER_GROUP
-    XboxOne: UNITY_POST_PROCESSING_STACK_V2;USE_BATCH_RENDERER_GROUP;UNITY_XBOXONE_DEVELOPMENT_BUILD
     iPhone: UNITY_POST_PROCESSING_STACK_V2;USE_BATCH_RENDERER_GROUP
     tvOS: UNITY_POST_PROCESSING_STACK_V2;USE_BATCH_RENDERER_GROUP
   additionalCompilerArguments: {}
@@ -910,47 +821,6 @@ PlayerSettings:
   metroFTAFileTypes: []
   metroProtocolName: 
   vcxProjDefaultLanguage: 
-  XboxOneProductId: 
-  XboxOneUpdateKey: 
-  XboxOneSandboxId: 
-  XboxOneContentId: 
-  XboxOneTitleId: 
-  XboxOneSCId: 
-  XboxOneGameOsOverridePath: 
-  XboxOnePackagingOverridePath: 
-  XboxOneAppManifestOverridePath: 
-  XboxOneVersion: 1.0.0.0
-  XboxOnePackageEncryption: 0
-  XboxOnePackageUpdateGranularity: 2
-  XboxOneDescription: 
-  XboxOneLanguage:
-  - enus
-  XboxOneCapability: []
-  XboxOneGameRating:
-    CERO (Japan): 0
-    COB-AU (Australia): 0
-    CSRR (Taiwan): 0
-    DJCTQ (Brazil): 0
-    ESRB (US): 0
-    FPB (South Africa): 0
-    GRB (South Korea): 0
-    MDA (Singapore): 0
-    Microsoft: 0
-    OFLC-NZ (New Zealand): 0
-    PCBP (Russia): 0
-    PEGI (Europe): 0
-    PEGI (Portugal): 0
-    USK (Germany): 0
-  XboxOneIsContentPackage: 0
-  XboxOneEnhancedXboxCompatibilityMode: 0
-  XboxOneEnableGPUVariability: 1
-  XboxOneSockets: {}
-  XboxOneSplashScreen: {fileID: 0}
-  XboxOneAllowedProductIds: []
-  XboxOnePersistentLocalStorageSize: 0
-  XboxOneXTitleMemory: 8
-  XboxOneOverrideIdentityName: 
-  XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
     UNet: 1
