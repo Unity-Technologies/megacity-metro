@@ -21,4 +21,4 @@ To exclude baking system assemblies:
 
 In `Project Settings > Entities`, within each section, you can exclude the baking assemblies to prevent their accidental inclusion in the build. This process aids in identifying and preventing any unintended dependencies between assemblies. Notably, Unity Editor enables the creation of a list per **Client Target** when excluding assemblies.
 
-![Netcode Client Target](../Readme/assemblies.png)
+![Netcode Client Target](./Images/assemblies.png)

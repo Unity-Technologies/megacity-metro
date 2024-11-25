@@ -76,7 +76,13 @@ namespace Unity.MegacityMetro.UI
             if (SceneController.IsReturningToMainMenu)
             {
                 SceneController.IsReturningToMainMenu = false;
-                ServerConnectionUtils.CreateDefaultWorld();
+
+                ServerConnectionUtils.CreateDefaultWorld(true);
+
+                // Necessary to avoid SessionException tied to backfill - MPSSDK-1170
+                //
+                // TODO: Adapt method to async
+                MatchMakingConnector.Instance.ClearSession();
             }
             
 #if UNITY_SERVER && !UNITY_EDITOR

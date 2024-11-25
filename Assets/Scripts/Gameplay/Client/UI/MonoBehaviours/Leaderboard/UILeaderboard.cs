@@ -190,6 +190,7 @@ namespace Unity.MegacityMetro.UI
         {
             platform.RemoveFromClassList("android");
             platform.RemoveFromClassList("apple");
+            platform.RemoveFromClassList("ios");
             platform.RemoveFromClassList("switch");
             platform.RemoveFromClassList("windows");
         }
@@ -201,8 +202,9 @@ namespace Unity.MegacityMetro.UI
                 case RuntimePlatform.Android:
                     return "android";
                 case RuntimePlatform.OSXPlayer:
-                case RuntimePlatform.IPhonePlayer:
                     return "apple";
+                case RuntimePlatform.IPhonePlayer:
+                    return "ios";
                 case RuntimePlatform.Switch:
                     return "switch";
             }
