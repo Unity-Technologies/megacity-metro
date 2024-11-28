@@ -1,0 +1,49 @@
+{
+  "$schema": "https://ugs-config-schemas.unity3d.com/v1/matchmaker/matchmaker-queue.schema.json",
+  "name": "default",
+  "enabled": true,
+  "maxPlayersPerTicket": 12,
+  "defaultPool": {
+    "variants": [],
+    "name": "default",
+    "enabled": true,
+    "timeoutSeconds": 60,
+    "matchLogic": {
+      "matchDefinition": {
+        "teams": [
+          {
+            "name": "Arena Fighters",
+            "teamCount": {
+              "min": 100,
+              "max": 100,
+              "relaxations": [
+                {
+                  "type": "RangeControlReplaceMin",
+                  "ageType": "Oldest",
+                  "atSeconds": 10,
+                  "value": 1
+                }
+              ]
+            },
+            "playerCount": {
+              "min": 1,
+              "max": 1,
+              "relaxations": []
+            },
+            "teamRules": []
+          }
+        ],
+        "matchRules": []
+      },
+      "name": "Megacity Arena",
+      "backfillEnabled": true
+    },
+    "matchHosting": {
+      "type": "Multiplay",
+      "fleetName": "megacity-metro-fleet",
+      "buildConfigurationName": "megacity-metro-build-config",
+      "defaultQoSRegionName": "North America"
+    }
+  },
+  "filteredPools": []
+}

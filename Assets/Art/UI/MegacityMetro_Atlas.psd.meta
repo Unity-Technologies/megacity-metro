@@ -100,6 +100,28 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
+  - name: ios
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3559
+      y: 775
+      width: 224
+      height: 120
+    spriteID: 4f210f082854fde43af0a6da83bc70e4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3559, y: 775}
+    spritePosition: {x: 3781, y: 1229}
   - name: apple
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -110,8 +132,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 3907
       y: 294
-      width: 352
-      height: 405
+      width: 176
+      height: 204
     spriteID: 857a69efa43b35e46b2c10b3459d1b31
     spriteBone: []
     spriteOutline: []
@@ -218,8 +240,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 3566
-      y: 778
+      x: 3919
+      y: 119
       width: 143
       height: 97
     spriteID: f51974b629ca8984dbfb75a3632849d3
@@ -230,7 +252,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3559, y: 775}
+    uvTransform: {x: 3912, y: 116}
     spritePosition: {x: 2670, y: 1783}
   - name: dotted-square
     originalName: 
@@ -284,8 +306,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 3912
-      y: 4
+      x: 3791
+      y: 775
       width: 163
       height: 121
     spriteID: 5352b1d1346b25c468292d84fac92e3f
@@ -296,7 +318,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3912, y: 4}
+    uvTransform: {x: 3791, y: 775}
     spritePosition: {x: 3424, y: 3870}
   - name: division-line
     originalName: 
@@ -505,7 +527,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 3912
-      y: 133
+      y: 4
       width: 174
       height: 104
     spriteID: 9261fec9337ed2f4a87efcb603a37efb
@@ -516,7 +538,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3912, y: 133}
+    uvTransform: {x: 3912, y: 4}
     spritePosition: {x: 1287, y: 65}
   - name: death-icon
     originalName: 
@@ -614,7 +636,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 3731
+      x: 3962
       y: 775
       width: 124
       height: 64
@@ -626,7 +648,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3731, y: 775}
+    uvTransform: {x: 3962, y: 775}
     spritePosition: {x: 1524, y: 85}
   - name: crosshair
     originalName: 
@@ -1331,6 +1353,16 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
+  - name: ios
+    spriteName: ios
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4f210f082854fde43af0a6da83bc70e4
+    layerID: 414
+    mosaicPosition: {x: 3559, y: 775}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: apple
     spriteName: apple
     isGroup: 0
@@ -1387,7 +1419,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: f51974b629ca8984dbfb75a3632849d3
     layerID: 337
-    mosaicPosition: {x: 3559, y: 775}
+    mosaicPosition: {x: 3912, y: 116}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -1417,7 +1449,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 5352b1d1346b25c468292d84fac92e3f
     layerID: 239
-    mosaicPosition: {x: 3912, y: 4}
+    mosaicPosition: {x: 3791, y: 775}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -1517,7 +1549,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 9261fec9337ed2f4a87efcb603a37efb
     layerID: 179
-    mosaicPosition: {x: 3912, y: 133}
+    mosaicPosition: {x: 3912, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -1567,7 +1599,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 548b9fdd1b44e2b46bb92bbc7c06b417
     layerID: 268
-    mosaicPosition: {x: 3731, y: 775}
+    mosaicPosition: {x: 3962, y: 775}
     flatten: 0
     isImported: 1
     isVisible: 1

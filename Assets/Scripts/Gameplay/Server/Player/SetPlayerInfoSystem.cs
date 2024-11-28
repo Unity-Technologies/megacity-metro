@@ -5,7 +5,6 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.NetCode;
 using Unity.NetCode.Extensions;
-using Unity.Services.Samples.GameServerHosting;
 using static Unity.Entities.SystemAPI;
 using Random = Unity.Mathematics.Random;
 
@@ -118,8 +117,7 @@ namespace Unity.MegacityMetro.Gameplay
 
                         playersConnected.Add(new PlayerConnectedElement { Name = name, UASId = uasID, NetworkID = networkId.Value, Value = entity });
                         UnityEngine.Debug.Log($"Client: {name} ({uasID}) has joined the game!  (Thin = {!info.IsClient})\nConnected Players: {m_ConnectedPlayers.CalculateEntityCount()}");
-
-                        GameHostingServerEvents.UserJoinedServer?.Invoke(uasID.ToString());
+                        
                         break;
                     }
                 }

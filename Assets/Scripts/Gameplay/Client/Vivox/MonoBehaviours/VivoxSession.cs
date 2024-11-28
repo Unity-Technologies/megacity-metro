@@ -12,7 +12,7 @@ namespace Unity.MegacityMetro.Gameplay
         public bool IsConnecting { get; private set; }
         public bool IsLogged => VivoxService.Instance.IsLoggedIn;
 
-        public void Login(string displayName)
+        public async Task Login(string displayName)
         {
             if (IsConnecting)
                 return;
@@ -29,10 +29,12 @@ namespace Unity.MegacityMetro.Gameplay
                 return;
             }
 
-            LoginToVivoxAsync(displayName);
+            //closing prior connection
+            await ClosingClientConnection();
+            await LoginToVivoxAsync(displayName);
         }
         
-        private async void LoginToVivoxAsync(string displayName)
+        private async Task LoginToVivoxAsync(string displayName)
         {
             IsConnecting = true;
             LoginOptions options = new LoginOptions();

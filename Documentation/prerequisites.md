@@ -3,11 +3,11 @@
 - [Recommended Specs for Windows 10](#recommended-specs-for-windows-10)
 - [Recommended Specs for Android](#recommended-specs-for-android)
 - [Recommended Specs for iOS](#recommended-specs-for-ios)
-## Megacity-Metro Prerequisites
+## Megacity Metro Prerequisites
 
-Megacity-Metro is compatible with Unity **Unity 6** and is currently tested on Windows, Mac and Android. 
+Megacity Metro is compatible with Unity **Unity 6** and is currently tested on Windows, Mac and Android. 
 You can download the editor using the following link:
-- Unity Website: [Download Unity 6](https://unity.com/releases/editor/whats-new/6000.0.15#installs)
+- Unity Website: [Download Unity 6](https://unity.com/releases/editor/whats-new/6000.0.28#installs)
 
 ### Recommended Specs for Mac
 - Operating System: Mac OS X 10.15.7
