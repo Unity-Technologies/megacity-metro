@@ -89,10 +89,14 @@ namespace Unity.MegacityMetro.UI
             // Set default values for STP and Render Scale
             SetSTP(false);
             SetRenderScale(1);
+#if UNITY_SWITCH
+            Screen.SetResolution(1280,720,true);
+#endif
         }
 
         private void CheckSavedData()
         {
+#if !UNITY_SWITCH
             var graphicsSettingsData = PersistentDataManager.Instance.GetGraphicsSettings();
 
             m_QualityValue.value = m_QualityValue.choices[graphicsSettingsData.QualityLevelIndex];
@@ -100,7 +104,7 @@ namespace Unity.MegacityMetro.UI
             m_ScreenResolution.value = m_ScreenResolution.choices[graphicsSettingsData.ScreenResolutionIndex];
             m_TextureDetailsValue.value = m_TextureDetailsValue.choices[graphicsSettingsData.TextureDetailIndex];
             m_PostProcessingValue.value = graphicsSettingsData.PostProcessingEnabled;
-
+#endif
 #if !(UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH)
             m_VerticalSyncValue.value = graphicsSettingsData.VSyncEnabled;
             ResolutionScreen.SetScreenMode(m_ScreenModeValue.value.ToLower());
@@ -142,8 +146,9 @@ namespace Unity.MegacityMetro.UI
                 PostProcessingEnabled = m_PostProcessingValue.value,
                 VSyncEnabled = m_VerticalSyncValue.value
             };
-
+#if !UNITY_SWITCH
             PersistentDataManager.Instance.SaveGraphicsSettings(graphicsSettingsData);
+#endif
         }
 
         public override void Reset()
@@ -303,19 +308,11 @@ namespace Unity.MegacityMetro.UI
                     break;
                 case "medium":
                     QualitySettings.globalTextureMipmapLimit = 1;
-#if UNITY_IPHONE || UNITY_STANDALONE_OSX
-                    MaterialQuality.Low.SetGlobalShaderKeywords();
-#else
                     MaterialQuality.Medium.SetGlobalShaderKeywords();
-#endif
                     break;
                 case "high":
                     QualitySettings.globalTextureMipmapLimit = 0;
-#if UNITY_IPHONE || UNITY_STANDALONE_OSX
-                    MaterialQuality.Low.SetGlobalShaderKeywords();
-#else
                     MaterialQuality.High.SetGlobalShaderKeywords();
-#endif
                     break;
             }
         }

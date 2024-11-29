@@ -1,11 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Unity.MegacityMetro.Gameplay;
 using Unity.MegacityMetro.UI;
 using Unity.NetCode.Extensions;
-using Unity.Services.Samples;
-using Unity.Services.Samples.GameServerHosting;
+using Unity.Services.MultiplayerSDK.Utils;
+using Unity.Services.MultiplayerSDK.Client;
 using UnityEngine;
+using System;
+using Unity.Services.Samples;
+using Unity.Services.Authentication;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace Unity.MegacityMetro.UGS
 {
@@ -16,28 +19,38 @@ namespace Unity.MegacityMetro.UGS
     {
         public bool ClientIsInGame { get; set; }
         public bool IsTryingToConnect { get; private set; }
-        public bool IsMatchmakerInitialized => m_Matchmaker != null;
+        public bool IsMatchmakerInitialized => m_ClientManager != null;
         [SerializeField] private PlayerInfoItemSettings m_Settings;
         [field: SerializeField] public string IP { get; private set; } = "127.0.0.1";
         [field: SerializeField] public ushort Port { get; private set; } = NetCodeBootstrap.MegacityMetroServerIp.Port;
 
-        private ClientMatchmaker m_Matchmaker;
         private PlayerAuthentication m_ProfileService;
         public static MatchMakingConnector Instance { get; private set; }
         public bool HasMatchmakingSuccess { get; private set; }
         public bool IsInitialized { get; private set; }
 
-        private async void Awake()
+
+        private ClientManager m_ClientManager;
+        private Dispatcher m_Dispatcher;
+
+        private int attemptNumber = 0;
+
+        private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
+                m_Dispatcher = new Dispatcher();
             }
             else
             {
                 Destroy(gameObject);
                 return;
             }
+        }
+
+        private async void Start() 
+        {
 
             // Check if the project is linked to a project ID
             if (string.IsNullOrEmpty(Application.cloudProjectId))
@@ -48,9 +61,9 @@ namespace Unity.MegacityMetro.UGS
                                  "select your project and then link a project ID. " +
                                  "You also need to make sure your organization has access to the required products. " +
                                  "Visit https://dashboard.unity3d.com to sign up.");
-                
+
                 ModalWindow.Instance.Show("To use Unity's dashboard services, you need to link your Unity project to a project ID.", "OK");
-                
+
                 IsInitialized = false;
             }
             else
@@ -73,10 +86,17 @@ namespace Unity.MegacityMetro.UGS
 
             m_ProfileService = new PlayerAuthentication();
             await m_ProfileService.SignIn(m_Settings.PlayerName);
-            m_Matchmaker = new ClientMatchmaker();
+            
+            m_ClientManager = new ClientManager(m_Dispatcher);
+            m_ClientManager.Start();
             IsInitialized = true;
 
             #endregion
+        }
+
+        private void Update()
+        {
+            m_Dispatcher.Update();
         }
 
         public async Task Reconnect()
@@ -86,7 +106,6 @@ namespace Unity.MegacityMetro.UGS
 
         public async Task Matchmake()
         {
-            Debug.Log($"[Auth] Signed into Unity Services as {m_ProfileService.LocalPlayer}");
             Debug.Log("Beginning Matchmaking.");
             HasMatchmakingSuccess = false;
             MatchMakingUI.Instance.UpdateConnectionStatus("[Matchmaker] Searching...");
@@ -101,37 +120,48 @@ namespace Unity.MegacityMetro.UGS
                 return;
             }
 
-            try
+            try 
             {
-                var matchmakingResult = await m_Matchmaker.Matchmake(m_ProfileService.LocalPlayer);
-                if (matchmakingResult.result == MatchmakerPollingResult.Success)
+                await m_ClientManager.LoginAsync(m_ProfileService.LocalPlayer);
+                                
+                if (m_ClientManager.GameState == GameState.Menu) 
                 {
-                    IP = matchmakingResult.ip;
-                    Port = (ushort) matchmakingResult.port;
+                    // Create world for the SDK
+                    ServerConnectionUtils.CreateDefaultWorld();
+                    NetCodeBootstrap.CheckWorlds();
 
-                    MatchMakingUI.Instance.UpdateConnectionStatus("[Matchmaker] Match found! Queued to join..."); 
+                    MatchMakingUI.Instance.UpdateConnectionStatus("Authenticated into a session");
+                    await m_ClientManager.MatchmakeAsync();
+
+                    // TODO: Move into method
+                    IP = m_ClientManager.ConnectionEndpoint.Address.Split(":")[0];
+                    Port = m_ClientManager.ConnectionEndpoint.Port;
+
+                    MatchMakingUI.Instance.UpdateConnectionStatus("[Matchmaker] Match found! Queued to join...");
                     Debug.Log($"[Matchmaker] Matchmaking Success! Connecting to {IP} : {Port}");
-                    await Task.Delay(5000); // Hack: Give the server some time to process before connecting. This should be fixed!
+
                     HasMatchmakingSuccess = true;
                     MatchMakingUI.Instance.UpdateConnectionStatus($"[Netcode] Connecting to {IP} : {Port}...");
-                    ConnectToServer($"{IP}:{Port}");
+                    ConnectToServer($"{m_ClientManager.ConnectionEndpoint.Address}");
                 }
-                else
-                {
-                    MatchMakingUI.Instance.UpdateConnectionStatus($"[Matchmaker] {matchmakingResult.result}] - {matchmakingResult.resultMessage}");
-                    Debug.LogError($"[Matchmaker] {matchmakingResult.result}] - {matchmakingResult.resultMessage}");
-                }
+                
             }
             catch (Exception ex)
             {
-                Debug.LogError($"[Matchmaker] Error Matchmaking: {ex}");
-                MatchMakingUI.Instance.UpdateConnectionStatus($"[Matchmaker] Error Matchmaking: {ex}");
+                Debug.LogError($"[Matchmaker] Error while matchmaking: {ex.Message} ");
+                MatchMakingUI.Instance.UpdateConnectionStatus($"[Matchmaker] Error while matchmaking: {ex.Message}");
+                HasMatchmakingSuccess = false;
             }
+
+            attemptNumber++;
+            Debug.Log($"Matchmaking attempt #{attemptNumber} - success? {HasMatchmakingSuccess}");
         }
 
-        public void OnDisable()
+        // Make accessible to UI classes
+        public async Task ClearSession()
         {
-            m_Matchmaker?.Dispose();
+            // This is necessary to avoid an exception when rejoining a server session,
+            await m_ClientManager.ClearSession();
         }
 
         public void SetProfileServiceName(string newValue)

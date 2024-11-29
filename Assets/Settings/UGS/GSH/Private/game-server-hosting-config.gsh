@@ -3,6 +3,8 @@ builds:
   megacity-matchmaker: # replace with the name for your build
     executableName: Server.x86_64 # the name of your build executable
     buildPath: Builds/Multiplay # the location of the build files
+    excludePaths: # paths to exclude from upload (supports only basic patterns)
+      - Builds/Multiplay/Server_BackUpThisFolder_ButDontShipItWithYourGame/*.*
 buildConfigurations:
   megacity-dgs: # replace with the name for your build configuration
     build: megacity-matchmaker # replace with the name for your build

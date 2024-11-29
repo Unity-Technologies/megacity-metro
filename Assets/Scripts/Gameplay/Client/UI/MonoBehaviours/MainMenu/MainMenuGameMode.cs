@@ -52,7 +52,7 @@ namespace Unity.MegacityMetro.UI
                 ToggleVisibility();
         }
 
-        protected void BackToTheMenu()
+        protected virtual void BackToTheMenu()
         {
             if(m_MenuOptions.style.display == DisplayStyle.None)
                 return;

@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Vivox;
 using System.Runtime.InteropServices;
 using Unity.Services.Authentication;
+using System.Threading.Tasks;
 
 namespace Unity.MegacityMetro.Gameplay
 {
@@ -127,23 +127,24 @@ namespace Unity.MegacityMetro.Gameplay
             }
         }
 
-        private void OnDestroy()
+        private async void OnDestroy()
         {
-            Logout();
+            await Logout();
+            Instance = null;
         }
 
-        public void Logout()
+        public async Task Logout()
         {
             // Needed to add this to prevent some unsuccessful init, we can revisit to do better
             if (m_IsReady && Session != null && Devices != null)
             {
                 Devices.SetMicrophoneMute(true);
-                Session.ClosingClientConnection();
+                await Session.ClosingClientConnection();
                 Debug.Log($"[VIVOX] Logout from Vivox");
             }
         }
         
-        bool CheckManualCredentials()
+        private bool CheckManualCredentials()
         {
             return !(string.IsNullOrEmpty(issuer) && string.IsNullOrEmpty(domain) && string.IsNullOrEmpty(server));
         }

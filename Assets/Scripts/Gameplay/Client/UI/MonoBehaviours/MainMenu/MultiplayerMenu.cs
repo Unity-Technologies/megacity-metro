@@ -128,9 +128,7 @@ namespace Unity.MegacityMetro.UI
             {
                 SetConnectionMode(SelectedMultiplayerMode);
             });
-            
-            m_NameTextField.value = m_PlayerSettings.PlayerName;
-           
+
             // Subscribe to UI events
             UIEvents.OnNavigate += OnNavigate;
 
@@ -159,6 +157,8 @@ namespace Unity.MegacityMetro.UI
                 ? "Find Match"
                 : SelectedMultiplayerMode.ToString();
             m_MultiplayerPlayButton.text = connectButtonText;
+            // This should occur after Matchmaking assigns the random name.
+            m_NameTextField.value = m_PlayerSettings.PlayerName;
             var isMatchMaking = mode == MultiplayerMode.Matchmaker;
             MatchMakingUI.Instance.SetConnectionMode(isMatchMaking);
         }
@@ -228,6 +228,12 @@ namespace Unity.MegacityMetro.UI
             MatchMakingUI.Instance.SetUIConnectionStatusEnable(matchmaking);
             m_MultiplayerPlayButton.SetEnabled(!matchmaking);
             m_MultiplayerReturnButton.SetEnabled(!matchmaking);
+        }
+
+        protected override void BackToTheMenu()
+        {
+            base.BackToTheMenu();
+            MatchMakingConnector.Instance.ClearSession();
         }
     }
 }

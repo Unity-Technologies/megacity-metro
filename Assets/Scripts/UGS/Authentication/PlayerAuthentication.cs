@@ -51,15 +51,26 @@ namespace Unity.Services.Samples
 
             LocalPlayer = new PlayerProfile(playerName, playerID);
         }
-        
-        public static string GenerateRandomUniqueHash(string input)
+
+        public static string GenerateRandomUniqueHash(string profileName)
         {
-            input += DateTime.Now.Ticks + UnityEngine.Random.Range(0, 16);
+            // Add more randomness using Guid and RNGCryptoServiceProvider
+            Guid guid = Guid.NewGuid();
+            byte[] randomBytes = new byte[16];
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(randomBytes);
+            }
+
+            // Incorporate profile name, time, and randomness
+            profileName += DateTime.Now.Ticks + BitConverter.ToString(randomBytes) + guid.ToString();
+
             using (SHA256 sha256 = SHA256.Create())
             {
-                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] inputBytes = Encoding.UTF8.GetBytes(profileName);
                 byte[] hashBytes = sha256.ComputeHash(inputBytes);
 
+                // Use Base64 for encoding but ensure to keep it URL-safe
                 string base64Hash = Convert.ToBase64String(hashBytes, 0, 24);
                 return base64Hash.Replace("/", "").Replace("+", "").Substring(0, 16);
             }
