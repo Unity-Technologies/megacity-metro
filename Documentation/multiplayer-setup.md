@@ -13,7 +13,7 @@ Megacity Metro is server-authoritative, which means the server has ultimate auth
 For testing purposes, you can run the Client and Server in the Editor. This enables inspection of entities, systems, components, etc. while running on both the Server and Client.
 
 To set up the Editor for local multiplayer:
-1. Go to **Project Settings** > **Entities**. 
+1. Go to **Project Settings** > **Multiplayer** > **Build**. 
 2. Set the **NetCode Client Target** to `ClientAndServer`.
 3. Open Multiplayer PlayMode Tools from **Multiplayer** > **Window: PlayMode Tools**. 
 4. Set the **PlayMode Type** to `Client & Server`.
