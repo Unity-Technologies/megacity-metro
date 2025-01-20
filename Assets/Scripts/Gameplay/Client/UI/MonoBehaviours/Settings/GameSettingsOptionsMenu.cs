@@ -134,12 +134,18 @@ namespace Unity.MegacityMetro.UI
             {
                 m_ResumeButton.Focus();
             }
-
+#if UNITY_SWITCH 
+            if (m_GameInput.UI.OpenOptions.triggered &&!m_UIGameSettings.IsVisible)
+            {
+                ShowSettingsOptions(!m_InSettingOptions);
+            }
+#else
             if ((m_GameInput.UI.OpenOptions.triggered || m_GameInput.UI.Back.triggered) &&
                 !m_UIGameSettings.IsVisible)
             {
                 ShowSettingsOptions(!m_InSettingOptions);
             }
+#endif
         }
     }
 }

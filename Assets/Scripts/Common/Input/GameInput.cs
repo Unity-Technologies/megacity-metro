@@ -124,7 +124,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""negative"",
+                    ""name"": ""Positive"",
                     ""id"": ""c1a5c779-3444-4111-8c38-159b7fd19d71"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -157,7 +157,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
+                    ""name"": ""Negative"",
                     ""id"": ""bd38164a-76d3-4408-b3b1-ad0bfd243769"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
