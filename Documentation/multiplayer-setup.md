@@ -15,7 +15,7 @@ For testing purposes, you can run the Client and Server in the Editor. This enab
 To set up the Editor for local multiplayer:
 1. Go to **Project Settings** > **Multiplayer** > **Build**. 
 2. Set the **NetCode Client Target** to `ClientAndServer`.
-3. Open Multiplayer PlayMode Tools from **Multiplayer** > **Window: PlayMode Tools**. 
+3. Open Multiplayer PlayMode Tools through, **Window** > **Multiplayer** > **PlayMode Tools**.
 4. Set the **PlayMode Type** to `Client & Server`.
 
 In the **Assets > Resources > MultiplayerServerSettings**, you have the ability to configure a server list that will be presented in the play mode Main Menu window. This functionality allows for the establishment of multiple connections and facilitates the use of the Default IP connection.
@@ -41,7 +41,7 @@ Now, when you play the game from the Editor, the Server and Client run together 
 To build your game and test it locally, you need to build the Client and Server separately.
 
 To make a Windows or Mac Client Build:
-1. In the Editor, go to **Project Settings** > **Entities** to change the **NetCode Client Target** to `Client`.
+1. In the Editor, go to **Project Settings** > **Multiplayer** > **Entities** to change the **NetCode Client Target** to `Client`.
 2. Go to **Project Settings** > **Player** and change **Scripting BackEnd** to `iL2CPP`.
 3. Like any other Unity game, make the build by going to **File** > **Build Settings**.
 4. Enable the `Main` and `Menu` scenes and set the target platform to `Windows, Mac, Linux`.
@@ -50,7 +50,7 @@ To make a Windows or Mac Client Build:
 ![Build Settings - Client-Windows](./Images/build-settings-client-windows.png)
 
 To make a Android Client Build: 
-1. In the Editor, go to **Project Settings** > **Entities** to change the **NetCode Client Target** to `Client`.
+1. In the Editor, go to **Project Settings** > **Multiplayer** > **Entities** to change the **NetCode Client Target** to `Client`.
 2. Go to **Project Settings** > **Player** and select the tab with Android icon change **Scripting BackEnd** to `iL2CPP`.
 3. In the same window and in the **Target Architectures** check **ARM64** box.
 3. Like any other Unity game, make the build by going to **File** > **Build Settings**.
@@ -60,7 +60,7 @@ To make a Android Client Build:
 ![Build Settings - Client-Android](./Images/build-settings-client-android.png)
 
 To make an iOS Build: 
-1. In the Editor, go to **Project Settings** > **Entities** to change the **NetCode Client Target** to `Client`.
+1. In the Editor, go to **Project Settings** >**Multiplayer**> **Entities** to change the **NetCode Client Target** to `Client`.
 2. Like any other Unity game, make the build by going to **File** > **Build Settings**.
 3. Press the **Build & Run** button to generate the Xcode project.
 
