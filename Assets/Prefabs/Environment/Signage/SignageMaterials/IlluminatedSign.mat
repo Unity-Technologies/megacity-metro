@@ -19,7 +19,8 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -33,7 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4a3e00d9ba6343a2a2f7668ebccd1538_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 0c0201a809654c44c8b30b132e6a2ffa, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_6580051e3834420795fcb626e5b9ac9a_Texture_1_Texture2D:
@@ -81,9 +82,11 @@ Material:
     - _GroundFogColor: {r: 0.44428626, g: 0.30473477, b: 0.6037736, a: 1}
     - _LCD_Pixels: {r: 512, g: 412, b: 0, a: 0}
     - _Saturation: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _Time16: {r: 0, g: 0, b: 0, a: 0}
     - _UV_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _UV_Scale: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &1211856799521520199
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -96,4 +99,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9

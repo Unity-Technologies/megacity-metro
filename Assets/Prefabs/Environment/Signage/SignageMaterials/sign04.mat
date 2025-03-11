@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: sign04
-  m_Shader: {fileID: -6465566751694194690, guid: ac799c78e94eddc4e92a43b3a66d1969,
+  m_Shader: {fileID: -6465566751694194690, guid: cc0dbda0a3a6d2542b9f13838c49c79a,
     type: 3}
-  m_Parent: {fileID: 2100000, guid: 1f5097fcde4ee3e41aa906d7433f5e13, type: 2}
+  m_Parent: {fileID: 2100000, guid: 6ebe22bea4ed06744a7ca3d81c230c15, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -32,7 +32,8 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -46,11 +47,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4a3e00d9ba6343a2a2f7668ebccd1538_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 0c0201a809654c44c8b30b132e6a2ffa, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4ec755a2fbac4331bf60a68fc347fd11_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 03235524a468b2b48bae09aae25b263a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SignArray:
+        m_Texture: {fileID: 18700000, guid: fa39fe8cb8c04f749a96df485ff708c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Signage:
@@ -69,7 +74,9 @@ Material:
     - _Overall_Brightness: 2
     - _Reflectance: 0.3
     - _Scanline: 0.3
+    - _Update: 0.054
     m_Colors:
     - _GroundFogColor: {r: 0.09824473, g: 0.08877715, b: 0.1792453, a: 1}
     - _LCD_Pixels: {r: 256, g: 1024, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

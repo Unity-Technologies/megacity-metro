@@ -65,11 +65,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4382633430155872720, guid: 248fc2fae48466b449cc8ba344fa655e,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 17178015b39b38a4daf85a362474f9b4, type: 2}
+    - target: {fileID: 6443842568079521304, guid: 248fc2fae48466b449cc8ba344fa655e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949385363012975708, guid: 248fc2fae48466b449cc8ba344fa655e,
+        type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949385363012975708, guid: 248fc2fae48466b449cc8ba344fa655e,
+        type: 3}
+      propertyPath: m_Range
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949385363012975708, guid: 248fc2fae48466b449cc8ba344fa655e,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7584061015157677438, guid: 248fc2fae48466b449cc8ba344fa655e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248fc2fae48466b449cc8ba344fa655e, type: 3}

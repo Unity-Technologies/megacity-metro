@@ -31,6 +31,15 @@ void MainLight_half(half3 worldPos, out half3 direction, out half3 color, out ha
 #endif
 }
 
+void MainLightShadowFade_half(half3 worldPos, out half fade)
+{
+    #ifdef SHADERGRAPH_PREVIEW
+    fade = 1;
+    #else
+    fade = GetMainLightShadowFade(worldPos);
+    #endif
+}
+
 #ifndef SHADERGRAPH_PREVIEW
 
 // This function gets additional light data and calculates realtime shadows
@@ -83,7 +92,7 @@ void AddAdditionalLights_float(float Smoothness, float3 WorldPosition, float3 Wo
         LIGHT_LOOP_END
 
     float total = Diffuse + dot(Specular, float3(0.333, 0.333, 0.333));
-    Color = total <= 0 ? MainColor : Color / total;
+    Color = total <= 0 ? MainColor : Color / max(total, FLT_MIN);
 #endif
 }
 
@@ -119,7 +128,7 @@ void AddAdditionalLights_half(half Smoothness, half3 WorldPosition, half3 WorldN
         LIGHT_LOOP_END
     //needs to be float to avoid precision issues
     float total = Diffuse + dot(Specular, half3(0.333, 0.333, 0.333));
-    Color = total <= 0 ? MainColor : Color / total;
+    Color = total <= 0 ? MainColor : Color / max(total, HALF_MIN);
 #endif
 }
 

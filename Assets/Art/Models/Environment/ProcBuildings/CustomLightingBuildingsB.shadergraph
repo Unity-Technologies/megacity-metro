@@ -2252,6 +2252,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "b680151ab4df4942a48a31b5d406cd60"
+                },
+                "m_SlotId": 6
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "ee56e7dbc231496f9571ca0cb4174168"
+                },
+                "m_SlotId": 1080114550
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "b7eb536feb3a4991b991dfd7b31654f1"
                 },
                 "m_SlotId": 1
@@ -7039,6 +7053,9 @@
     "m_AlphaClip": false,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
+    "m_DisableTint": false,
+    "m_AdditionalMotionVectorMode": 0,
+    "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": false,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
@@ -7495,6 +7512,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "47225dcf41224cdbb3a597c05c59ad49",
+    "m_Id": 1080114550,
+    "m_DisplayName": "Indentation",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Indentation",
+    "m_StageCapability": 2,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Texture2DInputMaterialSlot",
     "m_ObjectId": "4728eb321dd942a8bfeb553c5eb60860",
     "m_Id": 1965204363,
@@ -7732,7 +7764,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Shadows Cascade",
     "m_DefaultReferenceName": "_SHADOWS_CASCADE",
-    "m_OverrideReferenceName": "_MAIN_LIGHT_SHADOWS_CASCADE",
+    "m_OverrideReferenceName": "_MAIN_LIGHT_SHADOWS",
     "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -15181,6 +15213,9 @@
         },
         {
             "m_Id": "e6df6491ccc5407aa1a1db587a6d4414"
+        },
+        {
+            "m_Id": "ba0c4664e1784d5488fc0dd48ad18aec"
         }
     ],
     "synonyms": [],
@@ -15392,6 +15427,21 @@
     "m_Property": {
         "m_Id": "b66426b49464408eaedef8817ed156c8"
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "ba0c4664e1784d5488fc0dd48ad18aec",
+    "m_Id": 6,
+    "m_DisplayName": "IndentsMask",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "IndentsMask",
+    "m_StageCapability": 2,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -18970,6 +19020,9 @@
             "m_Id": "674fcc526a1b40a189cb997e5e5c3c23"
         },
         {
+            "m_Id": "47225dcf41224cdbb3a597c05c59ad49"
+        },
+        {
             "m_Id": "4f5aa2a928fb48a68ca58e03cb8db731"
         },
         {
@@ -19046,7 +19099,8 @@
         "220ff6e2-cc8e-4ee1-a06d-d611fb201889",
         "3fbaa58c-1fa8-4566-b3ea-898314b3fce9",
         "00e3c58d-f619-4f86-9c60-35bcf67e1688",
-        "a047bf0f-4632-4c68-acfc-3d7201139cae"
+        "a047bf0f-4632-4c68-acfc-3d7201139cae",
+        "0002e32b-6c97-41f2-b08d-4a747a3fdb75"
     ],
     "m_PropertyIds": [
         -1045450119,
@@ -19091,7 +19145,8 @@
         -199198921,
         279569283,
         2068196862,
-        814618256
+        814618256,
+        1080114550
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []

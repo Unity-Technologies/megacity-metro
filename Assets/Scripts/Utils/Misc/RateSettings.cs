@@ -12,7 +12,7 @@ public static class RateSettings
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     public static void ResetStaticData()
     {
-        UnlockFramerate = false;
+        UnlockFramerate = true;
     }
     
     public static float GetFixedTimeStep()
@@ -31,18 +31,7 @@ public static class RateSettings
 
     public static void ApplyFrameRate()
     {
-        if (UnlockFramerate)
-        {
-            QualitySettings.vSyncCount = 0;
-#if UNITY_ANDROID || UNITY_IPHONE
-            Application.targetFrameRate = 120;
-#else
-            Application.targetFrameRate = -1;
-#endif
-        }
-        else
-        {
-            Application.targetFrameRate = framerate;
-        }
+        QualitySettings.vSyncCount = 0;
+        //Target Frame Rate is now set in the SimpleFPS.cs MonoBehaviour
     }
 }
