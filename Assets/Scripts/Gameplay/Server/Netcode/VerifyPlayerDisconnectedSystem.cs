@@ -1,4 +1,5 @@
 ﻿using Unity.Burst;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.NetCode;
 using Unity.NetCode.Extensions;
@@ -22,6 +23,7 @@ namespace Unity.MegacityMetro.Gameplay
         public void OnUpdate(ref SystemState state)
         {
             var playersConnected = GetSingletonBuffer<PlayerConnectedElement>();
+            var ecb = new EntityCommandBuffer(Allocator.TempJob);
 
             for (int i = 0; i < playersConnected.Length; i++)
             {
@@ -31,8 +33,15 @@ namespace Unity.MegacityMetro.Gameplay
                     UnityEngine.Debug.Log($"Attention: Player {player.Name}({player.UASId}) has been disconnected from the game." +
                                           $"\nConnected Players: {m_ConnectedPlayers.CalculateEntityCount()}");
                     playersConnected.RemoveAt(i);
+                    
+                    var entity = ecb.CreateEntity();
+                    ecb.AddComponent(entity, new PlayerLeftEvent { PlayerId = player.UASId });
+
                 }
             }
+            
+            ecb.Playback(state.EntityManager);
+            ecb.Dispose();
         }
     }
 }

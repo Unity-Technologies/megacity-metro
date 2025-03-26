@@ -1,10 +1,12 @@
 using MegacityMetro.CustomUI;
 using Unity.MegacityMetro.CameraManagement;
-using Unity.MegacityMetro.Utils;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
+#if !UNITY_SERVER
+using Unity.MegacityMetro.Utils;
+#endif
 
 namespace Unity.MegacityMetro.UI
 {
@@ -21,8 +23,10 @@ namespace Unity.MegacityMetro.UI
     /// </summary>
     public class UIGraphicsSettings : UISettingsTab
     {
-        [SerializeField] private Volume m_PostProcessing;
-        [SerializeField] private UIScreenResolution ResolutionScreen;
+        [SerializeField]
+        private Volume m_PostProcessing;
+        [SerializeField]
+        private UIScreenResolution ResolutionScreen;
 
         private CustomToggle m_PostProcessingValue;
         private CustomToggle m_VerticalSyncValue;
@@ -85,7 +89,7 @@ namespace Unity.MegacityMetro.UI
             CheckSavedData();
 
             m_QualityValue.RegisterCallback<GeometryChangedEvent>(_ => m_QualityValue.Focus());
-            
+
             // Set default values for STP and Render Scale
             SetSTP(false);
             SetRenderScale(1);
@@ -96,7 +100,7 @@ namespace Unity.MegacityMetro.UI
 
         private void CheckSavedData()
         {
-#if !UNITY_SWITCH
+#if !UNITY_SWITCH && !UNITY_SERVER
             var graphicsSettingsData = PersistentDataManager.Instance.GetGraphicsSettings();
 
             m_QualityValue.value = m_QualityValue.choices[graphicsSettingsData.QualityLevelIndex];
@@ -105,7 +109,7 @@ namespace Unity.MegacityMetro.UI
             m_TextureDetailsValue.value = m_TextureDetailsValue.choices[graphicsSettingsData.TextureDetailIndex];
             m_PostProcessingValue.value = graphicsSettingsData.PostProcessingEnabled;
 #endif
-#if !(UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH)
+#if !(UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH) && !UNITY_SERVER
             m_VerticalSyncValue.value = graphicsSettingsData.VSyncEnabled;
             ResolutionScreen.SetScreenMode(m_ScreenModeValue.value.ToLower());
             ResolutionScreen.SetResolution(m_ScreenResolution.value.ToLower());
@@ -137,6 +141,7 @@ namespace Unity.MegacityMetro.UI
 
         private void SaveData()
         {
+#if !UNITY_SERVER
             var graphicsSettingsData = new GraphicsSettingsData
             {
                 QualityLevelIndex = m_QualityValue.index,
@@ -146,9 +151,10 @@ namespace Unity.MegacityMetro.UI
                 PostProcessingEnabled = m_PostProcessingValue.value,
                 VSyncEnabled = m_VerticalSyncValue.value
             };
-#if !UNITY_SWITCH
+#if !UNITY_SWITCH 
             PersistentDataManager.Instance.SaveGraphicsSettings(graphicsSettingsData);
-#endif
+#endif //!UNITY_SWITCH
+#endif //!UNITY_SERVER
         }
 
         public override void Reset()

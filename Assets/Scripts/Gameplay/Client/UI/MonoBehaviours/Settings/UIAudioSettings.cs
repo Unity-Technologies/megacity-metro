@@ -37,7 +37,7 @@ namespace Unity.MegacityMetro.UI
 
         private void CheckSavedData()
         {
-#if !UNITY_SWITCH            
+#if !UNITY_SWITCH && !UNITY_SERVER      
             var audioSettingsData = PersistentDataManager.Instance.GetAudioSettings();
             m_VolumeSlider.value = (int) (audioSettingsData.MasterVolume * 100f);
             m_SoundFXSlider.value = (int) (audioSettingsData.VisualFxVolume * 100f);
@@ -111,7 +111,7 @@ namespace Unity.MegacityMetro.UI
                 VivoxSpeakerVolume = m_VivoxVolumeSlider.value,
                 VivoxMicrophoneVolume = m_VivoxMicrophoneSlider.value
             };
-#if !UNITY_SWITCH
+#if !UNITY_SWITCH && !UNITY_SERVER
             PersistentDataManager.Instance.SaveAudioSettings(audioSettingsData);
 #endif
         }

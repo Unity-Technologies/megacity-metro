@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="session-item" style="flex-grow: 0; flex-direction: row; align-self: stretch; justify-content: space-around; height: 40px;">
+        <engine:Label text="session-name" name="session-name" style="align-self: center; flex-grow: 1; flex-direction: row; flex-wrap: wrap;" />
+        <engine:Label text="player-count" name="player-count" style="align-self: center; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; align-items: stretch;" />
+        <engine:Label text="/&#10;" style="align-self: center;" />
+        <engine:Label text="player-max" name="player-max" style="align-self: center;" />
+    </engine:VisualElement>
+</engine:UXML>

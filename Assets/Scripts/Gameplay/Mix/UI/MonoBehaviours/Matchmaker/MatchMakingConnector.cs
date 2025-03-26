@@ -6,9 +6,11 @@ using Unity.Services.MultiplayerSDK.Utils;
 using Unity.Services.MultiplayerSDK.Client;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 using Unity.Services.Samples;
 using Unity.Services.Authentication;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.Services.Multiplayer;
 
 namespace Unity.MegacityMetro.UGS
 {
@@ -27,6 +29,7 @@ namespace Unity.MegacityMetro.UGS
         private PlayerAuthentication m_ProfileService;
         public static MatchMakingConnector Instance { get; private set; }
         public bool HasMatchmakingSuccess { get; private set; }
+        private bool m_IsLoggedIn { get; set; }
         public bool IsInitialized { get; private set; }
 
 
@@ -72,6 +75,30 @@ namespace Unity.MegacityMetro.UGS
             }
         }
 
+        public async Task<IList<ISessionInfo>> ListSessions()
+        {
+            while (m_IsLoggedIn == false)
+            {
+               await Task.Delay(100);
+            }
+            var querySessionsResults = await MultiplayerService.Instance.QuerySessionsAsync(new QuerySessionsOptions());
+            return querySessionsResults.Sessions;
+        }
+        
+        public async Task JoinSession(string sessionId)
+        {
+            while (m_IsLoggedIn == false)
+            {
+                await Task.Delay(100);
+            }
+            if (m_ClientManager.GameState == GameState.Menu)
+            {
+                ServerConnectionUtils.SetDefaultWorld();
+                await m_ClientManager.JoinSessionAsync(sessionId);
+                ConnectToServer(m_ClientManager.ConnectionEndpoint.Address);
+            }
+        }
+        
         private async Task Init()
         {
             // Get name from BotNameGenerator to use as default name
@@ -87,10 +114,14 @@ namespace Unity.MegacityMetro.UGS
             m_ProfileService = new PlayerAuthentication();
             await m_ProfileService.SignIn(m_Settings.PlayerName);
             
-            m_ClientManager = new ClientManager(m_Dispatcher);
+            m_ClientManager = new ClientManager();
             m_ClientManager.Start();
             IsInitialized = true;
 
+            await m_ClientManager.LoginAsync(m_ProfileService.LocalPlayer);
+            m_IsLoggedIn = true;
+            Debug.LogWarning($"Logged in as  {m_Settings.PlayerName}");
+            
             #endregion
         }
 
@@ -122,15 +153,14 @@ namespace Unity.MegacityMetro.UGS
 
             try 
             {
-                await m_ClientManager.LoginAsync(m_ProfileService.LocalPlayer);
+                while (m_IsLoggedIn == false)
+                {
+                    await Task.Delay(100);
+                }
                                 
                 if (m_ClientManager.GameState == GameState.Menu) 
                 {
-                    // Create world for the SDK
-                    ServerConnectionUtils.CreateDefaultWorld();
-                    NetCodeBootstrap.CheckWorlds();
-
-                    MatchMakingUI.Instance.UpdateConnectionStatus("Authenticated into a session");
+                    ServerConnectionUtils.SetDefaultWorld();
                     await m_ClientManager.MatchmakeAsync();
 
                     // TODO: Move into method
@@ -161,7 +191,8 @@ namespace Unity.MegacityMetro.UGS
         public async Task ClearSession()
         {
             // This is necessary to avoid an exception when rejoining a server session,
-            await m_ClientManager.ClearSession();
+            await m_ClientManager.LeaveSessionAsync();
+            m_ClientManager.SetupMenu();
         }
 
         public void SetProfileServiceName(string newValue)
@@ -196,7 +227,7 @@ namespace Unity.MegacityMetro.UGS
         /// Current IP format {IP}:{Port}
         /// </summary>
         /// <param name="currentIP"></param>
-        public void ConnectToServer(string currentIP)
+        private void ConnectToServer(string currentIP)
         {
             if (MatchMakingUI.Instance.TryUpdateIPAndPort(currentIP, out var ip, out var port))
             {
@@ -209,12 +240,6 @@ namespace Unity.MegacityMetro.UGS
                 return;
             UpdateConnectionStatusLabel();
         }
-
-        public void SetIPAndPort(string ip, ushort port)
-        {
-            HasMatchmakingSuccess = false;
-            IP = ip;
-            Port = port;
-        }
+        
     }
 }

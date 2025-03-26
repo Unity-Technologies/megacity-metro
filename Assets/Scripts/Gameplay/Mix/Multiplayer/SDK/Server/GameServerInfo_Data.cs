@@ -15,9 +15,9 @@ namespace Gameplay.Mix.Multiplayer.SDK.Server
         // Workaround for current Lobby limit returning error:
         //
         //  SessionException: request failed validation
-        //  maxPlayers in body should be less than or equal to 100
+        //  maxPlayers in body should be less than or equal to 150
         //
-        public int MaxPlayers = 100;
+        public int MaxPlayers = 150;
         public string ServerName = "Unity Dedicated Game Server";
         public string GameType = "n/a";
         public string Map = "n/a";

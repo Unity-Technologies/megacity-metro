@@ -1,0 +1,47 @@
+.button-strip__wide {
+    flex-direction: row;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    justify-content: space-between;
+    width: auto;
+    border-left-width: 160px;
+    border-right-width: 160px;
+}
+
+.button-strip__normal {
+    flex-direction: row;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    justify-content: space-between;
+    width: auto;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+.hidden {
+    flex-direction: row;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    justify-content: space-between;
+    width: auto;
+    border-left-width: 0;
+    border-right-width: 0;
+    display: none;
+}
+
+.menu-button:hover {
+    
+}
+
+.menu-button:hover:enabled {
+    color: rgb(236, 210, 157);
+    -unity-text-outline-color: rgb(214, 151, 26);
+    -unity-text-outline-width: 1px;
+    -unity-background-image-tint-color: rgba(236, 210, 157, 0.5);
+}

@@ -11,11 +11,14 @@ namespace Unity.Services.MultiplayerSDK.Server
     public class ServerBehaviour : MonoBehaviour
     {
         const string k_ServicesDataResourceLocation = "GameServiceData";
+
+        public static ServerBehaviour Instance { get; private set; }
         private string apiKeyId = "";
         private string apiKeySecret = "";
         private Dispatcher Dispatcher;
-        private ServerManager ServerManager;
+        public ServerManager ServerManager;
 
+        
         private async Task Awake()
         {
             DontDestroyOnLoad(this);
@@ -31,6 +34,11 @@ namespace Unity.Services.MultiplayerSDK.Server
             ServerManager = new ServerManager(Dispatcher, gameServerInfo);
             ServerManager.SetCredentials(apiKeyId, apiKeySecret);
             await ServerManager.StartAsync();
+
+            if (Instance == null)
+            {
+                Instance = this;
+            }
         }
 
         private void ReadAndSetKeysFromCommandLine()

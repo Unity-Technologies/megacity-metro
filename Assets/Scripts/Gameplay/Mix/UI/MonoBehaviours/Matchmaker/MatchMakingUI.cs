@@ -1,3 +1,4 @@
+using System;
 using Unity.MegacityMetro.Gameplay;
 using Unity.MegacityMetro.UGS;
 using UnityEngine;
@@ -8,19 +9,24 @@ namespace Unity.MegacityMetro.UI
 {
     public class MatchMakingUI : MonoBehaviour
     {
-        [SerializeField] private MultiplayerServerSettings m_ServerSettings;
+        [SerializeField]
+        private MultiplayerServerSettings m_ServerSettings;
         public float ConnectionTimeout => m_ServerSettings.ConnectionTimeout;
-            
+
         // UI Elements
-        private TextField m_MultiplayerTextField;
+
         private DropdownField m_MultiplayerServerDropdownMenu;
         private Label m_ConnectionStatusLabel;
         private VisualElement m_MatchmakingLoadingBar;
         private VisualElement m_MatchmakingSpinner;
-
-        public string IPValue => m_MultiplayerTextField.value;
+        private Button m_MultiplayerPlayButton;
+        private TextField m_NameTextField;
+        private Button m_MultiplayerReturnButton;
+        private VisualElement m_MultiplayerModeGroup;
 
         public static MatchMakingUI Instance { get; private set; }
+        
+        public event Action Connecting;
 
         private void Awake()
         {
@@ -41,16 +47,16 @@ namespace Unity.MegacityMetro.UI
             m_ConnectionStatusLabel = root.Q<Label>("connection-label");
             m_MatchmakingSpinner = root.Q<VisualElement>("matchmaking-spinner");
             m_MatchmakingLoadingBar = root.Q<VisualElement>("matchmaking-loading-bar");
-            m_MultiplayerTextField = root.Q<TextField>("multiplayer-server-textfield");
             m_MultiplayerServerDropdownMenu = root.Q<DropdownField>("multiplayer-server-location");
             m_MultiplayerServerDropdownMenu.choices = m_ServerSettings.GetUIChoices();
-            m_MultiplayerServerDropdownMenu.RegisterValueChangedCallback(OnServerDropDownChanged);
-        }
-
-
-        private void OnServerDropDownChanged(ChangeEvent<string> value)
-        {
-            m_MultiplayerTextField.value = m_ServerSettings.GetIPByName(value.newValue);
+            
+            var multiplayerMenuOptions = root.Q<VisualElement>("multiplayer-menu-options");
+            m_NameTextField = multiplayerMenuOptions.Q<TextField>("name-textfield");
+            m_MultiplayerPlayButton = multiplayerMenuOptions.Q<Button>("multiplayer-play-button");
+            m_MultiplayerReturnButton = multiplayerMenuOptions.Q<Button>("multiplayer-return-button");
+            m_MultiplayerModeGroup = multiplayerMenuOptions.Q<VisualElement>("multiplayer-mode");
+            
+            m_MatchmakingLoadingBar.AddToClassList(UIConstants.k_HiddenUssElementClass);
         }
 
         public bool TryUpdateIPAndPort(string currentIP, out string ip, out ushort port)
@@ -76,29 +82,95 @@ namespace Unity.MegacityMetro.UI
 
         public void UpdateConnectionStatus(string status)
         {
-            m_ConnectionStatusLabel.style.display = DisplayStyle.Flex;
+            m_ConnectionStatusLabel.RemoveFromClassList(UIConstants.k_HiddenUssElementClass);
             m_ConnectionStatusLabel.text = status;
         }
 
         public void SetUIConnectionStatusEnable(bool matchmaking)
         {
-            m_MatchmakingLoadingBar.style.display = matchmaking ? DisplayStyle.Flex : DisplayStyle.None;
-            m_ConnectionStatusLabel.style.display = matchmaking ? DisplayStyle.Flex : DisplayStyle.None;
-            
-            if(matchmaking)
+            m_MatchmakingLoadingBar.EnableInClassList(UIConstants.k_HiddenUssElementClass, !matchmaking);
+            m_ConnectionStatusLabel.EnableInClassList(UIConstants.k_HiddenUssElementClass, !matchmaking);
+
+            if (matchmaking)
                 AnimateLoadingBar();
         }
 
         public void SetConnectionMode(bool isMatchMaking)
         {
-            m_MultiplayerTextField.style.display = isMatchMaking ? DisplayStyle.None : DisplayStyle.Flex;
-            m_MultiplayerServerDropdownMenu.style.display = isMatchMaking ? DisplayStyle.None : DisplayStyle.Flex;
-            m_MultiplayerServerDropdownMenu.value = m_MultiplayerServerDropdownMenu.choices[0] ?? "LOCAL";
+            m_MultiplayerServerDropdownMenu.EnableInClassList(UIConstants.k_HiddenUssElementClass, isMatchMaking);
+            
+            if (isMatchMaking)
+            {
+                m_MultiplayerPlayButton.clicked += OnPlaySelected;
+            }
+            else
+            {
+                m_MultiplayerServerDropdownMenu.value = m_MultiplayerServerDropdownMenu.choices[0] ?? "LOCAL";
+                m_MultiplayerPlayButton.clicked -= OnPlaySelected;
+            }
+        }
+
+        public async System.Threading.Tasks.Task Matchmake()
+        {
+            while (true)
+            {
+                if (MatchMakingConnector.Instance.IsInitialized)
+                {
+                    MatchMakingConnector.Instance.SetProfileServiceName(m_NameTextField.text);
+                    SetUIMatchmaking(true);
+                    await MatchMakingConnector.Instance.Matchmake();
+                    SetUIMatchmaking(false);
+                }
+                else
+                {
+                    UpdateConnectionStatus("Reconnecting...");
+                    await MatchMakingConnector.Instance.Reconnect();
+                    continue;
+                }
+
+                break;
+            }
+        }
+        
+        private void OnPlaySelected()
+        {
+            if (!m_MultiplayerPlayButton.enabledSelf)
+                return;
+
+            if (Application.internetReachability == NetworkReachability.NotReachable)
+            {
+                UpdateConnectionStatus("Error: No Internet Connection!");
+                ModalWindow.Instance.Show("Error: No Internet Connection!", "OK");
+                return;
+            }
+
+            if (MatchMakingConnector.Instance.ClientIsInGame)
+            {
+                Debug.LogWarning("Cant hit play while already in-game!");
+                return;
+            }
+
+            Connecting?.Invoke();
+
+            _ = Matchmake();
+        }
+
+        private void SetUIMatchmaking(bool matchmaking)
+        {
+            m_NameTextField.EnableInClassList(UIConstants.k_HiddenUssElementClass, matchmaking);
+            m_MultiplayerModeGroup.EnableInClassList(UIConstants.k_HiddenUssElementClass, matchmaking);
+            m_MultiplayerPlayButton.EnableInClassList(UIConstants.k_HiddenUssElementClass, matchmaking);
+            m_MultiplayerReturnButton.EnableInClassList(UIConstants.k_HiddenUssElementClass, matchmaking);
+
+            // Show when is doing matchmaking
+            SetUIConnectionStatusEnable(matchmaking);
+            m_MultiplayerPlayButton.SetEnabled(!matchmaking);
+            m_MultiplayerReturnButton.SetEnabled(!matchmaking);
         }
 
         private void AnimateLoadingBar()
         {
-            if (m_MatchmakingLoadingBar.style.display == DisplayStyle.Flex)
+            if (!m_MatchmakingLoadingBar.ClassListContains(UIConstants.k_HiddenUssElementClass))
             {
                 var currentRotation = m_MatchmakingSpinner.style.rotate;
                 var angle = currentRotation.value.angle.value;

@@ -21,31 +21,25 @@ namespace Unity.Services.MultiplayerSDK.Client
 
     public class ClientManager
     {
-        public ISession Session { get; private set; }
-        public GameState GameState { get; private set; } = GameState.Boot;
+        private const string k_SessionType = "MegacityMetroSession";
+        private const int k_MaxPlayers = 150; // TODO: Pull the same values as the server
 
+        private ISession _session;
         private CustomEntitiesNetworkHandler m_Connector;
         public NetworkEndpoint ConnectionEndpoint => m_Connector.ConnectionEndpoint;
 
-        internal readonly Dispatcher Dispatcher;
+        public GameState GameState { get; private set; } = GameState.Boot;
+        
+        private string _listenIp;
+        private string _publishIp;
+        private int _port;
 
-        public NetworkType NetworkType = NetworkType.Direct;
-        public string ListenIp;
-        public string PublishIp;
-        public int Port;
-        public string Region;
-
-        public bool UseCustomNetworkHandler;
-
-        const string k_SessionType = "MegacityMetroSession";
-        const int k_MaxPlayers = 100; // TODO: Pull the same values as the server
-
-        public ClientManager(Dispatcher dispatcher)
+        public ClientManager()
         {
             m_Connector = new CustomEntitiesNetworkHandler();
-            Dispatcher = dispatcher;
-            ListenIp = "0.0.0.0";
-            Port = 0;
+            _listenIp = "0.0.0.0";
+            _publishIp = GetLocalIPAddress();
+            _port = 0;
         }
 
         public void Start()
@@ -75,6 +69,7 @@ namespace Unity.Services.MultiplayerSDK.Client
 
                     Debug.Log($"[ClientManager] Signed into Unity Services as {player}");
                 }
+
                 SetupMenu();
             }
             catch (Exception e)
@@ -84,13 +79,28 @@ namespace Unity.Services.MultiplayerSDK.Client
             }
         }
 
+        public async Task JoinSessionAsync(string sessionId)
+        {
+            GameState = GameState.Executing;
+
+            try
+            {
+                _session = await MultiplayerService.Instance.JoinSessionByIdAsync(sessionId, GetJoinSessionOptions());
+                SetupGame();
+            }
+            catch (SessionException e)
+            {
+                Debug.LogError($"Join session by Id failed. {e.Error}: {e.Message}");
+            }
+        }
+
         public async Task MatchmakeAsync()
         {
             GameState = GameState.Executing;
 
             try
             {
-                Session = await MultiplayerService.Instance.MatchmakeSessionAsync(
+                _session = await MultiplayerService.Instance.MatchmakeSessionAsync(
                     new MatchmakerOptions { QueueName = "default" },
                     GetIPSessionOptions());
 
@@ -120,12 +130,13 @@ namespace Unity.Services.MultiplayerSDK.Client
         {
             GameState = GameState.Executing;
 
-            if (Session == null)
+            if (_session == null)
                 return;
 
             try
             {
                 await ClearSession();
+                await m_Connector.StopAsync();
                 SetupMenu();
             }
             catch (Exception e)
@@ -133,31 +144,11 @@ namespace Unity.Services.MultiplayerSDK.Client
                 Debug.LogException(e);
             }
         }
-
-        // TODO: Combine/replace with Cleanup()
-        public async Task ClearSession()
-        {
-            if (Session != null)
-            {
-                Debug.Log("Leave session...");
-                await Session.LeaveAsync();
-                Session = null;
-            }
-            else
-            {
-                Debug.Log("No session found...");
-            }
-        }
-
-        SessionOptions GetIPSessionOptions()
+ 
+        private SessionOptions GetIPSessionOptions()
         {
             return GetSessionOptions()
-                .WithDirectNetwork(ListenIp, PublishIp, Port);
-        }
-
-        SessionOptions GetRelaySessionOptions()
-        {
-            return GetSessionOptions().WithRelayNetwork(Region);
+                .WithDirectNetwork(_listenIp, _publishIp, _port);
         }
 
         private SessionOptions GetSessionOptions()
@@ -169,19 +160,12 @@ namespace Unity.Services.MultiplayerSDK.Client
 
         private JoinSessionOptions GetJoinSessionOptions()
         {
-            return new JoinSessionOptions() { Type = k_SessionType };
+            var options = new JoinSessionOptions() { Type = k_SessionType };
+            options.WithNetworkHandler(m_Connector);
+            return options;
         }
-
-        // TODO: Use this instead of new method?
-        private void Cleanup()
-        {
-            if (Session != null && Session.State == SessionState.Connected)
-            {
-                Session?.LeaveAsync();
-            }
-        }
-
-        private void SetupMenu()
+        
+        public void SetupMenu()
         {
             GameState = GameState.Menu;
         }
@@ -189,6 +173,20 @@ namespace Unity.Services.MultiplayerSDK.Client
         private void SetupGame()
         {
             GameState = GameState.Game;
+        }
+        
+        private async Task ClearSession()
+        {
+            if (_session != null)
+            {
+                Debug.Log("Leave session...");
+                await _session.LeaveAsync();
+                _session = null;
+            }
+            else
+            {
+                Debug.Log("No session found...");
+            }
         }
 
         private string GetLocalIPAddress()

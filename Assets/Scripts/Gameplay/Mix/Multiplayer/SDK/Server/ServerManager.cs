@@ -31,7 +31,7 @@ namespace Unity.Services.MultiplayerSDK.Server
 
         public IServerSession Session { get; private set; }        
         internal IMultiplaySessionManager SessionManager { get; private set; }
-        internal SessionEventManager SessionEventManager { get; private set; }
+        public SessionEventManager SessionEventManager { get; }
 
         // Use Service Account credentials to test locally
         internal string apiKeyId = "";
@@ -54,7 +54,7 @@ namespace Unity.Services.MultiplayerSDK.Server
                 CheckAllocationPayload();
             };
 
-            SessionEventManager.PlayerLeft += id => {
+            SessionEventManager.PlayerLeaving += id => {
                 CheckAllocationPayload();
             };
         }
@@ -167,7 +167,7 @@ namespace Unity.Services.MultiplayerSDK.Server
                                         SessionProperties = SessionEventManager.LocalSessionProperties,
                                         PlayerProperties = SessionEventManager.LocalPlayerProperties,
                                     }.WithDirectNetwork()
-                                    .WithBackfillingConfiguration(enable: true, autoStart: true),
+                                    .WithBackfillingConfiguration(true, true, true, 30, 1),
                                     
                                 MultiplayServerOptions = new MultiplayServerOptions(
                                     ServicesData.ServerName,    // server_name

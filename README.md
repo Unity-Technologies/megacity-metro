@@ -10,8 +10,6 @@
 - [Netcode Atrributes](Documentation/attributes.md)
 - [Gameplay Controls](#gameplay-controls)
   - [Mouse and Keyboard](#mouse-and-keyboard)
-- [Troubleshooting](#troubleshooting)
-  - [Bugs](#bugs)
 - [Disclaimer](#disclaimer)
 - [License](#license)
 
@@ -19,11 +17,11 @@
 ## Megacity Metro Overview
 
 
-Megacity Metro is an action-packed, shooter game based on the original Megacity sample. It leverages the power of Netcode for Entities for an immersive, multiplayer experience that can support 128+ players simultaneously. The latest DOTS packages and Unity Gaming Services (UGS) enhances the Megacity Metro user experience. Megacity Metro showcases how to create engaging and immersive multiplayer experiences with a suite of netcode and multiplayer tools, tech, and services. 
+Megacity Metro is an action-packed, shooter game based on the original Megacity sample. It leverages the power of Netcode for Entities for an immersive, multiplayer experience that can support 150 players simultaneously. The latest DOTS packages and Unity Gaming Services (UGS) enhances the Megacity Metro user experience. Megacity Metro showcases how to create engaging and immersive multiplayer experiences with a suite of netcode and multiplayer tools, tech, and services. 
 
 Some important points of this demo are:
 - Large-scale streaming and rendering with the Entity Component System (ECS for Unity)
-- 128+ players per game session
+- 150 players per game session
 - Server-authoritative gameplay with feature prediction, interpolation, and lag compensation using Netcode for Entities
 
 - Unity Gaming Services (UGS) integration for Game Server Hosting, Matchmaking, and Vivox voice chat

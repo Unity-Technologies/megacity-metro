@@ -25,7 +25,7 @@ namespace Unity.MegacityMetro
         /// Limitation imposed to ensure UTP send/receiveQueueSize's are set appropriately.
         /// <see cref="MegacityMetroDriverConstructor"/>.
         /// </summary>
-        public const int MaxPlayerCount = 100;
+        public const int MaxPlayerCount = 150;
 
         // The initialize method is what entities calls to create the default worlds
         public override bool Initialize(string defaultWorldName)
@@ -58,7 +58,7 @@ namespace Unity.MegacityMetro
             else 
             {
                 // Creates thin clients or worlds for both Editor and Players
-                ServerConnectionUtils.CreateDefaultWorld(true);
+                ServerConnectionUtils.SetDefaultWorld(true);
                 if (PlayModeContext.IsEditor)
                 {
                     return EditorWorldCreation(defaultWorldName);

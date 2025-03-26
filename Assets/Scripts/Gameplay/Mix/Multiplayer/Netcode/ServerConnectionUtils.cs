@@ -123,7 +123,7 @@ namespace Unity.MegacityMetro
             ConnectToServer(targetEndpoint);
         }
 
-        public static void CreateDefaultWorld(bool isLocal = false)
+        public static void SetDefaultWorld(bool isLocal = false)
         {
             DestroyActiveSimulationWorld();
             ClientServerBootstrap.AutoConnectPort = 0;
@@ -138,7 +138,7 @@ namespace Unity.MegacityMetro
                 newWorld = ClientServerBootstrap.CreateClientWorld("ClientWorld");
             }
 
-            World.DefaultGameObjectInjectionWorld ??= newWorld;
+            World.DefaultGameObjectInjectionWorld = newWorld;
         }
 
         

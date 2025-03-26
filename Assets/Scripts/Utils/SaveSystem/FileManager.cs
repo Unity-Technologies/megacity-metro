@@ -26,6 +26,12 @@ namespace Unity.MegacityMetro.Utils
         {
             var fullPath = Path.Combine(Application.persistentDataPath, fileName);
 
+            if (!File.Exists(fullPath))
+            {
+                result = "File not found.";
+                return false;
+            }
+            
             try
             {
                 result = File.ReadAllText(fullPath);

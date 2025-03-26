@@ -1,6 +1,7 @@
 #if UNITY_SERVER || ENABLE_UCS_SERVER
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace Unity.Services.MultiplayerSDK.Server
         public event Action SessionChanged;
         public event Action<SessionState> SessionStateChanged;
         public event Action<string> PlayerJoined;
-        public event Action<string> PlayerLeft;
+        public event Action<string> PlayerLeaving;
         public event Action SessionPropertiesChanged;
         public event Action SessionPlayerPropertiesChanged;
         public event Action RemovedFromSession;
@@ -30,7 +31,7 @@ namespace Unity.Services.MultiplayerSDK.Server
                     _session.Changed -= SessionChanged;
                     _session.StateChanged -= SessionStateChanged;
                     _session.PlayerJoined -= PlayerJoined;
-                    _session.PlayerLeft -= PlayerLeft;
+                    _session.PlayerLeaving -= PlayerLeaving;
                     _session.SessionPropertiesChanged -= SessionPropertiesChanged;
                     _session.PlayerPropertiesChanged -= SessionPlayerPropertiesChanged;
                     _session.RemovedFromSession -= RemovedFromSession;
@@ -44,7 +45,7 @@ namespace Unity.Services.MultiplayerSDK.Server
                     _session.Changed += SessionChanged;
                     _session.StateChanged += SessionStateChanged;
                     _session.PlayerJoined += PlayerJoined;
-                    _session.PlayerLeft += PlayerLeft;
+                    _session.PlayerLeaving += PlayerLeaving;
                     _session.SessionPropertiesChanged += SessionPropertiesChanged;
                     _session.PlayerPropertiesChanged += SessionPlayerPropertiesChanged;
                     _session.RemovedFromSession += RemovedFromSession;
@@ -69,11 +70,27 @@ namespace Unity.Services.MultiplayerSDK.Server
             SessionChanged += OnSessionChanged;
             SessionStateChanged += OnSessionStateChanged;
             PlayerJoined += OnPlayerJoined;
-            PlayerLeft += OnPlayerLeft;
+            PlayerLeaving += OnPlayerLeaving;
             SessionPropertiesChanged += OnSessionPropertiesChanged;
             SessionPlayerPropertiesChanged += OnSessionPlayerPropertiesChanged;
             RemovedFromSession += OnRemovedFromSession;
             SessionDeleted += OnSessionDeleted;
+        }
+        
+        public void RemovePlayer(string playerId)
+        {
+            Debug.Log($"[SessionEventManager]{DateTime.Now} Removing player {playerId}");
+            Task.Run(async () =>
+            {
+                try
+                {
+                    await Session.AsHost().RemovePlayerAsync(playerId);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log($"[SessionEventManager]{DateTime.Now} Failed to remove player {playerId} from session: {e.Message}. Might be already removed.");
+                }
+            });
         }
 
         // Invoke() must be called from within class containing the actions
@@ -85,54 +102,54 @@ namespace Unity.Services.MultiplayerSDK.Server
 
         private void OnSessionJoined()
         {
-            Debug.Log("[SessionEventManager] SessionJoined");
+            Debug.Log($"[SessionEventManager]{DateTime.Now} SessionJoined");
         }
 
         private void OnSessionLeft()
         {
-            Debug.Log("[SessionEventManager] SessionLeft");
+            Debug.Log($"[SessionEventManager]{DateTime.Now} SessionLeft");
         }
 
         private void OnSessionChanged()
         {
-            Debug.Log("[SessionEventManager] SessionChanged");
+            //Debug.Log("[SessionEventManager] SessionChanged");
         }
 
         private void OnSessionStateChanged(SessionState state)
         {
-            Debug.Log($"[SessionEventManager] SessionStateChanged: {state}");
+            Debug.Log($"[SessionEventManager]{DateTime.Now} SessionStateChanged: {state}");
         }
 
         private void OnPlayerJoined(string id)
         {
-            Debug.Log($"[SessionEventManager] PlayerJoined: {id}");
+            Debug.Log($"[SessionEventManager]{DateTime.Now} PlayerJoined: {id}");
         }
 
-        private void OnPlayerLeft(string id)
+        private void OnPlayerLeaving(string id)
         {
-            Debug.Log($"[SessionEventManager] PlayerLeft: {id}");
+            Debug.Log($"[SessionEventManager]{DateTime.Now} PlayerLeaving: {id}");
         }
 
         private void OnSessionPropertiesChanged()
         {
-            Debug.Log("[SessionEventManager] SessionSessionPropertiesChanged");
+            Debug.Log($"[SessionEventManager]{DateTime.Now}SessionSessionPropertiesChanged");
         }
 
         private void OnSessionPlayerPropertiesChanged()
         {
-            Debug.Log("[SessionEventManager] SessionPlayerPropertiesChanged");
+            Debug.Log($"[SessionEventManager]{DateTime.Now} SessionPlayerPropertiesChanged");
         }
 
         private void OnRemovedFromSession()
         {
-            Debug.Log($"[SessionEventManager] SessionRemovedFromSession");
+            Debug.Log($"[SessionEventManager]{DateTime.Now} SessionRemovedFromSession");
             LocalSessionProperties.Clear();
             Session = null;
         }
 
         private void OnSessionDeleted()
         {
-            Debug.Log($"[SessionEventManager] SessionDeleted");
+            Debug.Log($"[SessionEventManager]{DateTime.Now} SessionDeleted");
         }
     }
 }

@@ -1,6 +1,8 @@
 using MegacityMetro.CustomUI;
-using Unity.MegacityMetro.Utils;
 using UnityEngine.UIElements;
+#if !UNITY_SERVER
+using Unity.MegacityMetro.Utils;
+#endif
 
 namespace Unity.MegacityMetro.UI
 {
@@ -98,6 +100,7 @@ namespace Unity.MegacityMetro.UI
 
         private void SaveData()
         {
+#if !UNITY_SERVER
             var controlSettingsData = new ControlSettingsData
             {
                 MouseSensitivity = MouseSensitivity,
@@ -107,16 +110,18 @@ namespace Unity.MegacityMetro.UI
             };
 
             PersistentDataManager.Instance.SaveControlSettings(controlSettingsData);
+#endif
         }
 
         private void CheckSavedData()
         {
+#if !UNITY_SERVER
             var controlSettingsData = PersistentDataManager.Instance.GetControlSettings();
-
             m_MouseSensitivitySlider.value = (int)(controlSettingsData.MouseSensitivity * 100f);
             m_AimSensitivitySlider.value = (int)(controlSettingsData.AimAssistanceSensitivity * 100f);
             m_InverseLookHorizontalToggle.value = controlSettingsData.InverseLookHorizontal;
             m_InverseLookVerticalToggle.value = controlSettingsData.InverseLookVertical;
+#endif
         }
 
         private void OnDestroy()

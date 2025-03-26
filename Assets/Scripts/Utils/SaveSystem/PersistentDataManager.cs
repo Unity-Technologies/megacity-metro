@@ -4,9 +4,11 @@ namespace Unity.MegacityMetro.Utils
 {
     public class PersistentDataManager : MonoBehaviour
     {
+#if !UNITY_SERVER
+        
         [SerializeField] private UserPreferencesSO userPreferences;
         public static PersistentDataManager Instance { get; private set; }
-        
+  
         private void Awake()
         {
             if (Instance == null)
@@ -88,5 +90,6 @@ namespace Unity.MegacityMetro.Utils
         {
             return userPreferences.UserSettings.ControlSettings;
         }
+#endif
     }
 }

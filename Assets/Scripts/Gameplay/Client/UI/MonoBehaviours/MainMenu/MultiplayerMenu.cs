@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using MegacityMetro.CustomUI;
@@ -15,11 +17,12 @@ namespace Unity.MegacityMetro.UI
         {
             Matchmaker = 0,
             Connect = 1
-        }   
-        
+        }
+
         [field: SerializeField]
         public MultiplayerMode SelectedMultiplayerMode { get; private set; } = MultiplayerMode.Matchmaker;
-        [SerializeField] 
+
+        [SerializeField]
         private PlayerInfoItemSettings m_PlayerSettings;
 
         // UI Elements
@@ -35,6 +38,9 @@ namespace Unity.MegacityMetro.UI
         public static MultiplayerMenu Instance { get; private set; }
         private GameInput m_GameInput;
         private CustomFocusRing m_FocusRing;
+        private VisualElement m_ActionButtonStrip;
+        private Button m_RefreshButton;
+        private VisualElement m_SessionBrowser;
 
         private void Awake()
         {
@@ -50,9 +56,9 @@ namespace Unity.MegacityMetro.UI
 
         private void OnNavigate(Vector2 direction)
         {
-            if(m_FocusRing == null || m_MultiplayerMenuOptions.style.display == DisplayStyle.None)
+            if (m_FocusRing == null || m_MultiplayerMenuOptions.ClassListContains(UIConstants.k_HiddenUssElementClass))
                 return;
-            
+
             switch (direction.y)
             {
                 case > 0:
@@ -67,7 +73,7 @@ namespace Unity.MegacityMetro.UI
         public override void InitUI()
         {
             base.InitUI();
-            
+
             // Initialize MatchMakingConnector
             MatchMakingUI.Instance.Init();
 
@@ -78,34 +84,39 @@ namespace Unity.MegacityMetro.UI
             m_NameTextField = m_MultiplayerMenuOptions.Q<TextField>("name-textfield");
             m_MultiplayerPlayButton = m_MultiplayerMenuOptions.Q<Button>("multiplayer-play-button");
             m_MultiplayerReturnButton = m_MultiplayerMenuOptions.Q<Button>("multiplayer-return-button");
+            m_SessionBrowser = root.Q<VisualElement>("session-browser");
+            m_NameTextField.SetValueWithoutNotify(m_PlayerSettings.PlayerName);
 
-            TextField serverIpTextField = m_MultiplayerMenuOptions.Q<TextField>("multiplayer-server-textfield"); 
+            m_RefreshButton = root.Q<Button>("session-refresh-button");
+
+            m_ActionButtonStrip = root.Q<VisualElement>("multiplayer-button-strip");
+
             DropdownField serverDropDown = m_MultiplayerMenuOptions.Q<DropdownField>("multiplayer-server-location");
-            
+
             // Create custom ring for focus navigation
 #if UNITY_SWITCH
-            m_FocusRing = new CustomFocusRing(root, new VisualElement[] {m_MultiplayerModeGroup, serverDropDown, serverIpTextField, m_MultiplayerPlayButton, m_MultiplayerReturnButton});
+            m_FocusRing = new CustomFocusRing(root, new VisualElement[] {m_MultiplayerModeGroup, serverDropDown, m_MultiplayerPlayButton, m_MultiplayerReturnButton});
 #else
             m_FocusRing = new CustomFocusRing(root,
                 new VisualElement[]
                 {
-                    m_MultiplayerModeGroup, serverDropDown, serverIpTextField, m_NameTextField, m_MultiplayerPlayButton,
+                    m_MultiplayerModeGroup, serverDropDown, m_NameTextField, m_MultiplayerPlayButton,
                     m_MultiplayerReturnButton
                 });
 #endif
-            
+
 #if (UNITY_ANDROID || UNITY_IPHONE || UNITY_SWITCH) && !DEVELOPMENT_BUILD && !UNITY_EDITOR
-            m_MultiplayerModeGroup.style.display = DisplayStyle.None;
+            m_MultiplayerModeGroup.AddToClassList(UIConstants.k_HiddenUssElementClass);
 #endif
 #if UNITY_SWITCH
             m_NameTextField.isReadOnly = true;
 #endif
-            m_MultiplayerMenuOptions.style.display = DisplayStyle.None;
+            m_MultiplayerMenuOptions.AddToClassList(UIConstants.k_HiddenUssElementClass);
             m_MultiplayerModeGroup.RegisterValueChangedCallback(evt =>
             {
                 SetConnectionMode((MultiplayerMode)Convert.ToInt32(evt.newValue));
             });
-            
+
             m_NameTextField.RegisterValueChangedCallback(evt =>
             {
                 var filteredText = FilterNonAlphanumeric(evt.newValue);
@@ -115,15 +126,8 @@ namespace Unity.MegacityMetro.UI
                 m_NameTextField.SetValueWithoutNotify(m_NameTextField.text);
             });
 
-            m_MultiplayerPlayButton.clicked += () =>
-            {
-                if (!m_MultiplayerPlayButton.enabledSelf)
-                    return;
-                OnPlaySelected();
-            };
-
             m_MultiplayerReturnButton.clicked += BackToTheMenu;
-            
+
             serverDropDown.RegisterCallback<GeometryChangedEvent>(_ =>
             {
                 SetConnectionMode(SelectedMultiplayerMode);
@@ -138,6 +142,8 @@ namespace Unity.MegacityMetro.UI
                 evt.StopPropagation();
                 evt.PreventDefault();
             }, TrickleDown.TrickleDown);
+
+            MatchMakingUI.Instance.Connecting += () => MainMenu.Instance.CurrentState = MenuState.Matchmaking;
         }
 
         /// <summary>
@@ -153,81 +159,43 @@ namespace Unity.MegacityMetro.UI
         private void SetConnectionMode(MultiplayerMode mode)
         {
             SelectedMultiplayerMode = mode;
-            var connectButtonText = SelectedMultiplayerMode == MultiplayerMode.Matchmaker
+            var isMatchMaking = mode == MultiplayerMode.Matchmaker;
+
+            var connectButtonText = isMatchMaking
                 ? "Find Match"
-                : SelectedMultiplayerMode.ToString();
+                : nameof(MultiplayerMode.Connect);
+
+            var sessionList = m_SessionBrowser.Q<ListView>();
+
+            m_ActionButtonStrip.EnableInClassList("button-strip__wide", !isMatchMaking);
+            m_ActionButtonStrip.EnableInClassList("button-strip__normal", isMatchMaking);
+            m_RefreshButton.EnableInClassList(UIConstants.k_HiddenUssElementClass, isMatchMaking);
+            m_SessionBrowser.EnableInClassList("hidden", isMatchMaking);
+
             m_MultiplayerPlayButton.text = connectButtonText;
+            m_MultiplayerPlayButton.SetEnabled(isMatchMaking || sessionList.selectedItem != null);
+
+            sessionList.selectionType = SelectionType.Single;
+
+            // callback to enable play button when list has a selection
+            sessionList.selectionChanged -= OnSessionSelectionChanged;
+            sessionList.selectionChanged += OnSessionSelectionChanged;
+
             // This should occur after Matchmaking assigns the random name.
             m_NameTextField.value = m_PlayerSettings.PlayerName;
-            var isMatchMaking = mode == MultiplayerMode.Matchmaker;
+
+            // Setting matchmaker UI conditions
             MatchMakingUI.Instance.SetConnectionMode(isMatchMaking);
-        }
+            return;
 
-        private void OnPlaySelected()
-        {
-            if(Application.internetReachability == NetworkReachability.NotReachable)
+            void OnSessionSelectionChanged(IEnumerable<object> selections)
             {
-                MatchMakingUI.Instance.UpdateConnectionStatus("Error: No Internet Connection!");
-                ModalWindow.Instance.Show("Error: No Internet Connection!", "OK");
-                return;
+                var playEnabled =
+                    (selections != null && selections.Any())
+                    || (isMatchMaking || sessionList.selectedItem != null);
+
+                m_MultiplayerPlayButton.SetEnabled(playEnabled);
             }
-            
-            if (MatchMakingConnector.Instance.ClientIsInGame)
-            {
-                Debug.LogWarning("Cant hit play while already in-game!");
-                return;
-            }
-
-            MainMenu.Instance.CurrentState = MenuState.Matchmaking;
-
-            switch (SelectedMultiplayerMode)
-            {
-                // TODO: UI code shouldn't be blindly kicking off an async service.
-                case MultiplayerMode.Matchmaker:
-#pragma warning disable CS4014
-                    Matchmake();
-#pragma warning restore CS4014
-                    break;
-                case MultiplayerMode.Connect:
-                    MatchMakingConnector.Instance.ConnectToServer(MatchMakingUI.Instance.IPValue);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        internal async Task Matchmake()
-        {
-            while (true)
-            {
-                if (MatchMakingConnector.Instance.IsInitialized)
-                {
-                    MatchMakingConnector.Instance.SetProfileServiceName(m_NameTextField.text);
-                    SetUIMatchmaking(true);
-                    await MatchMakingConnector.Instance.Matchmake();
-                    SetUIMatchmaking(false);
-                }
-                else
-                {
-                    MatchMakingUI.Instance.UpdateConnectionStatus("Reconnecting...");
-                    await MatchMakingConnector.Instance.Reconnect();
-                    continue;
-                }
-
-                break;
-            }
-        }
-
-        private void SetUIMatchmaking(bool matchmaking)
-        {
-            m_NameTextField.style.display = matchmaking ? DisplayStyle.None : DisplayStyle.Flex;
-            m_MultiplayerModeGroup.style.display = matchmaking ? DisplayStyle.None : DisplayStyle.Flex;
-            m_MultiplayerPlayButton.style.display = matchmaking ? DisplayStyle.None : DisplayStyle.Flex;
-            m_MultiplayerReturnButton.style.display = matchmaking ? DisplayStyle.None : DisplayStyle.Flex;
-            // Show when is doing matchmaking
-            MatchMakingUI.Instance.SetUIConnectionStatusEnable(matchmaking);
-            m_MultiplayerPlayButton.SetEnabled(!matchmaking);
-            m_MultiplayerReturnButton.SetEnabled(!matchmaking);
         }
 
         protected override void BackToTheMenu()

@@ -40,6 +40,8 @@ To use the SDK, navigate to **Edit > Project Settings > Service**. Choose your o
 > **Note:** Your first deployment to Multiplay Hosting must include a Build type, unless you have already [created a build in Multiplay Hosting](https://docs.unity.com/ugs/en-us/manual/game-server-hosting/manual/guides/create-a-build).
 
 To trigger your first deployment to Multiplay Hosting:
+- Install **[Linux Dedicated Server](https://docs.unity3d.com/6000.0/Documentation/Manual/dedicated-server-requirements.html) Platform** to automatically upload it to the GSH.
+  - **Note:** `Windows Dedicated Server` is not supported yet by the Deployment Window and GSH. 
 - Navigate to `Build Profiles` and set the platform to `Linux Server` (this is required for Multiplay Hosting).
 - Navigate to `Services > Deployment`.
 - Select all configurations where **Multiplay** is the `Service`, or using the following `Type` values:

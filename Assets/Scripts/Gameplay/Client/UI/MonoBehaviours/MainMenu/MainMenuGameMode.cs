@@ -29,14 +29,14 @@ namespace Unity.MegacityMetro.UI
 
         public void ToggleVisibility()
         {
-            if (m_MenuOptions.style.display == DisplayStyle.None)
+            if (m_MenuOptions.ClassListContains(UIConstants.k_HiddenUssElementClass))
             {
-                m_MenuOptions.style.display = DisplayStyle.Flex;
+                m_MenuOptions.RemoveFromClassList(UIConstants.k_HiddenUssElementClass);
                 m_AutomaticFocusElement.RegisterCallback<GeometryChangedEvent>(_ => m_AutomaticFocusElement.Focus());
             }
             else
             {
-                m_MenuOptions.style.display = DisplayStyle.None;
+                m_MenuOptions.AddToClassList(UIConstants.k_HiddenUssElementClass);
             }
         }
         
@@ -54,7 +54,7 @@ namespace Unity.MegacityMetro.UI
 
         protected virtual void BackToTheMenu()
         {
-            if(m_MenuOptions.style.display == DisplayStyle.None)
+            if(m_MenuOptions.ClassListContains(UIConstants.k_HiddenUssElementClass))
                 return;
             
             MatchMakingUI.Instance.SetUIConnectionStatusEnable(false);

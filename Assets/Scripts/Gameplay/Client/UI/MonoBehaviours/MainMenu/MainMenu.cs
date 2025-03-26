@@ -77,12 +77,9 @@ namespace Unity.MegacityMetro.UI
             {
                 SceneController.IsReturningToMainMenu = false;
 
-                ServerConnectionUtils.CreateDefaultWorld(true);
+                ServerConnectionUtils.SetDefaultWorld(true);
 
-                // Necessary to avoid SessionException tied to backfill - MPSSDK-1170
-                //
-                // TODO: Adapt method to async
-                MatchMakingConnector.Instance.ClearSession();
+                _ = MatchMakingConnector.Instance.ClearSession();
             }
             
 #if UNITY_SERVER && !UNITY_EDITOR
@@ -132,7 +129,7 @@ namespace Unity.MegacityMetro.UI
             if (_AutomaticMatchmakingTask != null && !_AutomaticMatchmakingTask.IsCompleted) return;
             Debug.Log("[CLI] Detected automatic matchmaking requested! Beginning matchmaking now...");
             OnMultiplayerButtonClicked();
-            _AutomaticMatchmakingTask = MultiplayerMenu.Instance.Matchmake();
+            _AutomaticMatchmakingTask = MatchMakingUI.Instance.Matchmake();
 #endif
         }
 
