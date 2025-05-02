@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 528507760225301746, guid: 3ea52a5189f477743b54dc26b246003c,
         type: 3}
       propertyPath: m_Name
-      value: Text_sign_11
+      value: Text_sign_11 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 873262566367063624, guid: 3ea52a5189f477743b54dc26b246003c,
         type: 3}
@@ -62,6 +62,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224452622154852974, guid: 3ea52a5189f477743b54dc26b246003c,
+        type: 3}
+      propertyPath: m_LODs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224452622154852974, guid: 3ea52a5189f477743b54dc26b246003c,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.016
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
