@@ -76,7 +76,7 @@ Make sure to save your API Secret and Key into environment variables
 1. Open a Powershell window in it
 1. Run your Server executable with the following parameters:
     ```ps
-    .\'Server' -port 7979 --api-key-id %API_KEY% --api-key-secret %API_SECRET% -define:USING_UNITY_LOGGING
+    .\'Server' -port 7979 --api-key-id $env:API_KEY --api-key-secret $env:API_SECRET -define:USING_UNITY_LOGGING
     ```
 
 **macOS**
