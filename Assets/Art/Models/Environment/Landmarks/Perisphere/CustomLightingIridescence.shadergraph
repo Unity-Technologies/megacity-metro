@@ -393,6 +393,7 @@
     "m_OutputNode": {
         "m_Id": ""
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "431d812e5beb403a969ba5c844fa2508"
@@ -569,7 +570,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Forward Plus",
     "m_DefaultReferenceName": "_FORWARD_PLUS",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_CLUSTER_LIGHT_LOOP",
     "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -1123,6 +1124,9 @@
     "m_AlphaClip": false,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
+    "m_DisableTint": false,
+    "m_AdditionalMotionVectorMode": 0,
+    "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": false,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
@@ -1580,7 +1584,7 @@
     "m_DefaultValue": {
         "x": 0.0,
         "y": 0.0,
-        "z": 0.0
+        "z": 1.0
     },
     "m_Labels": []
 }
@@ -2226,7 +2230,7 @@
     },
     "m_DefaultValue": {
         "x": 0.0,
-        "y": 0.0
+        "y": 1.0
     },
     "m_Labels": []
 }
@@ -2276,6 +2280,20 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "dd0e8aab95f846ac9ea014cb28d756cd",
+    "m_Id": 814618256,
+    "m_DisplayName": "EnableAdditionalLights",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_EnableAdditionalLights",
+    "m_StageCapability": 2,
+    "m_Value": true,
+    "m_DefaultValue": false
 }
 
 {
@@ -2557,8 +2575,8 @@
         "y": 1.0
     },
     "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0
+        "x": -1.0,
+        "y": 1.0
     },
     "m_Labels": []
 }
@@ -2582,6 +2600,9 @@
         }
     },
     "m_Slots": [
+        {
+            "m_Id": "dd0e8aab95f846ac9ea014cb28d756cd"
+        },
         {
             "m_Id": "4f5aa2a928fb48a68ca58e03cb8db731"
         },
@@ -2641,7 +2662,8 @@
         "467a8b1f-63a7-42fa-959e-9fe9118d5e63",
         "d8b72655-e4d1-4f22-93c8-ba58eae1ccb0",
         "ee527de0-f1a4-41e2-8e1f-313026c79d77",
-        "00e3c58d-f619-4f86-9c60-35bcf67e1688"
+        "00e3c58d-f619-4f86-9c60-35bcf67e1688",
+        "a047bf0f-4632-4c68-acfc-3d7201139cae"
     ],
     "m_PropertyIds": [
         -1045450119,
@@ -2668,7 +2690,8 @@
         -1908278468,
         2145643517,
         -400796436,
-        2068196862
+        2068196862,
+        814618256
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []

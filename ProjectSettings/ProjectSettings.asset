@@ -140,7 +140,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.4.0
+  bundleVersion: 1.5.0
   preloadedAssets:
   - {fileID: 11400000, guid: 7128c4874d3dbf248b2b0e80d868dbc5, type: 2}
   metroInputSource: 0
@@ -169,7 +169,7 @@ PlayerSettings:
     iPhone: com.unity.megacity.metro
   buildNumber:
     Bratwurst: 0
-    Standalone: 0
+    Standalone: 1.5.0
     VisionOS: 0
     iPhone: 0
     tvOS: 0
@@ -837,12 +837,12 @@ PlayerSettings:
   webGLMemoryLinearGrowthStep: 16
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
-  webGLEnableWebGPU: 0
   webGLPowerPreference: 2
   webGLWebAssemblyTable: 0
   webGLWebAssemblyBigInt: 0
   webGLCloseOnQuit: 0
   webWasm2023: 0
+  webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
     : UNITY_POST_PROCESSING_STACK_V2;USE_BATCH_RENDERER_GROUP
     Android: ENABLE_MESH_RENDERER_SUBMESH_DATA_SHARING
@@ -990,3 +990,4 @@ PlayerSettings:
   insecureHttpOption: 0
   androidVulkanDenyFilterList: []
   androidVulkanAllowFilterList: []
+  androidVulkanDeviceFilterListAsset: {fileID: 0}

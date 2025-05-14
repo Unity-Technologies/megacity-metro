@@ -697,21 +697,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "008bc17bc1bc4a939558b172c5f60406",
-    "m_Id": 1080114550,
-    "m_DisplayName": "Indentation",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "_Indentation",
-    "m_StageCapability": 2,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "02a90688d6984276bf4ff0638df268fe",
     "m_Group": {
@@ -770,6 +755,7 @@
     },
     "isMainTexture": false,
     "useTilingAndOffset": false,
+    "useTexelSize": true,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -1393,7 +1379,7 @@
     "m_StageCapability": 2,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -2182,6 +2168,7 @@
     },
     "isMainTexture": false,
     "useTilingAndOffset": false,
+    "useTexelSize": true,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -2650,7 +2637,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Forward Plus",
     "m_DefaultReferenceName": "_FORWARD_PLUS",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_CLUSTER_LIGHT_LOOP",
     "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -3674,11 +3661,12 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "isMainTexture": false,
     "useTilingAndOffset": false,
+    "useTexelSize": true,
     "m_Modifiable": true,
     "m_DefaultType": 0
 }
@@ -4397,9 +4385,6 @@
     "m_Slots": [
         {
             "m_Id": "cc9a6f3c8ba148f98fb516e586dda8c7"
-        },
-        {
-            "m_Id": "008bc17bc1bc4a939558b172c5f60406"
         },
         {
             "m_Id": "4f5aa2a928fb48a68ca58e03cb8db731"
