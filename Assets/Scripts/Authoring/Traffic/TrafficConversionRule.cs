@@ -53,6 +53,8 @@ namespace Unity.MegacityMetro.Traffic
         {
             var sections = new NativeList<RoadSection>(Allocator.Temp);
             var rootSceneEntity = Entity.Null;
+
+            EntityManager.AddComponent<Spawner>(EntityManager.CreateEntityQuery(ComponentType.ReadOnly<TrafficPathBakingData>()).ToEntityArray(Allocator.Temp));
             
             foreach ((var trafficPathBakingDataRef, var e) in SystemAPI.Query<RefRW<TrafficPathBakingData>>()
                 .WithEntityAccess())
@@ -146,7 +148,7 @@ namespace Unity.MegacityMetro.Traffic
                             spawner.poolSpawn = spawnPool;
 
                             // Each path will only have one spawner, so use the Primary Entity
-                            EntityManager.AddComponentData(entity, spawner);
+                            EntityManager.SetComponentData(entity, spawner);
                         }
                     }
 
