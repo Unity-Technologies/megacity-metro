@@ -75,7 +75,7 @@ namespace Unity.MegacityMetro.CameraManagement
 
         public void CameraUpdate(float deltaTime, bool skipSmoothing = false)
         {
-            Transform cameraTransform = CameraObject.transform;
+            /*Transform cameraTransform = CameraObject.transform;
 
             float3 lookDirection = math.normalizesafe(_aimPosition - _playerPosition);
             float3 targetPosition = _playerPosition - (lookDirection * FollowDistance);
@@ -92,7 +92,7 @@ namespace Unity.MegacityMetro.CameraManagement
                 cameraTransform.rotation = math.slerp(cameraTransform.rotation, targetRotation,  MathUtilities.GetSharpnessInterpolant(LookAtSharpness, deltaTime));
             }
 
-            _prevTargetPosition = targetPosition;
+            _prevTargetPosition = targetPosition;*/
         }
 
         public void SetAllowDynamicResolution(bool value)

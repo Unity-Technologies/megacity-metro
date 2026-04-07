@@ -26,12 +26,12 @@ namespace Unity.MegacityMetro.Gameplay
 
         public void OnStartRunning(ref SystemState state)
         {
-            HUD.Instance.Leaderboard.Show();
+            //HUD.Instance.Leaderboard.Show();
         }
 
         public void OnStopRunning(ref SystemState state)
         {
-            HUD.Instance.Leaderboard.Hide();
+            //HUD.Instance.Leaderboard.Hide();
         }
 
         public void OnUpdate(ref SystemState state)
