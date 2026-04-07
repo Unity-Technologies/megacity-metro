@@ -36,7 +36,7 @@ namespace Unity.MegacityMetro.Gameplay
 
         public void OnUpdate(ref SystemState state)
         {
-            if (m_LocalPlayerQuery.CalculateEntityCount() <= 0)
+            /*if (m_LocalPlayerQuery.CalculateEntityCount() <= 0)
                 return;
             
             var localEntityPlayer = m_LocalPlayerQuery.ToEntityArray(Allocator.Temp)[0];
@@ -58,7 +58,7 @@ namespace Unity.MegacityMetro.Gameplay
             }
 
             HUD.Instance?.Leaderboard?.SetRanking(ref ranking);
-            ranking.Dispose(state.Dependency);
+            ranking.Dispose(state.Dependency);*/
         }
     }
 

@@ -26,7 +26,7 @@ namespace Unity.MegacityMetro.UI
             if (HUD.Instance == null)
                 return;
 
-            foreach (var playerAspect in Query<PlayerScoreAspect>().WithAll<GhostOwnerIsLocal>())
+            /*foreach (var playerAspect in Query<PlayerScoreAspect>().WithAll<GhostOwnerIsLocal>())
             {
                 if(playerAspect.Kills > m_CurrentKills)
                 {
@@ -34,7 +34,7 @@ namespace Unity.MegacityMetro.UI
                     var message = $"<color=#DF3D06>YOU DESTROYED</color>\n{playerAspect.Killed}";
                     HUD.Instance.Notification.Message(message);
                 }
-            }
+            }*/
         }
     }
 }

@@ -53,8 +53,12 @@ namespace Unity.MegacityMetro.Traffic
         {
             var sections = new NativeList<RoadSection>(Allocator.Temp);
             var rootSceneEntity = Entity.Null;
-            Entities.ForEach((Entity e, ref TrafficPathBakingData trafficPathBakingData) =>
+            
+            foreach ((var trafficPathBakingDataRef, var e) in SystemAPI.Query<RefRW<TrafficPathBakingData>>()
+                .WithEntityAccess())
             {
+                ref TrafficPathBakingData trafficPathBakingData = ref trafficPathBakingDataRef.ValueRW;
+
                 var path = trafficPathBakingData.Authoring.Value;
                 if (rootSceneEntity == Entity.Null)
                 {
@@ -149,15 +153,17 @@ namespace Unity.MegacityMetro.Traffic
                     RIndex++;
                     sections.Add(rs);
                 }
-            }).WithStructuralChanges().Run();
+            }
             if (rootSceneEntity == Entity.Null)
             {
                 return;
             }
 
             // Loop over the paths again to start building the ramps and merges
-            Entities.ForEach((ref TrafficPathBakingData trafficPathBakingData) =>
+            foreach (var trafficPathBakingDataRef in SystemAPI.Query<RefRW<TrafficPathBakingData>>())
             {
+                ref TrafficPathBakingData trafficPathBakingData = ref trafficPathBakingDataRef.ValueRW;
+
                 var path = trafficPathBakingData.Authoring.Value;
                 var numPathNodes = path.GetNumNodes();
 
@@ -211,7 +217,7 @@ namespace Unity.MegacityMetro.Traffic
                         }
                     }
                 }
-            }).WithoutBurst().Run();
+            }
             using var blobBuilder = new BlobBuilder(Allocator.Temp);
             ref var sectionsBlob = ref blobBuilder.ConstructRoot<RoadSectionBlob>();
             var sectionsDataBuilder = blobBuilder.Allocate(ref sectionsBlob.RoadSections, sections.Length);

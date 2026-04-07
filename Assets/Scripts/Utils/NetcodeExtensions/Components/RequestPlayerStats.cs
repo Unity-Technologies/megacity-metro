@@ -15,14 +15,4 @@ namespace Unity.NetCode.Extensions
             return PlayerStats.ToString() + GfxDeviceinfo.ToString() + CPUDeviceInfo.ToString() + MemoryDeviceInfo.ToString();
         }
     }
-
-    public readonly partial struct RequestPlayerStatsAspect : IAspect
-    {
-        public readonly Entity Self;
-        readonly RefRO<RequestPlayerStats> m_SpawnRequest;
-        readonly RefRO<Unity.NetCode.ReceiveRpcCommandRequest> m_ReceiveRpcRequest;
-        public string Data => m_SpawnRequest.ValueRO.ToString();
-        public string PlayerName => m_SpawnRequest.ValueRO.PlayerStats.Name.ToString();
-        public Entity SourceConnection => m_ReceiveRpcRequest.ValueRO.SourceConnection;
-    }
 }

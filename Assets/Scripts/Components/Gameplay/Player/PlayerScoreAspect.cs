@@ -9,7 +9,7 @@ namespace Unity.MegacityMetro.Gameplay
     /// <summary>
     /// Player score Aspect
     /// </summary>
-    public readonly partial struct PlayerScoreAspect : IAspect
+    public readonly partial struct PlayerScoreAspect // : IAspect
     {
         public readonly Entity Self;
         readonly RefRW<PlayerScore> m_Value;
