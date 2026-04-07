@@ -30,7 +30,9 @@ namespace Unity.MegacityMetro
         // The initialize method is what entities calls to create the default worlds
         public override bool Initialize(string defaultWorldName)
         {
-            Debug.Log($"Initialize NetcodeBootstrap using world '{defaultWorldName}'");
+            return false;
+
+            /*Debug.Log($"Initialize NetcodeBootstrap using world '{defaultWorldName}'");
 
             // This style of check should be incorporated into the SDK and extended
             // to included additional use cases (e.g. Relay)..
@@ -69,7 +71,7 @@ namespace Unity.MegacityMetro
                 }
             }
 
-            return true;
+            return true;*/
         }
 
         private bool EditorWorldCreation(string defaultWorldName)
