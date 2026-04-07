@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 9
+  version: 10
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: low fog plane
-  m_Shader: {fileID: -6465566751694194690, guid: a035af402c37a044c8c6cb9efb457a80,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: a035af402c37a044c8c6cb9efb457a80, type: 3}
   m_Parent: {fileID: 2100000, guid: 58258505a83a36448a0ddfc169e9b2d9, type: 2}
   m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
@@ -50,6 +49,7 @@ Material:
     m_Floats:
     - _Blend: 2
     - _DstBlend: 1
+    - _DstBlendAlpha: 1
     - _Fade_distance: 1600
     - _Overall_Brightness: 0.555
     - _Plane1: -1

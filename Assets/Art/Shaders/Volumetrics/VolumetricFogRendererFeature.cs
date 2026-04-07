@@ -214,7 +214,7 @@ public sealed class VolumetricFogRendererFeature : ScriptableRendererFeature
         // When empty this render pass will render to the active camera render target.
         // You should never call CommandBuffer.SetRenderTarget. Instead call <c>ConfigureTarget</c> and <c>ConfigureClear</c>.
         // The render pipeline will ensure target setup and clearing happens in a performant manner.
-        public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
+        /*public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
         {
             // This ScriptableRenderPass manages its own RenderTarget.
             // ResetTarget here so that ScriptableRenderer's active attachment can be invalidated when processing this ScriptableRenderPass.
@@ -223,13 +223,13 @@ public sealed class VolumetricFogRendererFeature : ScriptableRendererFeature
             // This allocates our intermediate texture for the non-RG path and makes sure it's reallocated if some settings on the camera target change (e.g. resolution)
             if (kCopyActiveColor)
                 RenderingUtils.ReAllocateHandleIfNeeded(ref m_CopiedColor, GetCopyPassTextureDescriptor(renderingData.cameraData.cameraTargetDescriptor), name: "_CustomPostPassCopyColor");
-        }
+        }*/
 
         // Here you can implement the rendering logic (non-render graph path only).
         // Use <c>ScriptableRenderContext</c> to issue drawing commands or execute command buffers
         // https://docs.unity3d.com/ScriptReference/Rendering.ScriptableRenderContext.html
         // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
-        public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
+        /*public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
             ref var cameraData = ref renderingData.cameraData;
             var cmd = CommandBufferPool.Get();
@@ -255,7 +255,7 @@ public sealed class VolumetricFogRendererFeature : ScriptableRendererFeature
             cmd.Clear();
 
             CommandBufferPool.Release(cmd);
-        }
+        }*/
 
         // Cleanup any allocated resources that were created during the execution of this render pass (non-render graph path only)
         public override void OnCameraCleanup(CommandBuffer cmd)
